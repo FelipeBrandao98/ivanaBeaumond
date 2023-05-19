@@ -9,7 +9,7 @@
   left: 0;
 
   width: 100%;
-  height: calc(50px + 80px + 2rem + .5rem);
+  height: calc(50px + 45px + 2rem + .5rem);
 
   border-bottom: 1px solid var(--black);
   background-color: var(--background-blur-dark);
@@ -21,7 +21,7 @@
 
 .logoInMenu {
   position: absolute;
-  top: 2rem;
+  top: 1.5rem;
   right: 50%;
   transform: translateX(50%);
 }
