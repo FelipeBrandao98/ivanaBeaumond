@@ -67,6 +67,7 @@
 .nav ul li:hover {
   filter: brightness(1.2);
   background-color: var(--background-blur-dark);
+  color: var(--white-100);
   cursor: pointer;
 }
 
