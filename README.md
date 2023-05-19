@@ -46,3 +46,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - finalização do Banner Home (Apenas versão desktop)
 
 ### 3 - mais alguns ajustes no menu superior: cor da fonte do menu (Apenas versão desktop)
+
+### 4 - Adição do Menu de coleções (Apenas versão desktop)

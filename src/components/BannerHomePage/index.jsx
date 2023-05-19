@@ -9,14 +9,14 @@ export default function BannerHomePage() {
       <article className={styles.article}>
         <Image
           className={styles.image}
-          src='/homeimage.png'
+          src='/homeimage4.jpg'
           alt="Foto de Noiva na Praia"
           width={1920}
           height={1080}
         />
-        <h1 className={styles.h1}>DISCOVER THE EXQUISITE WORLD OF<br />IVANA BEAUMOND</h1>
+        <h1 className={styles.h1}>DÉCOUVREZ LE MONDE MERVEILLEUX DE<br />IVANA BEAUMOND</h1>
         <h3 className={styles.h3}>
-          <a href="">DISCOVER NOW
+          <a href="">DÉCOUVREZ MAINTENANT
             <FaArrowRight
               className={styles.span}
             />
