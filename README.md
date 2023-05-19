@@ -42,3 +42,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 05-19-2023
 
 ### 1 - mais alguns ajustes no menu superior (Apenas versão desktop)
+
+### 2 - finalização do Banner Home (Apenas versão desktop)
