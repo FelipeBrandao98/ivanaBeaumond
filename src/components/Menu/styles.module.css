@@ -1,0 +1,104 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: calc(50px + 80px + 2rem + .5rem);
+
+  border-bottom: 1px solid var(--black);
+  background-color: var(--background-blur-dark);
+  color: var(--text-dark);
+  backdrop-filter: var(--blur);
+
+  padding: 0 .5rem;
+}
+
+.logoInMenu {
+  position: absolute;
+  top: 2rem;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.contactNav ul {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.contactNav ul li {
+  font-weight: thin;
+  list-style: none;
+  font-weight: thin;
+  font-size: .9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .2rem;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+
+  height: 40px;
+}
+
+.nav ul li {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+
+  padding: .8rem;
+
+  transition: all .2s;
+}
+
+.nav ul li:hover {
+  filter: brightness(1.2);
+  background-color: var(--background-blur-dark);
+  cursor: pointer;
+}
+
+.navSociaMedia ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  text-decoration: none;
+  list-style: none;
+
+  gap: .2rem;
+}
+
+.navSociaMedia ul li {
+  font-size: .8rem;
+  font-weight: thin;
+  padding: .1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.navSociaMedia ul li:hover,
+.contactNav ul li:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+  text-decoration: underline;
+}
