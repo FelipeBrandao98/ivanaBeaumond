@@ -56,3 +56,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Ajustes no Collections Items Card (Apenas versão desktop) e Ajustes no espaçamento do body
 
 ### 3 - Ajustes no espaçamento superior do Banner Home (Apenas versão desktop)
+
+### 4 - Consertado um bug UI Idratation e adicionado Suit Banner Home Page (Apenas versão desktop)
