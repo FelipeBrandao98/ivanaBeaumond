@@ -10,10 +10,10 @@ export default function CollectionsItemsCard() {
         <h3>Vestidos de Noiva</h3>
         <Image
           className={styles.image}
-          src='/noiva.jpg'
+          src='/photos_collections_items/vestido_de_noiva_ivana_beaumond.jpg'
           alt='Vestido de Noiva'
-          width={720}
-          height={1080}
+          width={1080}
+          height={1920}
         />
         <div className={styles.comments}>
           <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
@@ -22,13 +22,13 @@ export default function CollectionsItemsCard() {
       </aside>
 
       <aside className={styles.aside}>
-        <h3>Vestidos de Noiva</h3>
+        <h3>Vestidos de Debutante</h3>
         <Image
           className={styles.image}
-          src='/noiva.jpg'
-          alt='Vestido de Noiva'
-          width={720}
-          height={1080}
+          src='/photos_collections_items/vestido_de_debutante_ivana_beaumond.jpg'
+          alt='Vestido de Debutante'
+          width={1080}
+          height={1920}
         />
         <div className={styles.comments}>
           <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
@@ -37,13 +37,13 @@ export default function CollectionsItemsCard() {
       </aside>
 
       <aside className={styles.aside}>
-        <h3>Vestidos de Noiva</h3>
+        <h3>Ternos</h3>
         <Image
           className={styles.image}
-          src='/noiva.jpg'
-          alt='Vestido de Noiva'
-          width={720}
-          height={1080}
+          src='/photos_collections_items/terno_ivana_beaumond.jpg'
+          alt='Terno'
+          width={1080}
+          height={1920}
         />
         <div className={styles.comments}>
           <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
@@ -52,13 +52,13 @@ export default function CollectionsItemsCard() {
       </aside>
 
       <aside className={styles.aside}>
-        <h3>Vestidos de Noiva</h3>
+        <h3>Vestidos de Festa</h3>
         <Image
           className={styles.image}
-          src='/noiva.jpg'
-          alt='Vestido de Noiva'
-          width={720}
-          height={1080}
+          src='/photos_collections_items/vestido_de_festa_ivana_beaumond.jpg'
+          alt='Vestido de Festa'
+          width={1080}
+          height={1920}
         />
         <div className={styles.comments}>
           <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
@@ -67,13 +67,13 @@ export default function CollectionsItemsCard() {
       </aside>
 
       <aside className={styles.aside}>
-        <h3>Vestidos de Noiva</h3>
+        <h3>Vestidos de Dama</h3>
         <Image
           className={styles.image}
-          src='/noiva.jpg'
-          alt='Vestido de Noiva'
-          width={720}
-          height={1080}
+          src='/photos_collections_items/vestido_de_dama_ivana_beaumond.jpg'
+          alt='Vestido de Dama'
+          width={1080}
+          height={1920}
         />
         <div className={styles.comments}>
           <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
@@ -81,20 +81,6 @@ export default function CollectionsItemsCard() {
         </div>
       </aside>
 
-      <aside className={styles.aside}>
-        <h3>Vestidos de Noiva</h3>
-        <Image
-          className={styles.image}
-          src='/noiva.jpg'
-          alt='Vestido de Noiva'
-          width={720}
-          height={1080}
-        />
-        <div className={styles.comments}>
-          <p>Descubra nossos vestidos de Noiva, a melhor opção para o seu casamento!</p>
-          <button><a href="">Descubra Agora <FaArrowRight /></a></button>
-        </div>
-      </aside>
     </section>
   )
 }
