@@ -29,7 +29,7 @@
 .h1,
 .h3 {
   position: relative;
-  bottom: 20rem;
+  bottom: 17rem;
 
   color: var(--white);
   text-shadow: .1rem .1rem .1rem var(--background-blur-dark);
@@ -39,9 +39,10 @@
 }
 
 .h3 {
-  bottom: 18rem;
+  bottom: 15rem;
   text-shadow: none;
   color: var(--background-blur-dark);
+  backdrop-filter: var(--blur);
 }
 
 .h3 a {

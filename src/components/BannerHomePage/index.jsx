@@ -9,7 +9,7 @@ export default function BannerHomePage() {
       <article className={styles.article}>
         <Image
           className={styles.image}
-          src='/homeimage4.jpg'
+          src='/homeimage5.jpg'
           alt="Foto de Noiva na Praia"
           width={1920}
           height={1080}
