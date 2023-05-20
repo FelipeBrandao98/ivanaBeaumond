@@ -54,3 +54,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Ajustes no Banner Home (Apenas versão desktop)
 
 ### 2 - Ajustes no Collections Items Card (Apenas versão desktop) e Ajustes no espaçamento do body
+
+### 3 - Ajustes no espaçamento superior do Banner Home (Apenas versão desktop)
