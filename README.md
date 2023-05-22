@@ -64,3 +64,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Ajuste no banner home para não ficar maior que a página (Apenas versão desktop)
 
 ### 2 - Animações no Collections Items Card (Apenas versão desktop)
+
+### 3 - Adição do botão To Top
