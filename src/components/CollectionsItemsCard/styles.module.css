@@ -1,13 +1,13 @@
 .section {
   background-color: var(--white-100);
   margin: 0 2rem;
-  height: 40rem;
-  padding: 2.5rem;
+  height: 41rem;
+  padding: 3rem;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   overflow-x: scroll;
   overflow-y: hidden;
 
@@ -28,7 +28,6 @@
 
 .aside:hover {
   transform: scale(105%);
-  margin: 2rem;
 }
 
 

@@ -66,3 +66,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Animações no Collections Items Card (Apenas versão desktop)
 
 ### 3 - Adição do botão To Top
+
+### 4 - Mais alguns ajustes no Collection Items Card
