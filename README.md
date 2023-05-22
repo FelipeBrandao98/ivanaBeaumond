@@ -70,3 +70,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 4 - Mais alguns ajustes no Collection Items Card
 
 ### 5 - Adição do Subscrib Item
+
+### 6 - Adição do Debutant Banner Home
