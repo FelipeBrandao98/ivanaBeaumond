@@ -58,3 +58,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Ajustes no espaçamento superior do Banner Home (Apenas versão desktop)
 
 ### 4 - Consertado um bug UI Idratation e adicionado Suit Banner Home Page (Apenas versão desktop)
+
+## 05-22-2023
+
+### 1 - Ajuste no banner home para não ficar maior que a página (Apenas versão desktop)
