@@ -72,3 +72,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 5 - Adição do Subscrib Item
 
 ### 6 - Adição do Debutant Banner Home
+
+## 05-24-23
+
+### 1 - Melhoramento do Collection Items (Descrição aparece após passar o mouse por cima)
