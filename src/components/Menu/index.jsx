@@ -1,8 +1,9 @@
-import 'server-only'
-
+import styles from './styles.module.css'
 import Image from 'next/image'
 import { FaInstagram, FaFacebookSquare, FaArrowRight } from 'react-icons/fa'
-import styles from './styles.module.css'
+
+import TraductionButton from '../TraductionButton'
+
 
 export default function Menu({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function Menu({ children }) {
         <nav className={styles.contactNav}>
           <ul>
             <li>Marque um Horário <FaArrowRight /></li>
+            <TraductionButton />
           </ul>
         </nav>
         <nav className={styles.nav}>
@@ -37,7 +39,7 @@ export default function Menu({ children }) {
         </nav>
       </header>
 
-      {children}
+      <main>{children}</main>
     </>
   )
 }
