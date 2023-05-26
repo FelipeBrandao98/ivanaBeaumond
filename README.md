@@ -86,3 +86,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Melhoramento do botão de Idioma
 
 ### 2 - Adição do botão de abrir menu para mobile
+
+### 3 - Adaptação do Banner Home Page para Mobile
