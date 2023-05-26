@@ -1,5 +1,7 @@
 .close,
 .open {
+  font-size: 1rem;
+  line-height: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,21 +10,30 @@
 
 .close li,
 .open li {
-  width: 100%;
+  width: 4.5rem;
   height: 100%;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: .1rem .5rem;
+  align-self: flex-start;
+  padding: .1rem .1rem .5rem 0;
   gap: .5rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--background-dark-800);
 }
 
 .close li:hover,
 .open li:hover {
   filter: brightness(1.2);
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close li:nth-child(1) {
+  border: none;
+  background-color: transparent;
 }
 
 .close li:nth-child(2),

@@ -80,3 +80,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Adição de Metatags
 
 ### 3 - Adição do Botão de Idioma
+
+## 05-26-23
+
+### 1 - Melhoramento do botão de Idioma
