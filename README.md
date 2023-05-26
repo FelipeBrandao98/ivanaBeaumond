@@ -92,3 +92,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 4 - Adaptação do Subscribe Item para Mobile
 
 ### 5 - Adaptação do Debutant Banner Home Page para Mobile, Redimensionamento do Logo dentro do menu para Mobile, e Troca das logos na public para arquivos .svg com mais qualidade
+
+### 6 - Resolvido o problema do 'windows is not defined'

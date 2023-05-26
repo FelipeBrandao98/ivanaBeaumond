@@ -1,11 +1,14 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaLongArrowAltUp } from 'react-icons/fa';
 
 import styles from './styles.module.css'
 
 export default function ScrollToTop() {
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisible)
+  }, []);
 
   const [visible, setVisible] = useState(false)
 
@@ -27,8 +30,6 @@ export default function ScrollToTop() {
         in place of 'smooth' */
     });
   };
-
-  window.addEventListener('scroll', toggleVisible);
 
   return (
     <button
