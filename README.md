@@ -88,3 +88,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Adição do botão de abrir menu para mobile
 
 ### 3 - Adaptação do Banner Home Page para Mobile
+
+### 4 - Adaptação do Subscribe Item para Mobile
