@@ -1,3 +1,7 @@
+.menuButtonArea {
+  display: none;
+}
+
 .header {
   z-index: 2000;
 
@@ -110,4 +114,26 @@
   filter: brightness(1.2);
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .menuButtonArea {
+    display: flex;
+  }
+
+  .header {
+    height: calc(50px + 2rem + .5rem);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .navSociaMedia {
+    display: none;
+  }
+
+  .contactNav {
+    display: none;
+  }
 }

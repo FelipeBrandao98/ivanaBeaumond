@@ -1,0 +1,28 @@
+.open,
+.close {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50px + 2rem + .5rem);
+  height: calc(50px + 2rem + .5rem);
+}
+
+.open:hover,
+.close:hover {
+  cursor: pointer;
+
+}
+
+.open {
+  border: 1px solid blue;
+}
+
+.close {
+  border: 1px solid red;
+}

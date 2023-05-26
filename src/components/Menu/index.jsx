@@ -3,12 +3,17 @@ import Image from 'next/image'
 import { FaInstagram, FaFacebookSquare, FaArrowRight } from 'react-icons/fa'
 
 import TraductionButton from '../TraductionButton'
+import OpenMenuForMobile from '../OpenMenuForMobile'
 
 
 export default function Menu({ children }) {
   return (
     <>
       <header className={styles.header}>
+        <div className={styles.menuButtonArea}>
+          <OpenMenuForMobile />
+        </div>
+
         <Image
           className={styles.logoInMenu}
           src="http://localhost:3000/logo-white.svg"

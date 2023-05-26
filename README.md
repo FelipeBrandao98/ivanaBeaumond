@@ -84,3 +84,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 05-26-23
 
 ### 1 - Melhoramento do botão de Idioma
+
+### 2 - Adição do botão de abrir menu para mobile
