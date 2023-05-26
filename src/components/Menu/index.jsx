@@ -2,8 +2,8 @@ import styles from './styles.module.css'
 import Image from 'next/image'
 import { FaInstagram, FaFacebookSquare, FaArrowRight } from 'react-icons/fa'
 
-import TraductionButton from '../TraductionButton'
-import OpenMenuForMobile from '../OpenMenuForMobile'
+import TraductionButton from './TraductionButton'
+import OpenMenuForMobile from './OpenMenuForMobile'
 
 
 export default function Menu({ children }) {
