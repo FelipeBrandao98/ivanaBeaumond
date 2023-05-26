@@ -121,6 +121,16 @@
     display: flex;
   }
 
+  .logoInMenu {
+    position: absolute;
+    top: .5rem;
+    right: 50%;
+    transform: translateX(50%);
+
+    height: 5rem;
+    width: 13rem;
+  }
+
   .header {
     height: calc(50px + 2rem + .5rem);
   }
