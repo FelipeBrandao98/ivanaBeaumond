@@ -5,7 +5,7 @@ import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
 import styles from './styles.module.css'
 
-export default function OpenMenuForMobile() {
+export default function OpenMenuForMobile({ children }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleIsOpen() {
@@ -13,10 +13,15 @@ export default function OpenMenuForMobile() {
   }
 
   return (
-    <FaBars
-      size={'2rem'}
-      className={isOpen ? styles.open : styles.close}
-      onClick={handleIsOpen}
-    />
+    <div className={isOpen ? styles.open : styles.close}>
+      <FaBars
+        onClick={handleIsOpen}
+        size={'100%'}
+        className={styles.icon}
+      />
+      <div className={styles.menuNavsArea}>
+        {children}
+      </div>
+    </div>
   )
 }
