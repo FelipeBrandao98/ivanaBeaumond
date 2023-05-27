@@ -169,12 +169,21 @@
     filter: brightness(1.1);
   }
 
+  .navSociaMedia {
+    width: 100%;
+  }
+
   .navSociaMedia ul {
     position: inherit;
+    align-items: flex-end;
+    gap: .5rem;
+  }
+
+  .navSociaMedia ul li {
+    font-size: 1rem;
   }
 
   .contactNav ul {
     position: inherit;
   }
-
 }
