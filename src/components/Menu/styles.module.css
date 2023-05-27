@@ -151,10 +151,22 @@
     align-items: flex-start;
   }
 
+  .nav {
+    width: 100%;
+  }
+
   .nav ul {
     position: inherit;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+  }
+
+  .nav ul li {
+    border-radius: .1rem;
+    background-color: rgba(255, 255, 255, .1);
+    filter: brightness(1.1);
   }
 
   .navSociaMedia ul {
