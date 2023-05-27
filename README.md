@@ -108,3 +108,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 4 - Estilização do menu de redes sociais para mobile
 
 ### 5 - Troca das Setas por Chevron
+
+### 6 - Reajuste da posição do Traduction button

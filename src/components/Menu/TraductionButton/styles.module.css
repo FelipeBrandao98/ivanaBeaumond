@@ -1,11 +1,15 @@
 .close,
 .open {
-  font-size: 1rem;
-  line-height: 1rem;
+  font-size: .9rem;
+  line-height: .9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: fixed;
+  top: 2rem;
+  left: .8rem;
 }
 
 .close li,
@@ -40,4 +44,15 @@
 .close li:nth-child(3),
 .close li:nth-child(4) {
   display: none;
+}
+
+@media (max-width: 720px) {
+
+  .close,
+  .open {
+    position: fixed;
+    top: 20px;
+    right: 1rem !important;
+    left: auto;
+  }
 }

@@ -18,12 +18,13 @@ export default function Menu({ children }) {
           height={50}
         />
 
+        <TraductionButton />
+
         <OpenMenuForMobile>
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
               <ul>
                 <li>Marque um Horário <FaChevronRight /></li>
-                <TraductionButton />
               </ul>
             </nav>
             <nav className={styles.nav}>
