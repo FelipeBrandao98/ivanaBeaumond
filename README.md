@@ -110,3 +110,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 5 - Troca das Setas por Chevron
 
 ### 6 - Reajuste da posição do Traduction button
+
+### 7 - Reajuste do Tamanho do menu superior para mobile
