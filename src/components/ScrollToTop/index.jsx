@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { FaLongArrowAltUp } from 'react-icons/fa';
+import { FaChevronUp } from 'react-icons/fa';
 
 import styles from './styles.module.css'
 
@@ -37,7 +37,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       style={{ display: visible ? 'inline' : 'none' }}
     >
-      <FaLongArrowAltUp size={'1.5rem'} />
+      <FaChevronUp size={'1.5rem'} />
     </button>
   );
 }

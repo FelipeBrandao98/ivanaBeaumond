@@ -106,3 +106,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Estilização do menu principal para mobile
 
 ### 4 - Estilização do menu de redes sociais para mobile
+
+### 5 - Troca das Setas por Chevron

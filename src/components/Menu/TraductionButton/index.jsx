@@ -1,5 +1,5 @@
 'use client'
-import { FaArrowDown } from 'react-icons/fa'
+import { FaChevronDown } from 'react-icons/fa'
 import styles from './styles.module.css'
 
 import { useState } from 'react'
@@ -14,7 +14,7 @@ export default function TraductionButton() {
   return (
     <>
       <ol className={isOpen ? styles.open : styles.close}>
-        <li onClick={handleIsOpen}>pt-br <FaArrowDown size={'1rem'} /></li>
+        <li onClick={handleIsOpen}>pt-br <FaChevronDown size={'1rem'} /></li>
         <li>fr</li>
         <li>en-us</li>
         <li>de</li>

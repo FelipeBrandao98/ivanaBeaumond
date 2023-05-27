@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 import Image from 'next/image'
-import { FaInstagram, FaFacebookSquare, FaArrowRight } from 'react-icons/fa'
+import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
@@ -22,7 +22,7 @@ export default function Menu({ children }) {
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
               <ul>
-                <li>Marque um Horário <FaArrowRight /></li>
+                <li>Marque um Horário <FaChevronRight /></li>
                 <TraductionButton />
               </ul>
             </nav>
