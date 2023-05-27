@@ -70,8 +70,10 @@
 .nav ul {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   height: 40px;
+  width: calc(100vw - 1rem);
 }
 
 .nav ul li {
