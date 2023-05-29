@@ -118,3 +118,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adição da Animação do botão arrastar no site mobile
 
 ### 2 - Reajuste do Tamanho do Collection Items para Mobile
+
+### 3 - Adição do Ingresso de Eventos na Home (Apenas para Desktop)
