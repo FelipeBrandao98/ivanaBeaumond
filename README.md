@@ -120,3 +120,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Reajuste do Tamanho do Collection Items para Mobile
 
 ### 3 - Adição do Ingresso de Eventos na Home (Apenas para Desktop)
+
+### 4 - Adição do Rodapé da página (Apenas para Desktop)

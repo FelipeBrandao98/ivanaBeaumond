@@ -29,10 +29,11 @@ export default function Menu({ children }) {
             </nav>
             <nav className={styles.nav}>
               <ul>
-                <li>VESTIDOS DE NOIVA</li>
                 <li>HOME</li>
                 <li>COLEÇÕES</li>
                 <li>COMENTÁRIOS</li>
+                <li>BLOG</li>
+                <li>EVENTOS</li>
               </ul>
             </nav>
             <nav className={styles.navSociaMedia}>

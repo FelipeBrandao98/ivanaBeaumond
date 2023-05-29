@@ -7,22 +7,25 @@ import SubscribeItem from "@/components/SubscribeItem"
 import DebutantBannerHomePage from "@/components/DebutantBannerHomePage"
 import GuideToBottomScroll from "@/components/GuideToBottomScroll"
 import EventsItemsHomePage from "@/components/EventsItemsHomePage"
+import Footer from "@/components/Footer"
 
-export default function Page({ children }) {
+export default function Page() {
   return (
     <>
-      <GuideToBottomScroll />
 
       <Menu />
-      <BannerHomePage />
-      <CollectionsItemsCard />
-      <EventsItemsHomePage />
-      <SubscribeItem />
-      <DebutantBannerHomePage />
-      <SuitBannerHomePage />
+      <main>
+        <BannerHomePage />
+        <CollectionsItemsCard />
+        <EventsItemsHomePage />
+        <SubscribeItem />
+        <DebutantBannerHomePage />
+        <SuitBannerHomePage />
+      </main>
+      <Footer />
 
+      <GuideToBottomScroll />
       <ScrollToTop />
-      {children}
     </>
   )
 }
