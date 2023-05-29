@@ -112,3 +112,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 6 - Reajuste da posição do Traduction button
 
 ### 7 - Reajuste do Tamanho do menu superior para mobile
+
+## 05-29-23
+
+### 1 - Adição da Animação do botão arrastar no site mobile

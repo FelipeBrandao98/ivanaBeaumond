@@ -136,11 +136,11 @@
 
   .logoInMenu {
     position: absolute;
-    top: .1rem;
+    top: 0;
     right: 50%;
     transform: translateX(50%);
 
-    height: 5rem;
+    height: calc(30px + 2rem + .2rem);
     width: 13rem;
   }
 
