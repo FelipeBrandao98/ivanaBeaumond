@@ -116,3 +116,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 05-29-23
 
 ### 1 - Adição da Animação do botão arrastar no site mobile
+
+### 2 - Reajuste do Tamanho do Collection Items para Mobile
