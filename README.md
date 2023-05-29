@@ -124,3 +124,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 4 - Adição do Rodapé da página (Apenas para Desktop)
 
 ### 5 - Estilização do Ingresso de Eventos na Home para Mobile
+
+### 6 - Reajuste do Banner Home Page
