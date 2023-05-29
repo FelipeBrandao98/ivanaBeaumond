@@ -122,3 +122,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Adição do Ingresso de Eventos na Home (Apenas para Desktop)
 
 ### 4 - Adição do Rodapé da página (Apenas para Desktop)
+
+### 5 - Estilização do Ingresso de Eventos na Home para Mobile
