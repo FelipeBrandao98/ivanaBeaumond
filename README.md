@@ -126,3 +126,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 5 - Estilização do Ingresso de Eventos na Home para Mobile
 
 ### 6 - Reajuste do Banner Home Page
+
+## 06-06-23
+
+### 1 - Configurado o Axios
