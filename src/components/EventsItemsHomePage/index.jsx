@@ -4,8 +4,7 @@ import Image from 'next/image'
 
 import styles from './styles.module.css'
 
-export default function EventsItemsHomePage({ data }) {
-  console.log(data)
+export default async function EventsItemsHomePage({ data }) {
 
   return (
     <section className={styles.section}>
@@ -35,79 +34,19 @@ export default function EventsItemsHomePage({ data }) {
         <h2>Eventos Futuros</h2>
         <div className={styles.futureEventsArea}>
 
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
-          <div className={styles.futureEventsCard}>
-            <p className={styles.futureEventsTitle}>London Brides</p>
-            <IoIosCalendar
-              className={styles.iconCalendar}
-              size={'2rem'}
-            />
-            <p className={styles.futureEventsDate}>27 de Setembro</p>
-          </div>
-
+          {data.events.map((event) => {
+            { console.log(event) }
+            return (
+              <div className={styles.futureEventsCard} key={event.id}>
+                <p className={styles.futureEventsTitle}>{event.title}</p>
+                <IoIosCalendar
+                  className={styles.iconCalendar}
+                  size={'2rem'}
+                />
+                <p className={styles.futureEventsDate}>{event.date}</p>
+              </div>
+            )
+          })}
 
         </div>
 

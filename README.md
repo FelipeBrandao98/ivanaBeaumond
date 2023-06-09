@@ -134,3 +134,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-09-23
 
 ### 1 - Reorganização das Rotas
+
+### 2 - Data Fetching

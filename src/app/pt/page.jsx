@@ -9,15 +9,32 @@ import GuideToBottomScroll from "@/components/GuideToBottomScroll"
 import EventsItemsHomePage from "@/components/EventsItemsHomePage"
 import Footer from "@/components/Footer"
 
+import api from "@/services/api"
 
-export default function Page() {
+async function getEvents() {
+  const res = await api.get('events')
+
+  if (!res) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.data
+}
+
+
+export default async function Page() {
+  const events = await getEvents()
+
   return (
     <>
       <Menu />
       <main>
         <BannerHomePage />
         <CollectionsItemsCard />
-        <EventsItemsHomePage />
+        <EventsItemsHomePage
+          data={{ events }}
+        />
         <SubscribeItem />
         <DebutantBannerHomePage />
         <SuitBannerHomePage />
