@@ -5,7 +5,6 @@ import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 
-
 export default function Menu({ children }) {
   return (
     <>

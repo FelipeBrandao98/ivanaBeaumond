@@ -9,10 +9,10 @@ import GuideToBottomScroll from "@/components/GuideToBottomScroll"
 import EventsItemsHomePage from "@/components/EventsItemsHomePage"
 import Footer from "@/components/Footer"
 
+
 export default function Page() {
   return (
     <>
-
       <Menu />
       <main>
         <BannerHomePage />

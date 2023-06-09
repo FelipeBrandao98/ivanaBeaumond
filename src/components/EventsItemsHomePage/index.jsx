@@ -4,7 +4,9 @@ import Image from 'next/image'
 
 import styles from './styles.module.css'
 
-export default function EventsItemsHomePage() {
+export default function EventsItemsHomePage({ data }) {
+  console.log(data)
+
   return (
     <section className={styles.section}>
       <div className={styles.barCodeArea}>
@@ -109,7 +111,7 @@ export default function EventsItemsHomePage() {
 
         </div>
 
-        <p>veja mais</p>
+        <p>Veja Mais</p>
 
       </aside>
     </section>

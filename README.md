@@ -130,3 +130,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-06-23
 
 ### 1 - Configurado o Axios
+
+## 06-09-23
+
+### 1 - Reorganização das Rotas
