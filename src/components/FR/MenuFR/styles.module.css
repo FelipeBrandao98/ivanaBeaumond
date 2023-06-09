@@ -1,0 +1,190 @@
+.menuButtonArea {
+  display: none;
+}
+
+.header {
+  z-index: 2000;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: calc(50px + 45px + 2rem + .5rem);
+
+  border-bottom: 1px solid var(--black);
+  background-color: var(--background-blur-dark);
+  color: var(--text-dark);
+  backdrop-filter: var(--blur);
+
+  padding: 0 .5rem;
+}
+
+.logoInMenu {
+  position: absolute;
+  top: 1.5rem;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.menuNavsArea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+
+
+  width: 100%;
+  height: 100%;
+}
+
+.contactNav ul {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.contactNav ul li {
+  font-weight: thin;
+  list-style: none;
+  font-weight: thin;
+  font-size: .9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .5rem;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  height: 40px;
+  width: calc(100vw - 1rem);
+}
+
+.nav ul li,
+.nav ul li a {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+
+  padding: .8rem;
+
+  transition: all .2s;
+}
+
+.nav ul li:hover {
+  filter: brightness(1.2);
+  background-color: var(--background-blur-dark);
+  color: var(--white-100);
+  cursor: pointer;
+}
+
+.navSociaMedia ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  text-decoration: none;
+  list-style: none;
+
+  gap: .2rem;
+}
+
+.navSociaMedia ul li {
+  font-size: .8rem;
+  font-weight: thin;
+  padding: .1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.navSociaMedia ul li:hover,
+.contactNav ul li:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .header {
+    height: calc(30px + 2rem + .2rem);
+  }
+
+  .logoInMenu {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+
+    height: calc(30px + 2rem + .2rem);
+    width: 13rem;
+  }
+
+  .menuNavsArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .nav {
+    width: 100%;
+  }
+
+  .nav ul {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+  }
+
+  .nav ul li {
+    border-radius: .1rem;
+    background-color: rgba(255, 255, 255, .1);
+    filter: brightness(1.1);
+  }
+
+  .navSociaMedia {
+    width: 100%;
+  }
+
+  .navSociaMedia ul {
+    position: inherit;
+    align-items: flex-end;
+    gap: .5rem;
+  }
+
+  .navSociaMedia ul li {
+    font-size: 1rem;
+  }
+
+  .contactNav ul {
+    position: inherit;
+  }
+}

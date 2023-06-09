@@ -1,0 +1,144 @@
+.section {
+  background-color: var(--white-100);
+  display: flex;
+  flex-direction: row;
+  height: 30rem;
+  width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.barCodeArea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 3px dashed black;
+  width: 18rem;
+}
+
+.barCodeArea .barCodeImage {
+  display: flex;
+  height: 100%;
+  width: 18rem;
+
+  pointer-events: none;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 1.5rem;
+}
+
+.nextEventsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.nextEventsArea .h2 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.nextEventsArea .h3 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.nextEventsArea .h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 90%;
+
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.futureEventsArea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 90%;
+
+  max-width: 40rem;
+
+  overflow: scroll;
+}
+
+.futureEventsCard {
+  padding: 1rem;
+  gap: .5rem;
+  min-width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: var(--white-100);
+}
+
+.futureEventsTitle {
+  font-size: .8rem;
+}
+
+.iconCalendar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.futureEventsDate {
+  font-size: .8rem;
+}
+
+@media (max-width: 720px) {
+  .section {
+    width: 100%;
+    height: 50rem;
+    flex-direction: column-reverse;
+  }
+
+  .barCodeArea {
+    width: 100%;
+    height: 12rem;
+    align-items: center;
+    justify-content: center;
+    border-top: 3px dashed black;
+    border-right: none;
+  }
+
+  .barCodeArea .barCodeImage {
+    width: 10rem;
+    height: 20rem;
+    rotate: -90deg;
+  }
+
+  .futureEventsCard {
+    min-width: 8rem;
+  }
+}

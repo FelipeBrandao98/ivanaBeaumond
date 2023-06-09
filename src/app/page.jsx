@@ -1,9 +1,10 @@
-import { redirect } from 'next/navigation'
+import LanguageHook from "@/hooks/LanguageContext";
 
-export default function Page() {
+export default function Page({ children }) {
+
   return (
-    <>
-      {redirect('pt')}
-    </>
+    <LanguageHook>
+      {children}
+    </LanguageHook>
   )
 }

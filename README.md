@@ -138,3 +138,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Data Fetching
 
 ### 3 - Adição do Link para Blog
+
+### 4 - Atualizado a lógica da troca de linguagem através do Hook LanguageContext

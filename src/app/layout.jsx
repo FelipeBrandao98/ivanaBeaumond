@@ -27,7 +27,9 @@ export default function RootLayout({ children }) {
         <meta property='og:type' content='website' />
         <meta property="og:image" content='' />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   )
 }
