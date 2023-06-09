@@ -136,3 +136,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Reorganização das Rotas
 
 ### 2 - Data Fetching
+
+### 3 - Adição do Link para Blog

@@ -76,7 +76,8 @@
   width: calc(100vw - 1rem);
 }
 
-.nav ul li {
+.nav ul li,
+.nav ul li a {
   height: 40px;
   display: flex;
   align-items: center;

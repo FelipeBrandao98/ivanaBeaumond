@@ -4,6 +4,7 @@ import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
+import Link from 'next/link'
 
 export default function Menu({ children }) {
   return (
@@ -31,7 +32,7 @@ export default function Menu({ children }) {
                 <li>HOME</li>
                 <li>COLEÇÕES</li>
                 <li>COMENTÁRIOS</li>
-                <li>BLOG</li>
+                <li><Link href={'/pt/blog'}>BLOG</Link></li>
                 <li>EVENTOS</li>
               </ul>
             </nav>
