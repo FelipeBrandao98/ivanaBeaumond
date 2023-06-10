@@ -144,3 +144,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-10-2023
 
 ### 1 - Reorganização dos arquivos dentro das rotas
+
+### 2 - Redirecionamento de Rota

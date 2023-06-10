@@ -1,8 +1,11 @@
-export default function Page({ children }) {
+import RedirectLanguageComponent from "@/components/RedirectLanguageComponent";
+import LanguageHook from "@/hooks/LanguageContext";
+
+export default function Page() {
 
   return (
-    <>
-      {children}
-    </>
+    <LanguageHook>
+      <RedirectLanguageComponent />
+    </LanguageHook>
   )
 }

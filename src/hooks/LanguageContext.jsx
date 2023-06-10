@@ -9,7 +9,6 @@ export default function LanguageHook({ children }) {
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
-      {console.log(language)}
     </LanguageContext.Provider>
   )
 }
