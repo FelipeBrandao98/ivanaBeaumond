@@ -140,3 +140,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Adição do Link para Blog
 
 ### 4 - Atualizado a lógica da troca de linguagem através do Hook LanguageContext
+
+## 06-10-2023
+
+### 1 - Reorganização dos arquivos dentro das rotas

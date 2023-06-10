@@ -1,5 +1,7 @@
-export default function Page() {
+export default function Page({ children }) {
   return (
-    <h1>Hello</h1>
+    <>
+      {children}
+    </>
   )
 }

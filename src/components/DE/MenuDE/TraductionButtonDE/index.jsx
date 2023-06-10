@@ -2,14 +2,11 @@
 import { FaChevronDown } from 'react-icons/fa'
 import styles from './styles.module.css'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { LanguageContext } from '@/hooks/LanguageContext'
 
 
 export default function TraductionButtonDE() {
-  const { language, setLanguage } = useContext(LanguageContext)
-
   const [isOpen, setIsOpen] = useState(false)
 
   function handleIsOpen() {
@@ -18,12 +15,11 @@ export default function TraductionButtonDE() {
 
   return (
     <>
-      {console.log(language)}
       <ol className={isOpen ? styles.open : styles.close}>
         <li onClick={handleIsOpen}>de <FaChevronDown size={'1rem'} /></li>
-        <li><Link href={'/pt'} onClick={setLanguage('pt')}>pt-br</Link></li>
-        <li><Link href={'/fr'} onClick={setLanguage('fr')}>fr</Link></li>
-        <li><Link href={'/en'} onClick={setLanguage('en')}>en-us</Link></li>
+        <li><Link href={'/pt'}>pt-br</Link></li>
+        <li><Link href={'/fr'}>fr</Link></li>
+        <li><Link href={'/en'}>en-us</Link></li>
       </ol>
     </>
   )

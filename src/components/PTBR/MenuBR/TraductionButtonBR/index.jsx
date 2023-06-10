@@ -8,7 +8,7 @@ import { LanguageContext } from '@/hooks/LanguageContext'
 
 
 export default function TraductionButtonBR() {
-  const { language, setLanguage } = useContext(LanguageContext)
+  const languageContext = useContext(LanguageContext)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -16,14 +16,38 @@ export default function TraductionButtonBR() {
     isOpen ? setIsOpen(false) : setIsOpen(true)
   }
 
+  function changeLanguageContext(language) {
+    languageContext.setLanguage(language)
+  }
+
   return (
     <>
-      {console.log(language)}
       <ol className={isOpen ? styles.open : styles.close}>
         <li onClick={handleIsOpen}>pt-br <FaChevronDown size={'1rem'} /></li>
-        <li><Link href={'/fr'} onClick={setLanguage('fr')}>fr</Link></li>
-        <li><Link href={'/en'} onClick={setLanguage('en')}>en-us</Link></li>
-        <li><Link href={'/de'} onClick={setLanguage('de')}>de</Link></li>
+        <li>
+          <Link
+            href={'/fr'}
+            onClick={changeLanguageContext('fr')}
+          >
+            fr
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={'/en'}
+            onClick={changeLanguageContext('en')}
+          >
+            en-us
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={'/de'}
+            onClick={changeLanguageContext('de')}
+          >
+            de
+          </Link>
+        </li>
       </ol>
     </>
   )
