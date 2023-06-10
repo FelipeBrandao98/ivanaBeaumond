@@ -1,0 +1,74 @@
+@keyframes animationRed {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes animationWhite {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 1rem;
+
+  width: 90vw;
+  height: 90vh;
+}
+
+.loading {
+  font-size: 2rem;
+  color: var(--white-100);
+}
+
+.flagArea {
+  display: flex;
+  flex-direction: row;
+  height: 2.5rem;
+  width: 15rem;
+}
+
+.blueArea {
+  display: flex;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: blue;
+}
+
+.whiteArea {
+  display: flex;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: white;
+  animation: animationWhite 1s infinite;
+}
+
+.redArea {
+  display: flex;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: red;
+  animation: animationRed .5s infinite;
+}

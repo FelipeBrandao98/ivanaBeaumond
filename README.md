@@ -146,3 +146,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Reorganização dos arquivos dentro das rotas
 
 ### 2 - Redirecionamento de Rota
+
+### 3 - Loading Page
