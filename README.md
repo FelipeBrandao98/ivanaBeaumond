@@ -148,3 +148,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Redirecionamento de Rota
 
 ### 3 - Loading Page
+
+## 06-14-2023
+
+### 1 - Adição da LoadingPage nas Rotas pt-BR

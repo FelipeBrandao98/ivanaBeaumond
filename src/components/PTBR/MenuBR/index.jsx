@@ -29,10 +29,10 @@ export default function MenuBR({ children }) {
             </nav>
             <nav className={styles.nav}>
               <ul>
-                <li><Link href={'/pt'}>HOME</Link></li>
+                <li><Link href={'/pt-BR'}>HOME</Link></li>
                 <li>COLEÇÕES</li>
                 <li>COMENTÁRIOS</li>
-                <li><Link href={'/pt/blog'}>BLOG</Link></li>
+                <li><Link href={'/pt-BR/blog'}>BLOG</Link></li>
                 <li>EVENTOS</li>
               </ul>
             </nav>
