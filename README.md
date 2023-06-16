@@ -158,3 +158,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adição das Fontes e do component Header do Blog
 
 ### 2 - Adição do ContentOneBlog
+
+### 3 - Adição do BlogTitleOne
