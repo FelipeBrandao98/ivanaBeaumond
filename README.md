@@ -152,3 +152,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-14-2023
 
 ### 1 - Adição da LoadingPage nas Rotas pt-BR
+
+## 06-16-2023
+
+### 1 - Adição das Fontes e do component Header do Blog
