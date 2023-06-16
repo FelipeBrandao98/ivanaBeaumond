@@ -1,0 +1,33 @@
+.contentOne {
+  padding: 4rem;
+  margin: ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--white-100);
+}
+
+.contentOneText {
+  width: 20rem;
+  font-family: var(--font-merriweather);
+  line-height: 1.8rem;
+  letter-spacing: .1rem;
+  text-align: justify;
+}
+
+.contentOneTextFirstLetter {
+  font-size: 3rem;
+  line-height: 1.8rem;
+  font-family: var(--font-rouge-script);
+  color: darkred;
+}
+
+.contentOneImage {
+  width: 40rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: .1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: .11rem .11rem 1rem rgba(0, 0, 0, 0.1);
+}

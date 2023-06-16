@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import styles from './styles.module.css'
+import BlogContentBR from '../BlogContentBR'
 
 export default function BlogHeadBR() {
   return (
@@ -10,15 +12,9 @@ export default function BlogHeadBR() {
           <span className={styles.year}>2023</span>
         </div>
 
-        <h1 className={styles.title}>Ivana Beaumond é destaque na mídia com seu novo editorial no Pará</h1>
+        <h1 className={styles.title}><span className={styles.titleTwo}>Ivana Beaumond</span><br /> é destaque na mídia com seu novo editorial no Pará</h1>
       </section>
-      <section>
-        <aside>
-          <div className={styles.contentOne}>
-            <p>Realizado na Fazenda São Jerônimo, Ilha do Marajó-PA, lugar que foi palco da gravação de diversos realitys de sucesso, incluindo o “No Limite” da Rede Globo, Ivana explica sobre o porquê da escolha desse local e a relação entre a natureza e vestidos de noiva.</p>
-          </div>
-        </aside>
-      </section>
+      <BlogContentBR />
     </>
   )
 }
