@@ -160,3 +160,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Adição do ContentOneBlog
 
 ### 3 - Adição do BlogTitleOne
+
+## 06-17-2023
+
+### 1 - Adição do BlogContentTwo

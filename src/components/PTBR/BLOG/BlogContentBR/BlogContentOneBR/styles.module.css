@@ -1,6 +1,5 @@
 .contentOne {
   padding: 4rem;
-  margin: ;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,7 +19,6 @@
   font-size: 3rem;
   line-height: 1.8rem;
   font-family: var(--font-rouge-script);
-  color: darkred;
 }
 
 .contentOneImage {

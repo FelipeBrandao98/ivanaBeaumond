@@ -1,0 +1,81 @@
+.contentTwo {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 4rem 0;
+}
+
+.contentTwoTextArea {
+  display: flex;
+  margin-left: -10rem;
+  margin-right: 20rem;
+  margin-top: 30rem;
+}
+
+.contentTwoText {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  text-align: justify;
+  font-family: var(--font-merriweather);
+}
+
+.contentTwoFiristLetter {
+  font-size: 4rem;
+  line-height: 1.5rem;
+  font-family: var(--font-rouge-script);
+}
+
+.contentTwoImagesArea {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.contentTwoImageAreaOne {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .1rem;
+
+  margin-left: 220px;
+  margin-bottom: -200px;
+  z-index: 2;
+}
+
+.contentTwoImageOne {
+  display: flex;
+  width: 720px;
+  height: 480px;
+  object-fit: cover;
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.contentTwoImageDescriptionOne {
+  font-family: var(--font-bebas-neue);
+  margin-left: 1rem;
+  color: tomato;
+}
+
+.contentTwoImageAreaTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .1rem;
+}
+
+.contentTwoImageTwo {
+  display: flex;
+  width: 580px;
+  height: 720px;
+  object-fit: cover;
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.contentTwoImageDescriptionTwo {
+  font-family: var(--font-bebas-neue);
+  margin-left: 1rem;
+  color: tomato;
+}
