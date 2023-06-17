@@ -164,3 +164,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-17-2023
 
 ### 1 - Adição do BlogContentTwo
+
+### 2 - Adicionado a descrição da imagem no BlogContentOne
