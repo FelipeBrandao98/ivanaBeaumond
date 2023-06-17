@@ -166,3 +166,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adição do BlogContentTwo
 
 ### 2 - Adicionado a descrição da imagem no BlogContentOne
+
+### 3 - Adicionado o BlogContentText
