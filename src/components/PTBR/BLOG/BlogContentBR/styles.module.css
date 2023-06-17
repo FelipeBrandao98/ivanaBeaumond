@@ -6,7 +6,7 @@
   width: calc(100% + 4rem);
   margin-left: -2rem;
 
-  background-color: var(--white-100);
+  background-color: var(--white);
 }
 
 .aside {

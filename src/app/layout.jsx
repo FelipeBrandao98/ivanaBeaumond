@@ -14,7 +14,7 @@ import {
 } from 'next/font/google'
 import Head from 'next/head'
 
-import './globals.css'
+import '@/styles/globals.css'
 
 const inter = Inter({
   variable: '--font-inter',

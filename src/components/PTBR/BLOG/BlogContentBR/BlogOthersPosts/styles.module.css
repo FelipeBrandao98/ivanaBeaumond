@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+
+  background-color: var(--white-100);
+}
