@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import styles from './styles.module.css'
-import BlogContentBR from '../BlogContentBR'
 
 export default function BlogHead() {
   return (
@@ -14,7 +12,6 @@ export default function BlogHead() {
 
         <h1 className={styles.title}><span className={styles.titleTwo}>Ivana Beaumond</span><br /> é destaque na mídia com seu novo editorial no Pará</h1>
       </section>
-      <BlogContentBR />
     </>
   )
 }
