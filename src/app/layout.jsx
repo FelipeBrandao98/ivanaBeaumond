@@ -11,6 +11,7 @@ import {
   Cinzel,
   Rouge_Script,
   Oooh_Baby,
+  Playfair_Display,
 } from 'next/font/google'
 import Head from 'next/head'
 
@@ -83,6 +84,12 @@ const oh_baby = Oooh_Baby({
   weight: '400',
 })
 
+const playfair_display = Playfair_Display({
+  variable: '--font-playfair-display',
+  subsets: ['latin'],
+  weight: '400',
+})
+
 
 export const metadata = {
   title: 'Ivana Beaumond',
@@ -121,6 +128,7 @@ export default function RootLayout({ children }) {
           ${cinzel.variable}
           ${rouge_script.variable}
           ${oh_baby.variable}
+          ${playfair_display.variable}
         `
         }
       >

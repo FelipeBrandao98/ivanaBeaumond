@@ -184,3 +184,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 5 - Adição e Finalização do BlogOurBrides
 
 ### 6 - Adição e Finalização do BlogDebutantSpace e BlogTipsAndTricks
+
+### 7 - Instalação da Fonte Playfair Display
