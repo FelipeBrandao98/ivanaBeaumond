@@ -186,3 +186,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 6 - Adição e Finalização do BlogDebutantSpace e BlogTipsAndTricks
 
 ### 7 - Instalação da Fonte Playfair Display
+
+### 8 - Reajuste nas importações das rotas

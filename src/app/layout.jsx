@@ -87,7 +87,7 @@ const oh_baby = Oooh_Baby({
 const playfair_display = Playfair_Display({
   variable: '--font-playfair-display',
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '700'],
 })
 
 

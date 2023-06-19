@@ -1,21 +1,21 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   align-items: center;
   justify-content: center;
 
   width: calc(100% + 4rem);
   margin-left: -2rem;
 
-  padding: 4rem;
-
-  background-color: var(--white-100);
+  background-color: var(--black-800);
 }
 
 .title {
-  font-size: 2rem;
-  font-family: var(--font-josephin-sans);
+  font-size: 3rem;
+  padding: 2rem;
+  font-family: var(--font-playfair-display);
+  color: var(--white);
+  font-weight: 700;
 }
 
 .categoriesArea {
