@@ -180,3 +180,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Adição do componente na mídia
 
 ### 4 - Finalização do BlogInTheMedia
+
+### 5 - Adição e Finalização do BlogOurBrides
