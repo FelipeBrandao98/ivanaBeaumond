@@ -1,8 +1,9 @@
 import BlogContentOne from './BlogContentOne'
-import BlogContentText from './BlogContentText'
-import BlogContentTwo from './BlogContentTwo'
-import BlogOthersPosts from './BlogOthersPosts'
 import BlogTitleOne from './BlogTitleOne'
+import BlogContentTwo from './BlogContentTwo'
+import BlogContentText from './BlogContentText'
+import BlogOthersPosts from '../BlogOthersPosts'
+
 import styles from './styles.module.css'
 
 export default function BlogContent() {
@@ -17,7 +18,6 @@ export default function BlogContent() {
 
         </aside>
       </section>
-
       <BlogOthersPosts />
     </>
   )

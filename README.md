@@ -174,3 +174,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-19-2023
 
 ### 1 - Reorganização dos components do blog
+
+### 2 - Reorganização dos components do blog
