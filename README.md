@@ -178,3 +178,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Reorganização dos components do blog
 
 ### 3 - Adição do componente na mídia
+
+### 4 - Finalização do BlogInTheMedia
