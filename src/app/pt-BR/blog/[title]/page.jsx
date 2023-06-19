@@ -1,9 +1,10 @@
-import BlogHeadBR from "@/components/PTBR/BLOG/HeadBR";
+import BlogContent from "@/components/BLOG/BlogContent";
+
 
 export default function Page({ params }) {
   return (
     <>
-      <BlogHeadBR />
+      <BlogContent />
     </>
   )
 }

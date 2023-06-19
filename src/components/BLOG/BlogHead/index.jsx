@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from './styles.module.css'
 import BlogContentBR from '../BlogContentBR'
 
-export default function BlogHeadBR() {
+export default function BlogHead() {
   return (
     <>
       <section className={styles.container}>

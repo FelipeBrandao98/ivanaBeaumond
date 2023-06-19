@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-export default function BlogContentTextBR() {
+export default function BlogContentText() {
   return (
     <div className={styles.content}>
       <div className={styles.titleArea}>

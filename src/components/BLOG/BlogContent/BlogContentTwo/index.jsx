@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './styles.module.css'
 
-export default function BlogContentTwoBR() {
+export default function BlogContentTwo() {
   return (
     <div className={styles.contentTwo}>
       <div className={styles.contentTwoTextArea}>

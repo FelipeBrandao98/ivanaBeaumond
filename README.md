@@ -170,3 +170,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Adicionado o BlogContentText
 
 ### 4 - Reorganizado Globals.css, criado OtherPosts component
+
+## 06-19-2023
+
+### 1 - Reorganização dos components do blog
