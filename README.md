@@ -192,3 +192,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-21-23
 
 ### 1 - Adicionado OtherPost na PostsPage
+
+### 2 - Adicionado BlogBanner na PostPage

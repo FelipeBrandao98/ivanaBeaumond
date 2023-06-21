@@ -1,0 +1,187 @@
+.titleArea,
+.descriptionArea,
+.fromLeftArea,
+.fromRightArea {
+  transition: all .2s;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem;
+  width: 100%;
+  height: 80vh;
+}
+
+.bannerArea {
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+
+  margin-left: -4rem;
+
+  display: flex;
+
+  overflow: none;
+}
+
+.postArea {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content:hover .titleArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+
+  background: linear-gradient(rgba(0, 0, 0, .8), transparent);
+  width: 100%;
+
+  z-index: 2;
+}
+
+.title {
+  color: var(--white);
+  max-width: 30rem;
+  font-size: 2rem;
+  font-family: var(--font-playfair-display);
+}
+
+.content:hover .descriptionArea {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+
+  background: linear-gradient(transparent, rgba(0, 0, 0, .8));
+  width: 100%;
+
+  z-index: 2;
+}
+
+.description {
+  color: var(--white);
+  max-width: 50rem;
+  font-size: 1rem;
+  font-family: var(--font-playfair-display);
+}
+
+.button {
+  display: flex;
+  padding: .5rem 2rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--white);
+  font-family: var(--font-merriweather);
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  border-radius: .1rem;
+  transition: all .2s;
+  z-index: 3;
+}
+
+.button:hover {
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
+}
+
+.imageArea {
+  position: absolute;
+}
+
+.image {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.content:hover .fromLeftArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+
+  z-index: 2;
+}
+
+.fromLeftButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+
+  border: none;
+  border-radius: 3rem;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
+
+  transition: all .2s;
+}
+
+.fromLeftButton:hover {
+  display: flex;
+  background-color: var(--black-800);
+  box-shadow: .1rem .1rem 1rem var(--black-800);
+}
+
+.fromLeftImage {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  color: var(--white);
+}
+
+.content:hover .fromRightArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  z-index: 2;
+}
+
+.fromRightButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+
+  border: none;
+  border-radius: 3rem;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
+
+  transition: all .2s;
+}
+
+.fromRightButton:hover {
+  display: flex;
+  background-color: var(--black-800);
+  box-shadow: .1rem .1rem 1rem var(--black-800);
+}
+
+.fromRightImage {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  color: var(--white);
+}
