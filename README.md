@@ -188,3 +188,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 7 - Instalação da Fonte Playfair Display
 
 ### 8 - Reajuste nas importações das rotas
+
+## 06-21-23
+
+### 1 - Adicionado OtherPost na PostsPage
