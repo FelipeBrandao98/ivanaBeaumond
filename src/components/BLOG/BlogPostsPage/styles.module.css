@@ -1,4 +1,5 @@
 .content {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,4 +9,6 @@
 
   width: calc(100% + 4rem);
   margin-left: -2rem;
+
+  overflow: hidden;
 }

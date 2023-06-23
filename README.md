@@ -198,3 +198,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-23-23
 
 ### 1 - Adicionado 3 banners e função de correr para a direita no BlogBanner
+
+### 2 - Resolvido erro do scroll aparecendo ao trocar o banner
