@@ -15,6 +15,39 @@
   height: 80vh;
 }
 
+.slideNumberButtonsArea {
+  display: flex;
+  position: relative;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -4rem;
+  width: 100%;
+  padding: 1rem;
+  z-index: 400;
+}
+
+.slideNumberButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slideButton {
+  display: flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
+}
+
+.slideButtonSelected {
+  background-color: var(--white);
+}
+
 .bannerArea {
   position: absolute;
   width: 400%;
@@ -76,6 +109,7 @@
   max-width: 30rem;
   font-size: 2rem;
   font-family: var(--font-playfair-display);
+  text-align: center;
 }
 
 .content:hover .descriptionArea {
@@ -99,7 +133,7 @@
   font-family: var(--font-playfair-display);
 }
 
-.button {
+.content:hover .button {
   display: flex;
   padding: .5rem 2rem;
   background-color: transparent;
@@ -114,8 +148,9 @@
   z-index: 3;
 }
 
-.button:hover {
+.content:hover .button:hover {
   box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
+  cursor: pointer;
 }
 
 .imageArea {

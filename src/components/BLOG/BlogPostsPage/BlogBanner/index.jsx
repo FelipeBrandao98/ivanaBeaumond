@@ -1,15 +1,15 @@
 'use client'
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
+import { useState } from "react"
+import Image from "next/image"
 
 import styles from './styles.module.css'
-import Image from "next/image"
-import { useState } from "react"
 
 export default function BlogBanner() {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
-  function changeSlide() {
+  function changeSlideFromRight() {
     if (slide === 1) {
       setSlide(2)
       setSlideClass(styles.secondBanner)
@@ -28,16 +28,80 @@ export default function BlogBanner() {
     }
   }
 
+  function changeSlideFromLeft() {
+    if (slide === 1) {
+      setSlide(4)
+      setSlideClass(styles.fourthBanner)
+    }
+    if (slide === 2) {
+      setSlide(1)
+      setSlideClass(styles.firstBanner)
+    }
+    if (slide === 3) {
+      setSlide(2)
+      setSlideClass(styles.secondBanner)
+    }
+    if (slide === 4) {
+      setSlide(3)
+      setSlideClass(styles.thirdBanner)
+    }
+  }
+
   return (
     <section className={styles.content}>
       <div className={styles.fromLeftArea}>
-        <button className={styles.fromLeftButton} onClick={changeSlide}>
+        <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
           <FiArrowLeft
             className={styles.fromLeftImage}
             width={100}
             height={100}
           />
         </button>
+      </div>
+
+      <div className={styles.slideNumberButtonsArea}>
+        <div className={styles.slideNumberButtons}>
+          <span
+            className={
+              `
+                ${styles.slideButton}
+                ${slide === 1 ? styles.slideButtonSelected : ''}
+              `
+            }
+          >
+
+          </span>
+          <span
+            className={
+              `
+                ${styles.slideButton}
+                ${slide === 2 ? styles.slideButtonSelected : ''}
+              `
+            }
+          >
+
+          </span>
+          <span
+            className={
+              `
+                ${styles.slideButton}
+                ${slide === 3 ? styles.slideButtonSelected : ''}
+              `
+            }
+          >
+
+          </span>
+          <span
+            className={
+              `
+                ${styles.slideButton}
+                ${slide === 4 ? styles.slideButtonSelected : ''}
+              `
+            }
+          >
+
+          </span>
+        </div>
       </div>
 
       <div className={
@@ -140,7 +204,7 @@ export default function BlogBanner() {
 
       </div >
 
-      <div className={styles.fromRightArea} onClick={changeSlide}>
+      <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
         <button className={styles.fromRightButton}>
           <FiArrowRight
             className={styles.fromRightImage}
