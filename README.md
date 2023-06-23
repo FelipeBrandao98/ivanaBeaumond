@@ -194,3 +194,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adicionado OtherPost na PostsPage
 
 ### 2 - Adicionado BlogBanner na PostPage
+
+## 06-23-23
+
+### 1 - Adicionado 3 banners e função de correr para a direita no BlogBanner

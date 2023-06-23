@@ -17,7 +17,7 @@
 
 .bannerArea {
   position: absolute;
-  width: 100%;
+  width: 400%;
   height: 80vh;
 
   margin-left: -4rem;
@@ -25,6 +25,24 @@
   display: flex;
 
   overflow: none;
+
+  transition: all .5s;
+}
+
+.firstBanner {
+  margin-left: -4rem;
+}
+
+.secondBanner {
+  margin-left: calc(-4rem - 100%);
+}
+
+.thirdBanner {
+  margin-left: calc(-4rem - 200%);
+}
+
+.fourthBanner {
+  margin-left: calc(-4rem - 300%);
 }
 
 .postArea {
@@ -102,6 +120,8 @@
 
 .imageArea {
   position: absolute;
+  display: flex;
+  width: 25%;
 }
 
 .image {
