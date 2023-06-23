@@ -79,3 +79,55 @@
   margin-left: 1rem;
   color: tomato;
 }
+
+@media (max-width: 720px) {
+  .contentTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: .5rem;
+  }
+
+  .contentTwoTextArea {
+    margin: 0;
+  }
+
+  .contentTwoText {
+    padding: 1rem;
+  }
+
+  .contentTwoFiristLetter {
+    font-size: 4rem;
+    line-height: 1.5rem;
+    font-family: var(--font-rouge-script);
+  }
+
+  .contentTwoImagesArea {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .contentTwoImageAreaOne {
+    margin: 0;
+    margin-left: -.5rem;
+    width: calc(100% + 1rem);
+  }
+
+  .contentTwoImageOne {
+    width: calc(100% + 1rem);
+  }
+
+  .contentTwoImageTwo {
+    width: calc(100% + 1rem);
+    margin-left: -.5rem;
+  }
+
+  .contentTwoImageDescriptionTwo {
+    font-family: var(--font-bebas-neue);
+    margin-left: 1rem;
+    color: tomato;
+  }
+}

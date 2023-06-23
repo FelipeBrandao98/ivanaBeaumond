@@ -202,3 +202,11 @@
   object-fit: cover;
   color: var(--white);
 }
+
+@media (max-width: 720px) {
+  .section {
+    width: calc(100% + 1rem);
+    overflow: hidden;
+    background-color: var(--white-300);
+  }
+}

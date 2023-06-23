@@ -208,3 +208,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 5 - Adaptação do BlogBanner para mobile
 
 ### 6 - Adaptação do BlogHead para mobile
+
+### 7 - Finalizado BlogContent para mobile

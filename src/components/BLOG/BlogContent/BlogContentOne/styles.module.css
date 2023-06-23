@@ -43,3 +43,24 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: .11rem .11rem 1rem rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 720px) {
+  .contentOne {
+    padding: 2rem .5rem;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .contentOneText {
+    width: 20rem;
+    font-family: var(--font-merriweather);
+    line-height: 1.8rem;
+    letter-spacing: .1rem;
+    text-align: left;
+  }
+
+  .contentOneImage {
+    width: calc(100% + 1rem);
+    margin-left: -.5rem;
+  }
+}

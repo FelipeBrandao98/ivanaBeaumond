@@ -29,3 +29,37 @@
   font-family: var(--font-merriweather);
   text-align: center;
 }
+
+@media (max-width: 720px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    padding-bottom: 8rem;
+  }
+
+  .titleArea {
+    margin-top: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-roboto);
+  }
+
+  .textArea {
+    display: flex;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 300;
+    font-family: var(--font-merriweather);
+    text-align: center;
+  }
+}
