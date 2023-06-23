@@ -204,3 +204,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Adicionado botões guias para o banner
 
 ### 4 - Adicionado troca automática de banner a cada 15 segundos
+
+### 5 - Adaptação do BlogBanner para mobile

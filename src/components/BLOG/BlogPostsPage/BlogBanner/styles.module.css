@@ -15,44 +15,6 @@
   height: 80vh;
 }
 
-.slideNumberButtonsArea {
-  display: flex;
-  position: relative;
-  align-self: flex-end;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: -4rem;
-  width: 100%;
-  padding: 1rem;
-  z-index: 400;
-}
-
-.slideNumberButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.slideButton {
-  display: flex;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, .5);
-  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
-}
-
-.slideButton:hover {
-  filter: brightness(.8);
-  cursor: pointer;
-}
-
-.slideButtonSelected {
-  background-color: var(--white);
-}
-
 .bannerArea {
   position: absolute;
   width: 400%;
@@ -138,7 +100,7 @@
   font-family: var(--font-playfair-display);
 }
 
-.content:hover .button {
+.button {
   display: flex;
   padding: .5rem 2rem;
   background-color: transparent;
@@ -153,7 +115,7 @@
   z-index: 3;
 }
 
-.content:hover .button:hover {
+.button:hover {
   box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
   cursor: pointer;
 }
@@ -169,6 +131,44 @@
   width: 100%;
   height: 80vh;
   object-fit: cover;
+}
+
+.slideNumberButtonsArea {
+  display: flex;
+  position: relative;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -4rem;
+  width: 100%;
+  padding: 1rem;
+  z-index: 400;
+}
+
+.slideNumberButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slideButton {
+  display: flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
+}
+
+.slideButton:hover {
+  filter: brightness(.8);
+  cursor: pointer;
+}
+
+.slideButtonSelected {
+  background-color: var(--white);
 }
 
 .content:hover .fromLeftArea {
@@ -244,4 +244,95 @@
   height: 3rem;
   object-fit: cover;
   color: var(--white);
+}
+
+@media (max-width: 720px) {
+
+  .content,
+  .bannerArea,
+  .postArea,
+  .image {
+    height: calc(100vh - (30px + 2rem + .2rem));
+  }
+
+  .content {
+    padding: .5rem;
+  }
+
+  .bannerArea {
+    margin-left: -.5rem;
+  }
+
+  .firstBanner {
+    margin-left: -.5rem;
+  }
+
+  .secondBanner {
+    margin-left: calc(-.5rem - 100%);
+  }
+
+  .thirdBanner {
+    margin-left: calc(-.5rem - 200%);
+  }
+
+  .fourthBanner {
+    margin-left: calc(-.5rem - 300%);
+  }
+
+  .titleArea,
+  .content:hover .titleArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    background: linear-gradient(rgba(0, 0, 0, .8), transparent);
+    width: 100%;
+
+    z-index: 2;
+  }
+
+  .descriptionArea,
+  .content:hover .descriptionArea {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    padding-bottom: 3.2rem;
+
+    background: linear-gradient(transparent, rgba(0, 0, 0, .8));
+    width: 100%;
+
+    z-index: 2;
+  }
+
+  .button {
+    box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
+    cursor: pointer;
+  }
+
+  .fromLeftArea,
+  .content:hover .fromLeftArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+
+    z-index: 2;
+  }
+
+  .slideNumberButtonsArea {
+    margin-bottom: 0;
+  }
+
+  .fromRightArea,
+  .content:hover .fromRightArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    z-index: 2;
+  }
 }

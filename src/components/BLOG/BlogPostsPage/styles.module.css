@@ -12,3 +12,9 @@
 
   overflow: hidden;
 }
+
+@media (max-width: 720px) {
+  .content {
+    margin-top: calc(30px + 2rem + .2rem);
+  }
+}
