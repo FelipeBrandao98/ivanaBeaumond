@@ -1,6 +1,6 @@
 'use client'
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 
 import styles from './styles.module.css'
@@ -8,6 +8,13 @@ import styles from './styles.module.css'
 export default function BlogBanner() {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
+
+  useEffect(() => {
+
+    setTimeout(() => {
+      changeSlideFromRight()
+    }, 15000);
+  }, [])
 
   function changeSlideFromRight() {
     if (slide === 1) {
@@ -148,7 +155,7 @@ export default function BlogBanner() {
           <div className={styles.imageArea}>
             <Image
               className={styles.image}
-              src={'/photos_blog/photo_blog_banner_1.jpg'}
+              src={'/photos_blog/photo_blog_3.jpg'}
               alt='Ivana Beaumond'
               width={1620}
               height={1280}
@@ -170,7 +177,7 @@ export default function BlogBanner() {
           <div className={styles.imageArea}>
             <Image
               className={styles.image}
-              src={'/photos_blog/photo_blog_banner_1.jpg'}
+              src={'/photos_blog/photo_blog_2.jpg'}
               alt='Ivana Beaumond'
               width={1620}
               height={1280}
