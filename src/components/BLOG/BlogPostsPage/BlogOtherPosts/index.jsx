@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import styles from './styles.module.css'
 
-export default function BlogOtherPosts(children) {
+export default function BlogOtherPosts({ title, data }) {
   const [post, setPost] = useState(1)
   const [postClass, setPostClass] = useState(styles.firstPost)
 
@@ -50,7 +50,7 @@ export default function BlogOtherPosts(children) {
   return (
     <section className={styles.section}>
       <h4 className={styles.title}>
-        {children ? children.title : 'Título'}
+        {title ? title : 'Título'}
       </h4>
 
       <div className={styles.contentArea}>
@@ -72,123 +72,32 @@ export default function BlogOtherPosts(children) {
           `
           }
         >
-          <aside
-            className={styles.post}
-          >
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
+          {data.map((data) => {
+            return (
 
-          <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
-
-          <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
-
-          <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
-
-
-          <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
-
-
-          <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
-            <div className={styles.imageArea}>
-              <Image
-                className={styles.image}
-                src={'/homeimage.jpg'}
-                alt={'Ivana Beaumond'}
-                width={'320'}
-                height={'180'}
-              />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
-            </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
-            <p className={styles.date}>29/10/2015</p>
-            <div className={styles.seeMoreArea}>
-              <button className={styles.seeMoreButton}>Leia Mais</button>
-            </div>
-          </aside>
+              <aside
+                className={styles.post}
+                key={data.id}
+              >
+                <h5 className={styles.postTitle}>{data.title}</h5>
+                <div className={styles.imageArea}>
+                  <Image
+                    className={styles.image}
+                    src={data.imageSource}
+                    alt={data.imageAlt}
+                    width={'320'}
+                    height={'180'}
+                  />
+                  <p className={styles.imageDescription}>{data.imageCredits}</p>
+                </div>
+                <p className={styles.subTitle}>{data.subTitle}</p>
+                <p className={styles.date}>{data.date}</p>
+                <div className={styles.seeMoreArea}>
+                  <button className={styles.seeMoreButton}>Leia Mais</button>
+                </div>
+              </aside>
+            )
+          })}
         </div>
 
         <div className={styles.fromRightArea}>

@@ -216,3 +216,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adaptação do BlogDebutantInPage para mobile
 
 ### 2 - Adaptação dos Componentes de Exibir Outras Postagens para um componente único na PostsPage
+
+### 3 - Adição de dados dinâmicos no componente Other posts
