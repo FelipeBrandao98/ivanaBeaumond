@@ -1,8 +1,5 @@
 import BlogBanner from './BlogBanner'
-import BlogDebutantSpaceInPage from './BlogDebutantSpaceInPage'
-import BlogInTheMediaInPage from './BlogInTheMediaInPage'
-import BlogOurBridesInPage from './BlogOurBridesInPage'
-import BlogTipsAndTricksInPage from './BlogTipsAndTricksInPage'
+import BlogOtherPosts from './BlogOtherPosts'
 
 import styles from './styles.module.css'
 
@@ -10,10 +7,10 @@ export default function BlogPostPage() {
   return (
     <div className={styles.content}>
       <BlogBanner />
-      <BlogDebutantSpaceInPage />
-      <BlogInTheMediaInPage />
-      <BlogOurBridesInPage />
-      <BlogTipsAndTricksInPage />
+      <BlogOtherPosts title='Espaço Debutantes' />
+      <BlogOtherPosts title='Na Mídia' />
+      <BlogOtherPosts title='Nossas Noivas' />
+      <BlogOtherPosts title='Dicas e Truques' />
     </div>
   )
 }
