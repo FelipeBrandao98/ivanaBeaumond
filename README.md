@@ -210,3 +210,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 6 - Adaptação do BlogHead para mobile
 
 ### 7 - Finalizado BlogContent para mobile
+
+## 06-26-23
+
+### 1 - Adaptação do BlogDebutantInPage para mobile
