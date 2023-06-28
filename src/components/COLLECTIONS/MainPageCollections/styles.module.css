@@ -42,3 +42,17 @@
   text-align: center;
   z-index: 2;
 }
+
+@media (max-width: 720px) {
+  .section {
+    margin-top: calc(30px + 2rem + .2rem);
+  }
+
+  .title {
+    top: calc(30px + 2rem + .2rem + 25vh);
+  }
+
+  .subTitle {
+    padding: 2rem 2rem;
+  }
+}
