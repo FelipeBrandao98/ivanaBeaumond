@@ -4,6 +4,7 @@ import SuitBannerHomePageBR from "@/components/PTBR/SuitBannerHomePageBR"
 import SubscribeItemBR from "@/components/PTBR/SubscribeItemBR"
 import DebutantBannerHomePageBR from "@/components/PTBR/DebutantBannerHomePageBR"
 import EventsItemsHomePageBR from "@/components/PTBR/EventsItemsHomePageBR"
+import BlogPostPage from "@/components/BLOG/BlogPostsPage"
 
 import api from "@/services/api"
 
@@ -33,6 +34,7 @@ export default async function Page() {
         <SubscribeItemBR />
         <DebutantBannerHomePageBR />
         <SuitBannerHomePageBR />
+        <BlogPostPage />
       </main>
     </>
   )
