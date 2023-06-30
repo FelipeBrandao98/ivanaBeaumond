@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './styles.module.css'
 
-export default function GuideToBottomScrollBR() {
+export default function GuideToBottomScroll({ text1, text2 }) {
 
   useEffect(() => {
     window.addEventListener('scroll', toggleInvisible)
@@ -32,7 +32,7 @@ export default function GuideToBottomScrollBR() {
   return (
     <>
       <div className={visible ? styles.visible : styles.invisible}>
-        <p className={styles.description}>Arraste para baixo <br /> para ver mais.</p>
+        <p className={styles.description}>{text1} <br /> {text2}</p>
         <BsArrowDownSquareFill className={styles.icon} size={50} />
       </div>
     </>

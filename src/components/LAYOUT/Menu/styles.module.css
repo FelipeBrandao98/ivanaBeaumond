@@ -85,6 +85,8 @@
 
   font-weight: bold;
 
+  text-transform: uppercase;
+
   padding: .8rem;
 
   transition: all .2s;

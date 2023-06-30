@@ -1,17 +1,12 @@
-import MenuEN from "@/components/EN/MenuEN"
-import BannerHomePageEN from "@/components/EN/BannerHomePageEN"
-import CollectionsItemsCardEN from "@/components/EN/CollectionsItemsCardEN"
-import SuitBannerHomePageEN from "@/components/EN/SuitBannerHomePageEN"
-import ScrollToTopEN from "@/components/EN/ScrollToTopEN"
-import SubscribeItemEN from "@/components/EN/SubscribeItemEN"
-import DebutantBannerHomePageEN from "@/components/EN/DebutantBannerHomePageEN"
-import GuideToBottomScrollEN from "@/components/EN/GuideToBottomScrollEN"
-import EventsItemsHomePageEN from "@/components/EN/EventsItemsHomePageEN"
-import FooterEN from "@/components/EN/FooterEN"
+import BannerHomePageBR from "@/components/PTBR/BannerHomePageBR"
+import CollectionsItemsCardBR from "@/components/PTBR/CollectionsItemsCardBR"
+import SuitBannerHomePageBR from "@/components/PTBR/SuitBannerHomePageBR"
+import SubscribeItemBR from "@/components/PTBR/SubscribeItemBR"
+import DebutantBannerHomePageBR from "@/components/PTBR/DebutantBannerHomePageBR"
+import EventsItemsHomePageBR from "@/components/PTBR/EventsItemsHomePageBR"
+import BlogPostPage from "@/components/BLOG/BlogPostsPage"
 
 import api from "@/services/api"
-
-import LanguageHook from "@/hooks/LanguageContext"
 
 async function getEvents() {
   const res = await api.get('events')
@@ -29,22 +24,18 @@ export default async function Page() {
   const events = await getEvents()
 
   return (
-    <LanguageHook>
-      <MenuEN />
+    <>
       <main>
-        <BannerHomePageEN />
-        <CollectionsItemsCardEN />
-        <EventsItemsHomePageEN
+        <BannerHomePageBR />
+        <CollectionsItemsCardBR />
+        <EventsItemsHomePageBR
           data={{ events }}
         />
-        <SubscribeItemEN />
-        <DebutantBannerHomePageEN />
-        <SuitBannerHomePageEN />
+        <SubscribeItemBR />
+        <DebutantBannerHomePageBR />
+        <SuitBannerHomePageBR />
+        <BlogPostPage />
       </main>
-      <FooterEN />
-
-      <GuideToBottomScrollEN />
-      <ScrollToTopEN />
-    </LanguageHook>
+    </>
   )
 }

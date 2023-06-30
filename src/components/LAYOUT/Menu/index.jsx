@@ -6,7 +6,7 @@ import TraductionButtonBR from './TraductionButtonBR'
 import OpenMenuForMobileBR from './OpenMenuForMobileBR'
 import Link from 'next/link'
 
-export default function MenuBR({ children }) {
+export default function Menu({ content }) {
   return (
     <>
       <header className={styles.header}>
@@ -24,16 +24,14 @@ export default function MenuBR({ children }) {
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
               <ul>
-                <li>Marque um Horário <FaChevronRight /></li>
+                <li>{content.appointment} <FaChevronRight /></li>
               </ul>
             </nav>
             <nav className={styles.nav}>
               <ul>
-                <li><Link href={'/pt-BR'}>HOME</Link></li>
-                <li><Link href={'/pt-BR/collections'}>COLEÇÕES</Link></li>
-                <li>COMENTÁRIOS</li>
-                <li><Link href={'/pt-BR/blog'}>BLOG</Link></li>
-                <li>EVENTOS</li>
+                {content.menu.map((item) => {
+                  return <li key={item.id}><Link href={`pt-BR/${item.route}`}>{item.name}</Link></li>
+                })}
               </ul>
             </nav>
             <nav className={styles.navSociaMedia}>
@@ -46,8 +44,6 @@ export default function MenuBR({ children }) {
           </div>
         </OpenMenuForMobileBR>
       </header >
-
-      <main>{children}</main>
     </>
   )
 }

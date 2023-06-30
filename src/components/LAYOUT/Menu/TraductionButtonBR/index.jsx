@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { LanguageContext } from '@/hooks/LanguageContext'
 
 
-export default function TraductionButtonBR() {
+export default function TraductionButton() {
   const languageContext = useContext(LanguageContext)
 
   const [isOpen, setIsOpen] = useState(false)

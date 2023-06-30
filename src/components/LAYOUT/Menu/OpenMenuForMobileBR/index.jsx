@@ -5,7 +5,7 @@ import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
 import styles from './styles.module.css'
 
-export default function OpenMenuForMobileBR({ children }) {
+export default function OpenMenuForMobile({ children }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleIsOpen() {

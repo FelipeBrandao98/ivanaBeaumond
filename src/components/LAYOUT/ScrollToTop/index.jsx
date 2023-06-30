@@ -5,7 +5,7 @@ import { FaChevronUp } from 'react-icons/fa';
 
 import styles from './styles.module.css'
 
-export default function ScrollToTopBR() {
+export default function ScrollToTop() {
   useEffect(() => {
     window.addEventListener('scroll', toggleVisible)
   }, []);

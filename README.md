@@ -232,3 +232,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Criação do slider dentro da página de coleção
 
 ### 2 - Finalização do item collections dentro da página de coleção
+
+### 3 - Alteração da lógica de mudança de idioma no menu

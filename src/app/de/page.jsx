@@ -1,17 +1,12 @@
-import MenuDE from "@/components/DE/MenuDE"
-import BannerHomePageDE from "@/components/DE/BannerHomePageDE"
-import CollectionsItemsCardDE from "@/components/DE/CollectionsItemsCardDE"
-import SuitBannerHomePageDE from "@/components/DE/SuitBannerHomePageDE"
-import ScrollToTopDE from "@/components/DE/ScrollToTopDE"
-import SubscribeItemDE from "@/components/DE/SubscribeItemDE"
-import DebutantBannerHomePageDE from "@/components/DE/DebutantBannerHomePageDE"
-import GuideToBottomScrollDE from "@/components/DE/GuideToBottomScrollDE"
-import EventsItemsHomePageDE from "@/components/DE/EventsItemsHomePageDE"
-import FooterDE from "@/components/DE/FooterDE"
+import BannerHomePageBR from "@/components/PTBR/BannerHomePageBR"
+import CollectionsItemsCardBR from "@/components/PTBR/CollectionsItemsCardBR"
+import SuitBannerHomePageBR from "@/components/PTBR/SuitBannerHomePageBR"
+import SubscribeItemBR from "@/components/PTBR/SubscribeItemBR"
+import DebutantBannerHomePageBR from "@/components/PTBR/DebutantBannerHomePageBR"
+import EventsItemsHomePageBR from "@/components/PTBR/EventsItemsHomePageBR"
+import BlogPostPage from "@/components/BLOG/BlogPostsPage"
 
 import api from "@/services/api"
-
-import LanguageHook from "@/hooks/LanguageContext"
 
 async function getEvents() {
   const res = await api.get('events')
@@ -29,22 +24,18 @@ export default async function Page() {
   const events = await getEvents()
 
   return (
-    <LanguageHook>
-      <MenuDE />
+    <>
       <main>
-        <BannerHomePageDE />
-        <CollectionsItemsCardDE />
-        <EventsItemsHomePageDE
+        <BannerHomePageBR />
+        <CollectionsItemsCardBR />
+        <EventsItemsHomePageBR
           data={{ events }}
         />
-        <SubscribeItemDE />
-        <DebutantBannerHomePageDE />
-        <SuitBannerHomePageDE />
+        <SubscribeItemBR />
+        <DebutantBannerHomePageBR />
+        <SuitBannerHomePageBR />
+        <BlogPostPage />
       </main>
-      <FooterDE />
-
-      <GuideToBottomScrollDE />
-      <ScrollToTopDE />
-    </LanguageHook>
+    </>
   )
 }
