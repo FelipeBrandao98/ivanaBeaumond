@@ -9,12 +9,12 @@ export default function PhotoSlidesCollections() {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   setTimeout(() => {
-  //     changeSlideFromRight()
-  //   }, 15000);
-  // }, [])
+    setTimeout(() => {
+      changeSlideFromRight()
+    }, 15000);
+  }, [])
 
   function changeSlideFromRight() {
     if (slide === 1) {
@@ -56,7 +56,6 @@ export default function PhotoSlidesCollections() {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.fromLeftArea}>
         <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
           <FiArrowLeft

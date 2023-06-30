@@ -230,3 +230,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 06-30-23
 
 ### 1 - Criação do slider dentro da página de coleção
+
+### 2 - Finalização do item collections dentro da página de coleção
