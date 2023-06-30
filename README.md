@@ -236,3 +236,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - Alteração da lógica de mudança de idioma no menu
 
 ### 4 - Função de encurtar o menu ao rolar a página
+
+### 5 - Conserto do Banner da Home Page

@@ -36,6 +36,7 @@
   box-sizing: border-box;
 
   font: 400 1rem 'Inter', sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -51,6 +52,8 @@ main {
 
   margin: 0;
   padding: 0 1rem;
+
+  scroll-behavior: smooth;
 }
 
 body,
