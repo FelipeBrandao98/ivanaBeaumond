@@ -30,7 +30,7 @@ export default function MenuBR({ children }) {
             <nav className={styles.nav}>
               <ul>
                 <li><Link href={'/pt-BR'}>HOME</Link></li>
-                <li>COLEÇÕES</li>
+                <li><Link href={'/pt-BR/collections'}>COLEÇÕES</Link></li>
                 <li>COMENTÁRIOS</li>
                 <li><Link href={'/pt-BR/blog'}>BLOG</Link></li>
                 <li>EVENTOS</li>

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Collections from '../Collections'
+import Collections from './Collections'
 
 import styles from './styles.module.css'
 

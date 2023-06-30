@@ -226,3 +226,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Adaptação do Banner da página de Coleções para mobile
 
 ### 3 - Criação do Conteúdo da coleção dentro da página de coleção
+
+## 06-30-23
+
+### 1 - Criação do slider dentro da página de coleção
