@@ -1,14 +1,40 @@
-import styles from './styles.module.css'
+'use client'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
-import TraductionButtonBR from './TraductionButtonBR'
-import OpenMenuForMobileBR from './OpenMenuForMobileBR'
-import Link from 'next/link'
+import styles from './styles.module.css'
+
+import TraductionButton from './TraductionButton'
+import OpenMenuForMobile from './OpenMenuForMobile'
+
 
 export default function Menu({ content }) {
+  useEffect(() => {
+    window.addEventListener('scroll', toggleHidden)
+  }, []);
+
+  const [hidden, setHidden] = useState(false)
+
+  const toggleHidden = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 300) {
+      setHidden(true)
+    }
+    else if (scrolled <= 300) {
+      setHidden(false)
+    }
+  };
+
   return (
-    <>
+    <div
+      className={
+        `
+          ${hidden ? styles.hidden : ''}
+        `
+      }
+    >
       <header className={styles.header}>
         <Image
           className={styles.logoInMenu}
@@ -18,9 +44,9 @@ export default function Menu({ content }) {
           height={50}
         />
 
-        <TraductionButtonBR />
+        <TraductionButton hidden={hidden} />
 
-        <OpenMenuForMobileBR>
+        <OpenMenuForMobile>
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
               <ul>
@@ -42,8 +68,8 @@ export default function Menu({ content }) {
               </ul>
             </nav>
           </div>
-        </OpenMenuForMobileBR>
+        </OpenMenuForMobile>
       </header >
-    </>
+    </div>
   )
 }

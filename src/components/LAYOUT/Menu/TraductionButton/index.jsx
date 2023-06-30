@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { LanguageContext } from '@/hooks/LanguageContext'
 
 
-export default function TraductionButton() {
+export default function TraductionButton({ hidden }) {
   const languageContext = useContext(LanguageContext)
 
   const [isOpen, setIsOpen] = useState(false)
@@ -21,7 +21,13 @@ export default function TraductionButton() {
   }
 
   return (
-    <>
+    <div
+      className={
+        `
+          ${hidden ? styles.hidden : ''}
+        `
+      }
+    >
       <ol className={isOpen ? styles.open : styles.close}>
         <li onClick={handleIsOpen}>pt-br <FaChevronDown size={'1rem'} /></li>
         <li>
@@ -49,6 +55,6 @@ export default function TraductionButton() {
           </Link>
         </li>
       </ol>
-    </>
+    </div>
   )
 }

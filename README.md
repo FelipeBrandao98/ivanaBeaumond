@@ -234,3 +234,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Finalização do item collections dentro da página de coleção
 
 ### 3 - Alteração da lógica de mudança de idioma no menu
+
+### 4 - Função de encurtar o menu ao rolar a página

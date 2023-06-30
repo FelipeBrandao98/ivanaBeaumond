@@ -1,3 +1,24 @@
+@media (min-width: 720px) {
+  .hidden .header {
+    height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
+  }
+
+  .hidden .logoInMenu {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hidden .navSociaMedia {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hidden .contactNav ul {
+    left: 6rem;
+  }
+
+}
+
 .menuButtonArea {
   display: none;
 }
@@ -23,6 +44,8 @@
   backdrop-filter: var(--blur);
 
   padding: 0 .5rem;
+
+  transition: all .5s;
 }
 
 .logoInMenu {
@@ -30,6 +53,8 @@
   top: 1.5rem;
   right: 50%;
   transform: translateX(50%);
+
+  transition: all .5s;
 }
 
 .menuNavsArea {
@@ -53,6 +78,8 @@
   align-items: left;
   justify-content: center;
   gap: .2rem;
+
+  transition: all .5s;
 }
 
 .contactNav ul li {
@@ -99,6 +126,10 @@
   cursor: pointer;
 }
 
+.navSociaMedia {
+  transition: all .5s;
+}
+
 .navSociaMedia ul {
   display: flex;
   flex-direction: column;
@@ -112,6 +143,8 @@
   list-style: none;
 
   gap: .2rem;
+
+  transition: all 2s;
 }
 
 .navSociaMedia ul li {
@@ -188,5 +221,7 @@
 
   .contactNav ul {
     position: inherit;
+
+    transition: all .5s;
   }
 }
