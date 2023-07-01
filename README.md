@@ -242,3 +242,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-01-23
 
 ### 1 - Conserto do Banner da Home Page para mobile
+
+### 2 - Alteração da lógica de renderização do componente CollectionsItemCard
