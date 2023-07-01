@@ -79,24 +79,23 @@
 
 @media (max-width: 720px) {
   .section {
-    margin-left: -1rem;
-    width: calc(100% + 2rem);
     margin-top: calc(30px + 2rem + .2rem);
     height: calc(100vh - (30px + 2rem + .2rem));
+  }
 
-    overflow: hidden;
+  .article {
+    justify-content: space-between;
+  }
+
+  .image {
+    height: calc(100vh - (30px + 2rem + .2rem));
   }
 
   .h1 {
-    position: absolute;
-    top: 10rem;
+    margin-top: 5%;
 
     padding: 0 2rem;
     font-size: 2.2rem;
-  }
-
-  .h3 {
-    bottom: 7rem;
   }
 
   .h3 a {
