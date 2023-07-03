@@ -246,3 +246,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Alteração da lógica de renderização do componente CollectionsItemCard
 
 ### 3 - Atualização do component CollectionsItemCard (não finalizado)
+
+### 4 - Finalizado CollectionsItemCard (desktop e mobile)

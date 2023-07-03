@@ -33,6 +33,10 @@ export default function CollectionsItemsCard({ data }) {
       setSlideClass(styles.fourthSlide)
     }
     if (slide === 4) {
+      setSlide(5)
+      setSlideClass(styles.fifthSlide)
+    }
+    if (slide === 5) {
       setSlide(1)
       setSlideClass(styles.firstSlide)
     }
@@ -40,8 +44,8 @@ export default function CollectionsItemsCard({ data }) {
 
   function changeSlideFromLeft() {
     if (slide === 1) {
-      setSlide(4)
-      setSlideClass(styles.fourthSlide)
+      setSlide(5)
+      setSlideClass(styles.fifthSlide)
     }
     if (slide === 2) {
       setSlide(1)
@@ -54,6 +58,10 @@ export default function CollectionsItemsCard({ data }) {
     if (slide === 4) {
       setSlide(3)
       setSlideClass(styles.thirdSlide)
+    }
+    if (slide === 5) {
+      setSlide(4)
+      setSlideClass(styles.fourthSlide)
     }
   }
 
@@ -78,34 +86,38 @@ export default function CollectionsItemsCard({ data }) {
           </button>
         </div>
 
-        <div className={
-          `
+        <div className={styles.slides}>
+          <div className={
+            `
         ${styles.SlideArea}
         ${slideClass}
         `
-        }>
+          }>
 
-          {data.categories.map((categorie) => {
-            return (
-              <aside
-                key={categorie.id}
-                className={styles.aside}
-              >
-                <h3>{categorie.name}</h3>
-                <Image
-                  className={styles.image}
-                  src={categorie.imageUrl}
-                  alt={categorie.imageAlt}
-                  width={1080}
-                  height={1920}
-                />
-                <div className={styles.comments}>
-                  <p>{categorie.description}</p>
-                  <button><Link href={categorie.route}>Descubra Agora <FaArrowRight /></Link></button>
-                </div>
-              </aside>
-            )
-          })}
+
+            {data.categories.map((categorie) => {
+              return (
+                <aside
+                  key={categorie.id}
+                  className={styles.aside}
+                >
+                  <h3>{categorie.name}</h3>
+                  <Image
+                    className={styles.image}
+                    src={categorie.imageUrl}
+                    alt={categorie.imageAlt}
+                    width={1080}
+                    height={1920}
+                  />
+                  <div className={styles.comments}>
+                    <p>{categorie.description}</p>
+                    <button><Link href={categorie.route}>Descubra Agora <FaArrowRight /></Link></button>
+                  </div>
+                </aside>
+              )
+            })}
+
+          </div>
 
 
         </div >

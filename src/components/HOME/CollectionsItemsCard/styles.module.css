@@ -12,6 +12,112 @@
   }
 }
 
+@keyframes ArrowRightMoving {
+  0% {
+    right: 1rem;
+  }
+
+  5% {
+    right: .8rem;
+  }
+
+  10% {
+    right: 1rem;
+  }
+
+  15% {
+    right: .5rem;
+  }
+
+  20% {
+    right: 1rem;
+  }
+}
+
+@keyframes ArrowLeftMoving {
+  80% {
+    left: 1rem;
+  }
+
+  85% {
+    left: .8rem;
+  }
+
+  90% {
+    left: 1rem;
+  }
+
+  95% {
+    left: .5rem;
+  }
+
+  100% {
+    left: 1rem;
+  }
+}
+
+@media (min-width: 720px) {
+  .firstSlide {
+    margin-left: calc(-25vw / 2 + ((100vw - 8rem) / 2));
+  }
+
+  .firstSlide .aside:nth-child(2),
+  .firstSlide .aside:nth-child(3),
+  .firstSlide .aside:nth-child(4),
+  .firstSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .secondSlide {
+    margin-left: calc(-25vw / 2 - 25vw - 2rem + ((100vw - 8rem) / 2));
+  }
+
+  .secondSlide .aside:nth-child(1),
+  .secondSlide .aside:nth-child(3),
+  .secondSlide .aside:nth-child(4),
+  .secondSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .thirdSlide {
+    margin-left: calc(-25vw / 2 - 50vw - 4rem + ((100vw - 8rem) / 2));
+  }
+
+  .thirdSlide .aside:nth-child(1),
+  .thirdSlide .aside:nth-child(2),
+  .thirdSlide .aside:nth-child(4),
+  .thirdSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .fourthSlide {
+    margin-left: calc(-25vw / 2 - 75vw - 6rem + ((100vw - 8rem) / 2));
+  }
+
+  .fourthSlide .aside:nth-child(1),
+  .fourthSlide .aside:nth-child(2),
+  .fourthSlide .aside:nth-child(3),
+  .fourthSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .fifthSlide {
+    margin-left: calc(-25vw / 2 - 100vw - 8rem + ((100vw - 8rem) / 2));
+  }
+
+  .fifthSlide .aside:nth-child(1),
+  .fifthSlide .aside:nth-child(2),
+  .fifthSlide .aside:nth-child(3),
+  .fifthSlide .aside:nth-child(4) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+}
+
 .titleArea {
   display: flex;
   flex-direction: column;
@@ -44,7 +150,7 @@
   align-items: center;
 
   width: calc(100vw - 8rem);
-  height: 41rem;
+  height: 70vh;
 
   margin: 4rem 2rem;
   padding: 3rem 0;
@@ -60,14 +166,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 35rem;
-  width: 20vw;
+  justify-content: space-between;
+  height: 60vh;
+  width: 25vw;
 
-  transition: all .2s;
-}
-
-.aside:hover {
-  transform: scale(105%);
+  transition: all 1s;
 }
 
 .aside:hover h3 {
@@ -79,28 +182,29 @@
 }
 
 .aside h3 {
-  z-index: 10;
-
   opacity: 0;
 
   display: flex;
-  position: relative;
-  top: 1rem;
 
-  height: 0;
+  margin-top: 1rem;
 
   color: var(--white-100);
-  font-size: 1.3rem;
-  line-height: 1.3rem;
+  font-size: 2rem;
   text-shadow: 0rem 0rem .3rem var(--background-blur-dark);
-  font: 400 1rem 'Poppins', sans-serif;
+  font-family: var(--font-oh-baby);
+
+  z-index: 2;
+
+  transition: all .5s;
 }
 
 .aside .image {
   display: flex;
 
-  height: 35rem;
-  width: 20vw;
+  position: absolute;
+
+  height: 60vh;
+  width: 25vw;
 
   object-fit: cover;
 
@@ -115,23 +219,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: .2rem 1rem;
+  padding: 2rem 1rem;
   gap: 1rem;
-  height: 11rem;
 
-  position: relative;
-  bottom: 8rem;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  -moz-backdrop-filter: blur(8px);
+
   border-radius: 0 0 .2rem .2rem;
-  border-top: rgba(0, 0, 0, 0.5);
-  background-color: rgba(0, 0, 0, 0.2);
+  border-top: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, .5);
+
+  transition: all .5s;
 }
 
 .aside .comments p {
   display: flex;
   color: var(--white-100);
-  font-size: .8rem;
-  font-weight: 300;
+  font-size: 1rem;
+  text-align: center;
+  font-family: var(--font-roboto);
   text-shadow: 0rem 0rem .2rem var(--background-blur-dark);
 }
 
@@ -146,7 +253,7 @@
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  padding: .2rem .4rem;
+  padding: .5rem 1rem;
   border-radius: .1rem;
 
   color: var(--white-100);
@@ -167,56 +274,18 @@
   position: absolute;
 }
 
+.slides {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
 .SlideArea {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
 
   overflow: none;
-  transition: all .5s;
-}
-
-.firstSlide {
-  margin-left: calc(2rem);
-}
-
-.firstSlide .aside:nth-child(2),
-.firstSlide .aside:nth-child(3),
-.firstSlide .aside:nth-child(4) {
-  filter: brightness(.5);
-  transform: scale(.95);
-}
-
-.secondSlide {
-  margin-left: calc(-50vw + 15rem + 2.5rem);
-}
-
-.secondSlide .aside:nth-child(1),
-.secondSlide .aside:nth-child(3),
-.secondSlide .aside:nth-child(4) {
-  filter: brightness(.5);
-  transform: scale(.95);
-}
-
-.thirdSlide {
-  margin-left: calc(-100vw + 30rem - 5rem + 2.5rem);
-}
-
-.thirdSlide .aside:nth-child(1),
-.thirdSlide .aside:nth-child(2),
-.thirdSlide .aside:nth-child(4) {
-  filter: brightness(.5);
-  transform: scale(.95);
-}
-
-.fourthSlide {
-  margin-left: calc(-150vw + 45rem - 10rem + 2.5rem);
-}
-
-.fourthSlide .aside:nth-child(1),
-.fourthSlide .aside:nth-child(2),
-.fourthSlide .aside:nth-child(3) {
-  filter: brightness(.5);
-  transform: scale(.95);
+  transition: all 1s;
 }
 
 .fromLeftArea {
@@ -298,55 +367,120 @@
 }
 
 @media (max-width: 720px) {
-
-  .content,
-  .SlideArea,
-  .postArea,
-  .image {
-    height: calc(100vh - (30px + 2rem + .2rem));
+  .titleArea {
+    margin: 4rem 1rem;
+    margin-bottom: 0;
+    padding: 1rem;
+    gap: 4rem;
   }
 
-  .SlideArea {
-    margin-left: -.5rem;
+  .title {
+    font-size: 3.5rem;
   }
 
-  .firstSlide {
-    margin-left: -.5rem;
+  .section {
+    padding: 0;
+    width: calc(100vw - 6rem);
+    margin-left: 1rem;
   }
 
-  .secondSlide {
-    margin-left: calc(-.5rem - 100%);
+  .aside {
+    width: calc(100vw - 8rem - 2rem);
   }
 
-  .thirdSlide {
-    margin-left: calc(-.5rem - 200%);
+  .aside h3 {
+    opacity: 1;
   }
 
-  .fourthSlide {
-    margin-left: calc(-.5rem - 300%);
-  }
-
-  .button {
-    box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
-    cursor: pointer;
+  .aside .image {
+    width: calc(100vw - 8rem - 2rem);
   }
 
   .fromLeftArea,
-  .content:hover .fromLeftArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-
-    z-index: 2;
+  .fromRightArea,
+  .slideNumberButtonsArea {
+    transition: all .2s;
+    position: absolute;
   }
 
-  .fromRightArea,
-  .content:hover .fromRightArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    z-index: 2;
+  .SlideArea {
+    gap: 1rem;
+  }
+
+  .firstSlide {
+    margin-left: calc(2rem - (0 * (100vw - 8rem)));
+  }
+
+  .firstSlide .aside:nth-child(2),
+  .firstSlide .aside:nth-child(3),
+  .firstSlide .aside:nth-child(4),
+  .firstSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .secondSlide {
+    margin-left: calc(3rem - (1 * (100vw - 8rem)));
+  }
+
+  .secondSlide .aside:nth-child(1),
+  .secondSlide .aside:nth-child(3),
+  .secondSlide .aside:nth-child(4),
+  .secondSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .thirdSlide {
+    margin-left: calc(4rem - (2 * (100vw - 8rem)));
+  }
+
+  .thirdSlide .aside:nth-child(1),
+  .thirdSlide .aside:nth-child(2),
+  .thirdSlide .aside:nth-child(4),
+  .thirdSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .fourthSlide {
+    margin-left: calc(5rem - (3 * (100vw - 8rem)));
+  }
+
+  .fourthSlide .aside:nth-child(1),
+  .fourthSlide .aside:nth-child(2),
+  .fourthSlide .aside:nth-child(3),
+  .fourthSlide .aside:nth-child(5) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .fifthSlide {
+    margin-left: calc(6rem - (4 * (100vw - 8rem)));
+  }
+
+  .fifthSlide .aside:nth-child(1),
+  .fifthSlide .aside:nth-child(2),
+  .fifthSlide .aside:nth-child(3),
+  .fifthSlide .aside:nth-child(4) {
+    filter: brightness(.3);
+    transform: scale(.90);
+  }
+
+  .fromLeftArea {
+    left: 1rem;
+
+    animation: ArrowLeftMoving infinite 5s;
+  }
+
+  .fromRightArea {
+    right: 1rem;
+
+    animation: ArrowRightMoving infinite 5s;
+  }
+
+  .fromLeftButton,
+  .fromRightButton {
+    background-color: var(--black-800);
   }
 }
