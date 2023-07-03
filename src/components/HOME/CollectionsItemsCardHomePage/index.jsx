@@ -8,7 +8,7 @@ import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 
 import styles from './styles.module.css'
 
-export default function CollectionsItemsCard({ data }) {
+export default function CollectionsItemsCardHomePage({ data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 

@@ -247,4 +247,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### 3 - Atualização do component CollectionsItemCard (não finalizado)
 
-### 4 - Finalizado CollectionsItemCard (desktop e mobile)
+## 07-03-23
+
+### 1 - Finalizado CollectionsItemCard (desktop e mobile)
+
+### 2 - Atualização do component EventsItemsHomePage (não finalizado)

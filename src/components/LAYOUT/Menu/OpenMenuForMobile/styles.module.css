@@ -51,7 +51,11 @@
     height: 100vh;
 
     background-color: var(--background-blur-dark);
+
     backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    -moz-backdrop-filter: var(--blur);
+
     border-right: 1px solid var(--black);
 
     padding: calc(30px + 2rem + .5rem) 1rem 1rem 1rem;

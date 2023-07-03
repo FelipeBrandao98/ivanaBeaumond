@@ -1,12 +1,11 @@
 import BannerHomePage from "@/components/HOME/BannerHomePage"
+import CollectionsItemsCardHomePage from "@/components/HOME/CollectionsItemsCardHomePage"
+import EventsItemsHomePage from "@/components/HOME/EventsItemsHomePage"
 import SuitBannerHomePageBR from "@/components/PTBR/SuitBannerHomePageBR"
 import SubscribeItemBR from "@/components/PTBR/SubscribeItemBR"
 import DebutantBannerHomePageBR from "@/components/PTBR/DebutantBannerHomePageBR"
-import EventsItemsHomePageBR from "@/components/PTBR/EventsItemsHomePageBR"
 import BlogPostPage from "@/components/BLOG/BlogPostsPage"
 
-import api from "@/services/api"
-import CollectionsItemsCard from "@/components/HOME/CollectionsItemsCard"
 
 const categories = [
   {
@@ -51,29 +50,49 @@ const categories = [
   },
 ]
 
-async function getEvents() {
-  const res = await api.get('events')
-
-  if (!res) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-
-  return res.data
+const events = {
+  title: 'Eventos',
+  nextEventTitle: 'Proximo Evento',
+  futureEventsTitle: 'Eventos Futuros',
+  seeMore: 'Veja Mais',
+  nextEvent: {
+    id: 1,
+    title: 'São Paulo Fashion Week',
+    date: '27 de Setembro de 2023',
+    url: ''
+  },
+  futureEvents: [
+    {
+      id: 1,
+      title: 'Moscow Standard',
+      date: '25 de Dezembro de 2023',
+      url: ''
+    },
+    {
+      id: 2,
+      title: 'Paris Premier',
+      date: '28 de Dezembro de 2023',
+      url: ''
+    },
+    {
+      id: 1,
+      title: 'Tokio Standard',
+      date: '01 de Janeiro de 2024',
+      url: ''
+    },
+  ]
 }
 
-
 export default async function Page() {
-  const events = await getEvents()
 
   return (
     <>
       <main>
         <BannerHomePage />
-        <CollectionsItemsCard
+        <CollectionsItemsCardHomePage
           data={{ categories }}
         />
-        <EventsItemsHomePageBR
+        <EventsItemsHomePage
           data={{ events }}
         />
         <SubscribeItemBR />
