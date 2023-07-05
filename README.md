@@ -256,3 +256,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-05-23
 
 ### 1 - Finalizado Componente EventosItemsHomePage
+
+### 2 - Reformulado SubscribeItem para Layout

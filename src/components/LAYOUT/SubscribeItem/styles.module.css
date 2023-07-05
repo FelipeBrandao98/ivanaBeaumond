@@ -1,6 +1,4 @@
 .section {
-  margin: 0 8rem;
-
   border-radius: .1rem;
 
   display: flex;
@@ -53,10 +51,4 @@
 
 .section .aside .form .button:hover {
   filter: brightness(1.2);
-}
-
-@media (max-width: 720px) {
-  .section {
-    margin: 0;
-  }
 }

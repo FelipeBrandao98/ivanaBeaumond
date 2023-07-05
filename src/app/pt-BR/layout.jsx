@@ -2,10 +2,11 @@ import Footer from "@/components/LAYOUT/Footer";
 import GuideToBottomScroll from "@/components/LAYOUT/GuideToBottomScroll";
 import Menu from "@/components/LAYOUT/Menu";
 import ScrollToTop from "@/components/LAYOUT/ScrollToTop";
+import SubscribeItem from "@/components/LAYOUT/SubscribeItem";
 
 import LanguageHook from "@/hooks/LanguageContext";
 
-const content = {
+const contentMenu = {
   appointment: 'Marque um Horário',
   menu: [
     {
@@ -31,13 +32,20 @@ const content = {
   ]
 }
 
+const contentSubscribe = {
+  text: 'Assine aqui para ficar por dentro de todas as nossas novidades!',
+  placeholder: 'Seu melhor e-mail aqui',
+  submitText: 'Assinar',
+}
+
 export default function HomePageLayout({ children }) {
   return (
     <LanguageHook>
-      <Menu content={content} />
+      <Menu content={contentMenu} />
       <main>
         {children}
       </main>
+      <SubscribeItem content={contentSubscribe} />
       <Footer />
 
       <GuideToBottomScroll text1={'Arraste para baixo'} text2={'para ver mais.'} />
