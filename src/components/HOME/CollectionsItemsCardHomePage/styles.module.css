@@ -67,6 +67,7 @@
   .firstSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .secondSlide {
@@ -79,6 +80,7 @@
   .secondSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .thirdSlide {
@@ -91,6 +93,7 @@
   .thirdSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .fourthSlide {
@@ -103,6 +106,7 @@
   .fourthSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .fifthSlide {
@@ -115,6 +119,7 @@
   .fifthSlide .aside:nth-child(4) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 }
 
@@ -417,6 +422,7 @@
   .firstSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .secondSlide {
@@ -429,6 +435,7 @@
   .secondSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .thirdSlide {
@@ -441,6 +448,7 @@
   .thirdSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .fourthSlide {
@@ -453,6 +461,7 @@
   .fourthSlide .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .fifthSlide {
@@ -465,6 +474,7 @@
   .fifthSlide .aside:nth-child(4) {
     filter: brightness(.3);
     transform: scale(.90);
+    pointer-events: none;
   }
 
   .fromLeftArea {
