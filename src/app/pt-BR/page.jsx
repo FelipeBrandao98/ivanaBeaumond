@@ -1,8 +1,6 @@
 import BannerHomePage from "@/components/HOME/BannerHomePage"
 import CollectionsItemsCardHomePage from "@/components/HOME/CollectionsItemsCardHomePage"
 import EventsItemsHomePage from "@/components/HOME/EventsItemsHomePage"
-import SuitBannerHomePageBR from "@/components/PTBR/SuitBannerHomePageBR"
-import DebutantBannerHomePageBR from "@/components/PTBR/DebutantBannerHomePageBR"
 import BlogPostPage from "@/components/BLOG/BlogPostsPage"
 
 
@@ -94,8 +92,6 @@ export default async function Page() {
         <EventsItemsHomePage
           data={{ events }}
         />
-        <DebutantBannerHomePageBR />
-        <SuitBannerHomePageBR />
         <BlogPostPage />
       </main>
     </>

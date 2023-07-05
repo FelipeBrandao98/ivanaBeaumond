@@ -1,9 +1,11 @@
 'use client'
 import { FaChevronDown } from 'react-icons/fa'
+import { useContext, useState } from 'react'
+import ReactCountryFlag from 'react-country-flag'
+import Link from 'next/link'
+
 import styles from './styles.module.css'
 
-import { useContext, useState } from 'react'
-import Link from 'next/link'
 import { LanguageContext } from '@/hooks/LanguageContext'
 
 
@@ -29,13 +31,28 @@ export default function TraductionButton({ hidden }) {
       }
     >
       <ol className={isOpen ? styles.open : styles.close}>
-        <li onClick={handleIsOpen}>pt-br <FaChevronDown size={'1rem'} /></li>
+        <li onClick={handleIsOpen}>
+          <div className={styles.row}>
+            BR
+            <ReactCountryFlag
+              countryCode='BR'
+              svg
+            />
+          </div>
+          <FaChevronDown size={'1rem'} />
+        </li>
         <li>
           <Link
             href={'/fr'}
             onClick={changeLanguageContext('fr')}
           >
-            fr
+            <div className={styles.row}>
+              FR
+              <ReactCountryFlag
+                countryCode='FR'
+                svg
+              />
+            </div>
           </Link>
         </li>
         <li>
@@ -43,7 +60,13 @@ export default function TraductionButton({ hidden }) {
             href={'/en'}
             onClick={changeLanguageContext('en')}
           >
-            en-us
+            <div className={styles.row}>
+              US
+              <ReactCountryFlag
+                countryCode='US'
+                svg
+              />
+            </div>
           </Link>
         </li>
         <li>
@@ -51,7 +74,13 @@ export default function TraductionButton({ hidden }) {
             href={'/de'}
             onClick={changeLanguageContext('de')}
           >
-            de
+            <div className={styles.row}>
+              DE
+              <ReactCountryFlag
+                countryCode='DE'
+                svg
+              />
+            </div>
           </Link>
         </li>
       </ol>
