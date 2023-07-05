@@ -3,9 +3,9 @@ import { BsStarHalf } from 'react-icons/bs'
 import { IoIosCalendar } from 'react-icons/io'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from './styles.module.css'
-import Link from 'next/link'
 
 export default async function EventsItemsHomePage({ data }) {
   const [rows, setRows] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -65,7 +65,7 @@ export default async function EventsItemsHomePage({ data }) {
 
         </div>
 
-        <p>{data.events.seeMore}</p>
+        <Link href={''} className={styles.seeMore}>{data.events.seeMore}</Link>
 
       </aside>
       <div className={styles.detachableAreaRight}>

@@ -252,3 +252,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Finalizado CollectionsItemCard (desktop e mobile)
 
 ### 2 - Atualização do component EventsItemsHomePage (não finalizado)
+
+## 07-05-23
+
+### 1 - Finalizado Componente EventosItemsHomePage
