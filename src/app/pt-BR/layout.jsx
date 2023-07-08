@@ -1,3 +1,4 @@
+import AdressItem from "@/components/LAYOUT/AdressItem";
 import Footer from "@/components/LAYOUT/Footer";
 import GuideToBottomScroll from "@/components/LAYOUT/GuideToBottomScroll";
 import Menu from "@/components/LAYOUT/Menu";
@@ -45,6 +46,7 @@ export default function HomePageLayout({ children }) {
       <main>
         {children}
       </main>
+      <AdressItem />
       <SubscribeItem content={contentSubscribe} />
       <Footer />
 

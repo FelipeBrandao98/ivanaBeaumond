@@ -266,3 +266,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-08-23
 
 ### 1 - Adição do componente HighlightsHomePage
+
+### 2 - Adição do componente AddressItem (não finalizado)
