@@ -1,7 +1,7 @@
 import BannerHomePage from "@/components/HOME/BannerHomePage"
 import CollectionsItemsCardHomePage from "@/components/HOME/CollectionsItemsCardHomePage"
 import EventsItemsHomePage from "@/components/HOME/EventsItemsHomePage"
-import BlogPostPage from "@/components/BLOG/BlogPostsPage"
+import HighLightsHomePage from "@/components/HOME/HighLightsHomePage"
 
 
 const categories = [
@@ -80,6 +80,41 @@ const events = {
   ]
 }
 
+const highlights = {
+  title: 'Últimas Notícias',
+  seeMore: 'Leia Mais',
+  highlight: [
+    {
+      id: 1,
+      title: 'Ivana faz exposição em paris',
+      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
+      imageUrl: '/photos_blog/photo_blog_3.jpg',
+      imageAlt: 'Ivana Beaumond',
+    },
+    {
+      id: 2,
+      title: 'Ivana faz exposição em paris',
+      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
+      imageUrl: '/photos_blog/photo_blog_2.jpg',
+      imageAlt: 'Ivana Beaumond',
+    },
+    {
+      id: 3,
+      title: 'Ivana faz exposição em paris',
+      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
+      imageUrl: '/photos_blog/photo_blog_1.jpeg',
+      imageAlt: 'Ivana Beaumond',
+    },
+    {
+      id: 4,
+      title: 'Ivana faz exposição em paris',
+      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
+      imageUrl: '/photos_blog/photo_blog_1.jpeg',
+      imageAlt: 'Ivana Beaumond',
+    },
+  ]
+}
+
 export default async function Page() {
 
   return (
@@ -92,7 +127,9 @@ export default async function Page() {
         <EventsItemsHomePage
           data={{ events }}
         />
-        <BlogPostPage />
+        <HighLightsHomePage
+          data={{ highlights }}
+        />
       </main>
     </>
   )

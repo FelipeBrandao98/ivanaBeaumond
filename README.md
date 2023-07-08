@@ -262,3 +262,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 3 - pequena alteração no CollectionsItemsCardHomePage
 
 ### 4 - Adição da Bandeirinha de país no botão de Tradução
+
+## 07-08-23
+
+### 1 - Adição do componente HighlightsHomePage

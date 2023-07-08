@@ -37,7 +37,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       style={{ display: visible ? 'inline' : 'none' }}
     >
-      <FaChevronUp size={'1.5rem'} />
+      <FaChevronUp size={20} />
     </button>
   );
 }

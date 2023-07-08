@@ -30,6 +30,7 @@ export default function TraductionButton({ hidden }) {
         `
       }
     >
+      {console.log(languageContext.language)}
       <ol className={isOpen ? styles.open : styles.close}>
         <li onClick={handleIsOpen}>
           <div className={styles.row}>

@@ -35,9 +35,9 @@ export default async function EventsItemsHomePage({ data }) {
       </div>
       <aside className={styles.aside}>
         <h1 className={styles.title}>
-          <BsStarHalf size={'1.5rem'} />
+          <BsStarHalf size={20} />
           {data.events.title}
-          <BsStarHalf size={'1.5rem'} />
+          <BsStarHalf size={20} />
         </h1>
 
         <div className={styles.nextEventArea}>
