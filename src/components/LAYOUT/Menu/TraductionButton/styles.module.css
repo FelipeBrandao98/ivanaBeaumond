@@ -2,7 +2,7 @@
 
   .hidden .close,
   .hidden .open {
-    top: 1rem;
+    top: .5rem;
     transition: all .8s;
   }
 }
@@ -27,7 +27,7 @@
   justify-content: center;
 
   position: fixed;
-  top: 2rem;
+  top: 2.2rem;
   left: .8rem;
 }
 

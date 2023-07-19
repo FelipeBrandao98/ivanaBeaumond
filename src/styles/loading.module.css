@@ -54,7 +54,7 @@
   display: flex;
   height: 2.5rem;
   width: 5rem;
-  background-color: blue;
+  background-color: var(--blue-france);
 }
 
 .whiteArea {
@@ -69,6 +69,6 @@
   display: flex;
   height: 2.5rem;
   width: 5rem;
-  background-color: red;
+  background-color: var(--red-france);
   animation: animationRed .5s infinite;
 }

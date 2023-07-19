@@ -268,3 +268,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - Adição do componente HighlightsHomePage
 
 ### 2 - Adição do componente AddressItem (não finalizado)
+
+## 07-19-23
+
+### 1 - conserto da responsividade do menu superior
