@@ -274,3 +274,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 - conserto da responsividade do menu superior
 
 ### 2 - Ajustes no Rodapé
+
+### 3 - Adição do botão de buscar (apenas para desktop)

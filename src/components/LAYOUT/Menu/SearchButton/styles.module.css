@@ -1,0 +1,91 @@
+.searchIconArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  height: 40px;
+  width: 40px;
+  transition: all .2s;
+}
+
+.searchIconArea:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.searchIcon {
+  display: flex;
+  width: 35px;
+  height: 35px;
+}
+
+.searchOpen {
+  display: flex;
+  position: absolute;
+  width: calc(48vw - 40px);
+  max-width: 500px;
+  height: 40px;
+  padding: 0 0 .5rem 0;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  border-radius: .5rem;
+  transition: all 1s;
+  z-index: 1000;
+}
+
+.searchOpen input[type="text"] {
+  display: flex;
+  border-radius: .3rem 0 0 .3rem;
+  padding: 0 1rem;
+  flex: 1;
+  transition: all 1s;
+  border: none;
+}
+
+.searchOpen input[type="button"] {
+  display: flex;
+  border-radius: 0 .3rem .3rem 0;
+  padding: 0 1rem;
+  border: none;
+  background-color: var(--blue-france);
+  color: var(--white);
+  border-right: none;
+  transition: all 1s;
+}
+
+.searchOpen input[type="button"]:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.searchClose {
+  display: flex;
+  position: absolute;
+  width: calc(30vw - 40px);
+  height: 0px;
+  padding: 0 0 .5rem 0;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  border-radius: .5rem;
+  transition: all 1s;
+}
+
+.searchClose input[type="text"] {
+  display: flex;
+  border-radius: .3rem 0 0 .3rem;
+  padding: 0 1rem;
+  flex: 1;
+  border: none;
+  height: 0px;
+}
+
+.searchClose input[type="button"] {
+  display: flex;
+  border-radius: 0 .3rem .3rem 0;
+  padding: 0 1rem;
+  border: none;
+  background-color: var(--blue-france);
+  color: var(--white);
+  border-right: none;
+  height: 0px;
+}

@@ -8,6 +8,7 @@ import styles from './styles.module.css'
 
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
+import SearchButton from './SearchButton'
 
 
 export default function Menu({ content }) {
@@ -58,6 +59,7 @@ export default function Menu({ content }) {
                 {content.menu.map((item) => {
                   return <li key={item.id}><Link href={`pt-BR/${item.route}`}>{item.name}</Link></li>
                 })}
+                <SearchButton />
               </ul>
             </nav>
             <nav className={styles.navSociaMedia}>
