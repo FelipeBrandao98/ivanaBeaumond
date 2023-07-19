@@ -272,3 +272,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-19-23
 
 ### 1 - conserto da responsividade do menu superior
+
+### 2 - Ajustes no Rodapé

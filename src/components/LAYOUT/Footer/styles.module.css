@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .imageSocialMediaArea {
@@ -26,7 +26,7 @@
 .footerContact {
   display: flex;
   flex-direction: row;
-  gap: .5rem;
+  gap: 1rem;
   font-size: .8rem;
   transition: all .2s;
 }
@@ -34,6 +34,7 @@
 
 .footerContact a {
   font-size: .8rem;
+  text-align: center;
 }
 
 .footerContact a:hover {
@@ -45,5 +46,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--white-100);
   gap: 1rem;
+  padding: 2rem;
+  border-radius: .2rem;
+}
+
+.footerCopyDev p {
+  text-align: center;
 }
