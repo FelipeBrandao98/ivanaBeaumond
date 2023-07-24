@@ -280,3 +280,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-24-23
 
 ### 1 -  Finalizado botão de buscar
+
+### 2 - Animação do SubscribeItem ao enviar um e-mail

@@ -1,0 +1,6 @@
+.checked {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+  color: var(--green-success);
+}
