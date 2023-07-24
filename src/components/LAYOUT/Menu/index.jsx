@@ -46,7 +46,7 @@ export default function Menu({ content }) {
         />
 
         <TraductionButton hidden={hidden} />
-
+        <SearchButton />
         <OpenMenuForMobile>
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
@@ -59,7 +59,6 @@ export default function Menu({ content }) {
                 {content.menu.map((item) => {
                   return <li key={item.id}><Link href={`pt-BR/${item.route}`}>{item.name}</Link></li>
                 })}
-                <SearchButton />
               </ul>
             </nav>
             <nav className={styles.navSociaMedia}>

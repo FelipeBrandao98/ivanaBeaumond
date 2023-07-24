@@ -1,4 +1,7 @@
 .searchIconArea {
+  position: absolute;
+  right: calc(50% - 18rem);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,12 +25,13 @@
 .searchOpen {
   display: flex;
   position: absolute;
+  right: calc(50% - 18rem);
+
   width: calc(48vw - 40px);
   max-width: 500px;
   height: 40px;
   padding: 0 0 .5rem 0;
   margin-right: 40px;
-  margin-bottom: 10px;
   border-radius: .5rem;
   transition: all 1s;
   z-index: 1000;
@@ -88,4 +92,46 @@
   color: var(--white);
   border-right: none;
   height: 0px;
+}
+
+@media (max-width: 720px) {
+  .searchIconArea {
+    position: fixed;
+    top: .7rem;
+    right: calc(50% - 7rem);
+  }
+
+  .searchOpen,
+  .searchClose {
+    top: calc(30px + 2rem + .2rem - 1px);
+    left: 0;
+
+    padding: 1rem 1rem;
+
+    width: 100%;
+    height: calc(30px + 2rem + .2rem);
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0;
+
+    backdrop-filter: var(--blur);
+    background-color: var(--background-blur-dark);
+
+    border-bottom: 1px solid var(--black);
+
+    z-index: -1;
+  }
+
+  .searchClose {
+    top: calc(30px);
+    height: 0;
+    opacity: 0;
+  }
+
+  .searchOpen input[type="text"],
+  .searchOpen input[type="button"] {
+    height: 100%;
+  }
 }

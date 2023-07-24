@@ -276,3 +276,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Ajustes no Rodapé
 
 ### 3 - Adição do botão de buscar (apenas para desktop)
+
+## 07-24-23
+
+### 1 -  Finalizado botão de buscar
