@@ -192,92 +192,77 @@
 }
 
 @media (max-width: 720px) {
-
-  .content,
-  .SlideArea,
-  .postArea,
-  .image {
-    height: calc(100vh - (30px + 2rem + .2rem));
-  }
-
-  .content {
-    padding: .5rem;
+  .container {
+    width: 100%;
   }
 
   .SlideArea {
-    margin-left: -.5rem;
+    gap: 20vw;
+    padding-left: 10vw;
   }
 
-  .firstSlide {
-    margin-left: -.5rem;
-  }
-
-  .secondSlide {
-    margin-left: calc(-.5rem - 100%);
-  }
-
-  .thirdSlide {
-    margin-left: calc(-.5rem - 200%);
-  }
-
-  .fourthSlide {
-    margin-left: calc(-.5rem - 300%);
-  }
-
-  .titleArea,
-  .content:hover .titleArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-
-    background: linear-gradient(rgba(0, 0, 0, .8), transparent);
-    width: 100%;
-
-    z-index: 2;
-  }
-
-  .descriptionArea,
-  .content:hover .descriptionArea {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    padding-bottom: 3.2rem;
-
-    background: linear-gradient(transparent, rgba(0, 0, 0, .8));
-    width: 100%;
-
-    z-index: 2;
-  }
-
-  .button {
-    box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
-    cursor: pointer;
-  }
-
-  .fromLeftArea,
-  .content:hover .fromLeftArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-
-    z-index: 2;
+  .image {
+    width: 80vw;
   }
 
   .slideNumberButtonsArea {
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    align-self: center;
+    position: inherit;
   }
 
-  .fromRightArea,
-  .content:hover .fromRightArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    z-index: 2;
+  .slideButton,
+  .slideButton:hover {
+    background-color: var(--black-300);
+  }
+
+  .slideButtonSelected {
+    background-color: var(--black);
+  }
+
+  .firstSlide {
+    margin-left: 0;
+  }
+
+  .secondSlide {
+    margin-left: -100vw;
+  }
+
+  .thirdSlide {
+    margin-left: -200vw;
+  }
+
+  .fourthSlide {
+    margin-left: -300vw;
+  }
+
+  .fromLeftArea {
+    width: 3rem;
+    left: .5rem;
+  }
+
+  .fromLeftButton,
+  .fromLeftButton:hover {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .fromLeftImage {
+    color: var(--black);
+  }
+
+  .fromRightArea {
+    width: 3rem;
+    right: .5rem;
+  }
+
+  .fromRightButton,
+  .fromRightButton:hover {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .fromRightImage {
+    color: var(--black);
   }
 }

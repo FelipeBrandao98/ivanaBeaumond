@@ -282,3 +282,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1 -  Finalizado botão de buscar
 
 ### 2 - Animação do SubscribeItem ao enviar um e-mail
+
+## 07-26-23
+
+### 1 - Adaptação do Collections para Mobile

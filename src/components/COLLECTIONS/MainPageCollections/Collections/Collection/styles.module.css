@@ -134,3 +134,60 @@
   object-fit: cover;
   pointer-events: none;
 }
+
+@media (max-width: 720px) {
+  .collection {
+    height: 220vh;
+    color: var(--black);
+  }
+
+  .collection:hover .openDetails {
+    display: none;
+  }
+
+  .contentArea {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+
+    height: 130vh;
+
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .titleArea {
+    color: var(--black);
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .descriptionArea {
+    width: 100%;
+    margin-top: 50vh;
+    color: var(--black);
+  }
+
+  .description {
+    background-color: var(--white);
+
+    padding: 2rem 1rem;
+    border-radius: .3rem;
+
+    text-align: center;
+  }
+
+  .image {
+    height: 100vh;
+  }
+
+  .button {
+    background-color: var(--black-800);
+    box-shadow: none;
+  }
+}
