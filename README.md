@@ -286,3 +286,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-26-23
 
 ### 1 - Adaptação do Collections para Mobile
+
+## 07-29-23
+
+### 1 - Criado a página de listagem de coleções
