@@ -27,7 +27,6 @@ export default function ItemCollection() {
 
   return (
     <aside className={styles.container}>
-      <h2 className={styles.title}>Debutantes 1</h2>
       <Image
         className={styles.image}
         src={'/photos_collections_items/vestido_de_dama_ivana_beaumond.jpg'}
@@ -36,81 +35,84 @@ export default function ItemCollection() {
         height={300}
       />
       <div className={styles.starArea}>
-        <span className={styles.starSpan} onClick={handlePointOne}>
-          {point >= 1 ?
-            <AiFillStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-            :
-            <AiOutlineStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-          }
-        </span>
-        <span className={styles.starSpan} onClick={handlePointTwo}>
-          {point >= 2 ?
-            <AiFillStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-            :
-            <AiOutlineStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-          }
-        </span>
-        <span className={styles.starSpan} onClick={handlePointThree}>
-          {point >= 3 ?
-            <AiFillStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-            :
-            <AiOutlineStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-          }
-        </span>
-        <span className={styles.starSpan} onClick={handlePointFour}>
-          {point >= 4 ?
-            <AiFillStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-            :
-            <AiOutlineStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-          }
-        </span>
-        <span className={styles.starSpan} onClick={handlePointFive}>
-          {point >= 5 ?
-            <AiFillStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-            :
-            <AiOutlineStar
-              className={styles.star}
-              width={40}
-              height={40}
-            />
-          }
-        </span>
+        <h2 className={styles.title}>Debutantes 1</h2>
+        <div className={styles.row}>
+          <span className={styles.starSpan} onClick={handlePointOne}>
+            {point >= 1 ?
+              <AiFillStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+              :
+              <AiOutlineStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+            }
+          </span>
+          <span className={styles.starSpan} onClick={handlePointTwo}>
+            {point >= 2 ?
+              <AiFillStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+              :
+              <AiOutlineStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+            }
+          </span>
+          <span className={styles.starSpan} onClick={handlePointThree}>
+            {point >= 3 ?
+              <AiFillStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+              :
+              <AiOutlineStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+            }
+          </span>
+          <span className={styles.starSpan} onClick={handlePointFour}>
+            {point >= 4 ?
+              <AiFillStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+              :
+              <AiOutlineStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+            }
+          </span>
+          <span className={styles.starSpan} onClick={handlePointFive}>
+            {point >= 5 ?
+              <AiFillStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+              :
+              <AiOutlineStar
+                className={styles.star}
+                width={40}
+                height={40}
+              />
+            }
+          </span>
+        </div>
       </div>
     </aside>
   )

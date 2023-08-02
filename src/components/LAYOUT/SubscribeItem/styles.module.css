@@ -9,6 +9,7 @@
   padding: 2rem;
 
   background-color: var(--white-100);
+  z-index: 5;
 }
 
 .section .aside .h3 {

@@ -290,3 +290,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 07-29-23
 
 ### 1 - Criado a página de listagem de coleções
+
+## 08-02-23
+
+### 1 - Criação da página de eventos, e componente de comentários na homePage

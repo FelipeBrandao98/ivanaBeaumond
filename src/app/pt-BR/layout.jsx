@@ -18,17 +18,17 @@ const contentMenu = {
     {
       id: 2,
       name: 'Coleções',
-      route: 'collections',
+      route: 'colecoes',
     },
     {
       id: 3,
       name: 'Notícias',
-      route: 'blog',
+      route: 'noticias',
     },
     {
       id: 4,
       name: 'Eventos',
-      route: 'events',
+      route: 'eventos',
     },
   ]
 }

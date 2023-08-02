@@ -1,5 +1,6 @@
 import BannerHomePage from "@/components/HOME/BannerHomePage"
 import CollectionsItemsCardHomePage from "@/components/HOME/CollectionsItemsCardHomePage"
+import DepositionsArea from "@/components/HOME/DepositionsArea"
 import EventsItemsHomePage from "@/components/HOME/EventsItemsHomePage"
 import HighLightsHomePage from "@/components/HOME/HighLightsHomePage"
 
@@ -127,6 +128,7 @@ export default async function Page() {
         <EventsItemsHomePage
           data={{ events }}
         />
+        <DepositionsArea />
         <HighLightsHomePage
           data={{ highlights }}
         />
