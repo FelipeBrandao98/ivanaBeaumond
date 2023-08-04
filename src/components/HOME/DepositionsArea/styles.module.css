@@ -23,3 +23,14 @@
 .h1 {
   color: var(--white);
 }
+
+@media (max-width: 720px) {
+  .container {
+    padding: 0;
+  }
+
+  .row {
+    padding: 0;
+    height: calc(4 * (15rem + 12vh));
+  }
+}

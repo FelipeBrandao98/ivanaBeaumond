@@ -298,3 +298,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 08-04-23
 
 ### 1 - Atualização do componente de comentário na homePage
+
+### 2 - Atualização do componente de comentário na homePage para Mobile
