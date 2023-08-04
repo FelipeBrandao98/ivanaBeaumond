@@ -11,7 +11,7 @@ import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
 
 
-export default function Menu({ content }) {
+export default function Menu({ content, children }) {
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
   }, []);
@@ -71,6 +71,7 @@ export default function Menu({ content }) {
           </div>
         </OpenMenuForMobile>
       </header >
+      {children}
     </div>
   )
 }

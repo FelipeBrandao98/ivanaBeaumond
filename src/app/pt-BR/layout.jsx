@@ -42,16 +42,17 @@ const contentSubscribe = {
 export default function HomePageLayout({ children }) {
   return (
     <LanguageHook>
-      <Menu content={contentMenu} />
-      <main>
-        {children}
-      </main>
-      <AdressItem />
-      <SubscribeItem content={contentSubscribe} />
-      <Footer />
+      <Menu content={contentMenu}>
+        <main>
+          {children}
+        </main>
+        <AdressItem />
+        <SubscribeItem content={contentSubscribe} />
+        <Footer />
 
-      <GuideToBottomScroll text1={'Arraste para baixo'} text2={'para ver mais.'} />
-      <ScrollToTop />
+        <GuideToBottomScroll text1={'Arraste para baixo'} text2={'para ver mais.'} />
+        <ScrollToTop />
+      </Menu>
     </LanguageHook>
   )
 }

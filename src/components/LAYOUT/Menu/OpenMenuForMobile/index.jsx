@@ -22,6 +22,10 @@ export default function OpenMenuForMobile({ children }) {
       <div className={styles.menuNavsArea}>
         {children}
       </div>
+      <div
+        className={isOpen ? styles.outOpen : ''}
+        onClick={handleIsOpen}
+      ></div>
     </div>
   )
 }
