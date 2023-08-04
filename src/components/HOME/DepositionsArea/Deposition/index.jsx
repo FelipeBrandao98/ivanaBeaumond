@@ -1,9 +1,32 @@
+'use client'
 import Image from 'next/image'
-import { AiOutlineHeart, AiOutlineStar } from 'react-icons/ai'
+import {
+  AiOutlineHeart,
+  AiFillHeart,
+  AiOutlineStar,
+  AiFillStar
+} from 'react-icons/ai'
 
 import styles from './styles.module.css'
+import { useState } from 'react'
 
 export default function Deposition() {
+  const [liked, setLiked] = useState(false)
+  const [likes, setLikes] = useState(2)
+  const maxAvaliation = [1, 2, 3, 4, 5]
+  const avaliation = 4
+
+  function likeHeart() {
+    if (liked) {
+      setLikes(likes - 1)
+      setLiked(false)
+    }
+    else {
+      setLikes(likes + 1)
+      setLiked(true)
+    }
+  }
+
   return (
     <aside className={styles.container}>
       <div className={styles.avatarArea}>
@@ -18,31 +41,24 @@ export default function Deposition() {
       </div>
 
       <div className={styles.classificationArea}>
-        <AiOutlineStar
-          className={styles.star}
-          width={50}
-          height={50}
-        />
-        <AiOutlineStar
-          className={styles.star}
-          width={50}
-          height={50}
-        />
-        <AiOutlineStar
-          className={styles.star}
-          width={50}
-          height={50}
-        />
-        <AiOutlineStar
-          className={styles.star}
-          width={50}
-          height={50}
-        />
-        <AiOutlineStar
-          className={styles.star}
-          width={50}
-          height={50}
-        />
+        {
+          maxAvaliation.map(heart => {
+            return (
+              heart <= avaliation ?
+                <AiFillStar
+                  className={styles.star}
+                  width={50}
+                  height={50}
+                />
+                :
+                <AiOutlineStar
+                  className={styles.star}
+                  width={50}
+                  height={50}
+                />
+            )
+          })
+        }
       </div>
 
       <div className={styles.depositionArea}>
@@ -54,12 +70,31 @@ export default function Deposition() {
       </div>
 
       <div className={styles.likeArea}>
-        <AiOutlineHeart
-          className={styles.heart}
-          width={50}
-          height={50}
-        />
-        <p className={styles.numberOfLike}>1</p>
+        {
+          liked ?
+            <div
+              onClick={likeHeart}
+              className={styles.heartArea}
+            >
+              <AiFillHeart
+                className={styles.likedHeart}
+                width={50}
+                height={50}
+              />
+            </div>
+            :
+            <div
+              onClick={likeHeart}
+              className={styles.heartArea}
+            >
+              <AiOutlineHeart
+                className={styles.heart}
+                width={50}
+                height={50}
+              />
+            </div>
+        }
+        <p className={styles.numberOfLike}>{likes}</p>
       </div>
     </aside >
   )
