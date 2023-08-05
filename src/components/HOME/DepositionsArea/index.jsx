@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Deposition from './Deposition'
 
 import styles from './styles.module.css'
@@ -12,6 +14,12 @@ export default function DepositionsArea() {
         <Deposition />
         <Deposition />
       </div>
+      <Link
+        className={styles.seeMoreButton}
+        href={'pt-BR/comentarios'}
+      >
+        Mais Comentários
+      </Link>
     </section>
   )
 }

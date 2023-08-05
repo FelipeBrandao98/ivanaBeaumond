@@ -2,19 +2,32 @@
 import { useState } from 'react'
 import LoadingSubscribe from './LoadingSubscribe'
 import SuccessSubscribe from './SuccessSubscribe'
+
+import api from '@/services/api'
+
 import styles from './styles.module.css'
 
 export default function SubscribeItem({ content }) {
   const [loading, setLoading] = useState(false)
   const [checked, setChecked] = useState(false)
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
+
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      setChecked(true)
-    }, 5000);
+
+    const data = {
+      mail: event.target.mail.value
+    }
+
+    try {
+      await api.post('mailer', data)
+    } catch (err) {
+        alert('error 404')
+    }
+
+    setLoading(false)
+    setChecked(true)
   }
 
   return (
@@ -31,9 +44,14 @@ export default function SubscribeItem({ content }) {
             >
               <input
                 className={styles.input}
-                type="email" placeholder={content.placeholder}
+                type="email"
+                id='mail'
+                name='mail'
+                required
+                placeholder={content.placeholder}
               />
               <button
+                type='submit'
                 className={styles.button}
               >
                 {content.submitText}
@@ -45,24 +63,29 @@ export default function SubscribeItem({ content }) {
             checked ?
               <SuccessSubscribe /> :
               <aside className={styles.aside}>
-                <h3 className={styles.h3}>
-                  {content.text}
-                </h3>
-                <form
-                  className={styles.form}
-                  onSubmit={handleSubmit}
-                >
-                  <input
-                    className={styles.input}
-                    type="email" placeholder={content.placeholder}
-                  />
-                  <button
-                    className={styles.button}
-                  >
-                    {content.submitText}
-                  </button>
-                </form>
-              </aside>
+            <h3 className={styles.h3}>
+              {content.text}
+            </h3>
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit}
+            >
+              <input
+                className={styles.input}
+                type="email"
+                id='mail'
+                name='mail'
+                required
+                placeholder={content.placeholder}
+              />
+              <button
+                type='submit'
+                className={styles.button}
+              >
+                {content.submitText}
+              </button>
+            </form>
+          </aside>
       }
     </section>
   )

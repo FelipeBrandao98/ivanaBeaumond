@@ -46,12 +46,14 @@ export default function Deposition() {
             return (
               heart <= avaliation ?
                 <AiFillStar
+                  key={heart}
                   className={styles.star}
                   width={50}
                   height={50}
                 />
                 :
                 <AiOutlineStar
+                  key={heart}
                   className={styles.star}
                   width={50}
                   height={50}

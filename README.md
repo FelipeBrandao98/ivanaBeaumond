@@ -302,3 +302,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 2 - Atualização do componente de comentário na homePage para Mobile
 
 ### 3 - Função de fechar menu mobile, ao clicar fora
+
+## 08-05-23
+
+### 1 - Criado funçao de chamada na api para cadastrar e-mail
