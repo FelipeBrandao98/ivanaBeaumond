@@ -2,8 +2,11 @@
 import Image from 'next/image'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { useState } from 'react'
+import { format } from 'date-fns'
 
 import styles from './styles.module.css'
+import Link from 'next/link'
+import formatToUrl from '@/utils/formatToUrl'
 
 export default function BlogOtherPosts({ title, data }) {
   const [post, setPost] = useState(1)
@@ -72,28 +75,35 @@ export default function BlogOtherPosts({ title, data }) {
           `
           }
         >
-          {data.map((data) => {
+          {data.map(async (data) => {
             return (
 
               <aside
                 className={styles.post}
                 key={data.id}
               >
-                <h5 className={styles.postTitle}>{data.title}</h5>
+                <h5 className={styles.postTitle}>{data.title.toUpperCase()}</h5>
                 <div className={styles.imageArea}>
                   <Image
                     className={styles.image}
-                    src={data.imageSource}
-                    alt={data.imageAlt}
+                    src={data.cover.url}
+                    alt={data.cover.author}
                     width={'320'}
                     height={'180'}
                   />
-                  <p className={styles.imageDescription}>{data.imageCredits}</p>
+                  <p className={styles.imageDescription}>{data.coverCredit}</p>
                 </div>
-                <p className={styles.subTitle}>{data.subTitle}</p>
-                <p className={styles.date}>{data.date}</p>
+                <p className={styles.subTitle}>{data.subtitle}</p>
+                <p className={styles.date}>{
+                  format(new Date(data.publishDate), 'dd/MM/yyyy')
+                }</p>
                 <div className={styles.seeMoreArea}>
-                  <button className={styles.seeMoreButton}>Leia Mais</button>
+                  <Link
+                  className={styles.seeMoreButton}
+                  href={`/noticias/${formatToUrl(data.title)}`}
+                  >
+                    Leia Mais
+                  </Link>
                 </div>
               </aside>
             )

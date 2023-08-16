@@ -1,49 +1,56 @@
 import BlogBanner from "@/components/BLOG/BlogPostsPage/BlogBanner";
 import BlogOtherPosts from "@/components/BLOG/BlogPostsPage/BlogOtherPosts";
 import BlogPostPage from "@/components/BLOG/BlogPostsPage";
+import api from "@/services/api";
 
-const posts1 = [
-  {
-    id: 1,
-    title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
-    imageSource: '/homeimage.jpg',
-    imageAlt: 'Ivana Beaumond',
-    imageCredits: 'Soluta: quisquam aliquid.',
-    subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
-    date: '29/10/2015',
-    fullLink: '',
-  },
-  {
-    id: 2,
-    title: 'Ivana Beaumond na Amazônia',
-    imageSource: '/photos_blog/photo_blog_1.jpeg',
-    imageAlt: 'Ivana Beaumond',
-    imageCredits: 'Soluta: quisquam aliquid.',
-    subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
-    date: '29/10/2015',
-    fullLink: '',
-  },
-  {
-    id: 3,
-    title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
-    imageSource: '/photos_blog/photo_blog_3.jpg',
-    imageAlt: 'Ivana Beaumond',
-    imageCredits: 'Soluta: quisquam aliquid.',
-    subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
-    date: '29/10/2015',
-    fullLink: '',
-  },
-  {
-    id: 4,
-    title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
-    imageSource: '/photos_blog/photo_blog_3.jpg',
-    imageAlt: 'Ivana Beaumond',
-    imageCredits: 'Soluta: quisquam aliquid.',
-    subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
-    date: '29/10/2015',
-    fullLink: '',
-  },
-]
+async function getData() {
+  const res = await api.get('/news')
+
+  return res.data
+}
+
+// const posts1 = [
+//   {
+//     id: 1,
+//     title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
+//     imageSource: '/homeimage.jpg',
+//     imageAlt: 'Ivana Beaumond',
+//     imageCredits: 'Soluta: quisquam aliquid.',
+//     subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
+//     date: '29/10/2015',
+//     fullLink: '',
+//   },
+//   {
+//     id: 2,
+//     title: 'Ivana Beaumond na Amazônia',
+//     imageSource: '/photos_blog/photo_blog_1.jpeg',
+//     imageAlt: 'Ivana Beaumond',
+//     imageCredits: 'Soluta: quisquam aliquid.',
+//     subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
+//     date: '29/10/2015',
+//     fullLink: '',
+//   },
+//   {
+//     id: 3,
+//     title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
+//     imageSource: '/photos_blog/photo_blog_3.jpg',
+//     imageAlt: 'Ivana Beaumond',
+//     imageCredits: 'Soluta: quisquam aliquid.',
+//     subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
+//     date: '29/10/2015',
+//     fullLink: '',
+//   },
+//   {
+//     id: 4,
+//     title: 'Ivana Beaumond assina novo editorial de noivas em Paris',
+//     imageSource: '/photos_blog/photo_blog_3.jpg',
+//     imageAlt: 'Ivana Beaumond',
+//     imageCredits: 'Soluta: quisquam aliquid.',
+//     subTitle: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum',
+//     date: '29/10/2015',
+//     fullLink: '',
+//   },
+// ]
 
 const posts2 = [
   {
@@ -88,7 +95,8 @@ const posts2 = [
   },
 ]
 
-export default function Page() {
+export default async function Page() {
+  const posts1 = await getData()
 
   return (
     <BlogPostPage>
@@ -99,7 +107,7 @@ export default function Page() {
       />
       <BlogOtherPosts
         title='Na Mídia'
-        data={posts2}
+        data={posts1}
       />
       <BlogOtherPosts
         title='Nossas Noivas'
@@ -107,7 +115,7 @@ export default function Page() {
       />
       <BlogOtherPosts
         title='Dicas e Truques'
-        data={posts2}
+        data={posts1}
       />
     </BlogPostPage>
   )

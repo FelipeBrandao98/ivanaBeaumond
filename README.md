@@ -306,3 +306,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 08-05-23
 
 ### 1 - Criado funçao de chamada na api para cadastrar e-mail
+
+## 16-08-23
+
+### 1 - Feito chamada a api para noticias, formatação de dados, alteração do next.config.js para chamadas externas de imagens e funcil util para otimizar o título para url
