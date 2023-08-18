@@ -1,12 +1,14 @@
 'use client'
+
 import Image from 'next/image'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { useState } from 'react'
 import { format } from 'date-fns'
 
-import styles from './styles.module.css'
 import Link from 'next/link'
+import styles from './styles.module.css'
 import formatToUrl from '@/utils/formatToUrl'
+import formatToSubTitle from '@/utils/formatToSubTitle'
 
 export default function BlogOtherPosts({ title, data }) {
   const [post, setPost] = useState(1)
@@ -52,9 +54,7 @@ export default function BlogOtherPosts({ title, data }) {
 
   return (
     <section className={styles.section}>
-      <h4 className={styles.title}>
-        {title ? title : 'Título'}
-      </h4>
+      <h4 className={styles.title}>{title || 'Título'}</h4>
 
       <div className={styles.contentArea}>
         <div className={styles.fromLeftArea}>
@@ -68,39 +68,35 @@ export default function BlogOtherPosts({ title, data }) {
         </div>
 
         <div
-          className={
-            `
+          className={`
           ${styles.postsArea}
           ${postClass}
-          `
-          }
+          `}
         >
           {data.map(async (data) => {
             return (
-
-              <aside
-                className={styles.post}
-                key={data.id}
-              >
+              <aside className={styles.post} key={data.id}>
                 <h5 className={styles.postTitle}>{data.title.toUpperCase()}</h5>
                 <div className={styles.imageArea}>
                   <Image
                     className={styles.image}
                     src={data.cover.url}
                     alt={data.cover.author}
-                    width={'320'}
-                    height={'180'}
+                    width="320"
+                    height="180"
                   />
                   <p className={styles.imageDescription}>{data.coverCredit}</p>
                 </div>
-                <p className={styles.subTitle}>{data.subtitle}</p>
-                <p className={styles.date}>{
-                  format(new Date(data.publishDate), 'dd/MM/yyyy')
-                }</p>
+                <p className={styles.subTitle}>
+                  {formatToSubTitle(data.subtitle)}
+                </p>
+                <p className={styles.date}>
+                  {format(new Date(data.publishDate), 'dd/MM/yyyy')}
+                </p>
                 <div className={styles.seeMoreArea}>
                   <Link
-                  className={styles.seeMoreButton}
-                  href={`/noticias/${formatToUrl(data.title)}`}
+                    className={styles.seeMoreButton}
+                    href={`/noticias/${formatToUrl(data.title)}`}
                   >
                     Leia Mais
                   </Link>
@@ -119,7 +115,6 @@ export default function BlogOtherPosts({ title, data }) {
             />
           </button>
         </div>
-
       </div>
     </section>
   )

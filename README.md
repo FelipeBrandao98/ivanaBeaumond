@@ -310,3 +310,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 16-08-23
 
 ### 1 - Feito chamada a api para noticias, formatação de dados, alteração do next.config.js para chamadas externas de imagens e funcil util para otimizar o título para url
+
+### 18-08-23
+
+## 1 - Criado a função util de reduzir tamanho do subtítulo e instalado e configurado eslint com prettier
