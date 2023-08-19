@@ -316,3 +316,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 1 - Criado a função util de reduzir tamanho do subtítulo e instalado e configurado eslint com prettier
 
 ## 2 - Readaptação do layout de post para ficar simétrico
+
+### 19-08-23
+
+## 1 - Feito chamada a api para Categories Items Home

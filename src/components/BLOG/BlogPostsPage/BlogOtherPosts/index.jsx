@@ -73,7 +73,7 @@ export default function BlogOtherPosts({ title, data }) {
           ${postClass}
           `}
         >
-          {data.map(async (data) => {
+          {data.map((data) => {
             return (
               <aside className={styles.post} key={data.id}>
                 <h5 className={styles.postTitle}>{data.title.toUpperCase()}</h5>

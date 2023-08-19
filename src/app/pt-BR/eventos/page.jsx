@@ -1,7 +1,5 @@
-import MainPageEvents from "@/components/EVENTS/MainPageEvents";
+import MainPageEvents from '@/components/EVENTS/MainPageEvents'
 
 export default function Page() {
-  return (
-    <MainPageEvents />
-  )
+  return <MainPageEvents />
 }

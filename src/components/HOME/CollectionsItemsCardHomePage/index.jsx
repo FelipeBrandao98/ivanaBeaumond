@@ -1,7 +1,8 @@
 'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
@@ -11,13 +12,6 @@ import styles from './styles.module.css'
 export default function CollectionsItemsCardHomePage({ data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
-
-  // useEffect(() => {
-
-  //   setTimeout(() => {
-  //     changeSlideFromRight()
-  //   }, 15000);
-  // }, [])
 
   function changeSlideFromRight() {
     if (slide === 1) {
@@ -68,7 +62,11 @@ export default function CollectionsItemsCardHomePage({ data }) {
   return (
     <>
       <div className={styles.titleArea}>
-        <h1 className={styles.title}>Confira Nossas<br />Categorias de Roupas</h1>
+        <h1 className={styles.title}>
+          Confira Nossas
+          <br />
+          Categorias de Roupas
+        </h1>
         <HiOutlineArrowNarrowDown
           className={styles.arrowDown}
           width={100}
@@ -77,7 +75,10 @@ export default function CollectionsItemsCardHomePage({ data }) {
       </div>
       <section className={styles.section}>
         <div className={styles.fromLeftArea}>
-          <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
+          <button
+            className={styles.fromLeftButton}
+            onClick={changeSlideFromLeft}
+          >
             <FiArrowLeft
               className={styles.fromLeftImage}
               width={100}
@@ -87,40 +88,36 @@ export default function CollectionsItemsCardHomePage({ data }) {
         </div>
 
         <div className={styles.slides}>
-          <div className={
-            `
+          <div
+            className={`
         ${styles.SlideArea}
         ${slideClass}
-        `
-          }>
-
-
-            {data.categories.map((categorie) => {
+        `}
+          >
+            {data.map((categorie) => {
               return (
-                <aside
-                  key={categorie.id}
-                  className={styles.aside}
-                >
-                  <h3>{categorie.name}</h3>
+                <aside key={categorie.id} className={styles.aside}>
+                  <h3>{categorie.description}</h3>
                   <Image
                     className={styles.image}
-                    src={categorie.imageUrl}
-                    alt={categorie.imageAlt}
+                    src={categorie.cover.url}
+                    alt={categorie.cover.author}
                     width={1080}
                     height={1920}
                   />
                   <div className={styles.comments}>
-                    <p>{categorie.description}</p>
-                    <button><Link href={categorie.route}>Descubra Agora <FaArrowRight /></Link></button>
+                    <p>{categorie.subdescription}</p>
+                    <button>
+                      <Link href={''}>
+                        Descubra Agora <FaArrowRight />
+                      </Link>
+                    </button>
                   </div>
                 </aside>
               )
             })}
-
           </div>
-
-
-        </div >
+        </div>
 
         <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
           <button className={styles.fromRightButton}>
@@ -130,8 +127,7 @@ export default function CollectionsItemsCardHomePage({ data }) {
               height={100}
             />
           </button>
-
-        </div >
+        </div>
       </section>
     </>
   )
