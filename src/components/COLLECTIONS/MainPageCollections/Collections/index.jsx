@@ -13,7 +13,7 @@ export default function Collections({ data }) {
             id={data.id}
             title={data.title}
             description={data.description}
-            imageUrl={data.imageUrl}
+            imageUrl={data.cover.url}
           />
         )
       })}

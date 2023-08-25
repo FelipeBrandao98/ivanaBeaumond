@@ -320,3 +320,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 19-08-23
 
 ## 1 - Feito chamada a api para Categories Items Home
+
+### 25-08-23
+
+## 1 - Finalizado render de comentários na home page

@@ -5,8 +5,14 @@ import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
 import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
 import api from '@/services/api'
 
-async function getData() {
+async function getCollectionsCategoryData() {
   const res = await api.get('/collections-category')
+
+  return res.data
+}
+
+async function getDepositionsData() {
+  const res = await api.get('/comments')
 
   return res.data
 }
@@ -84,7 +90,8 @@ const highlights = {
 }
 
 export default async function Page() {
-  const categories = await getData()
+  const categories = await getCollectionsCategoryData()
+  const depositions = await getDepositionsData()
 
   return (
     <>
@@ -92,7 +99,7 @@ export default async function Page() {
         <BannerHomePage />
         <CollectionsItemsCardHomePage data={categories} />
         <EventsItemsHomePage data={{ events }} />
-        <DepositionsArea />
+        <DepositionsArea data={depositions} />
         <HighLightsHomePage data={{ highlights }} />
       </main>
     </>

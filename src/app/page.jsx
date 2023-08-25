@@ -1,9 +1,8 @@
 import styles from '@/styles/loading.module.css'
-import RedirectLanguageComponent from "@/components/RedirectLanguageComponent";
-import LanguageHook from "@/hooks/LanguageContext";
+import RedirectLanguageComponent from '@/components/RedirectLanguageComponent'
+import LanguageHook from '@/hooks/LanguageContext'
 
-export default function Page() {
-
+export default async function Page() {
   return (
     <>
       <LanguageHook>

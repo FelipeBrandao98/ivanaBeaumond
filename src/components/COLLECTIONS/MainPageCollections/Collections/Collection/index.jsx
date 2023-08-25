@@ -26,21 +26,20 @@ export default function Collection({ id, title, description, imageUrl }) {
               className={styles.buttonOpenContentImage}
               width={480}
               height={480}
-              color='white'
+              color="white"
             />
             <p>Clique aqui para mais informações</p>
           </span>
         </div>
-
-      ) : ('')}
+      ) : (
+        ''
+      )}
 
       <div
-        className={
-          `
+        className={`
                   ${styles.contentArea}
                   ${displayed ? styles.displayed : ''}
-                `
-        }
+                `}
       >
         <div className={styles.titleArea}>
           <h1 className={styles.title}>{title}</h1>
@@ -51,18 +50,15 @@ export default function Collection({ id, title, description, imageUrl }) {
           </div>
 
           <PhotoSlidesCollections />
-
         </div>
         <div className={styles.buttonArea}>
-          <button className={styles.button}>
-            SAIBA TUDO SOBRE A COLEÇÃO
-          </button>
+          <button className={styles.button}>SAIBA TUDO SOBRE A COLEÇÃO</button>
         </div>
       </div>
       <Image
         className={styles.image}
         src={imageUrl}
-        alt='Ivana Beaumond'
+        alt="Ivana Beaumond"
         width={1920}
         height={1080}
       />

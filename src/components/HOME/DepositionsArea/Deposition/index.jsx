@@ -4,24 +4,23 @@ import {
   AiOutlineHeart,
   AiFillHeart,
   AiOutlineStar,
-  AiFillStar
+  AiFillStar,
 } from 'react-icons/ai'
 
 import styles from './styles.module.css'
 import { useState } from 'react'
 
-export default function Deposition() {
+export default function Deposition({ data }) {
   const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(2)
+  const [likes, setLikes] = useState(data.likes)
   const maxAvaliation = [1, 2, 3, 4, 5]
-  const avaliation = 4
+  const avaliation = data.avaliation
 
   function likeHeart() {
     if (liked) {
       setLikes(likes - 1)
       setLiked(false)
-    }
-    else {
+    } else {
       setLikes(likes + 1)
       setLiked(true)
     }
@@ -32,39 +31,36 @@ export default function Deposition() {
       <div className={styles.avatarArea}>
         <Image
           className={styles.avatar}
-          src={'/avatar.jpg'}
+          src={data.image.url}
           width={100}
           height={100}
-          alt='Ivana Beaumond'
+          alt="Ivana Beaumond"
         />
-        <p className={styles.avatarName}>John Maynard Keynes</p>
+        <p className={styles.avatarName}>{data.userName}</p>
       </div>
 
       <div className={styles.classificationArea}>
-        {
-          maxAvaliation.map(heart => {
-            return (
-              heart <= avaliation ?
-                <AiFillStar
-                  key={heart}
-                  className={styles.star}
-                  width={50}
-                  height={50}
-                />
-                :
-                <AiOutlineStar
-                  key={heart}
-                  className={styles.star}
-                  width={50}
-                  height={50}
-                />
-            )
-          })
-        }
+        {maxAvaliation.map((heart) => {
+          return heart <= avaliation ? (
+            <AiFillStar
+              key={heart}
+              className={styles.star}
+              width={50}
+              height={50}
+            />
+          ) : (
+            <AiOutlineStar
+              key={heart}
+              className={styles.star}
+              width={50}
+              height={50}
+            />
+          )
+        })}
       </div>
 
       <div className={styles.depositionArea}>
-        <p className={styles.deposition}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus ullam id labore neque inventore animi? At nisi quibusdam sit quia, nesciunt voluptates exercitationem ipsam? Incidunt deleniti ullam nam animi explicabo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe impedit voluptatum deserunt sapiente hic recusandae rem quae, vitae inventore molestiae iusto similique laboriosam nesciunt odio, perspiciatis aut beatae, nobis quod! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur esse ad sequi tenetur odio. Vitae quam at, libero ad magnam temporibus odit laboriosam consequuntur ipsam placeat sit quas error labore!</p>
+        <p className={styles.deposition}>{data.description}</p>
       </div>
 
       <div className={styles.dateArea}>
@@ -72,32 +68,17 @@ export default function Deposition() {
       </div>
 
       <div className={styles.likeArea}>
-        {
-          liked ?
-            <div
-              onClick={likeHeart}
-              className={styles.heartArea}
-            >
-              <AiFillHeart
-                className={styles.likedHeart}
-                width={50}
-                height={50}
-              />
-            </div>
-            :
-            <div
-              onClick={likeHeart}
-              className={styles.heartArea}
-            >
-              <AiOutlineHeart
-                className={styles.heart}
-                width={50}
-                height={50}
-              />
-            </div>
-        }
-        <p className={styles.numberOfLike}>{likes}</p>
+        {liked ? (
+          <div onClick={likeHeart} className={styles.heartArea}>
+            <AiFillHeart className={styles.likedHeart} width={50} height={50} />
+          </div>
+        ) : (
+          <div onClick={likeHeart} className={styles.heartArea}>
+            <AiOutlineHeart className={styles.heart} width={50} height={50} />
+          </div>
+        )}
+        <p className={styles.numberOfLike}>{data.likes}</p>
       </div>
-    </aside >
+    </aside>
   )
 }
