@@ -14,14 +14,8 @@ export default function OpenMenuForMobile({ children }) {
 
   return (
     <div className={isOpen ? styles.open : styles.close}>
-      <FaBars
-        onClick={handleIsOpen}
-        size={100}
-        className={styles.icon}
-      />
-      <div className={styles.menuNavsArea}>
-        {children}
-      </div>
+      <FaBars onClick={handleIsOpen} size={100} className={styles.icon} />
+      <div className={styles.menuNavsArea}>{children}</div>
       <div
         className={isOpen ? styles.outOpen : ''}
         onClick={handleIsOpen}

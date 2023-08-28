@@ -1,88 +1,87 @@
 'use client'
 import { FaChevronDown } from 'react-icons/fa'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import Link from 'next/link'
 
 import styles from './styles.module.css'
 
-import { LanguageContext } from '@/hooks/LanguageContext'
-
+import { useLanguageContext } from '@/Context/LanguageContext'
 
 export default function TraductionButton({ hidden }) {
-  const languageContext = useContext(LanguageContext)
-
   const [isOpen, setIsOpen] = useState(false)
 
   function handleIsOpen() {
     isOpen ? setIsOpen(false) : setIsOpen(true)
   }
 
-  function changeLanguageContext(language) {
-    languageContext.setLanguage(language)
-  }
-
   return (
     <div
-      className={
-        `
+      className={`
           ${hidden ? styles.hidden : ''}
-        `
-      }
+        `}
     >
-      {console.log(languageContext.language)}
       <ol className={isOpen ? styles.open : styles.close}>
         <li onClick={handleIsOpen}>
           <div className={styles.row}>
             BR
-            <ReactCountryFlag
-              countryCode='BR'
-              svg
-            />
+            <ReactCountryFlag countryCode="BR" svg />
           </div>
-          <FaChevronDown size={'1rem'} />
+          <FaChevronDown size={10} />
         </li>
         <li>
-          <Link
-            href={'/fr'}
-            onClick={changeLanguageContext('fr')}
-          >
+          {/* <input
+            type="radio"
+            name="language"
+            value="fr"
+            id="fr"
+            checked={languageContext.language === 'fr'}
+            onChange={(e) => languageContext.redirectRouter(e.target.value)}
+          />
+          <label htmlFor="fr"> */}
+          <Link href={`/${'fr'}`}>
             <div className={styles.row}>
               FR
-              <ReactCountryFlag
-                countryCode='FR'
-                svg
-              />
+              <ReactCountryFlag countryCode="FR" svg />
             </div>
           </Link>
+          {/* </label> */}
         </li>
         <li>
-          <Link
-            href={'/en'}
-            onClick={changeLanguageContext('en')}
-          >
+          {/* <input
+            type="radio"
+            name="language"
+            value="en"
+            id="en"
+            checked={languageContext.language === 'en'}
+            onChange={(e) => languageContext.redirectRouter(e.target.value)}
+          />
+          <label htmlFor="en"> */}
+          <Link href={`/${'us'}`}>
             <div className={styles.row}>
               US
-              <ReactCountryFlag
-                countryCode='US'
-                svg
-              />
+              <ReactCountryFlag countryCode="US" svg />
             </div>
           </Link>
+          {/* </label> */}
         </li>
         <li>
-          <Link
-            href={'/de'}
-            onClick={changeLanguageContext('de')}
-          >
+          {/* <input
+            type="radio"
+            name="language"
+            value="de"
+            id="de"
+            checked={languageContext.language === 'de'}
+            onChange={(e) => languageContext.redirectRouter(e.target.value)}
+          />
+          <label htmlFor="de"> */}
+          <Link href={`/${'de'}`}>
             <div className={styles.row}>
               DE
-              <ReactCountryFlag
-                countryCode='DE'
-                svg
-              />
+              <ReactCountryFlag countryCode="DE" svg />
             </div>
           </Link>
+          {/* </label> */}
         </li>
       </ol>
     </div>

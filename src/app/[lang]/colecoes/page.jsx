@@ -28,7 +28,6 @@ export default async function Page() {
 
   return (
     <>
-      {console.log(data)}
       <MainPageCollections data={data} />
     </>
   )

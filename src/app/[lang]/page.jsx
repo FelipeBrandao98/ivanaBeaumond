@@ -89,7 +89,7 @@ const highlights = {
   ],
 }
 
-export default async function Page() {
+export default async function Page({ params: { lang } }) {
   const categories = await getCollectionsCategoryData()
   const depositions = await getDepositionsData()
 
@@ -97,6 +97,7 @@ export default async function Page() {
     <>
       <main>
         <BannerHomePage />
+        <h1>{lang}</h1>
         <CollectionsItemsCardHomePage data={categories} />
         <EventsItemsHomePage data={{ events }} />
         <DepositionsArea data={depositions} />

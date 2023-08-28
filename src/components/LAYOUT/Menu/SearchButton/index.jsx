@@ -14,11 +14,10 @@ export default function SearchButton() {
   return (
     <>
       <div className={open ? styles.searchOpen : styles.searchClose}>
-        <input type='text' />
+        <input type="text" />
         <input type="button" value="Buscar" />
       </div>
       <div className={styles.searchIconArea}>
-
         <BiSearchAlt2
           onClick={handleOpenSearch}
           className={styles.searchIcon}

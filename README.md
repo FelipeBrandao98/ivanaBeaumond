@@ -324,3 +324,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 25-08-23
 
 ## 1 - Finalizado render de comentários na home page
+
+## 2 - Mudanças nas rotas e botão de tradução
+
+### 28-08-23
+
+## 1 - Criação domiddleware de redirecionamento para linguagem (a terminar)
