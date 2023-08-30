@@ -3,16 +3,21 @@ import { FaChevronDown } from 'react-icons/fa'
 import { useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 import styles from './styles.module.css'
-
-import { useLanguageContext } from '@/Context/LanguageContext'
 
 export default function TraductionButton({ hidden }) {
   const [isOpen, setIsOpen] = useState(false)
 
   function handleIsOpen() {
     isOpen ? setIsOpen(false) : setIsOpen(true)
+  }
+
+  function changeLanguage() {
+    const language = 'en'
+
+    return redirect(`/${language}`)
   }
 
   return (
@@ -75,12 +80,12 @@ export default function TraductionButton({ hidden }) {
             onChange={(e) => languageContext.redirectRouter(e.target.value)}
           />
           <label htmlFor="de"> */}
-          <Link href={`/${'de'}`}>
+          <button onClick={changeLanguage}>
             <div className={styles.row}>
               DE
               <ReactCountryFlag countryCode="DE" svg />
             </div>
-          </Link>
+          </button>
           {/* </label> */}
         </li>
       </ol>

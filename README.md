@@ -330,3 +330,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 28-08-23
 
 ## 1 - Criação domiddleware de redirecionamento para linguagem (a terminar)
+
+### 30-08-23
+
+## 1 = Middleware de redirecionamento finalizado (Falta funcionalidade de armazenar linguagem alterada ao trocar de rota)
