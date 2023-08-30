@@ -1,52 +1,23 @@
 'use client'
-import detectBrowserLanguage from 'detect-browser-language'
-import { createContext, useContext, useEffect, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { createContext, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
-export const LanguageContext = createContext()
+export const LangContext = createContext()
 
-export function LanguageContextProvider({ children }) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const [language, setLanguage] = useState('')
-  const lang = pathname.split('/')[1]
+export function LangContextProvider({ children, cookie }) {
+  const [lang, setLang] = useState(usePathname().split('/')[0])
 
-  function redirectRouter(language) {
-    // router.replace(`/${language}`)
-  }
-
-  function redirectByLanguageDefault() {
-    // router.push('/', { locale: detectBrowserLanguage() })
-    // setLanguage(detectBrowserLanguage())
-  }
-
-  function getLangByPath() {
-    // if (lang === '') {
-    //   return router.replace('/')
-    // }
-    // if (lang) {
-    //   setLanguage(lang)
-    // }
+  function changeLang(lang) {
+    setLang(lang)
   }
 
   useEffect(() => {
-    // getLangByPath()
-  }, [])
+    changeLang(cookie)
+  }, [cookie])
 
   return (
-    <LanguageContext.Provider
-      value={{
-        redirectRouter,
-        redirectByLanguageDefault,
-        language,
-        router,
-      }}
-    >
-      {console.log(pathname)}
-      {console.log(language)}
+    <LangContext.Provider value={{ lang, changeLang }}>
       {children}
-    </LanguageContext.Provider>
+    </LangContext.Provider>
   )
 }
-
-export const useLanguageContext = () => useContext(LanguageContext)

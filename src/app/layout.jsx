@@ -13,11 +13,10 @@ import {
   Oooh_Baby,
   Playfair_Display,
 } from 'next/font/google'
+import { cookies } from 'next/headers'
 import Head from 'next/head'
 
 import '@/styles/globals.css'
-
-import { LanguageContextProvider } from '@/Context/LanguageContext'
 
 import AdressItem from '@/components/LAYOUT/AdressItem'
 import Footer from '@/components/LAYOUT/Footer'
@@ -25,6 +24,8 @@ import GuideToBottomScroll from '@/components/LAYOUT/GuideToBottomScroll'
 import Menu from '@/components/LAYOUT/Menu'
 import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
+
+import { LangContextProvider } from '@/Context/LanguageContext'
 
 const contentMenu = {
   appointment: 'Marque um Horário',
@@ -136,7 +137,11 @@ export const metadata = {
   description: 'Seu site de noivas',
 }
 
-export default async function LocaleLayout({ children, params: { lang } }) {
+export default async function LocaleLayout({ children }) {
+  const cookieStore = cookies()
+  const cookie = cookieStore.get('lang')
+  const lang = cookie.value
+
   return (
     <html lang={lang}>
       <Head>
@@ -173,7 +178,8 @@ export default async function LocaleLayout({ children, params: { lang } }) {
         ${playfair_display.variable}
         `}
       >
-        <>
+        {console.log(`Cookie: ${lang}`)}
+        <LangContextProvider cookie={lang}>
           <Menu content={contentMenu}>
             <main>{children}</main>
             <AdressItem />
@@ -187,7 +193,7 @@ export default async function LocaleLayout({ children, params: { lang } }) {
             <ScrollToTop />
           </Menu>
           {children}
-        </>
+        </LangContextProvider>
       </body>
     </html>
   )

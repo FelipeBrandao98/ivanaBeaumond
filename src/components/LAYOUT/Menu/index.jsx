@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
 import styles from './styles.module.css'
@@ -9,11 +9,11 @@ import styles from './styles.module.css'
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
-
-import { useLanguageContext } from '@/Context/LanguageContext'
+import { LangContext } from '@/Context/LanguageContext'
 
 export default function Menu({ content, children }) {
   const [hidden, setHidden] = useState(false)
+  const { lang } = useContext(LangContext)
 
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
@@ -59,7 +59,9 @@ export default function Menu({ content, children }) {
                 {content.menu.map((item) => {
                   return (
                     <li key={item.id}>
-                      <Link href={`/${item.route}`}>{item.name}</Link>
+                      <Link href={`/${item.route}`} lang={lang}>
+                        {item.name}
+                      </Link>
                     </li>
                   )
                 })}

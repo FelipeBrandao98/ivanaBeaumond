@@ -25,6 +25,11 @@ export function middleware(request) {
     /\/en|\/de|\/fr|\/pt-BR/g,
     '',
   )
+  const cookieFromRequest = request.cookies.get('lang')
+
+  if (cookieFromRequest.value) {
+    locale = cookieFromRequest.value
+  }
 
   if (request.nextUrl.pathname.split('/')[1]) {
     const newLocale = request.nextUrl.pathname.split('/')[1]
@@ -52,18 +57,26 @@ export function middleware(request) {
     request.nextUrl,
   )
 
-  // // e.g. incoming request is /products
-  // // The new URL is now /en/products
+  const response = NextResponse.rewrite(newUrl)
+  response.cookies.delete('lang')
+  response.cookies.set('lang', locale)
+  const cookieInResponse = response.cookies.get('lang')
 
+  console.log('-------------------------')
   console.log(`locale: ${locale}`)
   console.log(`pathname: ${pathname}`)
   console.log(`newUrl: ${newUrl}`)
-  return NextResponse.rewrite(newUrl)
+  console.log(`cookieFromRequest: ${cookieFromRequest.value}`)
+  console.log(`cookieInResponse: ${cookieInResponse.value}`)
+  console.log('_________________________')
+
+  return response
 }
 
 export const config = {
   matcher: [
     '/((?!api|_next|.*\\..*).*)',
+    '/[lang]/:path',
     // '/((?!_next|api|favicon.ico|).*)',
     // '/((?!api|_next|.*\\..*).*)',
   ],
