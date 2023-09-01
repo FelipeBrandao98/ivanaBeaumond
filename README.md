@@ -336,3 +336,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 1 = Middleware de redirecionamento finalizado (Falta funcionalidade de armazenar linguagem alterada ao trocar de rota)
 
 ## 2 - Finalizado middleware de internacionalização
+
+## 3 -  criado mecanismo de tradução automárica na tela de carregamento
+
+### 1-09-23
+
+## 1 - Finalizado a lógica de tradução das páginas

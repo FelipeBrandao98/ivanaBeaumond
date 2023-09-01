@@ -1,7 +1,7 @@
 'use client'
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import styles from './styles.module.css'
 
@@ -10,10 +10,9 @@ export default function HighLightsHomePage({ data }) {
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
   useEffect(() => {
-
     setTimeout(() => {
       changeSlideFromRight()
-    }, 15000);
+    }, 15000)
   }, [])
 
   function changeSlideFromRight() {
@@ -60,10 +59,12 @@ export default function HighLightsHomePage({ data }) {
         <h1 className={styles.mainTitle}>{data.highlights.title}</h1>
       </div>
 
-
       <section className={styles.content}>
         <div className={styles.fromLeftArea}>
-          <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
+          <button
+            className={styles.fromLeftButton}
+            onClick={changeSlideFromLeft}
+          >
             <FiArrowLeft
               className={styles.fromLeftImage}
               width={100}
@@ -75,55 +76,38 @@ export default function HighLightsHomePage({ data }) {
         <div className={styles.slideNumberButtonsArea}>
           <div className={styles.slideNumberButtons}>
             <span
-              className={
-                `
+              className={`
               ${styles.slideButton}
               ${slide === 1 ? styles.slideButtonSelected : ''}
-              `
-              }
-            >
-
-            </span>
+              `}
+            ></span>
             <span
-              className={
-                `
+              className={`
               ${styles.slideButton}
               ${slide === 2 ? styles.slideButtonSelected : ''}
-              `
-              }
-            >
-
-            </span>
+              `}
+            ></span>
             <span
-              className={
-                `
+              className={`
               ${styles.slideButton}
               ${slide === 3 ? styles.slideButtonSelected : ''}
-              `
-              }
-            >
-
-            </span>
+              `}
+            ></span>
             <span
-              className={
-                `
+              className={`
               ${styles.slideButton}
                 ${slide === 4 ? styles.slideButtonSelected : ''}
-                `
-              }
-            >
-
-            </span>
+                `}
+            ></span>
           </div>
         </div>
 
-        <div className={
-          `
+        <div
+          className={`
         ${styles.bannerArea}
         ${slideClass}
-        `
-        }>
-
+        `}
+        >
           {data.highlights.highlight.map((highlight) => {
             return (
               <aside key={highlight.id} className={styles.post}>
@@ -132,9 +116,13 @@ export default function HighLightsHomePage({ data }) {
                 </div>
 
                 <div className={styles.descriptionArea}>
-                  <h2 className={styles.description}>{highlight.description}</h2>
+                  <h2 className={styles.description}>
+                    {highlight.description}
+                  </h2>
 
-                  <button className={styles.button}>{data.highlights.seeMore}</button>
+                  <button className={styles.button}>
+                    {data.highlights.seeMore}
+                  </button>
                 </div>
 
                 <div className={styles.imageArea}>
@@ -149,9 +137,7 @@ export default function HighLightsHomePage({ data }) {
               </aside>
             )
           })}
-
-
-        </div >
+        </div>
 
         <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
           <button className={styles.fromRightButton}>
@@ -162,7 +148,7 @@ export default function HighLightsHomePage({ data }) {
             />
           </button>
         </div>
-      </section >
+      </section>
     </div>
   )
 }

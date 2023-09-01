@@ -27,7 +27,7 @@ export function middleware(request) {
   )
   const cookieFromRequest = request.cookies.get('lang')
 
-  if (cookieFromRequest.value) {
+  if (cookieFromRequest) {
     locale = cookieFromRequest.value
   }
 

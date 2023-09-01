@@ -8,8 +8,9 @@ import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
 
-export default function CollectionsItemsCardHomePage({ data }) {
+export default function CollectionsItemsCardHomePage({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
@@ -63,9 +64,9 @@ export default function CollectionsItemsCardHomePage({ data }) {
     <>
       <div className={styles.titleArea}>
         <h1 className={styles.title}>
-          Confira Nossas
+          {useLangDict(lang).home.titlePartOne}
           <br />
-          Categorias de Roupas
+          {useLangDict(lang).home.titlePartTwo}
         </h1>
         <HiOutlineArrowNarrowDown
           className={styles.arrowDown}

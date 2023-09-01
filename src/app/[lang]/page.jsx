@@ -1,8 +1,11 @@
+import { cookies } from 'next/headers'
+
 import BannerHomePage from '@/components/HOME/BannerHomePage'
 import CollectionsItemsCardHomePage from '@/components/HOME/CollectionsItemsCardHomePage'
 import DepositionsArea from '@/components/HOME/DepositionsArea'
 import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
 import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
+
 import api from '@/services/api'
 
 async function getCollectionsCategoryData() {
@@ -89,19 +92,37 @@ const highlights = {
   ],
 }
 
-export default async function Page({ params: { lang } }) {
+export default async function Page() {
+  const cookieStore = cookies()
+  const langCookie = cookieStore.get('lang')
+  const lang = langCookie.value
+
   const categories = await getCollectionsCategoryData()
   const depositions = await getDepositionsData()
 
   return (
     <>
       <main>
-        <BannerHomePage />
-        <h1>{lang}</h1>
-        <CollectionsItemsCardHomePage data={categories} />
-        <EventsItemsHomePage data={{ events }} />
-        <DepositionsArea data={depositions} />
-        <HighLightsHomePage data={{ highlights }} />
+        {
+          // Language ✅
+        }
+        <BannerHomePage lang={lang} />
+        {
+          // Language ✅
+        }
+        <CollectionsItemsCardHomePage lang={lang} data={categories} />
+        {
+          // Language
+        }
+        <EventsItemsHomePage lang={lang} data={{ events }} />
+        {
+          // Language
+        }
+        <DepositionsArea lang={lang} data={depositions} />
+        {
+          // Language
+        }
+        <HighLightsHomePage lang={lang} data={{ highlights }} />
       </main>
     </>
   )

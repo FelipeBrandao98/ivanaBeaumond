@@ -27,38 +27,6 @@ import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
 import { LangContextProvider } from '@/Context/LanguageContext'
 
-const contentMenu = {
-  appointment: 'Marque um Horário',
-  menu: [
-    {
-      id: 1,
-      name: 'Home',
-      route: '/',
-    },
-    {
-      id: 2,
-      name: 'Coleções',
-      route: 'colecoes',
-    },
-    {
-      id: 3,
-      name: 'Notícias',
-      route: 'noticias',
-    },
-    {
-      id: 4,
-      name: 'Eventos',
-      route: 'eventos',
-    },
-  ],
-}
-
-const contentSubscribe = {
-  text: 'Assine aqui para ficar por dentro de todas as nossas novidades!',
-  placeholder: 'Seu melhor e-mail aqui',
-  submitText: 'Assinar',
-}
-
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -139,8 +107,8 @@ export const metadata = {
 
 export default async function LocaleLayout({ children }) {
   const cookieStore = cookies()
-  const cookie = cookieStore.get('lang')
-  const lang = cookie.value
+  const langCookie = cookieStore.get('lang')
+  const lang = langCookie.value
 
   return (
     <html lang={lang}>
@@ -178,18 +146,23 @@ export default async function LocaleLayout({ children }) {
         ${playfair_display.variable}
         `}
       >
-        {console.log(`Cookie: ${lang}`)}
         <LangContextProvider cookie={lang}>
-          <Menu content={contentMenu}>
+          {
+            // Language ✅
+          }
+          <Menu lang={lang}>
             <main>{children}</main>
             <AdressItem />
-            <SubscribeItem content={contentSubscribe} />
+            {
+              // Language ✅
+            }
+            <SubscribeItem lang={lang} />
             <Footer />
 
-            <GuideToBottomScroll
-              text1={'Arraste para baixo'}
-              text2={'para ver mais.'}
-            />
+            {
+              // Language ✅
+            }
+            <GuideToBottomScroll lang={lang} />
             <ScrollToTop />
           </Menu>
           {children}

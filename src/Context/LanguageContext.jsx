@@ -1,11 +1,10 @@
 'use client'
 import { createContext, useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
 
 export const LangContext = createContext()
 
 export function LangContextProvider({ children, cookie }) {
-  const [lang, setLang] = useState(usePathname().split('/')[0])
+  const [lang, setLang] = useState(cookie)
 
   function changeLang(lang) {
     setLang(lang)
@@ -13,7 +12,7 @@ export function LangContextProvider({ children, cookie }) {
 
   useEffect(() => {
     changeLang(cookie)
-  }, [cookie])
+  }, [cookie, lang])
 
   return (
     <LangContext.Provider value={{ lang, changeLang }}>

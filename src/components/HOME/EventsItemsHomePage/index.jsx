@@ -14,23 +14,23 @@ export default async function EventsItemsHomePage({ data }) {
     <section className={styles.section}>
       <div className={styles.detachableAreaLeft}>
         <span className={styles.detachableAreaBigBall} />
-        {
-          rows.map(row => <span key={row} className={styles.detachableAreaBall} />)
-        }
+        {rows.map((row) => (
+          <span key={row} className={styles.detachableAreaBall} />
+        ))}
         <span className={styles.detachableAreaBigBall} />
       </div>
       <div className={styles.barCodeArea}>
         <Image
           className={styles.barCodeImage}
-          src='/bar-code.svg'
-          alt='Código de Barras - Ivana Beaumond'
+          src="/bar-code.svg"
+          alt="Código de Barras - Ivana Beaumond"
           width={40}
           height={20}
         />
         <div className={styles.detachableAreaMiddle}>
-          {
-            rows.map(row => <span key={row} className={styles.detachableAreaBall} />)
-          }
+          {rows.map((row) => (
+            <span key={row} className={styles.detachableAreaBall} />
+          ))}
         </div>
       </div>
       <aside className={styles.aside}>
@@ -42,37 +42,34 @@ export default async function EventsItemsHomePage({ data }) {
 
         <div className={styles.nextEventArea}>
           <h2 className={styles.nextEventP}>{data.events.nextEventTitle}</h2>
-          <Link href={''} className={styles.nextEventTitle}>{data.events.nextEvent.title}</Link>
+          <Link href={''} className={styles.nextEventTitle}>
+            {data.events.nextEvent.title}
+          </Link>
           <h4 className={styles.nextEventDate}>{data.events.nextEvent.date}</h4>
         </div>
 
-
         <h2>{data.events.futureEventsTitle}</h2>
         <div className={styles.futureEventsArea}>
-
           {data.events.futureEvents.map((event) => {
             return (
               <div className={styles.futureEventsCard} key={event.id}>
                 <p className={styles.futureEventsTitle}>{event.title}</p>
-                <IoIosCalendar
-                  className={styles.iconCalendar}
-                  size={'2rem'}
-                />
+                <IoIosCalendar className={styles.iconCalendar} size={'2rem'} />
                 <p className={styles.futureEventsDate}>{event.date}</p>
               </div>
             )
           })}
-
         </div>
 
-        <Link href={''} className={styles.seeMore}>{data.events.seeMore}</Link>
-
+        <Link href={''} className={styles.seeMore}>
+          {data.events.seeMore}
+        </Link>
       </aside>
       <div className={styles.detachableAreaRight}>
         <span className={styles.detachableAreaBigBall} />
-        {
-          rows.map(row => <span key={row} className={styles.detachableAreaBall} />)
-        }
+        {rows.map((row) => (
+          <span key={row} className={styles.detachableAreaBall} />
+        ))}
         <span className={styles.detachableAreaBigBall} />
       </div>
     </section>

@@ -10,10 +10,10 @@ import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
 import { LangContext } from '@/Context/LanguageContext'
+import useLangDict from '@/utils/useLangDict'
 
-export default function Menu({ content, children }) {
+export default function Menu({ lang, children }) {
   const [hidden, setHidden] = useState(false)
-  const { lang } = useContext(LangContext)
 
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
@@ -50,21 +50,48 @@ export default function Menu({ content, children }) {
             <nav className={styles.contactNav}>
               <ul>
                 <li>
-                  {content.appointment} <FaChevronRight />
+                  {useLangDict(lang).layout.menu.appointment} <FaChevronRight />
                 </li>
               </ul>
             </nav>
             <nav className={styles.nav}>
               <ul>
-                {content.menu.map((item) => {
-                  return (
-                    <li key={item.id}>
-                      <Link href={`/${item.route}`} lang={lang}>
-                        {item.name}
-                      </Link>
-                    </li>
-                  )
-                })}
+                <li>
+                  <Link
+                    href={`/${useLangDict(lang).layout.menu.menuItemOne.route}`}
+                    lang={lang}
+                  >
+                    {useLangDict(lang).layout.menu.menuItemOne.name}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${useLangDict(lang).layout.menu.menuItemTwo.route}`}
+                    lang={lang}
+                  >
+                    {useLangDict(lang).layout.menu.menuItemTwo.name}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${
+                      useLangDict(lang).layout.menu.menuItemThree.route
+                    }`}
+                    lang={lang}
+                  >
+                    {useLangDict(lang).layout.menu.menuItemThree.name}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${
+                      useLangDict(lang).layout.menu.menuItemFour.route
+                    }`}
+                    lang={lang}
+                  >
+                    {useLangDict(lang).layout.menu.menuItemFour.name}
+                  </Link>
+                </li>
               </ul>
             </nav>
             <nav className={styles.navSociaMedia}>
