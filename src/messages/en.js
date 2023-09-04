@@ -5,6 +5,10 @@ const dictionaryEn = {
   home: {
     titlePartOne: 'Check out our',
     titlePartTwo: 'collections here',
+    depositions: {
+      title: 'SEE WHAT OUR CUSTOMERS ARE SAYING ABOUT OUR STORE HERE!',
+      more: 'More comments',
+    },
   },
 
   layout: {
@@ -35,6 +39,13 @@ const dictionaryEn = {
     guideToBottomScroll: {
       titlePartOne: 'Drag down',
       titlePartTwo: 'to see more.',
+    },
+    events: {
+      title: 'Events',
+      nextEvent: 'Next Event',
+      futureEvents: 'Future Events',
+      seeMore: 'See More',
+      barCodeAlt: 'Barcode - Ivana Beaumond',
     },
   },
 }

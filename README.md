@@ -342,3 +342,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 1-09-23
 
 ## 1 - Finalizado a lógica de tradução das páginas
+
+### 04-09-23
+
+## 1 - Tradução do componente EventsHome e Nova Chamada a api, selecionando a linguagem

@@ -1,14 +1,13 @@
-'use client'
 import { BsStarHalf } from 'react-icons/bs'
 import { IoIosCalendar } from 'react-icons/io'
-import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
 
-export default async function EventsItemsHomePage({ data }) {
-  const [rows, setRows] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+export default async function EventsItemsHomePage({ lang, data }) {
+  const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
     <section className={styles.section}>
@@ -23,7 +22,7 @@ export default async function EventsItemsHomePage({ data }) {
         <Image
           className={styles.barCodeImage}
           src="/bar-code.svg"
-          alt="Código de Barras - Ivana Beaumond"
+          alt={useLangDict(lang).layout.events.barCodeAlt}
           width={40}
           height={20}
         />
@@ -36,19 +35,21 @@ export default async function EventsItemsHomePage({ data }) {
       <aside className={styles.aside}>
         <h1 className={styles.title}>
           <BsStarHalf size={20} />
-          {data.events.title}
+          {useLangDict(lang).layout.events.title}
           <BsStarHalf size={20} />
         </h1>
 
         <div className={styles.nextEventArea}>
-          <h2 className={styles.nextEventP}>{data.events.nextEventTitle}</h2>
+          <h2 className={styles.nextEventP}>
+            {useLangDict(lang).layout.events.nextEvent}
+          </h2>
           <Link href={''} className={styles.nextEventTitle}>
             {data.events.nextEvent.title}
           </Link>
           <h4 className={styles.nextEventDate}>{data.events.nextEvent.date}</h4>
         </div>
 
-        <h2>{data.events.futureEventsTitle}</h2>
+        <h2>{useLangDict(lang).layout.events.futureEvents}</h2>
         <div className={styles.futureEventsArea}>
           {data.events.futureEvents.map((event) => {
             return (
@@ -62,7 +63,7 @@ export default async function EventsItemsHomePage({ data }) {
         </div>
 
         <Link href={''} className={styles.seeMore}>
-          {data.events.seeMore}
+          {useLangDict(lang).layout.events.seeMore}
         </Link>
       </aside>
       <div className={styles.detachableAreaRight}>

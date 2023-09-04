@@ -5,6 +5,10 @@ const dictionaryPt = {
   home: {
     titlePartOne: 'Confira aqui',
     titlePartTwo: 'Nossas Coleções',
+    depositions: {
+      title: 'VEJA AQUI O QUE NOSSOS CLIENTES ESTÃO FALANDO DE NOSSA LOJA!',
+      more: 'Mais comentários',
+    },
   },
 
   layout: {
@@ -35,6 +39,13 @@ const dictionaryPt = {
     guideToBottomScroll: {
       titlePartOne: 'Arraste para baixo',
       titlePartTwo: 'para ver mais.',
+    },
+    events: {
+      title: 'Eventos',
+      nextEvent: 'Próximo Evento',
+      futureEvents: 'Eventos Futuros',
+      seeMore: 'Veja Mais',
+      barCodeAlt: 'Código de Barras - Ivana Beaumond',
     },
   },
 }

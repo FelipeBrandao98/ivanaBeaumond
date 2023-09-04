@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
 import styles from './styles.module.css'
@@ -9,7 +9,6 @@ import styles from './styles.module.css'
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
-import { LangContext } from '@/Context/LanguageContext'
 import useLangDict from '@/utils/useLangDict'
 
 export default function Menu({ lang, children }) {
@@ -43,7 +42,7 @@ export default function Menu({ lang, children }) {
           height={50}
         />
 
-        <TraductionButton hidden={hidden} />
+        <TraductionButton lang={lang} hidden={hidden} />
         <SearchButton />
         <OpenMenuForMobile>
           <div className={styles.menuNavsArea}>

@@ -8,8 +8,8 @@ import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
 
 import api from '@/services/api'
 
-async function getCollectionsCategoryData() {
-  const res = await api.get('/collections-category')
+async function getCollectionsCategoryData(lang) {
+  const res = await api.get(`/collections/category/${lang}`)
 
   return res.data
 }
@@ -97,7 +97,7 @@ export default async function Page() {
   const langCookie = cookieStore.get('lang')
   const lang = langCookie.value
 
-  const categories = await getCollectionsCategoryData()
+  const categories = await getCollectionsCategoryData(lang)
   const depositions = await getDepositionsData()
 
   return (
