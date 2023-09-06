@@ -1,8 +1,10 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
+
+import { AppointmentContext } from '@/Context/AppointmentContext'
 
 import styles from './styles.module.css'
 
@@ -10,8 +12,10 @@ import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
 import useLangDict from '@/utils/useLangDict'
+import AppointmentBanner from './AppointmentBanner/AppointmentBanner'
 
 export default function Menu({ lang, children }) {
+  const { appointment, handleAppointment } = useContext(AppointmentContext)
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export default function Menu({ lang, children }) {
           <div className={styles.menuNavsArea}>
             <nav className={styles.contactNav}>
               <ul>
-                <li>
+                <li onClick={handleAppointment}>
                   {useLangDict(lang).layout.menu.appointment} <FaChevronRight />
                 </li>
               </ul>
@@ -93,6 +97,7 @@ export default function Menu({ lang, children }) {
           </div>
         </OpenMenuForMobile>
       </header>
+      <AppointmentBanner isHidden={appointment} close={handleAppointment} />
       {children}
     </div>
   )

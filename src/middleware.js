@@ -35,19 +35,15 @@ export function middleware(request) {
     const newLocale = request.nextUrl.pathname.split('/')[1]
 
     if (newLocale === 'en') {
-      console.log(`Instancia passada 'en'`)
       locale = newLocale
     }
     if (newLocale === 'de') {
-      console.log(`Instancia passada 'de'`)
       locale = newLocale
     }
     if (newLocale === 'fr') {
-      console.log(`Instancia passada 'fr'`)
       locale = newLocale
     }
     if (newLocale === 'pt-BR') {
-      console.log(`Instancia passada 'pt-BR'`)
       locale = newLocale
     }
   }
@@ -60,15 +56,6 @@ export function middleware(request) {
   const response = NextResponse.rewrite(newUrl)
   response.cookies.delete('lang')
   response.cookies.set('lang', locale)
-  const cookieInResponse = response.cookies.get('lang')
-
-  console.log('-------------------------')
-  console.log(`locale: ${locale}`)
-  console.log(`pathname: ${pathname}`)
-  console.log(`newUrl: ${newUrl}`)
-  console.log(`cookieFromRequest: ${cookieFromRequest.value}`)
-  console.log(`cookieInResponse: ${cookieInResponse.value}`)
-  console.log('_________________________')
 
   return response
 }

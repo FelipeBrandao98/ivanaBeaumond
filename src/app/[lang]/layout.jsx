@@ -25,7 +25,7 @@ import Menu from '@/components/LAYOUT/Menu'
 import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
-import { LangContextProvider } from '@/Context/LanguageContext'
+import { Providers } from '../providers'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -105,7 +105,7 @@ export const metadata = {
   description: 'Seu site de noivas',
 }
 
-export default async function LocaleLayout({ children }) {
+export default async function RootLayout({ children }) {
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
   const lang = langCookie.value
@@ -146,27 +146,16 @@ export default async function LocaleLayout({ children }) {
         ${playfair_display.variable}
         `}
       >
-        <LangContextProvider cookie={lang}>
-          {
-            // Language ✅
-          }
+        <Providers>
           <Menu lang={lang}>
             <main>{children}</main>
             <AdressItem />
-            {
-              // Language ✅
-            }
             <SubscribeItem lang={lang} />
             <Footer />
-
-            {
-              // Language ✅
-            }
             <GuideToBottomScroll lang={lang} />
             <ScrollToTop />
           </Menu>
-          {children}
-        </LangContextProvider>
+        </Providers>
       </body>
     </html>
   )
