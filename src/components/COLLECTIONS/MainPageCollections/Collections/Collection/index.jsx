@@ -6,8 +6,9 @@ import { TbHandClick } from 'react-icons/tb'
 import styles from './styles.module.css'
 
 import PhotoSlidesCollections from './PhotoSlidesCollections'
+import useLangDict from '@/utils/useLangDict'
 
-export default function Collection({ id, title, description, imageUrl }) {
+export default function Collection({ id, lang, title, description, imageUrl }) {
   const [displayed, setDisplayed] = useState(false)
 
   function handleDisplayDetails() {
@@ -52,7 +53,9 @@ export default function Collection({ id, title, description, imageUrl }) {
           <PhotoSlidesCollections />
         </div>
         <div className={styles.buttonArea}>
-          <button className={styles.button}>SAIBA TUDO SOBRE A COLEÇÃO</button>
+          <button className={styles.button}>
+            {useLangDict(lang).collections.seeMore}
+          </button>
         </div>
       </div>
       <Image

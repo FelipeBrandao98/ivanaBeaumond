@@ -56,38 +56,22 @@ export default function Menu({ lang, children }) {
             <nav className={styles.nav}>
               <ul>
                 <li>
-                  <Link
-                    href={`/${useLangDict(lang).layout.menu.menuItemOne.route}`}
-                    lang={lang}
-                  >
+                  <Link href={`/`} lang={lang}>
                     {useLangDict(lang).layout.menu.menuItemOne.name}
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href={`/${useLangDict(lang).layout.menu.menuItemTwo.route}`}
-                    lang={lang}
-                  >
+                  <Link href={`/colecoes`} lang={lang}>
                     {useLangDict(lang).layout.menu.menuItemTwo.name}
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href={`/${
-                      useLangDict(lang).layout.menu.menuItemThree.route
-                    }`}
-                    lang={lang}
-                  >
+                  <Link href={`/noticias`} lang={lang}>
                     {useLangDict(lang).layout.menu.menuItemThree.name}
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href={`/${
-                      useLangDict(lang).layout.menu.menuItemFour.route
-                    }`}
-                    lang={lang}
-                  >
+                  <Link href={`/eventos`} lang={lang}>
                     {useLangDict(lang).layout.menu.menuItemFour.name}
                   </Link>
                 </li>

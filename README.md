@@ -346,3 +346,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 04-09-23
 
 ## 1 - Tradução do componente EventsHome e Nova Chamada a api, selecionando a linguagem
+
+### 06-09-23
+
+## 1 - Feito tradução da página de coleções

@@ -2,6 +2,7 @@ const dictionaryEn = {
   loading: {
     title: 'Loading...',
   },
+
   home: {
     titlePartOne: 'Check out our',
     titlePartTwo: 'collections here',
@@ -9,6 +10,12 @@ const dictionaryEn = {
       title: 'SEE WHAT OUR CUSTOMERS ARE SAYING ABOUT OUR STORE HERE!',
       more: 'More comments',
     },
+  },
+
+  collections: {
+    title: 'Collections',
+    subTitle: `Bienvenue chez Ivana Beaumond, le magasin de location de robes de mariée le plus charmant et élégant de la ville ! Ici, nous comprenons que chaque occasion spéciale mérite une tenue vestimentaire assortie, c'est pourquoi nous nous engageons à vous proposer les meilleures options. Nos collections sont soigneusement confectionnées, des robes de mariée aux tenues du marié, toutes confectionnées selon un haut niveau de qualité. Et pour ces moments mémorables, comme les soirées de débutantes et les événements sophistiqués, nous avons également des options qui vous feront briller. Inspirés par la France, nous sommes prêts à vous aider à trouver la robe de vos rêves. Alors préparez-vous à tomber amoureux de nos collections et plongez-vous dans le monde enchanteur d'Ivana Beaumond !`,
+    seeMore: 'KNOW ALL ABOUT THE COLLECTION',
   },
 
   layout: {

@@ -3,8 +3,9 @@ import Image from 'next/image'
 import Collections from './Collections'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
 
-export default function MainPageCollections({ data }) {
+export default function MainPageCollections({ lang, data }) {
   return (
     <>
       <section className={styles.section}>
@@ -17,21 +18,13 @@ export default function MainPageCollections({ data }) {
           width={1920}
           height={1080}
         />
-        <h1 className={styles.title}>Coleções</h1>
+        <h1 className={styles.title}>{useLangDict(lang).collections.title}</h1>
         <div className={styles.subTitle}>
-          <h2>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident
-            nam aliquam aperiam ipsam doloremque quo in eligendi magnam officia
-            id dignissimos minima aliquid eveniet, sed excepturi veniam sint.
-            Culpa, quis. Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Possimus totam animi beatae nam tenetur eveniet doloribus
-            distinctio fugiat, saepe porro minima cum? Consequuntur tempore
-            architecto enim ullam atque eum velit.
-          </h2>
+          <h2>{useLangDict(lang).collections.subTitle}</h2>
           <h3>Ivana Beaumond ©</h3>
         </div>
       </section>
-      <Collections data={data} />
+      <Collections lang={lang} data={data} />
     </>
   )
 }
