@@ -29,7 +29,7 @@ export default function Collection({ id, lang, title, description, imageUrl }) {
               height={480}
               color="white"
             />
-            <p>Clique aqui para mais informações</p>
+            <p>{useLangDict(lang).collections.moreInfo}</p>
           </span>
         </div>
       ) : (

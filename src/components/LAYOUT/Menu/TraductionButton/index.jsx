@@ -1,4 +1,5 @@
 'use client'
+import { usePathname, useRouter } from 'next/navigation'
 import { FaChevronDown } from 'react-icons/fa'
 import { useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
@@ -9,9 +10,20 @@ import styles from './styles.module.css'
 export default function TraductionButton({ lang, hidden }) {
   const [isOpen, setIsOpen] = useState(false)
 
+  let pathname = usePathname().replace('/pt-BR', '')
+  pathname = usePathname().replace('/de', '')
+  pathname = usePathname().replace('/en', '')
+  pathname = usePathname().replace('/fr', '')
+
+  const router = useRouter()
+
   function handleIsOpen() {
     isOpen ? setIsOpen(false) : setIsOpen(true)
   }
+
+  useState(() => {
+    router.refresh()
+  }, [lang])
 
   return (
     <div
@@ -23,22 +35,22 @@ export default function TraductionButton({ lang, hidden }) {
         {lang === 'en' ? (
           <>
             <li onClick={handleIsOpen}>
-              <Link href={`/en`} replace>
+              <div className={styles.row}>
+                US
+                <ReactCountryFlag countryCode="US" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
+            <li>
+              <Link href={`/pt-BR${pathname}`} replace>
                 <div className={styles.row}>
-                  US
-                  <ReactCountryFlag countryCode="US" svg />
+                  BR
+                  <ReactCountryFlag countryCode="BR" svg />
                 </div>
-                <FaChevronDown size={10} />
               </Link>
             </li>
             <li>
-              <div className={styles.row}>
-                BR
-                <ReactCountryFlag countryCode="BR" svg />
-              </div>
-            </li>
-            <li>
-              <Link href={`/fr`} replace>
+              <Link href={`/fr${pathname}`} replace>
                 <div className={styles.row}>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -46,7 +58,7 @@ export default function TraductionButton({ lang, hidden }) {
               </Link>
             </li>
             <li>
-              <Link href={'/de'} replace>
+              <Link href={`/de${pathname}`} replace>
                 <div className={styles.row}>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />
@@ -57,22 +69,22 @@ export default function TraductionButton({ lang, hidden }) {
         ) : lang === 'de' ? (
           <>
             <li onClick={handleIsOpen}>
-              <Link href={'/de'} replace>
+              <div className={styles.row}>
+                DE
+                <ReactCountryFlag countryCode="DE" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
+            <li>
+              <Link href={`/pt-BR${pathname}`} replace>
                 <div className={styles.row}>
-                  DE
-                  <ReactCountryFlag countryCode="DE" svg />
+                  BR
+                  <ReactCountryFlag countryCode="BR" svg />
                 </div>
-                <FaChevronDown size={10} />
               </Link>
             </li>
             <li>
-              <div className={styles.row}>
-                BR
-                <ReactCountryFlag countryCode="BR" svg />
-              </div>
-            </li>
-            <li>
-              <Link href={`/fr`} replace>
+              <Link href={`/fr${pathname}`} replace>
                 <div className={styles.row}>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -80,7 +92,7 @@ export default function TraductionButton({ lang, hidden }) {
               </Link>
             </li>
             <li>
-              <Link href={`/en`} replace>
+              <Link href={`/en${pathname}`} replace>
                 <div className={styles.row}>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -91,22 +103,22 @@ export default function TraductionButton({ lang, hidden }) {
         ) : lang === 'fr' ? (
           <>
             <li onClick={handleIsOpen}>
-              <Link href={`/fr`} replace>
+              <div className={styles.row}>
+                FR
+                <ReactCountryFlag countryCode="FR" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
+            <li>
+              <Link href={`/pt-BR${pathname}`} replace>
                 <div className={styles.row}>
-                  FR
-                  <ReactCountryFlag countryCode="FR" svg />
+                  BR
+                  <ReactCountryFlag countryCode="BR" svg />
                 </div>
-                <FaChevronDown size={10} />
               </Link>
             </li>
             <li>
-              <div className={styles.row}>
-                BR
-                <ReactCountryFlag countryCode="BR" svg />
-              </div>
-            </li>
-            <li>
-              <Link href={`/en`} replace>
+              <Link href={`/en${pathname}`} replace>
                 <div className={styles.row}>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -114,7 +126,7 @@ export default function TraductionButton({ lang, hidden }) {
               </Link>
             </li>
             <li>
-              <Link href={'/de'} replace>
+              <Link href={`/de${pathname}`} replace>
                 <div className={styles.row}>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />
@@ -132,7 +144,7 @@ export default function TraductionButton({ lang, hidden }) {
               <FaChevronDown size={10} />
             </li>
             <li>
-              <Link href={`/fr`} replace>
+              <Link href={`/fr${pathname}`} replace>
                 <div className={styles.row}>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -140,7 +152,7 @@ export default function TraductionButton({ lang, hidden }) {
               </Link>
             </li>
             <li>
-              <Link href={`/en`} replace>
+              <Link href={`/en${pathname}`} replace>
                 <div className={styles.row}>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -148,7 +160,7 @@ export default function TraductionButton({ lang, hidden }) {
               </Link>
             </li>
             <li>
-              <Link href={'/de'} replace>
+              <Link href={`/de${pathname}`} replace>
                 <div className={styles.row}>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />

@@ -350,3 +350,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 06-09-23
 
 ## 1 - Feito tradução da página de coleções
+
+## 2 - Finalizado mecanismo de troca de linguagem

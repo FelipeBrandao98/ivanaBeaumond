@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
 
-export default function HighLightsHomePage({ data }) {
+export default function HighLightsHomePage({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
@@ -56,7 +57,9 @@ export default function HighLightsHomePage({ data }) {
   return (
     <div className={styles.container}>
       <div className={styles.mainTitleArea}>
-        <h1 className={styles.mainTitle}>{data.highlights.title}</h1>
+        <h1 className={styles.mainTitle}>
+          {useLangDict(lang).layout.latestPosts.title}
+        </h1>
       </div>
 
       <section className={styles.content}>
@@ -108,28 +111,25 @@ export default function HighLightsHomePage({ data }) {
         ${slideClass}
         `}
         >
-          {data.highlights.highlight.map((highlight) => {
+          {data.map((item) => {
             return (
-              <aside key={highlight.id} className={styles.post}>
+              <aside key={item.id} className={styles.post}>
                 <div className={styles.titleArea}>
-                  <h1 className={styles.title}>{highlight.title}</h1>
+                  <h1 className={styles.title}>{item.title}</h1>
                 </div>
 
                 <div className={styles.descriptionArea}>
-                  <h2 className={styles.description}>
-                    {highlight.description}
-                  </h2>
-
+                  <h2 className={styles.description}>{item.subtitle}</h2>
                   <button className={styles.button}>
-                    {data.highlights.seeMore}
+                    {useLangDict(lang).layout.events.seeMore}
                   </button>
                 </div>
 
                 <div className={styles.imageArea}>
                   <Image
                     className={styles.image}
-                    src={highlight.imageUrl}
-                    alt={highlight.imageAlt}
+                    src={item.cover.url}
+                    alt={item.cover.author}
                     width={1620}
                     height={1280}
                   />

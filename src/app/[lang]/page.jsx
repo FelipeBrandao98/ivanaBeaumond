@@ -20,6 +20,12 @@ async function getDepositionsData() {
   return res.data
 }
 
+async function getLatestPosts(lang) {
+  const res = await api.get(`/news/latest/${lang}`)
+
+  return res.data
+}
+
 const events = {
   title: 'Eventos',
   nextEventTitle: 'Proximo Evento',
@@ -53,45 +59,6 @@ const events = {
   ],
 }
 
-const highlights = {
-  title: 'Últimas Notícias',
-  seeMore: 'Leia Mais',
-  highlight: [
-    {
-      id: 1,
-      title: 'Ivana faz exposição em paris',
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
-      imageUrl: '/photos_blog/photo_blog_3.jpg',
-      imageAlt: 'Ivana Beaumond',
-    },
-    {
-      id: 2,
-      title: 'Ivana faz exposição em paris',
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
-      imageUrl: '/photos_blog/photo_blog_2.jpg',
-      imageAlt: 'Ivana Beaumond',
-    },
-    {
-      id: 3,
-      title: 'Ivana faz exposição em paris',
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
-      imageUrl: '/photos_blog/photo_blog_1.jpeg',
-      imageAlt: 'Ivana Beaumond',
-    },
-    {
-      id: 4,
-      title: 'Ivana faz exposição em paris',
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde necessitatibus omnis laudantium sunt commodi magni error aspernatur voluptate ut temporibus deleniti, soluta impedit eveniet quasi eos! Illum, sint? Tenetur, reiciendis.',
-      imageUrl: '/photos_blog/photo_blog_1.jpeg',
-      imageAlt: 'Ivana Beaumond',
-    },
-  ],
-}
-
 export default async function Page() {
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
@@ -99,6 +66,7 @@ export default async function Page() {
 
   const categories = await getCollectionsCategoryData(lang)
   const depositions = await getDepositionsData()
+  const latestPosts = await getLatestPosts(lang)
 
   return (
     <>
@@ -112,17 +80,17 @@ export default async function Page() {
         }
         <CollectionsItemsCardHomePage lang={lang} data={categories} />
         {
-          // Language
+          // Language ✅
         }
         <EventsItemsHomePage lang={lang} data={{ events }} />
         {
-          // Language
+          // Language ✅
         }
         <DepositionsArea lang={lang} data={depositions} />
         {
-          // Language
+          // Language ✅
         }
-        <HighLightsHomePage lang={lang} data={{ highlights }} />
+        <HighLightsHomePage lang={lang} data={latestPosts} />
       </main>
     </>
   )

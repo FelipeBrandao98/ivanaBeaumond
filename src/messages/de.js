@@ -16,6 +16,7 @@ const dictionaryDe = {
     title: 'Sammlungen',
     subTitle: `Willkommen bei Ivana Beaumond, dem charmantesten und elegantesten Brautkleidverleih der Stadt! Wir sind uns darüber im Klaren, dass jeder besondere Anlass eine passende Kleidung verdient, weshalb es uns am Herzen liegt, Ihnen die besten Optionen anzubieten. Unsere Kollektionen sind sorgfältig gefertigt, von den Hochzeitskleidern bis zur Kleidung des Bräutigams, alle nach einem hohen Qualitätsstandard. Und für unvergessliche Momente wie Debütantenpartys und anspruchsvolle Veranstaltungen haben wir auch Optionen, die Sie zum Strahlen bringen. Inspiriert von Frankreich helfen wir Ihnen gerne dabei, das Kleid Ihrer Träume zu finden. Machen Sie sich also bereit, sich in unsere Kollektionen zu verlieben und tauchen Sie ein in die bezaubernde Welt von Ivana Beaumond!`,
     seeMore: 'ERFAHREN SIE ALLES ÜBER DIE KOLLEKTION',
+    moreInfo: 'Klicken Sie hier für weitere Informationen',
   },
 
   layout: {
@@ -53,6 +54,9 @@ const dictionaryDe = {
       futureEvents: 'Zukünftige Ereignisse',
       seeMore: 'Mehr anzeigen',
       barCodeAlt: 'Barcode - Ivana Beaumond',
+    },
+    latestPosts: {
+      title: 'Neueste Nachrichten',
     },
   },
 }

@@ -10,12 +10,18 @@ export function LangContextProvider({ children, cookie }) {
     setLang(lang)
   }
 
+  function changeLangFromCookie() {
+    setLang(cookie)
+  }
+
   useEffect(() => {
     changeLang(cookie)
   }, [cookie, lang])
 
   return (
-    <LangContext.Provider value={{ lang, changeLang }}>
+    <LangContext.Provider value={{ lang, changeLangFromCookie }}>
+      {console.log(`Cookie Context: ${cookie}`)}
+      {console.log(`Lang Context: ${lang}`)}
       {children}
     </LangContext.Provider>
   )

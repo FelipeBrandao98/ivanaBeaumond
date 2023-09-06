@@ -1,19 +1,19 @@
 'use client'
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
-import { useEffect, useState } from "react"
-import Image from "next/image"
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
 
-export default function BlogBanner() {
+export default function BlogBanner({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
   useEffect(() => {
-
     setTimeout(() => {
       changeSlideFromRight()
-    }, 15000);
+    }, 15000)
   }, [])
 
   function changeSlideFromRight() {
@@ -69,147 +69,65 @@ export default function BlogBanner() {
       <div className={styles.slideNumberButtonsArea}>
         <div className={styles.slideNumberButtons}>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 1 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 2 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 3 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 4 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
         </div>
       </div>
 
-      <div className={
-        `
+      <div
+        className={`
         ${styles.bannerArea}
         ${slideClass}
-        `
-      }>
+        `}
+      >
+        {data.map((item) => {
+          return (
+            <aside key={item.id} className={styles.post}>
+              <div className={styles.titleArea}>
+                <h1 className={styles.title}>{item.title}</h1>
+              </div>
 
+              <div className={styles.descriptionArea}>
+                <h2 className={styles.description}>{item.subtitle}</h2>
+                <button className={styles.button}>
+                  {useLangDict(lang).layout.events.seeMore}
+                </button>
+              </div>
 
-        <aside className={styles.post}>
-          <div className={styles.titleArea}>
-            <h1 className={styles.title}>Ivana faz exposição em paris</h1>
-          </div>
-
-          <div className={styles.descriptionArea}>
-            <h2 className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex similique iure reprehenderit numquam asperiores facere saepe provident esse animi et accusamus, rem id labore repudiandae distinctio ipsum architecto commodi eveniet?</h2>
-
-            <button className={styles.button}>Leia Mais</button>
-          </div>
-
-          <div className={styles.imageArea}>
-            <Image
-              className={styles.image}
-              src={'/photos_blog/photo_blog_banner_1.jpg'}
-              alt='Ivana Beaumond'
-              width={1620}
-              height={1280}
-            />
-          </div>
-        </aside>
-
-        <aside className={styles.post}>
-          <div className={styles.titleArea}>
-            <h1 className={styles.title}>Ivana faz exposição em paris</h1>
-          </div>
-
-          <div className={styles.descriptionArea}>
-            <h2 className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex similique iure reprehenderit numquam asperiores facere saepe provident esse animi et accusamus, rem id labore repudiandae distinctio ipsum architecto commodi eveniet?</h2>
-
-            <button className={styles.button}>Leia Mais</button>
-          </div>
-
-          <div className={styles.imageArea}>
-            <Image
-              className={styles.image}
-              src={'/photos_blog/photo_blog_3.jpg'}
-              alt='Ivana Beaumond'
-              width={1620}
-              height={1280}
-            />
-          </div>
-        </aside>
-
-        <aside className={styles.post}>
-          <div className={styles.titleArea}>
-            <h1 className={styles.title}>Ivana faz exposição em paris</h1>
-          </div>
-
-          <div className={styles.descriptionArea}>
-            <h2 className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex similique iure reprehenderit numquam asperiores facere saepe provident esse animi et accusamus, rem id labore repudiandae distinctio ipsum architecto commodi eveniet?</h2>
-
-            <button className={styles.button}>Leia Mais</button>
-          </div>
-
-          <div className={styles.imageArea}>
-            <Image
-              className={styles.image}
-              src={'/photos_blog/photo_blog_2.jpg'}
-              alt='Ivana Beaumond'
-              width={1620}
-              height={1280}
-            />
-          </div>
-        </aside>
-
-
-        <aside className={styles.post}>
-          <div className={styles.titleArea}>
-            <h1 className={styles.title}>Ivana Beaumond
-              é destaque na mídia com seu novo editorial no Pará</h1>
-          </div>
-
-          <div className={styles.descriptionArea}>
-            <h2 className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex similique iure reprehenderit numquam asperiores facere saepe provident esse animi et accusamus, rem id labore repudiandae distinctio ipsum architecto commodi eveniet?</h2>
-
-            <button className={styles.button}>Leia Mais</button>
-          </div>
-
-          <div className={styles.imageArea}>
-            <Image
-              className={styles.image}
-              src={'/photos_blog/photo_blog_1.jpeg'}
-              alt='Ivana Beaumond'
-              width={1620}
-              height={1280}
-            />
-          </div>
-        </aside>
-
-      </div >
+              <div className={styles.imageArea}>
+                <Image
+                  className={styles.image}
+                  src={item.cover.url}
+                  alt={item.cover.author}
+                  width={1620}
+                  height={1280}
+                />
+              </div>
+            </aside>
+          )
+        })}
+      </div>
 
       <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
         <button className={styles.fromRightButton}>
@@ -220,6 +138,6 @@ export default function BlogBanner() {
           />
         </button>
       </div>
-    </section >
+    </section>
   )
 }
