@@ -14,7 +14,7 @@ import SearchButton from './SearchButton'
 import useLangDict from '@/utils/useLangDict'
 import AppointmentBanner from './AppointmentBanner/AppointmentBanner'
 
-export default function Menu({ lang, children }) {
+export default function Menu({ createAppointment, lang, children }) {
   const { appointment, handleAppointment } = useContext(AppointmentContext)
   const [hidden, setHidden] = useState(false)
 
@@ -97,7 +97,12 @@ export default function Menu({ lang, children }) {
           </div>
         </OpenMenuForMobile>
       </header>
-      <AppointmentBanner isHidden={appointment} close={handleAppointment} />
+      <AppointmentBanner
+        lang={lang}
+        createAppointment={createAppointment}
+        isHidden={appointment}
+        close={handleAppointment}
+      />
       {children}
     </div>
   )

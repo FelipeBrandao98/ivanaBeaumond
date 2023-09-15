@@ -151,3 +151,48 @@
   color: var(--red-france);
   margin-left: .5rem;
 }
+
+.buttonLoading {
+  border: 1px solid var(--black-800);
+  border-radius: none;
+  padding: .1rem 1rem;
+
+  color: var(--white-100);
+  background-color: var(--blue-france);
+
+  transition: all .2s;
+}
+
+.buttonLoaded {
+  border: 1px solid var(--black-800);
+  border-radius: none;
+  padding: .1rem 1rem;
+
+  color: var(--white-100);
+  background-color: var(--green-success);
+
+  transition: all .2s;
+}
+
+.buttonLoading:hover,
+.buttonLoaded:hover {
+  cursor: not-allowed;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotation 2s linear infinite;
+}

@@ -2,12 +2,18 @@
 
 import { useState } from 'react'
 import { HiX } from 'react-icons/hi'
+import { AiOutlineLoading, AiOutlineCheckCircle } from 'react-icons/ai'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import styles from './styles.module.css'
+import useLangDict from '@/utils/useLangDict'
+
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+)
 
 const createAppointmentFormSchema = z.object({
   name: z
@@ -26,17 +32,42 @@ const createAppointmentFormSchema = z.object({
     .string()
     .nonempty('O e-mail é obrigatório!')
     .email('Formato de e-mail inválido!'),
-  phone: z.string().nonempty('O número de telefone é obrigatório!'),
+  phone: z
+    .string()
+    .nonempty('O número de telefone é obrigatório!')
+    .min(10, { message: 'O número de telefone é inválido!' })
+    .max(14, { message: 'O número de telefone é inválido!' })
+    .regex(phoneRegex, 'Telefone inválido!'),
   bride: z.boolean(),
   groom: z.boolean(),
   debutant: z.boolean(),
   bridesmaid: z.boolean(),
   party: z.boolean(),
-  merryDate: z.string(),
+  merryDate: z.string().transform((dateString, ctx) => {
+    const date = new Date(dateString)
+    if (!z.date().safeParse(date).success) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.invalid_date,
+        message: 'Data Inválida!',
+      })
+    }
+    if (date < new Date()) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.invalid_date,
+        message: 'Data não pode ser anterior ao dia de hoje!',
+      })
+    }
+    return date
+  }),
 })
 
-export default function AppointmentBanner({ isHidden, close }) {
-  const [output, setOutput] = useState()
+export default function AppointmentBanner({
+  lang,
+  createAppointment,
+  isHidden,
+  close,
+}) {
+  const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
   const {
     register,
     handleSubmit,
@@ -46,26 +77,29 @@ export default function AppointmentBanner({ isHidden, close }) {
     resolver: zodResolver(createAppointmentFormSchema),
   })
 
-  function createAppointment(data) {
-    setOutput(JSON.stringify(data, null, 2))
+  function handleCreateAppointment(formData) {
+    setCreateAppointmentLoader('loading')
+    createAppointment(formData)
+    setTimeout(setCreateAppointmentLoader('loaded'), 5000)
   }
 
   return (
     <>
-      {isHidden ? (
+      {isHidden && (
         <section className={styles.container}>
           <aside className={styles.content}>
             <span className={styles.closeButton} onClick={close}>
               <HiX width={20} height={20} />
             </span>
             <form
-              action=""
+              action={handleSubmit(handleCreateAppointment)}
               className={styles.form}
-              onSubmit={handleSubmit(createAppointment)}
             >
-              <h1 className={styles.title}>Faça seu agendamento</h1>
+              <h1 className={styles.title}>
+                {useLangDict(lang).layout.menu.appointmentBanner.title}
+              </h1>
               <label className={styles.label} htmlFor="name">
-                Seu Nome:
+                {useLangDict(lang).layout.menu.appointmentBanner.yourName}
                 <input
                   className={styles.input}
                   type="text"
@@ -77,7 +111,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                 )}
               </label>
               <label className={styles.label} htmlFor="mail">
-                Seu E-mail:
+                {useLangDict(lang).layout.menu.appointmentBanner.yourEmail}
                 <input
                   className={styles.input}
                   type="email"
@@ -89,7 +123,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                 )}
               </label>
               <label className={styles.label} htmlFor="phone">
-                Seu Telefone:
+                {useLangDict(lang).layout.menu.appointmentBanner.yourPhone}
                 <input
                   className={styles.input}
                   type="tel"
@@ -100,7 +134,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                   <span className={styles.error}>{errors.phone.message}</span>
                 )}
               </label>
-              O que deseja alugar?
+              {useLangDict(lang).layout.menu.appointmentBanner.rent}
               <fieldset className={styles.checkArea}>
                 <label className={styles.labelTwo} htmlFor="bride">
                   <input
@@ -111,7 +145,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                     {...register('bride')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  Vestido de Noiva
+                  {useLangDict(lang).layout.menu.appointmentBanner.bride}
                 </label>
                 <label className={styles.labelTwo} htmlFor="groom">
                   <input
@@ -122,7 +156,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                     {...register('groom')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  Traje do Noivo
+                  {useLangDict(lang).layout.menu.appointmentBanner.groom}
                 </label>
                 <label className={styles.labelTwo} htmlFor="debutant">
                   <input
@@ -133,7 +167,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                     {...register('debutant')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  Vestido de Debutantes
+                  {useLangDict(lang).layout.menu.appointmentBanner.debutant}
                 </label>
                 <label className={styles.labelTwo} htmlFor="bridesmaid">
                   <input
@@ -144,7 +178,7 @@ export default function AppointmentBanner({ isHidden, close }) {
                     {...register('bridesmaid')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  Vestido de Daminha
+                  {useLangDict(lang).layout.menu.appointmentBanner.bridesmaid}
                 </label>
                 <label className={styles.labelTwo} htmlFor="party">
                   <input
@@ -155,11 +189,11 @@ export default function AppointmentBanner({ isHidden, close }) {
                     {...register('party')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  Vestido de Festa
+                  {useLangDict(lang).layout.menu.appointmentBanner.party}
                 </label>
               </fieldset>
               <label htmlFor="merryDate">
-                Quando é a data da sua festa/casamento?
+                {useLangDict(lang).layout.menu.appointmentBanner.merryDate}
                 <input
                   className={styles.input}
                   type="datetime-local"
@@ -172,15 +206,31 @@ export default function AppointmentBanner({ isHidden, close }) {
                   </span>
                 )}
               </label>
-              <button className={styles.button} type="submit">
-                Enviar
-              </button>
+              {createAppointmentLoader === 'loading' ? (
+                <button className={styles.buttonLoading}>
+                  {
+                    useLangDict(lang).layout.menu.appointmentBanner.button
+                      .sending
+                  }
+                  <AiOutlineLoading
+                    className={styles.rotating}
+                    width={50}
+                    height={50}
+                  />
+                </button>
+              ) : createAppointmentLoader === 'loaded' ? (
+                <button className={styles.buttonLoaded}>
+                  {useLangDict(lang).layout.menu.appointmentBanner.button.sent}{' '}
+                  <AiOutlineCheckCircle width={50} height={50} />
+                </button>
+              ) : (
+                <button className={styles.button} type="submit">
+                  {useLangDict(lang).layout.menu.appointmentBanner.button.send}
+                </button>
+              )}
             </form>
-            <pre>{output}</pre>
           </aside>
         </section>
-      ) : (
-        ''
       )}
     </>
   )

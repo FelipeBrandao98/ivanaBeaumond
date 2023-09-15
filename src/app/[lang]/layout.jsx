@@ -26,6 +26,7 @@ import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
 import { Providers } from '../providers'
+import api from '@/services/api'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -105,6 +106,11 @@ export const metadata = {
   description: 'Seu site de noivas',
 }
 
+async function createAppointment(formData) {
+  'use server'
+  await api.post('/appointments', formData)
+}
+
 export default async function RootLayout({ children }) {
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
@@ -147,7 +153,7 @@ export default async function RootLayout({ children }) {
         `}
       >
         <Providers>
-          <Menu lang={lang}>
+          <Menu createAppointment={createAppointment} lang={lang}>
             <main>{children}</main>
             <AdressItem />
             <SubscribeItem lang={lang} />
