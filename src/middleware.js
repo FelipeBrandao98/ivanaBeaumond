@@ -27,6 +27,10 @@ export function middleware(request) {
   )
   const cookieFromRequest = request.cookies.get('lang')
 
+  if (request.nextUrl.pathname.startsWith('/ib-login')) {
+    return NextResponse.next()
+  }
+
   if (cookieFromRequest) {
     locale = cookieFromRequest.value
   }

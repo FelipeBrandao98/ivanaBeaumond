@@ -362,3 +362,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 15-09-23
 
 ## 1 - Finalização do AppointmentBanner (Falta estilização)
+
+### 21-09-23
+
+## 1 - Criado Página de login, AuthHook e toda a lógica de autenticação
