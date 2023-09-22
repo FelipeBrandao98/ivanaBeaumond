@@ -1,5 +1,5 @@
-import Dashboard from '@/components/LOGIN/Dashboard'
+import CheckIfIsLogged from '@/hooks/CheckIfIsLogged'
 
 export default function Layout({ children }) {
-  return <Dashboard>{children}</Dashboard>
+  return <CheckIfIsLogged>{children}</CheckIfIsLogged>
 }

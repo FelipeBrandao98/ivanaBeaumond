@@ -374,3 +374,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 2 - Dashboard com Botão de sair (Não Finalizado)
 
 ## 3 - Feito páginas dentro do dashboard
+
+## 4 - Finalizado toda a lógica de login e finalização de login

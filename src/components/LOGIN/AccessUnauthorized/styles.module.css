@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+  font-size: 5rem;
+  text-transform: uppercase;
+}
+
+.icon {
+  color: yellow;
+}
+
+.text {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  background-color: var(--white-100);
+  padding: 1rem 2rem;
+  color: var(--black-800);
+  border: none;
+  border-radius: .5rem;
+  transition: all .2s;
+}
+
+.button:hover {
+  filter: brightness(1.2);
+}
