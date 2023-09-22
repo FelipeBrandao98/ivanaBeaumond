@@ -50,6 +50,7 @@
 body {
   background-color: var(--background-dark-800);
   color: var(--white-300);
+  padding: 2rem 2rem 2rem 9rem;
 }
 
 main {
