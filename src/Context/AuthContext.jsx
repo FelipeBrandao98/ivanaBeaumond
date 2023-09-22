@@ -8,7 +8,6 @@ export function AuthProvider({ children }) {
 
   async function handleChangeToken(accessToken) {
     setToken(accessToken)
-    console.log(token)
   }
 
   return (

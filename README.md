@@ -366,3 +366,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 21-09-23
 
 ## 1 - Criado Página de login, AuthHook e toda a lógica de autenticação
+
+### 22-09-23
+
+## 1 - Finalizado toda relação de login (falta middleware de autenticação)
