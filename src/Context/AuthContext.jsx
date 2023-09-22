@@ -10,8 +10,12 @@ export function AuthProvider({ children }) {
     setToken(accessToken)
   }
 
+  async function handleLogout() {
+    setToken(null)
+  }
+
   return (
-    <AuthContext.Provider value={{ token, handleChangeToken }}>
+    <AuthContext.Provider value={{ token, handleChangeToken, handleLogout }}>
       {children}
     </AuthContext.Provider>
   )

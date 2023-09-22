@@ -370,3 +370,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 22-09-23
 
 ## 1 - Finalizado toda relação de login (falta middleware de autenticação)
+
+## 2 - Dashboard com Botão de sair (Não Finalizado)

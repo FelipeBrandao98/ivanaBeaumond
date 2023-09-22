@@ -1,0 +1,18 @@
+.mainMenu {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: var(--black-300);
+  color: var(--black-800);
+
+  border-right: 1px solid var(--black);
+}

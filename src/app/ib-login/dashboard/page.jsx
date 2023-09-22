@@ -1,3 +1,3 @@
-export function Page() {
-  return <h1>Logged</h1>
+export default function Page() {
+  return <h1>Hello World</h1>
 }
