@@ -376,3 +376,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 3 - Feito páginas dentro do dashboard
 
 ## 4 - Finalizado toda a lógica de login e finalização de login
+
+## 25-09-23
+
+## 1 - Criado formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)

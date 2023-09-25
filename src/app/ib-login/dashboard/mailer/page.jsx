@@ -1,3 +1,5 @@
+import MailerPage from '@/components/IB-MAILER/MailerPage'
+
 export default function Page() {
-  return <h1>Mailer</h1>
+  return <MailerPage />
 }
