@@ -11,6 +11,7 @@ import Link from 'next/link'
 export default function CreateNewsPage({ functions }) {
   const [tab, setTab] = useState('pt-BR')
   const [categories, setCategories] = useState([])
+  const [cancel, setCancel] = useState(false)
 
   const { token } = useContext(AuthContext)
   const { createNews, getCategories } = functions
@@ -27,6 +28,10 @@ export default function CreateNewsPage({ functions }) {
   useEffect(async () => {
     await getCat()
   }, [])
+
+  function handleCancelModal() {
+    setCancel(!cancel)
+  }
 
   return (
     <>
@@ -210,18 +215,47 @@ export default function CreateNewsPage({ functions }) {
             </div>
           </form>
           <div className={styles.formButtonsArea}>
-            <Link
+            <button
               className={styles.cancelButton}
-              href={'/ib-login/dashboard/noticias'}
+              onClick={(e) => {
+                e.preventDefault()
+                handleCancelModal()
+              }}
             >
               Cancelar
-            </Link>
+            </button>
             <button className={styles.submitButton} type="submit">
               Criar Notícia
             </button>
           </div>
         </aside>
       </section>
+      {cancel && (
+        <section className={styles.confirmCancelModalContainer}>
+          <aside className={styles.confirmCancelModalContent}>
+            <h1 className={styles.confirmCancelModalTitle}>
+              Tem certeza que você deseja cancelar?
+            </h1>
+            <div className={styles.buttonsArea}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleCancelModal()
+                }}
+                className={styles.cancelButtonModal}
+              >
+                Não
+              </button>
+              <Link
+                className={styles.cancelButton}
+                href={'/ib-login/dashboard/noticias'}
+              >
+                Cancelar
+              </Link>
+            </div>
+          </aside>
+        </section>
+      )}
     </>
   )
 }

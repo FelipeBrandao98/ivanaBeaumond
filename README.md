@@ -380,3 +380,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 25-09-23
 
 ## 1 - Criado formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
+
+## 2 - Criado Modal de Cancelamento no formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
