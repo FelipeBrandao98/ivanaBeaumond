@@ -377,8 +377,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## 4 - Finalizado toda a lógica de login e finalização de login
 
-## 25-09-23
+### 25-09-23
 
 ## 1 - Criado formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
 
 ## 2 - Criado Modal de Cancelamento no formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
+
+### 27-09-23
+
+## 1 - Finalizado pagina de cadastro de notícia, falta método de adicionar foto de capa

@@ -2,22 +2,68 @@
 
 import { AuthContext } from '@/Context/AuthContext'
 import { useContext, useEffect, useState } from 'react'
-
-import ReactCountryFlag from 'react-country-flag'
-
-import styles from './styles.module.css'
 import Link from 'next/link'
 
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import ReactCountryFlag from 'react-country-flag'
+import { MdPhoto } from 'react-icons/md'
+
+import styles from './styles.module.css'
+
+const createNewsFormSchema = z.object({
+  publishDate: z
+    .string()
+    .nonempty()
+    .transform((date) => new Date(date)),
+  published: z.boolean(),
+  categoryId: z
+    .string()
+    .nonempty()
+    .transform((category) => Number(category)),
+  title: z.string(),
+  titleDe: z.string(),
+  titleEn: z.string(),
+  titleFr: z.string(),
+  coverCredit: z.string(),
+  coverCreditDe: z.string(),
+  coverCreditEn: z.string(),
+  coverCreditFr: z.string(),
+  subtitle: z.string(),
+  subtitleDe: z.string(),
+  subtitleEn: z.string(),
+  subtitleFr: z.string(),
+  // publishDate: z.string(),
+  // published: z.boolean(),
+  body: z.string(),
+  bodyDe: z.string(),
+  bodyEn: z.string(),
+  bodyFr: z.string(),
+})
+
 export default function CreateNewsPage({ functions }) {
+  const { createNews, getCategories } = functions
+
+  const { token } = useContext(AuthContext)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: zodResolver(createNewsFormSchema),
+  })
+
   const [tab, setTab] = useState('pt-BR')
   const [categories, setCategories] = useState([])
   const [cancel, setCancel] = useState(false)
 
-  const { token } = useContext(AuthContext)
-  const { createNews, getCategories } = functions
-
-  async function postNews(token) {
-    const news = await createNews(token, createNews)
+  async function handleCreateNews(formData) {
+    const res = await createNews(token, formData)
+    console.log(res)
   }
 
   async function getCat() {
@@ -25,8 +71,8 @@ export default function CreateNewsPage({ functions }) {
     setCategories(res)
   }
 
-  useEffect(async () => {
-    await getCat()
+  useEffect(() => {
+    getCat()
   }, [])
 
   function handleCancelModal() {
@@ -103,15 +149,37 @@ export default function CreateNewsPage({ functions }) {
           ) : (
             ''
           )}
-          <form>
-            <label htmlFor="categories" className={styles.labelCategory}>
+
+          <form action={handleSubmit(handleCreateNews)}>
+            <label htmlFor="publishDate" className={styles.labelCategory}>
+              Data de Publicação
+              <input
+                type="date"
+                id="publishDate"
+                {...register('publishDate')}
+                className={styles.input}
+              />
+            </label>
+            <div className={styles.checkbox}>
+              Publicar agora?
+              <input
+                type="checkbox"
+                id="published"
+                {...register('published')}
+              />
+              <label htmlFor="published"></label>
+            </div>
+            <label htmlFor="categoryId" className={styles.labelCategory}>
               Categoria da Notícia
               <select
-                id="categories"
-                name="categories"
+                id="categoryId"
                 className={styles.select}
-                required
+                defaultValue=""
+                {...register('categoryId')}
               >
+                <option value="" disabled>
+                  Selecione uma opção
+                </option>
                 {categories.map((category) => {
                   return (
                     <option key={category.id} value={category.id}>
@@ -120,31 +188,76 @@ export default function CreateNewsPage({ functions }) {
                   )
                 })}
               </select>
+              {errors.categoryId && (
+                <span className={styles.error}>
+                  {errors.categoryId.message}
+                </span>
+              )}
             </label>
-            <label htmlFor="search-email" className={styles.labelImage}>
-              Foto de Capa
-              <input type="file" className={styles.input} />
-            </label>
+            <div className={styles.coverImage}>
+              <MdPhoto
+                width={100}
+                height={100}
+                className={styles.coverImageIcon}
+              />
+              Escolher foto de capa
+            </div>
             <div
               className={`${
                 tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
               }`}
             >
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="coverCredit" className={styles.label}>
                 Crédito da Foto
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="coverCredit"
+                  {...register('coverCredit')}
+                />
+                {errors.coverCredit && (
+                  <span className={styles.error}>
+                    {errors.coverCredit.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="title" className={styles.label}>
                 Título da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="title"
+                  {...register('title')}
+                />
+                {errors.title && (
+                  <span className={styles.error}>{errors.title.message}</span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="subtitle" className={styles.label}>
                 Subtítulo da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="subtitle"
+                  {...register('subtitle')}
+                />
+                {errors.subtitle && (
+                  <span className={styles.error}>
+                    {errors.subtitle.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="body" className={styles.label}>
                 Corpo da Notícia
-                <input type="textarea" className={styles.inputExpanded} />
+                <input
+                  type="textarea"
+                  className={styles.inputExpanded}
+                  id="body"
+                  {...register('body')}
+                />
+                {errors.body && (
+                  <span className={styles.error}>{errors.body.message}</span>
+                )}
               </label>
             </div>
             <div
@@ -152,21 +265,57 @@ export default function CreateNewsPage({ functions }) {
                 tab === 'de' ? styles.deActive : styles.deInactive
               }`}
             >
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="coverCreditDe" className={styles.label}>
                 Crédito da Foto
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="coverCreditDe"
+                  {...register('coverCreditDe')}
+                />
+                {errors.coverCreditDe && (
+                  <span className={styles.error}>
+                    {errors.coverCreditDe.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="titleDe" className={styles.label}>
                 Título da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="titleDe"
+                  {...register('titleDe')}
+                />
+                {errors.titleDe && (
+                  <span className={styles.error}>{errors.titleDe.message}</span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="subtitleDe" className={styles.label}>
                 Subtítulo da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="subtitleDe"
+                  {...register('subtitleDe')}
+                />
+                {errors.subtitleDe && (
+                  <span className={styles.error}>
+                    {errors.subtitleDe.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="bodyDe" className={styles.label}>
                 Corpo da Notícia
-                <input type="text" className={styles.inputExpanded} />
+                <input
+                  type="textarea"
+                  className={styles.inputExpanded}
+                  id="bodyDe"
+                  {...register('bodyDe')}
+                />
+                {errors.bodyDe && (
+                  <span className={styles.error}>{errors.bodyDe.message}</span>
+                )}
               </label>
             </div>
             <div
@@ -174,21 +323,57 @@ export default function CreateNewsPage({ functions }) {
                 tab === 'fr' ? styles.frActive : styles.frInactive
               }`}
             >
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="coverCreditFr" className={styles.label}>
                 Crédito da Foto
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="coverCreditFr"
+                  {...register('coverCreditFr')}
+                />
+                {errors.coverCreditFr && (
+                  <span className={styles.error}>
+                    {errors.coverCreditFr.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="titleFr" className={styles.label}>
                 Título da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="titleFr"
+                  {...register('titleFr')}
+                />
+                {errors.titleFr && (
+                  <span className={styles.error}>{errors.titleFr.message}</span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="subtitleFr" className={styles.label}>
                 Subtítulo da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="subtitleFr"
+                  {...register('subtitleFr')}
+                />
+                {errors.subtitleFr && (
+                  <span className={styles.error}>
+                    {errors.subtitleFr.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="bodyFr" className={styles.label}>
                 Corpo da Notícia
-                <input type="text" className={styles.inputExpanded} />
+                <input
+                  type="textarea"
+                  className={styles.inputExpanded}
+                  id="bodyFr"
+                  {...register('bodyFr')}
+                />
+                {errors.bodyFr && (
+                  <span className={styles.error}>{errors.bodyFr.message}</span>
+                )}
               </label>
             </div>
             <div
@@ -196,38 +381,74 @@ export default function CreateNewsPage({ functions }) {
                 tab === 'en' ? styles.enActive : styles.enInactive
               }`}
             >
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="coverCreditEn" className={styles.label}>
                 Crédito da Foto
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="coverCreditEn"
+                  {...register('coverCreditEn')}
+                />
+                {errors.coverCreditEn && (
+                  <span className={styles.error}>
+                    {errors.coverCreditEn.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="titleEn" className={styles.label}>
                 Título da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="titleEn"
+                  {...register('titleEn')}
+                />
+                {errors.titleEn && (
+                  <span className={styles.error}>{errors.titleEn.message}</span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="subtitleEn" className={styles.label}>
                 Subtítulo da Notícia
-                <input type="text" className={styles.input} />
+                <input
+                  type="text"
+                  className={styles.input}
+                  id="subtitleEn"
+                  {...register('subtitleEn')}
+                />
+                {errors.subtitleEn && (
+                  <span className={styles.error}>
+                    {errors.subtitleEn.message}
+                  </span>
+                )}
               </label>
-              <label htmlFor="search-email" className={styles.label}>
+              <label htmlFor="bodyEn" className={styles.label}>
                 Corpo da Notícia
-                <input type="text" className={styles.inputExpanded} />
+                <input
+                  type="textarea"
+                  className={styles.inputExpanded}
+                  id="bodyEn"
+                  {...register('bodyEn')}
+                />
+                {errors.bodyEn && (
+                  <span className={styles.error}>{errors.bodyEn.message}</span>
+                )}
               </label>
             </div>
+            <div className={styles.formButtonsArea}>
+              <button
+                className={styles.cancelButton}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleCancelModal()
+                }}
+              >
+                Cancelar
+              </button>
+              <button className={styles.submitButton} type="submit">
+                Criar Notícia
+              </button>
+            </div>
           </form>
-          <div className={styles.formButtonsArea}>
-            <button
-              className={styles.cancelButton}
-              onClick={(e) => {
-                e.preventDefault()
-                handleCancelModal()
-              }}
-            >
-              Cancelar
-            </button>
-            <button className={styles.submitButton} type="submit">
-              Criar Notícia
-            </button>
-          </div>
         </aside>
       </section>
       {cancel && (
