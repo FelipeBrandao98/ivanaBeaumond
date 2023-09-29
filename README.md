@@ -392,3 +392,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 1 - Feito toda a lógica de adicionar Notícias, (Contexto de Adicionar imagens)
 
 ## 2 - Finalizado rota de adicionar notícias
+
+## 3 - Finalizado rotas de listar notícias e coleções no dashboard

@@ -1,3 +1,16 @@
+import CollectionsPage from '@/components/IB-COLLECTIONS/CollectionsPage'
+import api from '@/services/api'
+
+async function getCollections(token) {
+  'use server'
+  const res = await api.get('/collections', {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+  return res.data
+}
+
 export default function Page() {
-  return <h1>Coleções</h1>
+  return <CollectionsPage functions={{ getCollections }} />
 }
