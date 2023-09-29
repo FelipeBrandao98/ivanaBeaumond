@@ -1,18 +1,13 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 
-import React, { useEffect, useState } from 'react'
-
 import styles from './styles.module.css'
+
 import useLangDict from '@/utils/useLangDict'
 
 export default function GuideToBottomScroll({ lang }) {
-  useEffect(() => {
-    window.addEventListener('scroll', toggleInvisible)
-    setTimeout(toggleVisible, 3000)
-  }, [])
-
   const [visible, setVisible] = useState(false)
 
   const toggleVisible = () => {
@@ -21,6 +16,11 @@ export default function GuideToBottomScroll({ lang }) {
       setVisible(true)
     }
   }
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleInvisible)
+    setTimeout(toggleVisible, 3000)
+  }, [])
 
   const toggleInvisible = () => {
     const scrolled = document.documentElement.scrollTop
@@ -36,6 +36,7 @@ export default function GuideToBottomScroll({ lang }) {
           {useLangDict(lang).layout.guideToBottomScroll.titlePartOne} <br />{' '}
           {useLangDict(lang).layout.guideToBottomScroll.titlePartTwo}
         </p>
+
         <BsArrowDownSquareFill className={styles.icon} size={50} />
       </div>
     </>

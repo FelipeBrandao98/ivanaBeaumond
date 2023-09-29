@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 import { BiSearchAlt2 } from 'react-icons/bi'
 
@@ -17,6 +18,7 @@ export default function SearchButton() {
         <input type="text" />
         <input type="button" value="Buscar" />
       </div>
+
       <div className={styles.searchIconArea}>
         <BiSearchAlt2
           onClick={handleOpenSearch}

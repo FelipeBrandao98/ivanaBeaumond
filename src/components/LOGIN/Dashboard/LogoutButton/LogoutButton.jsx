@@ -1,13 +1,15 @@
 'use client'
 
 import { ImExit } from 'react-icons/im'
+import { useContext, useState } from 'react'
+
+import { AuthContext } from '@/Context/AuthContext'
 
 import styles from './styles.module.css'
-import { useContext, useState } from 'react'
-import { AuthContext } from '@/Context/AuthContext'
 
 export default function LogoutButton() {
   const { token, handleLogout } = useContext(AuthContext)
+
   const [logoutModal, setLogoutModal] = useState(false)
 
   function handleExitModal() {
@@ -25,6 +27,7 @@ export default function LogoutButton() {
       >
         <ImExit width={40} height={40} className={styles.exitIcon} />
       </button>
+
       {logoutModal && (
         <section className={styles.confirmExitModalContainer}>
           <aside className={styles.confirmExitModalContent}>

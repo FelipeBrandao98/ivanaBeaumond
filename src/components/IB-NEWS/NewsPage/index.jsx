@@ -2,6 +2,7 @@
 
 import { AuthContext } from '@/Context/AuthContext'
 import { useContext, useEffect, useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 import {
@@ -15,9 +16,8 @@ import {
 } from 'react-icons/fi'
 
 import styles from './styles.module.css'
-import Link from 'next/link'
 
-export default function NewsPage({ children, functions }) {
+export default function NewsPage({ functions }) {
   const { token } = useContext(AuthContext)
   const { getNews } = functions
 
@@ -28,8 +28,8 @@ export default function NewsPage({ children, functions }) {
     setNewsRepositories(news)
   }
 
-  useState(async () => {
-    await getRepo(token)
+  useEffect(() => {
+    getRepo(token)
   }, [])
 
   return (
@@ -121,8 +121,8 @@ export default function NewsPage({ children, functions }) {
                       <Image
                         width={200}
                         height={100}
-                        src={repo.cover.url}
-                        alt={repo.cover.author}
+                        src={repo.cover ? repo.cover.url : ''}
+                        alt={repo.cover ? repo.cover.author : ''}
                         className={styles.image}
                       />
                     </td>

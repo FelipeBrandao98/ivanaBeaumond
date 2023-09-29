@@ -9,6 +9,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import styles from './styles.module.css'
+
 import useLangDict from '@/utils/useLangDict'
 
 const phoneRegex = new RegExp(
@@ -68,6 +69,7 @@ export default function AppointmentBanner({
   close,
 }) {
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
+
   const {
     register,
     handleSubmit,
@@ -91,6 +93,7 @@ export default function AppointmentBanner({
             <span className={styles.closeButton} onClick={close}>
               <HiX width={20} height={20} />
             </span>
+
             <form
               action={handleSubmit(handleCreateAppointment)}
               className={styles.form}
@@ -98,6 +101,7 @@ export default function AppointmentBanner({
               <h1 className={styles.title}>
                 {useLangDict(lang).layout.menu.appointmentBanner.title}
               </h1>
+
               <label className={styles.label} htmlFor="name">
                 {useLangDict(lang).layout.menu.appointmentBanner.yourName}
                 <input
@@ -110,6 +114,7 @@ export default function AppointmentBanner({
                   <span className={styles.error}>{errors.name.message}</span>
                 )}
               </label>
+
               <label className={styles.label} htmlFor="mail">
                 {useLangDict(lang).layout.menu.appointmentBanner.yourEmail}
                 <input
@@ -122,6 +127,7 @@ export default function AppointmentBanner({
                   <span className={styles.error}>{errors.email.message}</span>
                 )}
               </label>
+
               <label className={styles.label} htmlFor="phone">
                 {useLangDict(lang).layout.menu.appointmentBanner.yourPhone}
                 <input
@@ -134,7 +140,9 @@ export default function AppointmentBanner({
                   <span className={styles.error}>{errors.phone.message}</span>
                 )}
               </label>
+
               {useLangDict(lang).layout.menu.appointmentBanner.rent}
+
               <fieldset className={styles.checkArea}>
                 <label className={styles.labelTwo} htmlFor="bride">
                   <input
@@ -147,6 +155,7 @@ export default function AppointmentBanner({
                   <span className={styles.newCheckbox}></span>
                   {useLangDict(lang).layout.menu.appointmentBanner.bride}
                 </label>
+
                 <label className={styles.labelTwo} htmlFor="groom">
                   <input
                     className={styles.checkbox}
@@ -158,6 +167,7 @@ export default function AppointmentBanner({
                   <span className={styles.newCheckbox}></span>
                   {useLangDict(lang).layout.menu.appointmentBanner.groom}
                 </label>
+
                 <label className={styles.labelTwo} htmlFor="debutant">
                   <input
                     className={styles.checkbox}
@@ -169,6 +179,7 @@ export default function AppointmentBanner({
                   <span className={styles.newCheckbox}></span>
                   {useLangDict(lang).layout.menu.appointmentBanner.debutant}
                 </label>
+
                 <label className={styles.labelTwo} htmlFor="bridesmaid">
                   <input
                     className={styles.checkbox}
@@ -180,6 +191,7 @@ export default function AppointmentBanner({
                   <span className={styles.newCheckbox}></span>
                   {useLangDict(lang).layout.menu.appointmentBanner.bridesmaid}
                 </label>
+
                 <label className={styles.labelTwo} htmlFor="party">
                   <input
                     className={styles.checkbox}
@@ -192,6 +204,7 @@ export default function AppointmentBanner({
                   {useLangDict(lang).layout.menu.appointmentBanner.party}
                 </label>
               </fieldset>
+
               <label htmlFor="merryDate">
                 {useLangDict(lang).layout.menu.appointmentBanner.merryDate}
                 <input
@@ -206,6 +219,7 @@ export default function AppointmentBanner({
                   </span>
                 )}
               </label>
+
               {createAppointmentLoader === 'loading' ? (
                 <button className={styles.buttonLoading}>
                   {

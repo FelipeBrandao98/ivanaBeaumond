@@ -386,3 +386,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 27-09-23
 
 ## 1 - Finalizado pagina de cadastro de notícia, falta método de adicionar foto de capa
+
+### 29-09-23
+
+## 1 - Feito toda a lógica de adicionar Notícias, (Contexto de Adicionar imagens)

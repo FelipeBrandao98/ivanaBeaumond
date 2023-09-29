@@ -26,9 +26,9 @@ const loginFormSchema = z.object({
     .max(20, 'A senha pode ter no máximo 20 caracteres'),
 })
 
-export function LoginPage({ login, storeCookie }) {
+export function LoginPage({ login }) {
   const { handleChangeToken } = useContext(AuthContext)
-  const [isAuthenticated, setIsAuthenticated] = useState('login')
+
   const {
     register,
     handleSubmit,
@@ -37,6 +37,8 @@ export function LoginPage({ login, storeCookie }) {
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   })
+
+  const [isAuthenticated, setIsAuthenticated] = useState('login')
 
   async function handleLogin(formData) {
     setIsAuthenticated('loading')
@@ -50,6 +52,7 @@ export function LoginPage({ login, storeCookie }) {
       }
     }
   }
+
   return (
     <>
       <aside className={styles.container}>
@@ -67,7 +70,9 @@ export function LoginPage({ login, storeCookie }) {
               acesso apenas para pessoas autorizadas!
             </span>
           </h1>
+
           <h1 className={styles.title}>Faça seu Login</h1>
+
           <form className={styles.form} action={handleSubmit(handleLogin)}>
             <label htmlFor="email" className={styles.label}>
               E-mail:

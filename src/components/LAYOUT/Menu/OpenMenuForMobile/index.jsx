@@ -1,8 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 
-import { useState } from 'react'
 import styles from './styles.module.css'
 
 export default function OpenMenuForMobile({ children }) {
@@ -13,13 +13,17 @@ export default function OpenMenuForMobile({ children }) {
   }
 
   return (
-    <div className={isOpen ? styles.open : styles.close}>
-      <FaBars onClick={handleIsOpen} size={100} className={styles.icon} />
-      <div className={styles.menuNavsArea}>{children}</div>
-      <div
-        className={isOpen ? styles.outOpen : ''}
-        onClick={handleIsOpen}
-      ></div>
-    </div>
+    <>
+      <div className={isOpen ? styles.open : styles.close}>
+        <FaBars onClick={handleIsOpen} size={100} className={styles.icon} />
+
+        <div className={styles.menuNavsArea}>{children}</div>
+
+        <div
+          className={isOpen ? styles.outOpen : ''}
+          onClick={handleIsOpen}
+        ></div>
+      </div>
+    </>
   )
 }

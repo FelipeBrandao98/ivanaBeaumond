@@ -11,9 +11,9 @@ async function createNews(token, createNews) {
   })
 }
 
-async function createImage(token, createNews) {
+async function createImage(token, file) {
   'use server'
-  const res = await api.post('/images', createNews, {
+  const res = await api.post('/images', file, {
     headers: {
       Authorization: 'Bearer ' + token,
     },
