@@ -189,14 +189,19 @@ export default function CreateNews({ categories, createNews }) {
             </label>
             {console.log(image)}
             {image.src ? (
-              <Image
-                width={100}
-                height={100}
-                src={image.url}
-                alt="Ivana"
+              <div
                 className={styles.coverImage}
                 onClick={handleShowCreateImage}
-              />
+              >
+                <Image
+                  width={800}
+                  height={800}
+                  src={image.url}
+                  alt="Ivana"
+                  className={styles.cover}
+                  onClick={handleShowCreateImage}
+                />
+              </div>
             ) : (
               <div
                 className={styles.coverImage}

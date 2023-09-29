@@ -390,3 +390,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### 29-09-23
 
 ## 1 - Feito toda a lógica de adicionar Notícias, (Contexto de Adicionar imagens)
+
+## 2 - Finalizado rota de adicionar notícias

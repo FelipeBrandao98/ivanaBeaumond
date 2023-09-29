@@ -1,6 +1,7 @@
 'use client'
 
-import { useContext } from 'react'
+import { Suspense, useContext } from 'react'
+import Image from 'next/image'
 
 import { BsArrowLeft } from 'react-icons/bs'
 
@@ -12,9 +13,11 @@ import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
 import styles from './styles.module.css'
 import { AuthContext } from '@/Context/AuthContext'
+import { FaTruckLoading } from 'react-icons/fa'
 
 const createImageFormSchema = z.object({
   file: z.any(),
+  author: z.string(),
 })
 
 export default function CreateImageNews({ createImage }) {
@@ -47,12 +50,43 @@ export default function CreateImageNews({ createImage }) {
       </button>
       <section className={styles.container}>
         <aside className={styles.content}>
-          <form action={handleSubmit(handleCreateImage)}>
-            <label htmlFor="file">
-              <input type="file" id="file" {...register('file')} />
-              <button type="submit">Enviar</button>
+          <form
+            className={styles.form}
+            action={handleSubmit(handleCreateImage)}
+          >
+            <label htmlFor="file" className={styles.label}>
+              <input
+                className={styles.input}
+                type="file"
+                id="file"
+                {...register('file')}
+              />
             </label>
+            <button type="submit" className={styles.sendButton}>
+              Enviar Imagem
+            </button>
           </form>
+          {image.src ? (
+            <Suspense
+              fallback={
+                <div className={styles.coverLoading}>
+                  Carregando... <FaTruckLoading width={40} height={40} />
+                </div>
+              }
+            >
+              <div className={styles.coverImage}>
+                <Image
+                  width={2000}
+                  height={2000}
+                  src={image.url}
+                  alt="Ivana"
+                  className={styles.cover}
+                />
+              </div>
+            </Suspense>
+          ) : (
+            <div className={styles.coverImage}>Escolha a foto de capa</div>
+          )}
         </aside>
       </section>
     </>
