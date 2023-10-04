@@ -17,9 +17,10 @@ import { FaTruckLoading } from 'react-icons/fa'
 
 const createImageFormSchema = z.object({
   file: z.any(),
+  author: z.string(),
 })
 
-export default function CreateImageNews({ createImage }) {
+export default function CreateImgCat({ createImage }) {
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageNewsContext,

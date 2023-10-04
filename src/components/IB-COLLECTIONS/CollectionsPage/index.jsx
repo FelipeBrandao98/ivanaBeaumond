@@ -50,7 +50,7 @@ export default function CollectionsPage({ functions }) {
                 <FiRefreshCcw width={40} height={40} />
               </button>
               <Link
-                href={'/ib-login/dashboard/noticias/novanoticia'}
+                href={'/ib-login/dashboard/colecoes/novacolecao'}
                 className={styles.optionsButton}
               >
                 <FiPlus width={40} height={40} />
@@ -114,7 +114,6 @@ export default function CollectionsPage({ functions }) {
               </tr>
             </thead>
             <tbody>
-              {console.log(collectionsRepositories)}
               {collectionsRepositories.map((repo) => {
                 return (
                   <tr key={repo.id}>

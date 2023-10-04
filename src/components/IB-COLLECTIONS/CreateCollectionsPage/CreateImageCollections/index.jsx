@@ -4,25 +4,25 @@ import { Suspense, useContext } from 'react'
 import Image from 'next/image'
 
 import { BsArrowLeft } from 'react-icons/bs'
+import { FaTruckLoading } from 'react-icons/fa'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
+import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
+import { AuthContext } from '@/Context/AuthContext'
 
 import styles from './styles.module.css'
-import { AuthContext } from '@/Context/AuthContext'
-import { FaTruckLoading } from 'react-icons/fa'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
-export default function CreateImageNews({ createImage }) {
+export default function CreateImageCollections({ createImage }) {
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
-    CreateImageNewsContext,
+    CreateImageCollectionContext,
   )
 
   const {

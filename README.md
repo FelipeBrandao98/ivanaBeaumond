@@ -394,3 +394,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 2 - Finalizado rota de adicionar notícias
 
 ## 3 - Finalizado rotas de listar notícias e coleções no dashboard
+
+### 04-10-23
+
+## 1 - Feito toda a lógica de adicionar Coleção

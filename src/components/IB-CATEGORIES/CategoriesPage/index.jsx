@@ -50,7 +50,7 @@ export default function CategoriesPage({ functions }) {
                 <FiRefreshCcw width={40} height={40} />
               </button>
               <Link
-                href={'/ib-login/dashboard/noticias/novanoticia'}
+                href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
                 className={styles.optionsButton}
               >
                 <FiPlus width={40} height={40} />
