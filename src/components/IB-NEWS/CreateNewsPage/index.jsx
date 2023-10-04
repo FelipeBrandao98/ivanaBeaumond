@@ -10,7 +10,7 @@ import CreateNews from '@/components/IB-NEWS/CreateNewsPage/CreateNews'
 export default function CreateNewsPage({ functions }) {
   const [categories, setCategories] = useState([])
 
-  const { createNews, getCategories, createImage } = functions
+  const { createNews, editNews, getCategories, createImage } = functions
 
   const { image, showCreateImage } = useContext(CreateImageNewsContext)
 
@@ -28,7 +28,11 @@ export default function CreateNewsPage({ functions }) {
       {showCreateImage === true ? (
         <CreateImageNews createImage={createImage} />
       ) : (
-        <CreateNews categories={categories} createNews={createNews} />
+        <CreateNews
+          categories={categories}
+          createNews={createNews}
+          editNews={editNews}
+        />
       )}
     </>
   )

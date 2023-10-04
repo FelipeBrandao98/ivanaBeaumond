@@ -85,6 +85,8 @@
 .table td {
   padding: .5rem;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .table .image {

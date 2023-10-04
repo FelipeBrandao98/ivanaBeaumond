@@ -1,11 +1,14 @@
 'use client'
 
 import { AuthContext } from '@/Context/AuthContext'
+import { NewsContext } from '@/Context/NewsContext'
 import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useContext } from 'react'
+
+import { format } from 'date-fns'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -46,12 +49,13 @@ const createNewsFormSchema = z.object({
   bodyFr: z.string(),
 })
 
-export default function CreateNews({ categories, createNews }) {
+export default function CreateNews({ categories, createNews, editNews }) {
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
 
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage } = useContext(CreateImageNewsContext)
+  const { news, handleNews } = useContext(NewsContext)
 
   const {
     register,
@@ -64,8 +68,9 @@ export default function CreateNews({ categories, createNews }) {
 
   async function handleCreateNews(formData) {
     formData.coverId = image.id
-    const res = await createNews(token, formData)
-    console.log(res)
+    news.id
+      ? await editNews(news.id, token, formData)
+      : await createNews(token, formData)
   }
 
   function handleCancelModal() {
@@ -146,20 +151,41 @@ export default function CreateNews({ categories, createNews }) {
           <form action={handleSubmit(handleCreateNews)}>
             <label htmlFor="publishDate" className={styles.labelCategory}>
               Data de Publicação
-              <input
-                type="date"
-                id="publishDate"
-                {...register('publishDate')}
-                className={styles.input}
-              />
+              {news.publishDate ? (
+                <input
+                  type="date"
+                  id="publishDate"
+                  defaultValue={
+                    news && format(new Date(news.publishDate), "yyyy'-'MM'-'dd")
+                  }
+                  {...register('publishDate')}
+                  className={styles.input}
+                />
+              ) : (
+                <input
+                  type="date"
+                  id="publishDate"
+                  {...register('publishDate')}
+                  className={styles.input}
+                />
+              )}
             </label>
             <div className={styles.checkbox}>
               Publicar agora?
-              <input
-                type="checkbox"
-                id="published"
-                {...register('published')}
-              />
+              {news.published ? (
+                <input
+                  type="checkbox"
+                  id="published"
+                  checked
+                  {...register('published')}
+                />
+              ) : (
+                <input
+                  type="checkbox"
+                  id="published"
+                  {...register('published')}
+                />
+              )}
               <label htmlFor="published"></label>
             </div>
             <label htmlFor="categoryId" className={styles.labelCategory}>
@@ -167,7 +193,7 @@ export default function CreateNews({ categories, createNews }) {
               <select
                 id="categoryId"
                 className={styles.select}
-                defaultValue=""
+                defaultValue={news && news.categoryId}
                 {...register('categoryId')}
               >
                 <option value="" disabled>
@@ -187,7 +213,6 @@ export default function CreateNews({ categories, createNews }) {
                 </span>
               )}
             </label>
-            {console.log(image)}
             {image.src ? (
               <div
                 className={styles.coverImage}
@@ -207,12 +232,24 @@ export default function CreateNews({ categories, createNews }) {
                 className={styles.coverImage}
                 onClick={handleShowCreateImage}
               >
-                <MdPhoto
-                  width={100}
-                  height={100}
-                  className={styles.coverImageIcon}
-                />
-                Escolher foto de capa
+                {news.cover?.url ? (
+                  <Image
+                    width={800}
+                    height={800}
+                    className={styles.cover}
+                    src={news.cover.url}
+                    alt={''}
+                  />
+                ) : (
+                  <>
+                    <MdPhoto
+                      width={100}
+                      height={100}
+                      className={styles.coverImageIcon}
+                    />
+                    Escolher foto de capa
+                  </>
+                )}
               </div>
             )}
 
@@ -227,6 +264,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="coverCredit"
+                  defaultValue={news && news.coverCredit}
                   {...register('coverCredit')}
                 />
                 {errors.coverCredit && (
@@ -241,6 +279,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="title"
+                  defaultValue={news && news.title}
                   {...register('title')}
                 />
                 {errors.title && (
@@ -253,6 +292,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="subtitle"
+                  defaultValue={news && news.subtitle}
                   {...register('subtitle')}
                 />
                 {errors.subtitle && (
@@ -267,6 +307,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="textarea"
                   className={styles.inputExpanded}
                   id="body"
+                  defaultValue={news && news.body}
                   {...register('body')}
                 />
                 {errors.body && (
@@ -285,6 +326,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="coverCreditDe"
+                  defaultValue={news && news.coverCreditDe}
                   {...register('coverCreditDe')}
                 />
                 {errors.coverCreditDe && (
@@ -299,6 +341,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="titleDe"
+                  defaultValue={news && news.titleDe}
                   {...register('titleDe')}
                 />
                 {errors.titleDe && (
@@ -311,6 +354,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="subtitleDe"
+                  defaultValue={news && news.subtitleDe}
                   {...register('subtitleDe')}
                 />
                 {errors.subtitleDe && (
@@ -325,6 +369,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="textarea"
                   className={styles.inputExpanded}
                   id="bodyDe"
+                  defaultValue={news && news.bodyDe}
                   {...register('bodyDe')}
                 />
                 {errors.bodyDe && (
@@ -343,6 +388,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="coverCreditFr"
+                  defaultValue={news && news.coverCreditFr}
                   {...register('coverCreditFr')}
                 />
                 {errors.coverCreditFr && (
@@ -357,6 +403,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="titleFr"
+                  defaultValue={news && news.titleFr}
                   {...register('titleFr')}
                 />
                 {errors.titleFr && (
@@ -369,6 +416,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="subtitleFr"
+                  defaultValue={news && news.subtitleFr}
                   {...register('subtitleFr')}
                 />
                 {errors.subtitleFr && (
@@ -383,6 +431,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="textarea"
                   className={styles.inputExpanded}
                   id="bodyFr"
+                  defaultValue={news && news.bodyFr}
                   {...register('bodyFr')}
                 />
                 {errors.bodyFr && (
@@ -401,6 +450,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="coverCreditEn"
+                  defaultValue={news && news.coverCreditEn}
                   {...register('coverCreditEn')}
                 />
                 {errors.coverCreditEn && (
@@ -415,6 +465,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="titleEn"
+                  defaultValue={news && news.titleEn}
                   {...register('titleEn')}
                 />
                 {errors.titleEn && (
@@ -427,6 +478,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="text"
                   className={styles.input}
                   id="subtitleEn"
+                  defaultValue={news && news.subtitleEn}
                   {...register('subtitleEn')}
                 />
                 {errors.subtitleEn && (
@@ -441,6 +493,7 @@ export default function CreateNews({ categories, createNews }) {
                   type="textarea"
                   className={styles.inputExpanded}
                   id="bodyEn"
+                  defaultValue={news && news.bodyEn}
                   {...register('bodyEn')}
                 />
                 {errors.bodyEn && (

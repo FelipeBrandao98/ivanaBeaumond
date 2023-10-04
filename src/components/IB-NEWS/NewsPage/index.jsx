@@ -16,9 +16,14 @@ import {
 } from 'react-icons/fi'
 
 import styles from './styles.module.css'
+import { NewsContext } from '@/Context/NewsContext'
+import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
 export default function NewsPage({ functions }) {
   const { token } = useContext(AuthContext)
+  const { handleNews } = useContext(NewsContext)
+  const { handleChangeImage } = useContext(CreateImageNewsContext)
+
   const { getNews } = functions
 
   const [newsRepositories, setNewsRepositories] = useState([])
@@ -52,6 +57,7 @@ export default function NewsPage({ functions }) {
               <Link
                 href={'/ib-login/dashboard/noticias/novanoticia'}
                 className={styles.optionsButton}
+                onClick={(e) => handleNews({})}
               >
                 <FiPlus width={40} height={40} />
               </Link>
@@ -107,6 +113,7 @@ export default function NewsPage({ functions }) {
           <table className={styles.table}>
             <thead>
               <tr>
+                <th>Editar Notícia</th>
                 <th>Foto de Capa</th>
                 <th>Título da Notícia</th>
                 <th>Categoria</th>
@@ -117,6 +124,18 @@ export default function NewsPage({ functions }) {
               {newsRepositories.map((repo) => {
                 return (
                   <tr key={repo.id}>
+                    <td>
+                      <Link
+                        href={'/ib-login/dashboard/noticias/novanoticia'}
+                        onClick={(e) => {
+                          handleNews(repo)
+                          handleChangeImage({})
+                        }}
+                        className={styles.editButton}
+                      >
+                        <FiEdit width={40} height={40} />
+                      </Link>
+                    </td>
                     <td>
                       <Image
                         width={200}

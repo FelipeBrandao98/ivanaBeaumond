@@ -3,8 +3,16 @@ import api from '@/services/api'
 
 async function createNews(token, createNews) {
   'use server'
-  console.log(createNews)
   await api.post('/news', createNews, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+}
+
+async function editNews(id, token, createNews) {
+  'use server'
+  await api.patch(`/news/${id}`, createNews, {
     headers: {
       Authorization: 'Bearer ' + token,
     },
@@ -29,6 +37,8 @@ async function getCategories() {
 
 export default function Page() {
   return (
-    <CreateNewsPage functions={{ createNews, createImage, getCategories }} />
+    <CreateNewsPage
+      functions={{ createNews, editNews, createImage, getCategories }}
+    />
   )
 }
