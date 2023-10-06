@@ -1,6 +1,7 @@
 'use client'
 
 import { AuthContext } from '@/Context/AuthContext'
+import { CollectionsContext } from '@/Context/CollectionsContext'
 import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,14 +15,17 @@ import {
   FiSearch,
   FiTrash2,
 } from 'react-icons/fi'
+import { BiPhotoAlbum } from 'react-icons/bi'
 
 import styles from './styles.module.css'
+import { useRouter } from 'next/navigation'
 
 export default function CollectionsPage({ functions }) {
   const [collectionsRepositories, setCollectionsRepositories] = useState([])
 
   const { getCollections } = functions
   const { token } = useContext(AuthContext)
+  const { collections, handleCollections } = useContext(CollectionsContext)
 
   async function getRepo(token) {
     const collections = await getCollections(token)
@@ -62,25 +66,7 @@ export default function CollectionsPage({ functions }) {
                 }}
                 className={styles.optionsButton}
               >
-                <FiTrash2 width={40} height={40} />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  getRepo()
-                }}
-                className={styles.optionsButton}
-              >
                 <FiArchive width={40} height={40} />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  getRepo()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiEdit width={40} height={40} />
               </button>
             </div>
           </div>
@@ -111,6 +97,7 @@ export default function CollectionsPage({ functions }) {
                 <th>Título da Coleção</th>
                 <th>Descrição da Coleção</th>
                 <th>Categoria da Coleção</th>
+                <th>Editar Fotos</th>
               </tr>
             </thead>
             <tbody>
@@ -129,6 +116,16 @@ export default function CollectionsPage({ functions }) {
                     <td>{repo.title}</td>
                     <td>{repo.description}</td>
                     <td>{repo.category.description}</td>
+                    <td>
+                      <Link
+                        href={'/ib-login/dashboard/colecoes/addimagens'}
+                        onClick={(e) => {
+                          handleCollections(repo)
+                        }}
+                      >
+                        <BiPhotoAlbum width={100} height={100} />
+                      </Link>
+                    </td>
                   </tr>
                 )
               })}
