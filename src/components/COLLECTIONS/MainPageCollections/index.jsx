@@ -5,7 +5,7 @@ import Collections from './Collections'
 import styles from './styles.module.css'
 import useLangDict from '@/utils/useLangDict'
 
-export default function MainPageCollections({ lang, data }) {
+export default function MainPageCollections({ lang, data, functions }) {
   return (
     <>
       <section className={styles.section}>
@@ -24,7 +24,7 @@ export default function MainPageCollections({ lang, data }) {
           <h3>Ivana Beaumond ©</h3>
         </div>
       </section>
-      <Collections lang={lang} data={data} />
+      <Collections lang={lang} data={data} functions={functions} />
     </>
   )
 }

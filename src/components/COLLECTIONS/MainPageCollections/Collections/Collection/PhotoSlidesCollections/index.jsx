@@ -5,15 +5,14 @@ import Image from 'next/image'
 
 import styles from './styles.module.css'
 
-export default function PhotoSlidesCollections() {
+export default function PhotoSlidesCollections({ images }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
   useEffect(() => {
-
     setTimeout(() => {
       changeSlideFromRight()
-    }, 15000);
+    }, 15000)
   }, [])
 
   function changeSlideFromRight() {
@@ -69,88 +68,51 @@ export default function PhotoSlidesCollections() {
       <div className={styles.slideNumberButtonsArea}>
         <div className={styles.slideNumberButtons}>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 1 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 2 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 3 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
           <span
-            className={
-              `
+            className={`
                 ${styles.slideButton}
                 ${slide === 4 ? styles.slideButtonSelected : ''}
-              `
-            }
-          >
-
-          </span>
+              `}
+          ></span>
         </div>
       </div>
 
-      <div className={
-        `
+      <div
+        className={`
         ${styles.SlideArea}
         ${slideClass}
-        `
-      }>
-
-        <Image
-          className={styles.image}
-          src={'/photos_blog/photo_blog_banner_1.jpg'}
-          alt='Ivana Beaumond'
-          width={1620}
-          height={1280}
-        />
-
-        <Image
-          className={styles.image}
-          src={'/photos_blog/photo_blog_3.jpg'}
-          alt='Ivana Beaumond'
-          width={1620}
-          height={1280}
-        />
-
-        <Image
-          className={styles.image}
-          src={'/photos_blog/photo_blog_2.jpg'}
-          alt='Ivana Beaumond'
-          width={1620}
-          height={1280}
-        />
-
-        <Image
-          className={styles.image}
-          src={'/photos_blog/photo_blog_1.jpeg'}
-          alt='Ivana Beaumond'
-          width={1620}
-          height={1280}
-        />
-
-      </div >
+        `}
+      >
+        {images.map((image) => {
+          return (
+            <Image
+              key={image.id}
+              className={styles.image}
+              src={image.url}
+              alt="Ivana Beaumond"
+              width={1620}
+              height={1280}
+            />
+          )
+        })}
+      </div>
 
       <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
         <button className={styles.fromRightButton}>
@@ -161,7 +123,6 @@ export default function PhotoSlidesCollections() {
           />
         </button>
       </div>
-
-    </div >
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TbHandClick } from 'react-icons/tb'
 
 import styles from './styles.module.css'
@@ -8,12 +8,31 @@ import styles from './styles.module.css'
 import PhotoSlidesCollections from './PhotoSlidesCollections'
 import useLangDict from '@/utils/useLangDict'
 
-export default function Collection({ id, lang, title, description, imageUrl }) {
+export default function Collection({
+  id,
+  lang,
+  title,
+  description,
+  imageUrl,
+  functions,
+}) {
   const [displayed, setDisplayed] = useState(false)
+  const [images, setImages] = useState([])
+
+  const { getCollectionImages } = functions
 
   function handleDisplayDetails() {
     displayed ? setDisplayed(false) : setDisplayed(true)
   }
+
+  async function getCollectionImagesRepo(id) {
+    const res = await getCollectionImages(id)
+    setImages(res)
+  }
+
+  useEffect(() => {
+    getCollectionImagesRepo(id)
+  }, [])
 
   return (
     <aside className={styles.collection} key={id}>
@@ -50,7 +69,7 @@ export default function Collection({ id, lang, title, description, imageUrl }) {
             <p className={styles.description}>{description}</p>
           </div>
 
-          <PhotoSlidesCollections />
+          <PhotoSlidesCollections images={images} />
         </div>
         <div className={styles.buttonArea}>
           <button className={styles.button}>

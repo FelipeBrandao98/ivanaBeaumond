@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 
 import Collection from './Collection'
 
-export default function Collections({ lang, data }) {
+export default function Collections({ lang, data, functions }) {
   return (
     <section className={styles.section}>
       {data.map((data) => {
@@ -15,6 +15,7 @@ export default function Collections({ lang, data }) {
             title={data.title}
             description={data.description}
             imageUrl={data.cover.url}
+            functions={functions}
           />
         )
       })}

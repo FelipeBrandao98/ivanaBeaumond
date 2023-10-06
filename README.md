@@ -406,3 +406,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 1 - Finalizado completamente a rota de adicionar, editar e deletar Notícias
 
 ## 2 - Finalizado rota de adicionar imagens em coleções
+
+## 3 - Chamada api de Imagens de coleções na página de collections

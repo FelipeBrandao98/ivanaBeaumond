@@ -16,6 +16,8 @@ import {
 import { cookies } from 'next/headers'
 import Head from 'next/head'
 
+import { Providers } from './providers'
+
 import '@/styles/globals.css'
 
 import AdressItem from '@/components/LAYOUT/AdressItem'
@@ -25,7 +27,6 @@ import Menu from '@/components/LAYOUT/Menu'
 import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
-import { Providers } from '../providers'
 import api from '@/services/api'
 
 const inter = Inter({

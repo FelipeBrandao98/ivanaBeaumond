@@ -8,11 +8,12 @@ async function getData(lang) {
   return res.data
 }
 
-// async function getCollectionImages(id) {
-//   const res = await api.get(`/collection-images/collection-id/${id}`)
+async function getCollectionImages(id) {
+  'use server'
+  const res = await api.get(`/collections/images/collection-id/${id}`)
 
-//   return res.data
-// }
+  return res.data
+}
 
 export default async function Page() {
   const cookieStore = cookies()
@@ -20,20 +21,13 @@ export default async function Page() {
   const lang = langCookie.value
 
   let data = await getData(lang)
-
-  // data.map(async (collection) => {
-  //   const images = await getCollectionImages(collection.id)
-
-  //   if (images) {
-  //     collection.collectionImages = images
-  //   }
-
-  //   return collection
-  // })
-
   return (
     <>
-      <MainPageCollections lang={lang} data={data} />
+      <MainPageCollections
+        lang={lang}
+        data={data}
+        functions={{ getCollectionImages }}
+      />
     </>
   )
 }

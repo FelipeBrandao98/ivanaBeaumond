@@ -1,7 +1,8 @@
 import Head from 'next/head'
 
-import '@/styles/login.css'
 import { Providers } from './providers'
+
+import '@/styles/login.css'
 
 export const metadata = {
   title: 'Login Page',
