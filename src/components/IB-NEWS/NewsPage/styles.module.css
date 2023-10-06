@@ -1,3 +1,18 @@
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 .container {
   width: 100%;
   display: flex;
@@ -92,4 +107,117 @@
 .table .image {
   object-fit: cover;
   border-radius: .3rem;
+}
+
+.table th:last-child {
+  background-color: var(--red-france);
+}
+
+.confirmCancelModalContainer {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+}
+
+.confirmCancelModalContent {
+  background-color: var(--white-300);
+  padding: 2rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.confirmCancelModalTitle {
+  color: var(--red-france);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.buttonsArea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cancelButtonModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 3rem;
+  background-color: var(--black-300);
+  color: var(--white-100);
+  border-radius: .5rem;
+  border: none;
+  font-size: 1.2rem;
+  transition: all .2s;
+}
+
+.confirmButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 3rem;
+  background-color: var(--red-france);
+  color: var(--white-100);
+  border-radius: .5rem;
+  border: none;
+  font-size: 1.2rem;
+  transition: all .2s;
+}
+
+.cancelButton:hover,
+.confirmButton:hover {
+  filter: brightness(1.2);
+}
+
+.loadingContainer {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+
+  cursor: wait;
+}
+
+.loadingContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-france);
+  gap: 2rem;
+}
+
+.loading {
+  animation: rotation 1s linear infinite;
+  color: var(--red-france);
+  width: 2rem;
+  height: 2rem;
 }

@@ -11,6 +11,16 @@ async function getNews(token) {
   return res.data
 }
 
+async function deleteNews(token, id) {
+  'use server'
+  const res = await api.delete(`/news/${id}`, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+  return res.data
+}
+
 export default function Page() {
-  return <NewsPage functions={{ getNews }} />
+  return <NewsPage functions={{ getNews, deleteNews }} />
 }

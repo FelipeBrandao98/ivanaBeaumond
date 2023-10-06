@@ -400,3 +400,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 1 - Feito toda a lógica de adicionar Coleção
 
 ## 2 - Feito Método de edição de Notícias (Falta animação de enviar dados para a api e redirecionamento para NewsPage)
+
+### 06-10-23
+
+## 1 - Finalizado completamente a rota de adicionar, editar e deletar Notícias

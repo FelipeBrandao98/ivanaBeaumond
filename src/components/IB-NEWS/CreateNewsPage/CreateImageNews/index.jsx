@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useContext } from 'react'
+import { Suspense, useContext, useState } from 'react'
 import Image from 'next/image'
 
 import { BsArrowLeft } from 'react-icons/bs'
@@ -14,12 +14,15 @@ import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 import styles from './styles.module.css'
 import { AuthContext } from '@/Context/AuthContext'
 import { FaTruckLoading } from 'react-icons/fa'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
 export default function CreateImageNews({ createImage }) {
+  const [loading, setLoading] = useState(false)
+
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageNewsContext,
@@ -35,10 +38,12 @@ export default function CreateImageNews({ createImage }) {
   })
 
   async function handleCreateImage(formData) {
+    setLoading(true)
     const file = new FormData()
     file.set('file', formData.file[0])
     const res = await createImage(token, file)
     handleChangeImage(res)
+    setLoading(false)
   }
 
   return (
@@ -88,6 +93,18 @@ export default function CreateImageNews({ createImage }) {
           )}
         </aside>
       </section>
+      {loading && (
+        <section className={styles.loadingContainer}>
+          <aside className={styles.loadingContent}>
+            Enviando dados...{' '}
+            <AiOutlineLoading
+              width={100}
+              height={100}
+              className={styles.loading}
+            />
+          </aside>
+        </section>
+      )}
     </>
   )
 }

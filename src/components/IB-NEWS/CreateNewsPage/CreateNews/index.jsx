@@ -7,6 +7,7 @@ import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { format } from 'date-fns'
 
@@ -16,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 import styles from './styles.module.css'
 
@@ -50,8 +52,11 @@ const createNewsFormSchema = z.object({
 })
 
 export default function CreateNews({ categories, createNews, editNews }) {
+  const router = useRouter()
+
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage } = useContext(CreateImageNewsContext)
@@ -67,10 +72,13 @@ export default function CreateNews({ categories, createNews, editNews }) {
   })
 
   async function handleCreateNews(formData) {
+    setLoading(true)
     formData.coverId = image.id
     news.id
       ? await editNews(news.id, token, formData)
       : await createNews(token, formData)
+
+    router.back()
   }
 
   function handleCancelModal() {
@@ -541,6 +549,18 @@ export default function CreateNews({ categories, createNews, editNews }) {
                 Cancelar
               </Link>
             </div>
+          </aside>
+        </section>
+      )}
+      {loading && (
+        <section className={styles.loadingContainer}>
+          <aside className={styles.loadingContent}>
+            Enviando dados...{' '}
+            <AiOutlineLoading
+              width={100}
+              height={100}
+              className={styles.loading}
+            />
           </aside>
         </section>
       )}
