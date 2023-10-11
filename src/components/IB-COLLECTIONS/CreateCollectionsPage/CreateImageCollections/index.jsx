@@ -1,16 +1,18 @@
 'use client'
 
-import { Suspense, useContext } from 'react'
+import { Suspense, useContext, useState } from 'react'
 import Image from 'next/image'
 
 import { BsArrowLeft } from 'react-icons/bs'
 import { FaTruckLoading } from 'react-icons/fa'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
+import { CollectionsContext } from '@/Context/CollectionsContext'
 import { AuthContext } from '@/Context/AuthContext'
 
 import styles from './styles.module.css'
@@ -20,7 +22,10 @@ const createImageFormSchema = z.object({
 })
 
 export default function CreateImageCollections({ createImage }) {
+  const [loading, setLoading] = useState(false)
+
   const { token } = useContext(AuthContext)
+  const { collections, handleCollections } = useContext(CollectionsContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCollectionContext,
   )
@@ -35,10 +40,12 @@ export default function CreateImageCollections({ createImage }) {
   })
 
   async function handleCreateImage(formData) {
+    setLoading(true)
     const file = new FormData()
     file.set('file', formData.file[0])
     const res = await createImage(token, file)
     handleChangeImage(res)
+    setLoading(false)
   }
 
   return (
@@ -88,6 +95,18 @@ export default function CreateImageCollections({ createImage }) {
           )}
         </aside>
       </section>
+      {loading && (
+        <section className={styles.loadingContainer}>
+          <aside className={styles.loadingContent}>
+            Enviando dados...{' '}
+            <AiOutlineLoading
+              width={100}
+              height={100}
+              className={styles.loading}
+            />
+          </aside>
+        </section>
+      )}
     </>
   )
 }

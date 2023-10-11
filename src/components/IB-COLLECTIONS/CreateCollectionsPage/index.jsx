@@ -10,7 +10,8 @@ import CreateImageCollections from '@/components/IB-COLLECTIONS/CreateCollection
 export default function CreateCollectionsPage({ functions }) {
   const [categories, setCategories] = useState([])
 
-  const { createCollection, getCategories, createImage } = functions
+  const { createCollection, editCollection, getCategories, createImage } =
+    functions
 
   const { image, showCreateImage } = useContext(CreateImageCollectionContext)
 
@@ -31,6 +32,7 @@ export default function CreateCollectionsPage({ functions }) {
         <CreateCollection
           categories={categories}
           createCollection={createCollection}
+          editCollection={editCollection}
         />
       )}
     </>

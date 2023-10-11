@@ -13,8 +13,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 import styles from './styles.module.css'
+import { CollectionsContext } from '@/Context/CollectionsContext'
+import { useRouter } from 'next/navigation'
 
 const createCollectionFormSchema = z.object({
   categoryId: z
@@ -31,11 +34,19 @@ const createCollectionFormSchema = z.object({
   descriptionFr: z.string(),
 })
 
-export default function CreateCollection({ categories, createCollection }) {
+export default function CreateCollection({
+  categories,
+  createCollection,
+  editCollection,
+}) {
+  const router = useRouter()
+
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { token } = useContext(AuthContext)
+  const { collections, handleCollections } = useContext(CollectionsContext)
   const { image, handleShowCreateImage } = useContext(
     CreateImageCollectionContext,
   )
@@ -50,9 +61,13 @@ export default function CreateCollection({ categories, createCollection }) {
   })
 
   async function handleCreateCollection(formData) {
+    setLoading(true)
     formData.coverId = image.id
-    const res = await createCollection(token, formData)
-    console.log(res)
+    collections.id
+      ? await editCollection(collections.id, token, formData)
+      : await createCollection(token, formData)
+
+    router.back()
   }
 
   function handleCancelModal() {
@@ -136,7 +151,7 @@ export default function CreateCollection({ categories, createCollection }) {
               <select
                 id="categoryId"
                 className={styles.select}
-                defaultValue=""
+                defaultValue={collections.categoryId && collections.categoryId}
                 {...register('categoryId')}
               >
                 <option value="" disabled>
@@ -175,12 +190,24 @@ export default function CreateCollection({ categories, createCollection }) {
                 className={styles.coverImage}
                 onClick={handleShowCreateImage}
               >
-                <MdPhoto
-                  width={100}
-                  height={100}
-                  className={styles.coverImageIcon}
-                />
-                Escolher foto de capa
+                {collections.cover?.url ? (
+                  <Image
+                    width={800}
+                    height={800}
+                    className={styles.cover}
+                    src={collections.cover.url}
+                    alt={''}
+                  />
+                ) : (
+                  <>
+                    <MdPhoto
+                      width={100}
+                      height={100}
+                      className={styles.coverImageIcon}
+                    />
+                    Escolher foto de capa
+                  </>
+                )}
               </div>
             )}
 
@@ -195,6 +222,7 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="title"
+                  defaultValue={collections.title && collections.title}
                   {...register('title')}
                 />
                 {errors.title && (
@@ -207,6 +235,9 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="description"
+                  defaultValue={
+                    collections.description && collections.description
+                  }
                   {...register('description')}
                 />
                 {errors.description && (
@@ -227,6 +258,7 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="titleDe"
+                  defaultValue={collections.titleDe && collections.titleDe}
                   {...register('titleDe')}
                 />
                 {errors.titleDe && (
@@ -239,6 +271,9 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="descriptionDe"
+                  defaultValue={
+                    collections.descriptionDe && collections.descriptionDe
+                  }
                   {...register('descriptionDe')}
                 />
                 {errors.descriptionDe && (
@@ -259,6 +294,7 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="titleFr"
+                  defaultValue={collections.titleFr && collections.titleFr}
                   {...register('titleFr')}
                 />
                 {errors.titleFr && (
@@ -271,6 +307,9 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="descriptionFr"
+                  defaultValue={
+                    collections.descriptionFr && collections.descriptionFr
+                  }
                   {...register('descriptionFr')}
                 />
                 {errors.descriptionFr && (
@@ -291,6 +330,7 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="titleEn"
+                  defaultValue={collections.titleEn && collections.titleEn}
                   {...register('titleEn')}
                 />
                 {errors.titleEn && (
@@ -303,6 +343,9 @@ export default function CreateCollection({ categories, createCollection }) {
                   type="text"
                   className={styles.input}
                   id="descriptionEn"
+                  defaultValue={
+                    collections.descriptionEn && collections.descriptionEn
+                  }
                   {...register('descriptionEn')}
                 />
                 {errors.descriptionEn && (
@@ -323,7 +366,7 @@ export default function CreateCollection({ categories, createCollection }) {
                 Cancelar
               </button>
               <button className={styles.submitButton} type="submit">
-                Criar Notícia
+                {collections.id ? 'Editar Coleção' : 'Criar Coleção'}
               </button>
             </div>
           </form>
@@ -352,6 +395,18 @@ export default function CreateCollection({ categories, createCollection }) {
                 Cancelar
               </Link>
             </div>
+          </aside>
+        </section>
+      )}
+      {loading && (
+        <section className={styles.loadingContainer}>
+          <aside className={styles.loadingContent}>
+            Enviando dados...{' '}
+            <AiOutlineLoading
+              width={100}
+              height={100}
+              className={styles.loading}
+            />
           </aside>
         </section>
       )}

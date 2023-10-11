@@ -520,7 +520,7 @@ export default function CreateNews({ categories, createNews, editNews }) {
                 Cancelar
               </button>
               <button className={styles.submitButton} type="submit">
-                Criar Notícia
+                {news.id ? 'Editar Notícia' : 'Criar Notícia'}
               </button>
             </div>
           </form>

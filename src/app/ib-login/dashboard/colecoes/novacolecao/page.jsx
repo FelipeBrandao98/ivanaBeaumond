@@ -12,6 +12,16 @@ async function createCollection(token, createCollection) {
   return res.data
 }
 
+async function editCollection(id, token, createCollection) {
+  'use server'
+  const res = await api.patch(`/collections/${id}`, createCollection, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+  return res.data
+}
+
 async function createImage(token, file) {
   'use server'
   const res = await api.post('/images', file, {
@@ -31,7 +41,12 @@ async function getCategories() {
 export default function Page() {
   return (
     <CreateCollectionsPage
-      functions={{ createCollection, createImage, getCategories }}
+      functions={{
+        createCollection,
+        editCollection,
+        createImage,
+        getCategories,
+      }}
     />
   )
 }

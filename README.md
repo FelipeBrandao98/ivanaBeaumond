@@ -408,3 +408,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 2 - Finalizado rota de adicionar imagens em coleções
 
 ## 3 - Chamada api de Imagens de coleções na página de collections
+
+### 11-10-23
+
+## 1 - Finalizado adicionar e editar colecoes e noticias

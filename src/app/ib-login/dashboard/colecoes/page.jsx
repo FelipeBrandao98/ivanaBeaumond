@@ -11,6 +11,16 @@ async function getCollections(token) {
   return res.data
 }
 
+async function deleteCollection(token, id) {
+  'use server'
+  const res = await api.delete(`/collections/${id}`, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+  return res.data
+}
+
 export default function Page() {
-  return <CollectionsPage functions={{ getCollections }} />
+  return <CollectionsPage functions={{ getCollections, deleteCollection }} />
 }

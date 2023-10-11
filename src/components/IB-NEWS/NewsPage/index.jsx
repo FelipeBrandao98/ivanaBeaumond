@@ -175,7 +175,7 @@ export default function NewsPage({ functions }) {
                                 Não
                               </button>
                               <button
-                                className={styles.cancelButton}
+                                className={styles.confirmButton}
                                 onClick={(e) => {
                                   e.preventDefault()
                                   handleDeleteNews(token, repo.id)
