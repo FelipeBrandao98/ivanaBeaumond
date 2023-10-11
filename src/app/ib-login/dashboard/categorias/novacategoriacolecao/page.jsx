@@ -1,4 +1,4 @@
-import CreateCategoryPage from '@/components/IB-CATEGORIES/CreateCategoryPagePage'
+import CreateCategoryPage from '@/components/IB-CATEGORIES/CreateCategoryPage'
 
 import api from '@/services/api'
 
@@ -6,6 +6,16 @@ async function createCategory(token, createCategory) {
   'use server'
   console.log(createCategory)
   await api.post('/collections/category', createCategory, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+}
+
+async function editCategory(id, token, createCategory) {
+  'use server'
+  console.log(createCategory)
+  await api.patch(`/collections/category/${id}`, createCategory, {
     headers: {
       Authorization: 'Bearer ' + token,
     },
@@ -23,5 +33,9 @@ async function createImage(token, file) {
 }
 
 export default function Page() {
-  return <CreateCategoryPage functions={{ createCategory, createImage }} />
+  return (
+    <CreateCategoryPage
+      functions={{ createCategory, editCategory, createImage }}
+    />
+  )
 }

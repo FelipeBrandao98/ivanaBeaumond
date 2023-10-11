@@ -15,43 +15,33 @@ import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
 
 import styles from './styles.module.css'
+import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
+import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
+import { useRouter } from 'next/navigation'
 
 const createNewsFormSchema = z.object({
-  publishDate: z
-    .string()
-    .nonempty()
-    .transform((date) => new Date(date)),
-  published: z.boolean(),
-  categoryId: z
-    .string()
-    .nonempty()
-    .transform((category) => Number(category)),
-  title: z.string(),
-  titleDe: z.string(),
-  titleEn: z.string(),
-  titleFr: z.string(),
-  coverCredit: z.string(),
-  coverCreditDe: z.string(),
-  coverCreditEn: z.string(),
-  coverCreditFr: z.string(),
-  subtitle: z.string(),
-  subtitleDe: z.string(),
-  subtitleEn: z.string(),
-  subtitleFr: z.string(),
-  // publishDate: z.string(),
-  // published: z.boolean(),
-  body: z.string(),
-  bodyDe: z.string(),
-  bodyEn: z.string(),
-  bodyFr: z.string(),
+  description: z.string(),
+  descriptionDe: z.string(),
+  descriptionFr: z.string(),
+  descriptionEn: z.string(),
+  subdescription: z.string(),
+  subdescriptionDe: z.string(),
+  subdescriptionFr: z.string(),
+  subdescriptionEn: z.string(),
 })
 
-export default function CreateCategory({ categories, createNews }) {
+export default function CreateCategory({ createCategory, editCategory }) {
+  const router = useRouter()
+
+  const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
 
   const { token } = useContext(AuthContext)
-  const { image, handleShowCreateImage } = useContext(CreateImageNewsContext)
+  const { category, handleCategory } = useContext(CollectionsCategoryContext)
+  const { image, handleShowCreateImage, handleChangeImage } = useContext(
+    CreateImageCategoryContext,
+  )
 
   const {
     register,
@@ -63,9 +53,14 @@ export default function CreateCategory({ categories, createNews }) {
   })
 
   async function handleCreateNews(formData) {
+    setLoading(true)
     formData.coverId = image.id
-    const res = await createNews(token, formData)
-    console.log(res)
+    category.id
+      ? await editCategory(category.id, token, formData)
+      : await createCategory(token, formData)
+    handleChangeImage({})
+    router.back()
+    setLoading(false)
   }
 
   function handleCancelModal() {
@@ -74,7 +69,7 @@ export default function CreateCategory({ categories, createNews }) {
 
   return (
     <>
-      <h1>Nova Notícia</h1>
+      <h1>Nova Categoria de Coleção</h1>
       <section className={styles.container}>
         <aside className={styles.content}>
           <div className={styles.tabArea}>
@@ -125,69 +120,29 @@ export default function CreateCategory({ categories, createNews }) {
           </div>
           {tab === 'pt-BR' ? (
             <h1 className={styles.title}>
-              Notícia em Português <ReactCountryFlag countryCode="BR" svg />
+              Categoria de Coleção em Português{' '}
+              <ReactCountryFlag countryCode="BR" svg />
             </h1>
           ) : tab === 'de' ? (
             <h1 className={styles.title}>
-              Notícia em Alemão <ReactCountryFlag countryCode="DE" svg />
+              Categoria de Coleção em Alemão{' '}
+              <ReactCountryFlag countryCode="DE" svg />
             </h1>
           ) : tab === 'fr' ? (
             <h1 className={styles.title}>
-              Notícia em Francês <ReactCountryFlag countryCode="FR" svg />
+              Categoria de Coleção em Francês{' '}
+              <ReactCountryFlag countryCode="FR" svg />
             </h1>
           ) : tab === 'en' ? (
             <h1 className={styles.title}>
-              Notícia em Inglês <ReactCountryFlag countryCode="US" svg />
+              Categoria de Coleção em Inglês{' '}
+              <ReactCountryFlag countryCode="US" svg />
             </h1>
           ) : (
             ''
           )}
 
           <form action={handleSubmit(handleCreateNews)}>
-            <label htmlFor="publishDate" className={styles.labelCategory}>
-              Data de Publicação
-              <input
-                type="date"
-                id="publishDate"
-                {...register('publishDate')}
-                className={styles.input}
-              />
-            </label>
-            <div className={styles.checkbox}>
-              Publicar agora?
-              <input
-                type="checkbox"
-                id="published"
-                {...register('published')}
-              />
-              <label htmlFor="published"></label>
-            </div>
-            <label htmlFor="categoryId" className={styles.labelCategory}>
-              Categoria da Notícia
-              <select
-                id="categoryId"
-                className={styles.select}
-                defaultValue=""
-                {...register('categoryId')}
-              >
-                <option value="" disabled>
-                  Selecione uma opção
-                </option>
-                {categories.map((category) => {
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {category.description}
-                    </option>
-                  )
-                })}
-              </select>
-              {errors.categoryId && (
-                <span className={styles.error}>
-                  {errors.categoryId.message}
-                </span>
-              )}
-            </label>
-            {console.log(image)}
             {image.src ? (
               <div
                 className={styles.coverImage}
@@ -207,12 +162,24 @@ export default function CreateCategory({ categories, createNews }) {
                 className={styles.coverImage}
                 onClick={handleShowCreateImage}
               >
-                <MdPhoto
-                  width={100}
-                  height={100}
-                  className={styles.coverImageIcon}
-                />
-                Escolher foto de capa
+                {category.cover?.url ? (
+                  <Image
+                    width={800}
+                    height={800}
+                    className={styles.cover}
+                    src={category.cover.url}
+                    alt={''}
+                  />
+                ) : (
+                  <>
+                    <MdPhoto
+                      width={100}
+                      height={100}
+                      className={styles.coverImageIcon}
+                    />
+                    Escolher foto de capa
+                  </>
+                )}
               </div>
             )}
 
@@ -221,56 +188,36 @@ export default function CreateCategory({ categories, createNews }) {
                 tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
               }`}
             >
-              <label htmlFor="coverCredit" className={styles.label}>
-                Crédito da Foto
+              <label htmlFor="description" className={styles.label}>
+                Título:
                 <input
                   type="text"
                   className={styles.input}
-                  id="coverCredit"
-                  {...register('coverCredit')}
+                  id="description"
+                  defaultValue={category.description && category.description}
+                  {...register('description')}
                 />
-                {errors.coverCredit && (
+                {errors.description && (
                   <span className={styles.error}>
-                    {errors.coverCredit.message}
+                    {errors.description.message}
                   </span>
                 )}
               </label>
-              <label htmlFor="title" className={styles.label}>
-                Título da Notícia
+              <label htmlFor="subdescription" className={styles.label}>
+                Descrição:
                 <input
                   type="text"
                   className={styles.input}
-                  id="title"
-                  {...register('title')}
+                  id="subdescription"
+                  defaultValue={
+                    category.subdescription && category.subdescription
+                  }
+                  {...register('subdescription')}
                 />
-                {errors.title && (
-                  <span className={styles.error}>{errors.title.message}</span>
-                )}
-              </label>
-              <label htmlFor="subtitle" className={styles.label}>
-                Subtítulo da Notícia
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subtitle"
-                  {...register('subtitle')}
-                />
-                {errors.subtitle && (
+                {errors.subdescription && (
                   <span className={styles.error}>
-                    {errors.subtitle.message}
+                    {errors.subdescription.message}
                   </span>
-                )}
-              </label>
-              <label htmlFor="body" className={styles.label}>
-                Corpo da Notícia
-                <input
-                  type="textarea"
-                  className={styles.inputExpanded}
-                  id="body"
-                  {...register('body')}
-                />
-                {errors.body && (
-                  <span className={styles.error}>{errors.body.message}</span>
                 )}
               </label>
             </div>
@@ -279,56 +226,38 @@ export default function CreateCategory({ categories, createNews }) {
                 tab === 'de' ? styles.deActive : styles.deInactive
               }`}
             >
-              <label htmlFor="coverCreditDe" className={styles.label}>
-                Crédito da Foto
+              <label htmlFor="descriptionDe" className={styles.label}>
+                Título:
                 <input
                   type="text"
                   className={styles.input}
-                  id="coverCreditDe"
-                  {...register('coverCreditDe')}
+                  id="descriptionDe"
+                  defaultValue={
+                    category.descriptionDe && category.descriptionDe
+                  }
+                  {...register('descriptionDe')}
                 />
-                {errors.coverCreditDe && (
+                {errors.descriptionDe && (
                   <span className={styles.error}>
-                    {errors.coverCreditDe.message}
+                    {errors.descriptionDe.message}
                   </span>
                 )}
               </label>
-              <label htmlFor="titleDe" className={styles.label}>
-                Título da Notícia
+              <label htmlFor="subdescriptionDe" className={styles.label}>
+                Descrição:
                 <input
                   type="text"
                   className={styles.input}
-                  id="titleDe"
-                  {...register('titleDe')}
+                  id="subdescriptionDe"
+                  defaultValue={
+                    category.subdescriptionDe && category.subdescriptionDe
+                  }
+                  {...register('subdescriptionDe')}
                 />
-                {errors.titleDe && (
-                  <span className={styles.error}>{errors.titleDe.message}</span>
-                )}
-              </label>
-              <label htmlFor="subtitleDe" className={styles.label}>
-                Subtítulo da Notícia
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subtitleDe"
-                  {...register('subtitleDe')}
-                />
-                {errors.subtitleDe && (
+                {errors.subdescriptionDe && (
                   <span className={styles.error}>
-                    {errors.subtitleDe.message}
+                    {errors.subdescriptionDe.message}
                   </span>
-                )}
-              </label>
-              <label htmlFor="bodyDe" className={styles.label}>
-                Corpo da Notícia
-                <input
-                  type="textarea"
-                  className={styles.inputExpanded}
-                  id="bodyDe"
-                  {...register('bodyDe')}
-                />
-                {errors.bodyDe && (
-                  <span className={styles.error}>{errors.bodyDe.message}</span>
                 )}
               </label>
             </div>
@@ -337,56 +266,38 @@ export default function CreateCategory({ categories, createNews }) {
                 tab === 'fr' ? styles.frActive : styles.frInactive
               }`}
             >
-              <label htmlFor="coverCreditFr" className={styles.label}>
-                Crédito da Foto
+              <label htmlFor="descriptionFr" className={styles.label}>
+                Título:
                 <input
                   type="text"
                   className={styles.input}
-                  id="coverCreditFr"
-                  {...register('coverCreditFr')}
+                  id="descriptionFr"
+                  defaultValue={
+                    category.descriptionFr && category.descriptionFr
+                  }
+                  {...register('descriptionFr')}
                 />
-                {errors.coverCreditFr && (
+                {errors.descriptionFr && (
                   <span className={styles.error}>
-                    {errors.coverCreditFr.message}
+                    {errors.descriptionFr.message}
                   </span>
                 )}
               </label>
-              <label htmlFor="titleFr" className={styles.label}>
-                Título da Notícia
+              <label htmlFor="subdescriptionFr" className={styles.label}>
+                Descrição:
                 <input
                   type="text"
                   className={styles.input}
-                  id="titleFr"
-                  {...register('titleFr')}
+                  id="subdescriptionFr"
+                  defaultValue={
+                    category.subdescriptionFr && category.subdescriptionFr
+                  }
+                  {...register('subdescriptionFr')}
                 />
-                {errors.titleFr && (
-                  <span className={styles.error}>{errors.titleFr.message}</span>
-                )}
-              </label>
-              <label htmlFor="subtitleFr" className={styles.label}>
-                Subtítulo da Notícia
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subtitleFr"
-                  {...register('subtitleFr')}
-                />
-                {errors.subtitleFr && (
+                {errors.subdescriptionFr && (
                   <span className={styles.error}>
-                    {errors.subtitleFr.message}
+                    {errors.subdescriptionFr.message}
                   </span>
-                )}
-              </label>
-              <label htmlFor="bodyFr" className={styles.label}>
-                Corpo da Notícia
-                <input
-                  type="textarea"
-                  className={styles.inputExpanded}
-                  id="bodyFr"
-                  {...register('bodyFr')}
-                />
-                {errors.bodyFr && (
-                  <span className={styles.error}>{errors.bodyFr.message}</span>
                 )}
               </label>
             </div>
@@ -395,56 +306,38 @@ export default function CreateCategory({ categories, createNews }) {
                 tab === 'en' ? styles.enActive : styles.enInactive
               }`}
             >
-              <label htmlFor="coverCreditEn" className={styles.label}>
-                Crédito da Foto
+              <label htmlFor="descriptionEn" className={styles.label}>
+                Título:
                 <input
                   type="text"
                   className={styles.input}
-                  id="coverCreditEn"
-                  {...register('coverCreditEn')}
+                  id="descriptionEn"
+                  defaultValue={
+                    category.descriptionEn && category.descriptionEn
+                  }
+                  {...register('descriptionEn')}
                 />
-                {errors.coverCreditEn && (
+                {errors.descriptionEn && (
                   <span className={styles.error}>
-                    {errors.coverCreditEn.message}
+                    {errors.descriptionEn.message}
                   </span>
                 )}
               </label>
-              <label htmlFor="titleEn" className={styles.label}>
-                Título da Notícia
+              <label htmlFor="subdescriptionEn" className={styles.label}>
+                Descrição:
                 <input
                   type="text"
                   className={styles.input}
-                  id="titleEn"
-                  {...register('titleEn')}
+                  id="subdescriptionEn"
+                  defaultValue={
+                    category.subdescriptionEn && category.subdescriptionEn
+                  }
+                  {...register('subdescriptionEn')}
                 />
-                {errors.titleEn && (
-                  <span className={styles.error}>{errors.titleEn.message}</span>
-                )}
-              </label>
-              <label htmlFor="subtitleEn" className={styles.label}>
-                Subtítulo da Notícia
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subtitleEn"
-                  {...register('subtitleEn')}
-                />
-                {errors.subtitleEn && (
+                {errors.subdescriptionEn && (
                   <span className={styles.error}>
-                    {errors.subtitleEn.message}
+                    {errors.subdescriptionEn.message}
                   </span>
-                )}
-              </label>
-              <label htmlFor="bodyEn" className={styles.label}>
-                Corpo da Notícia
-                <input
-                  type="textarea"
-                  className={styles.inputExpanded}
-                  id="bodyEn"
-                  {...register('bodyEn')}
-                />
-                {errors.bodyEn && (
-                  <span className={styles.error}>{errors.bodyEn.message}</span>
                 )}
               </label>
             </div>
@@ -459,7 +352,7 @@ export default function CreateCategory({ categories, createNews }) {
                 Cancelar
               </button>
               <button className={styles.submitButton} type="submit">
-                Criar Notícia
+                {category.id ? 'Editar Categoria' : 'Criar Categoria'}
               </button>
             </div>
           </form>

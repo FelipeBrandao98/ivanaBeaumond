@@ -16,6 +16,7 @@ import {
 } from 'react-icons/fi'
 
 import styles from './styles.module.css'
+import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
 
 export default function CategoriesPage({ functions }) {
   const [
@@ -28,7 +29,9 @@ export default function CategoriesPage({ functions }) {
   )
 
   const { getCategoriesCollections, getCategoriesNews } = functions
+
   const { token } = useContext(AuthContext)
+  const { handleCategory } = useContext(CollectionsCategoryContext)
 
   async function getRepo(token) {
     const categoriesCollections = await getCategoriesCollections(token)
@@ -60,6 +63,9 @@ export default function CategoriesPage({ functions }) {
                   <FiRefreshCcw width={40} height={40} />
                 </button>
                 <Link
+                  onClick={(e) => {
+                    handleCategory({})
+                  }}
                   href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
                   className={styles.optionsButton}
                 >
@@ -72,25 +78,7 @@ export default function CategoriesPage({ functions }) {
                   }}
                   className={styles.optionsButton}
                 >
-                  <FiTrash2 width={40} height={40} />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
                   <FiArchive width={40} height={40} />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiEdit width={40} height={40} />
                 </button>
               </div>
             </div>
@@ -117,15 +105,29 @@ export default function CategoriesPage({ functions }) {
             <table className={styles.table}>
               <thead>
                 <tr>
+                  <th>Editar Categoria</th>
                   <th>Foto de Capa</th>
                   <th>Título da Categoria</th>
                   <th>Descrição da Categoria</th>
+                  <th>Excluir coleção</th>
                 </tr>
               </thead>
               <tbody>
                 {categoriesCollectionsRepositories.map((repo) => {
                   return (
                     <tr key={repo.id}>
+                      <td>
+                        <Link
+                          onClick={(e) => {
+                            handleCategory(repo)
+                          }}
+                          href={
+                            '/ib-login/dashboard/categorias/novacategoriacolecao'
+                          }
+                        >
+                          <FiEdit width={40} height={40} />
+                        </Link>
+                      </td>
                       <td>
                         <Image
                           width={200}
@@ -137,6 +139,17 @@ export default function CategoriesPage({ functions }) {
                       </td>
                       <td>{repo.description}</td>
                       <td>{repo.subdescription}</td>
+                      <td>
+                        {' '}
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            getRepo()
+                          }}
+                        >
+                          <FiTrash2 width={40} height={40} />
+                        </button>
+                      </td>
                     </tr>
                   )
                 })}

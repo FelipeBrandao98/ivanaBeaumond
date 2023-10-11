@@ -12,7 +12,7 @@
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -82,6 +82,10 @@
   border-radius: .3rem;
 }
 
+.table th:last-child {
+  background-color: var(--red-france);
+}
+
 .table td {
   padding: .5rem;
   text-align: center;
@@ -90,5 +94,5 @@
 .table .image {
   object-fit: cover;
   border-radius: .3rem;
-  height: 20rem;
+  height: 17rem;
 }

@@ -1,29 +1,33 @@
 'use client'
 
-import { Suspense, useContext } from 'react'
+import { Suspense, useContext, useState } from 'react'
 import Image from 'next/image'
 
 import { BsArrowLeft } from 'react-icons/bs'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
+import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
 
 import styles from './styles.module.css'
 import { AuthContext } from '@/Context/AuthContext'
+import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
 import { FaTruckLoading } from 'react-icons/fa'
 
 const createImageFormSchema = z.object({
   file: z.any(),
-  author: z.string(),
 })
 
 export default function CreateImgCat({ createImage }) {
+  const [loading, setLoading] = useState(false)
+
   const { token } = useContext(AuthContext)
+  const { category, handleCategory } = useContext(CollectionsCategoryContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
-    CreateImageNewsContext,
+    CreateImageCategoryContext,
   )
 
   const {
@@ -36,10 +40,12 @@ export default function CreateImgCat({ createImage }) {
   })
 
   async function handleCreateImage(formData) {
+    setLoading(true)
     const file = new FormData()
     file.set('file', formData.file[0])
     const res = await createImage(token, file)
     handleChangeImage(res)
+    setLoading(false)
   }
 
   return (
@@ -67,27 +73,43 @@ export default function CreateImgCat({ createImage }) {
             </button>
           </form>
           {image.src ? (
-            <Suspense
-              fallback={
-                <div className={styles.coverLoading}>
-                  Carregando... <FaTruckLoading width={40} height={40} />
-                </div>
-              }
-            >
-              <div className={styles.coverImage}>
-                <Image
-                  width={2000}
-                  height={2000}
-                  src={image.url}
-                  alt="Ivana"
-                  className={styles.cover}
-                />
-              </div>
-            </Suspense>
+            <div className={styles.coverImage}>
+              <Image
+                width={800}
+                height={800}
+                src={image.url}
+                alt="Ivana"
+                className={styles.cover}
+              />
+            </div>
           ) : (
-            <div className={styles.coverImage}>Escolha a foto de capa</div>
+            <div className={styles.coverImage}>
+              {category.cover?.url ? (
+                <Image
+                  width={800}
+                  height={800}
+                  className={styles.cover}
+                  src={category.cover.url}
+                  alt={''}
+                />
+              ) : (
+                <>Escolher foto de capa</>
+              )}
+            </div>
           )}
         </aside>
+        {loading && (
+          <section className={styles.loadingContainer}>
+            <aside className={styles.loadingContent}>
+              Enviando dados...{' '}
+              <AiOutlineLoading
+                width={100}
+                height={100}
+                className={styles.loading}
+              />
+            </aside>
+          </section>
+        )}
       </section>
     </>
   )
