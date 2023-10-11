@@ -40,7 +40,6 @@
 
 .table {
   margin: 1rem 0;
-  border: 1px solid red;
   height: 5rem;
   overflow-y: scroll;
 }
@@ -62,16 +61,14 @@
   border-radius: .3rem;
 }
 
+.table th:last-child {
+  background-color: var(--red-france);
+}
+
 .table td {
   padding: .5rem;
   text-align: center;
 }
-
-.table .image {
-  object-fit: cover;
-  border-radius: .3rem;
-}
-
 
 .listContent {
   display: flex;
@@ -160,4 +157,83 @@
   color: var(--red-france);
   width: 2rem;
   height: 2rem;
+}
+
+.imageArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 10rem;
+}
+
+.image {
+  position: absolute;
+  object-fit: cover;
+  border-radius: .3rem;
+  width: 15rem;
+  height: 10rem;
+}
+
+.expand {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+}
+
+.imageArea:hover {
+  cursor: pointer;
+}
+
+.imageArea:hover .expand {
+  z-index: 3;
+}
+
+.resizedModalContainer {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+}
+
+.resizedModalContent {
+  background-color: var(--white-300);
+  padding: 1rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.resizedCloseButton {
+  display: flex;
+  align-self: flex-end;
+  width: 2rem;
+  height: 2rem;
+  transition: all .2s;
+}
+
+.resizedCloseButton:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.resizedImage {
+  display: flex;
+  width: 60rem;
+  height: 40rem;
+  object-fit: cover;
 }

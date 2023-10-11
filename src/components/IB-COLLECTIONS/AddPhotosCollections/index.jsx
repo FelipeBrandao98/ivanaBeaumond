@@ -13,6 +13,8 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import styles from './styles.module.css'
+import { IoIosExpand } from 'react-icons/io'
+import { FiX } from 'react-icons/fi'
 
 const createImageFormSchema = z.object({
   file: z.any(),
@@ -20,6 +22,8 @@ const createImageFormSchema = z.object({
 
 export default function AddPhotosCollections({ functions }) {
   const [loading, setLoading] = useState(false)
+  const [resized, setResized] = useState(false)
+  const [resizedImage, setResizedImage] = useState('')
   const [imagesRepositories, setImagesRepositories] = useState([])
 
   const { token } = useContext(AuthContext)
@@ -91,21 +95,39 @@ export default function AddPhotosCollections({ functions }) {
               <table className={styles.table}>
                 <thead>
                   <tr>
+                    <th>Editar Foto</th>
                     <th>Foto</th>
+                    <th>Excluir Foto</th>
                   </tr>
                 </thead>
                 <tbody className={styles.body}>
                   {imagesRepositories.map((repo) => {
                     return (
                       <tr key={repo.id}>
+                        <td></td>
                         <td>
-                          <Image
-                            width={300}
-                            height={300}
-                            src={repo.url}
-                            alt="Ivana"
-                          />
+                          <div
+                            className={styles.imageArea}
+                            onClick={(e) => {
+                              setResized(true)
+                              setResizedImage(repo.url)
+                            }}
+                          >
+                            <Image
+                              width={300}
+                              height={300}
+                              src={repo.url}
+                              alt="Ivana"
+                              className={styles.image}
+                            />
+                            <IoIosExpand
+                              width={50}
+                              height={50}
+                              className={styles.expand}
+                            />
+                          </div>
                         </td>
+                        <td></td>
                       </tr>
                     )
                   })}
@@ -122,6 +144,25 @@ export default function AddPhotosCollections({ functions }) {
                 width={100}
                 height={100}
                 className={styles.loading}
+              />
+            </aside>
+          </section>
+        )}
+        {resized && (
+          <section className={styles.resizedModalContainer}>
+            <aside className={styles.resizedModalContent}>
+              <FiX
+                width={50}
+                height={50}
+                className={styles.resizedCloseButton}
+                onClick={(e) => setResized(false)}
+              />
+              <Image
+                width={1440}
+                height={720}
+                alt="Ivana"
+                src={resizedImage}
+                className={styles.resizedImage}
               />
             </aside>
           </section>
