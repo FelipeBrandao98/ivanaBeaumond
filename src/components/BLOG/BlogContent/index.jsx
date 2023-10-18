@@ -15,7 +15,6 @@ export default function BlogContent() {
           <BlogTitleOne />
           <BlogContentTwo />
           <BlogContentText />
-
         </aside>
       </section>
       <BlogOthersPosts />

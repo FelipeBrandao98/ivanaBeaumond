@@ -2,7 +2,7 @@
 
 import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
 
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 import CreateCollection from '@/components/IB-COLLECTIONS/CreateCollectionsPage/CreateCollection'
 import CreateImageCollections from '@/components/IB-COLLECTIONS/CreateCollectionsPage/CreateImageCollections'
@@ -15,14 +15,14 @@ export default function CreateCollectionsPage({ functions }) {
 
   const { image, showCreateImage } = useContext(CreateImageCollectionContext)
 
-  async function getCat() {
+  const getCat = useCallback(async () => {
     const res = await getCategories()
     setCategories(res)
-  }
+  }, [getCategories])
 
   useEffect(() => {
     getCat()
-  }, [])
+  }, [getCat])
 
   return (
     <>

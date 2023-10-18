@@ -6,7 +6,7 @@ import { AuthContext } from '@/Context/AuthContext'
 import { AiOutlineLoading } from 'react-icons/ai'
 
 import Image from 'next/image'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -49,14 +49,14 @@ export default function AddPhotosCollections({ functions }) {
     setLoading(false)
   }
 
-  async function getImagesCollectionsData(id) {
-    const res = await getImagesCollections(id)
+  const getImagesCollectionsData = useCallback(async () => {
+    const res = await getImagesCollections(collections.id)
     setImagesRepositories(res)
-  }
+  }, [collections.id, getImagesCollections])
 
   useEffect(() => {
-    getImagesCollectionsData(collections.id)
-  }, [])
+    getImagesCollectionsData()
+  }, [getImagesCollectionsData, collections.id])
 
   return (
     <>

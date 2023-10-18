@@ -6,6 +6,8 @@ import styles from './styles.module.css'
 import useLangDict from '@/utils/useLangDict'
 
 export default function DepositionsArea({ lang, data }) {
+  const languageTraducted = useLangDict(lang)
+
   return (
     <section className={styles.container}>
       <h1 className={styles.h1}>{useLangDict(lang).home.depositions.title}</h1>
@@ -15,7 +17,7 @@ export default function DepositionsArea({ lang, data }) {
         })}
       </div>
       <Link className={styles.seeMoreButton} href={'/comentarios'}>
-        {useLangDict(lang).home.depositions.more}
+        {languageTraducted.home.depositions.more}
       </Link>
     </section>
   )

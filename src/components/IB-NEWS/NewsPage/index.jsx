@@ -1,7 +1,7 @@
 'use client'
 
 import { AuthContext } from '@/Context/AuthContext'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -33,10 +33,10 @@ export default function NewsPage({ functions }) {
 
   const { getNews, deleteNews } = functions
 
-  async function getRepo(token) {
+  const getRepo = useCallback(async () => {
     const news = await getNews(token)
     setNewsRepositories(news)
-  }
+  }, [getNews, token])
 
   async function handleDeleteNews(token, id) {
     setLoading(true)
@@ -48,7 +48,7 @@ export default function NewsPage({ functions }) {
 
   useEffect(() => {
     getRepo(token)
-  }, [])
+  }, [getRepo, token])
 
   return (
     <>

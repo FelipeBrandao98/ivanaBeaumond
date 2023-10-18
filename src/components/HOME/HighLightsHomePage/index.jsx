@@ -1,6 +1,6 @@
 'use client'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 
 import styles from './styles.module.css'
@@ -10,49 +10,51 @@ export default function HighLightsHomePage({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
+  const languageTraducted = useLangDict(lang)
+
+  const changeSlideFromRight = useCallback(() => {
+    if (slide === 1) {
+      setSlide(2)
+      setSlideClass(styles.secondBanner)
+    }
+    if (slide === 2) {
+      setSlide(3)
+      setSlideClass(styles.thirdBanner)
+    }
+    if (slide === 3) {
+      setSlide(4)
+      setSlideClass(styles.fourthBanner)
+    }
+    if (slide === 4) {
+      setSlide(1)
+      setSlideClass(styles.firstBanner)
+    }
+  }, [slide])
+
+  const changeSlideFromLeft = useCallback(() => {
+    if (slide === 1) {
+      setSlide(4)
+      setSlideClass(styles.secondBanner)
+    }
+    if (slide === 2) {
+      setSlide(1)
+      setSlideClass(styles.thirdBanner)
+    }
+    if (slide === 3) {
+      setSlide(2)
+      setSlideClass(styles.fourthBanner)
+    }
+    if (slide === 4) {
+      setSlide(3)
+      setSlideClass(styles.firstBanner)
+    }
+  }, [slide])
+
   useEffect(() => {
     setTimeout(() => {
       changeSlideFromRight()
     }, 15000)
-  }, [])
-
-  function changeSlideFromRight() {
-    if (slide === 1) {
-      setSlide(2)
-      setSlideClass(styles.secondBanner)
-    }
-    if (slide === 2) {
-      setSlide(3)
-      setSlideClass(styles.thirdBanner)
-    }
-    if (slide === 3) {
-      setSlide(4)
-      setSlideClass(styles.fourthBanner)
-    }
-    if (slide === 4) {
-      setSlide(1)
-      setSlideClass(styles.firstBanner)
-    }
-  }
-
-  function changeSlideFromLeft() {
-    if (slide === 1) {
-      setSlide(4)
-      setSlideClass(styles.fourthBanner)
-    }
-    if (slide === 2) {
-      setSlide(1)
-      setSlideClass(styles.firstBanner)
-    }
-    if (slide === 3) {
-      setSlide(2)
-      setSlideClass(styles.secondBanner)
-    }
-    if (slide === 4) {
-      setSlide(3)
-      setSlideClass(styles.thirdBanner)
-    }
-  }
+  }, [changeSlideFromRight])
 
   return (
     <div className={styles.container}>
@@ -121,7 +123,7 @@ export default function HighLightsHomePage({ lang, data }) {
                 <div className={styles.descriptionArea}>
                   <h2 className={styles.description}>{item.subtitle}</h2>
                   <button className={styles.button}>
-                    {useLangDict(lang).layout.events.seeMore}
+                    {languageTraducted.layout.events.seeMore}
                   </button>
                 </div>
 

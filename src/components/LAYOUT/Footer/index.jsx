@@ -10,16 +10,16 @@ export default function Footer() {
       <footer className={styles.footer}>
         <div className={styles.imageSocialMediaArea}>
           <div className={styles.socialMediaButtonsArea}>
-            <a href="">
+            <a href={null}>
               <BsInstagram size={30} />
             </a>
-            <a href="">
+            <a href={null}>
               <BsFacebook size={30} />
             </a>
-            <a href="">
+            <a href={null}>
               <FaTiktok size={30} />
             </a>
-            <a href="">
+            <a href={null}>
               <BsYoutube size={30} />
             </a>
           </div>
@@ -33,9 +33,9 @@ export default function Footer() {
         </div>
 
         <div className={styles.footerContact}>
-          <a href="">FAQ</a>|<a href="">Become a Retailer</a>|
-          <a href="">Privacy Policy</a>|<a href="">Authentic Products</a>|
-          <a href="">Contact</a>
+          <a href={null}>FAQ</a>|<a href={null}>Become a Retailer</a>|
+          <a href={null}>Privacy Policy</a>|
+          <a href={null}>Authentic Products</a>|<a href={null}>Contact</a>
         </div>
 
         <div className={styles.footerCopyDev}>

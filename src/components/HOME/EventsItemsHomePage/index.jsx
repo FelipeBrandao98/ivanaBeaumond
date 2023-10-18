@@ -9,6 +9,8 @@ import useLangDict from '@/utils/useLangDict'
 export default async function EventsItemsHomePage({ lang, data }) {
   const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+  const languageTraducted = useLangDict(lang)
+
   return (
     <section className={styles.section}>
       <div className={styles.detachableAreaLeft}>
@@ -22,7 +24,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
         <Image
           className={styles.barCodeImage}
           src="/bar-code.svg"
-          alt={useLangDict(lang).layout.events.barCodeAlt}
+          alt={languageTraducted.layout.events.barCodeAlt}
           width={40}
           height={20}
         />
@@ -35,21 +37,21 @@ export default async function EventsItemsHomePage({ lang, data }) {
       <aside className={styles.aside}>
         <h1 className={styles.title}>
           <BsStarHalf size={20} />
-          {useLangDict(lang).layout.events.title}
+          {languageTraducted.layout.events.title}
           <BsStarHalf size={20} />
         </h1>
 
         <div className={styles.nextEventArea}>
           <h2 className={styles.nextEventP}>
-            {useLangDict(lang).layout.events.nextEvent}
+            {languageTraducted.layout.events.nextEvent}
           </h2>
-          <Link href={''} className={styles.nextEventTitle}>
+          <Link href={'/'} className={styles.nextEventTitle}>
             {data.events.nextEvent.title}
           </Link>
           <h4 className={styles.nextEventDate}>{data.events.nextEvent.date}</h4>
         </div>
 
-        <h2>{useLangDict(lang).layout.events.futureEvents}</h2>
+        <h2>{languageTraducted.layout.events.futureEvents}</h2>
         <div className={styles.futureEventsArea}>
           {data.events.futureEvents.map((event) => {
             return (
@@ -62,8 +64,8 @@ export default async function EventsItemsHomePage({ lang, data }) {
           })}
         </div>
 
-        <Link href={''} className={styles.seeMore}>
-          {useLangDict(lang).layout.events.seeMore}
+        <Link href={'/'} className={styles.seeMore}>
+          {languageTraducted.layout.events.seeMore}
         </Link>
       </aside>
       <div className={styles.detachableAreaRight}>

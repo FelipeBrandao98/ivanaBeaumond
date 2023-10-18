@@ -7,10 +7,11 @@ export default function BlogContentTwo() {
       <div className={styles.contentTwoTextArea}>
         <p className={styles.contentTwoText}>
           <span className={styles.contentTwoFiristLetter}>N</span>
-          adar com búfalos, atravessar igarapés e explorar este denso pedaço da selva amazônica, foram uma das dificuldades que Ivana Beaumond e sua equipe enfrentaram a fim de realizar mais um editorial exclusivo.
+          adar com búfalos, atravessar igarapés e explorar este denso pedaço da
+          selva amazônica, foram uma das dificuldades que Ivana Beaumond e sua
+          equipe enfrentaram a fim de realizar mais um editorial exclusivo.
         </p>
       </div>
-
 
       <div className={styles.contentTwoImagesArea}>
         <div className={styles.contentTwoImageAreaOne}>
@@ -21,7 +22,9 @@ export default function BlogContentTwo() {
             alt={'Ivana Beaumon'}
             src={'/photos_blog/photo_blog_3.jpg'}
           />
-          <p className={styles.contentTwoImageDescriptionOne}>Soluta quisquam aliquid, dolor harum unde! Nihil.</p>
+          <p className={styles.contentTwoImageDescriptionOne}>
+            Soluta quisquam aliquid, dolor harum unde! Nihil.
+          </p>
         </div>
         <div className={styles.contentTwoImageAreaTwo}>
           <Image
@@ -31,7 +34,9 @@ export default function BlogContentTwo() {
             alt={'Ivana Beaumon'}
             src={'/photos_blog/photo_blog_2.jpg'}
           />
-          <p className={styles.contentTwoImageDescriptionTwo}>Lorem ipsum, dolor sit amet</p>
+          <p className={styles.contentTwoImageDescriptionTwo}>
+            Lorem ipsum, dolor sit amet
+          </p>
         </div>
       </div>
     </div>

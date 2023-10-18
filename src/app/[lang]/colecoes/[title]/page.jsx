@@ -1,4 +1,4 @@
-import CollectionGrid from "@/components/COLLECTIONS/CollectionGrid";
+import CollectionGrid from '@/components/COLLECTIONS/CollectionGrid'
 
 export default function Page() {
   return (

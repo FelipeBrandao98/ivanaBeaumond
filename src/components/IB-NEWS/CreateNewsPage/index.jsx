@@ -2,7 +2,7 @@
 
 import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
 import CreateImageNews from '@/components/IB-NEWS/CreateNewsPage/CreateImageNews'
 import CreateNews from '@/components/IB-NEWS/CreateNewsPage/CreateNews'
@@ -14,14 +14,14 @@ export default function CreateNewsPage({ functions }) {
 
   const { image, showCreateImage } = useContext(CreateImageNewsContext)
 
-  async function getCat() {
+  const getCat = useCallback(async () => {
     const res = await getCategories()
     setCategories(res)
-  }
+  }, [getCategories])
 
   useEffect(() => {
     getCat()
-  }, [])
+  }, [getCat])
 
   return (
     <>

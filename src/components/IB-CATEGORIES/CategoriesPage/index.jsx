@@ -1,7 +1,7 @@
 'use client'
 
 import { AuthContext } from '@/Context/AuthContext'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -33,16 +33,16 @@ export default function CategoriesPage({ functions }) {
   const { token } = useContext(AuthContext)
   const { handleCategory } = useContext(CollectionsCategoryContext)
 
-  async function getRepo(token) {
+  const getRepo = useCallback(async () => {
     const categoriesCollections = await getCategoriesCollections(token)
     const categoriesNews = await getCategoriesNews(token)
     setCategoriesCollectionsRepositories(categoriesCollections)
     setCategoriesNewsRepositories(categoriesNews)
-  }
+  }, [getCategoriesCollections, getCategoriesNews, token])
 
   useEffect(() => {
     getRepo(token)
-  }, [])
+  }, [getRepo, token])
 
   return (
     <>

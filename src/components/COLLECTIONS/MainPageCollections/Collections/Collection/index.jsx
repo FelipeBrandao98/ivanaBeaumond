@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { TbHandClick } from 'react-icons/tb'
 
 import styles from './styles.module.css'
@@ -19,20 +19,22 @@ export default function Collection({
   const [displayed, setDisplayed] = useState(false)
   const [images, setImages] = useState([])
 
+  const languageTraducted = useLangDict(lang)
+
   const { getCollectionImages } = functions
 
   function handleDisplayDetails() {
     displayed ? setDisplayed(false) : setDisplayed(true)
   }
 
-  async function getCollectionImagesRepo(id) {
+  const getCollectionImagesRepo = useCallback(async () => {
     const res = await getCollectionImages(id)
     setImages(res)
-  }
+  }, [getCollectionImages, id])
 
   useEffect(() => {
-    getCollectionImagesRepo(id)
-  }, [])
+    getCollectionImagesRepo()
+  }, [getCollectionImagesRepo])
 
   return (
     <aside className={styles.collection} key={id}>
@@ -48,7 +50,7 @@ export default function Collection({
               height={480}
               color="white"
             />
-            <p>{useLangDict(lang).collections.moreInfo}</p>
+            <p>{languageTraducted.collections.moreInfo}</p>
           </span>
         </div>
       ) : (

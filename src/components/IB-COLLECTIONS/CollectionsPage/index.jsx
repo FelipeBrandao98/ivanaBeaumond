@@ -2,7 +2,7 @@
 
 import { AuthContext } from '@/Context/AuthContext'
 import { CollectionsContext } from '@/Context/CollectionsContext'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -31,10 +31,10 @@ export default function CollectionsPage({ functions }) {
   const { handleCollections } = useContext(CollectionsContext)
   const { handleChangeImage } = useContext(CreateImageCollectionContext)
 
-  async function getRepo(token) {
+  const getRepo = useCallback(async () => {
     const collections = await getCollections(token)
     setCollectionsRepositories(collections)
-  }
+  }, [getCollections, token])
 
   async function handleDeleteCollection(token, id) {
     setLoading(true)
@@ -46,7 +46,7 @@ export default function CollectionsPage({ functions }) {
 
   useEffect(() => {
     getRepo(token)
-  }, [])
+  }, [getRepo, token])
 
   return (
     <>

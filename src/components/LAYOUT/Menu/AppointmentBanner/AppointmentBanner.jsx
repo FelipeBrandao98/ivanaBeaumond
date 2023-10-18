@@ -70,6 +70,8 @@ export default function AppointmentBanner({
 }) {
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
 
+  const languageTraducted = useLangDict(lang)
+
   const {
     register,
     handleSubmit,
@@ -99,11 +101,11 @@ export default function AppointmentBanner({
               className={styles.form}
             >
               <h1 className={styles.title}>
-                {useLangDict(lang).layout.menu.appointmentBanner.title}
+                {languageTraducted.layout.menu.appointmentBanner.title}
               </h1>
 
               <label className={styles.label} htmlFor="name">
-                {useLangDict(lang).layout.menu.appointmentBanner.yourName}
+                {languageTraducted.layout.menu.appointmentBanner.yourName}
                 <input
                   className={styles.input}
                   type="text"
@@ -116,7 +118,7 @@ export default function AppointmentBanner({
               </label>
 
               <label className={styles.label} htmlFor="mail">
-                {useLangDict(lang).layout.menu.appointmentBanner.yourEmail}
+                {languageTraducted.layout.menu.appointmentBanner.yourEmail}
                 <input
                   className={styles.input}
                   type="email"
@@ -129,7 +131,7 @@ export default function AppointmentBanner({
               </label>
 
               <label className={styles.label} htmlFor="phone">
-                {useLangDict(lang).layout.menu.appointmentBanner.yourPhone}
+                {languageTraducted.layout.menu.appointmentBanner.yourPhone}
                 <input
                   className={styles.input}
                   type="tel"
@@ -141,7 +143,7 @@ export default function AppointmentBanner({
                 )}
               </label>
 
-              {useLangDict(lang).layout.menu.appointmentBanner.rent}
+              {languageTraducted.layout.menu.appointmentBanner.rent}
 
               <fieldset className={styles.checkArea}>
                 <label className={styles.labelTwo} htmlFor="bride">
@@ -153,7 +155,7 @@ export default function AppointmentBanner({
                     {...register('bride')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  {useLangDict(lang).layout.menu.appointmentBanner.bride}
+                  {languageTraducted.layout.menu.appointmentBanner.bride}
                 </label>
 
                 <label className={styles.labelTwo} htmlFor="groom">
@@ -165,7 +167,7 @@ export default function AppointmentBanner({
                     {...register('groom')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  {useLangDict(lang).layout.menu.appointmentBanner.groom}
+                  {languageTraducted.layout.menu.appointmentBanner.groom}
                 </label>
 
                 <label className={styles.labelTwo} htmlFor="debutant">
@@ -177,7 +179,7 @@ export default function AppointmentBanner({
                     {...register('debutant')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  {useLangDict(lang).layout.menu.appointmentBanner.debutant}
+                  {languageTraducted.layout.menu.appointmentBanner.debutant}
                 </label>
 
                 <label className={styles.labelTwo} htmlFor="bridesmaid">
@@ -189,7 +191,7 @@ export default function AppointmentBanner({
                     {...register('bridesmaid')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  {useLangDict(lang).layout.menu.appointmentBanner.bridesmaid}
+                  {languageTraducted.layout.menu.appointmentBanner.bridesmaid}
                 </label>
 
                 <label className={styles.labelTwo} htmlFor="party">
@@ -201,12 +203,12 @@ export default function AppointmentBanner({
                     {...register('party')}
                   />
                   <span className={styles.newCheckbox}></span>
-                  {useLangDict(lang).layout.menu.appointmentBanner.party}
+                  {languageTraducted.layout.menu.appointmentBanner.party}
                 </label>
               </fieldset>
 
               <label htmlFor="merryDate">
-                {useLangDict(lang).layout.menu.appointmentBanner.merryDate}
+                {languageTraducted.layout.menu.appointmentBanner.merryDate}
                 <input
                   className={styles.input}
                   type="datetime-local"
@@ -223,7 +225,7 @@ export default function AppointmentBanner({
               {createAppointmentLoader === 'loading' ? (
                 <button className={styles.buttonLoading}>
                   {
-                    useLangDict(lang).layout.menu.appointmentBanner.button
+                    languageTraducted.layout.menu.appointmentBanner.button
                       .sending
                   }
                   <AiOutlineLoading
@@ -234,12 +236,12 @@ export default function AppointmentBanner({
                 </button>
               ) : createAppointmentLoader === 'loaded' ? (
                 <button className={styles.buttonLoaded}>
-                  {useLangDict(lang).layout.menu.appointmentBanner.button.sent}{' '}
+                  {languageTraducted.layout.menu.appointmentBanner.button.sent}{' '}
                   <AiOutlineCheckCircle width={50} height={50} />
                 </button>
               ) : (
                 <button className={styles.button} type="submit">
-                  {useLangDict(lang).layout.menu.appointmentBanner.button.send}
+                  {languageTraducted.layout.menu.appointmentBanner.button.send}
                 </button>
               )}
             </form>

@@ -14,6 +14,8 @@ export default function SubscribeItem({ lang, content }) {
   const [loading, setLoading] = useState(false)
   const [checked, setChecked] = useState(false)
 
+  const languageTraducted = useLangDict(lang)
+
   async function handleSubmit(event) {
     event.preventDefault()
 
@@ -39,7 +41,7 @@ export default function SubscribeItem({ lang, content }) {
         {checked === false && loading === false ? (
           <aside className={styles.aside}>
             <h3 className={styles.h3}>
-              {useLangDict(lang).layout.subscribeItem.text}
+              {languageTraducted.layout.subscribeItem.text}
             </h3>
             <form className={styles.form} onSubmit={handleSubmit}>
               <input
@@ -48,10 +50,10 @@ export default function SubscribeItem({ lang, content }) {
                 id="mail"
                 name="mail"
                 required
-                placeholder={useLangDict(lang).layout.subscribeItem.placeholder}
+                placeholder={languageTraducted.layout.subscribeItem.placeholder}
               />
               <button type="submit" className={styles.button}>
-                {useLangDict(lang).layout.subscribeItem.submitText}
+                {languageTraducted.layout.subscribeItem.submitText}
               </button>
             </form>
           </aside>

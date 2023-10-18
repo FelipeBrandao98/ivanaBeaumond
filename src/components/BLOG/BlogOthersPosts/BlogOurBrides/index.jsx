@@ -21,7 +21,9 @@ export default function BlogOurBrides() {
 
         <div className={styles.postsArea}>
           <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
+            <h5 className={styles.postTitle}>
+              Ivana Beaumond assina novo editorial de noivas em Paris
+            </h5>
             <div className={styles.imageArea}>
               <Image
                 className={styles.image}
@@ -30,9 +32,13 @@ export default function BlogOurBrides() {
                 width={'320'}
                 height={'180'}
               />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
+              <p className={styles.imageDescription}>
+                Soluta: quisquam aliquid.
+              </p>
             </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
+            <p className={styles.subTitle}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum{' '}
+            </p>
             <p className={styles.date}>29/10/2015</p>
             <div className={styles.seeMoreArea}>
               <button className={styles.seeMoreButton}>Leia Mais</button>
@@ -40,7 +46,9 @@ export default function BlogOurBrides() {
           </aside>
 
           <aside className={styles.post}>
-            <h5 className={styles.postTitle}>Ivana Beaumond assina novo editorial de noivas em Paris</h5>
+            <h5 className={styles.postTitle}>
+              Ivana Beaumond assina novo editorial de noivas em Paris
+            </h5>
             <div className={styles.imageArea}>
               <Image
                 className={styles.image}
@@ -49,9 +57,13 @@ export default function BlogOurBrides() {
                 width={'320'}
                 height={'180'}
               />
-              <p className={styles.imageDescription}>Soluta: quisquam aliquid.</p>
+              <p className={styles.imageDescription}>
+                Soluta: quisquam aliquid.
+              </p>
             </div>
-            <p className={styles.subTitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum </p>
+            <p className={styles.subTitle}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum{' '}
+            </p>
             <p className={styles.date}>29/10/2015</p>
             <div className={styles.seeMoreArea}>
               <button className={styles.seeMoreButton}>Leia Mais</button>
@@ -68,7 +80,6 @@ export default function BlogOurBrides() {
             />
           </button>
         </div>
-
       </div>
     </section>
   )

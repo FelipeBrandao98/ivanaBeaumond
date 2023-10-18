@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -22,18 +22,20 @@ export default function Menu({ createAppointment, lang, children }) {
 
   const [hidden, setHidden] = useState(false)
 
-  function toggleHidden() {
+  const languageTraducted = useLangDict(lang)
+
+  const toggleHidden = useCallback(() => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
       setHidden(true)
     } else if (scrolled <= 300) {
       setHidden(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
-  }, [])
+  }, [toggleHidden])
 
   return (
     <>
@@ -45,7 +47,7 @@ export default function Menu({ createAppointment, lang, children }) {
         <header className={styles.header}>
           <Image
             className={styles.logoInMenu}
-            src="http://localhost:3000/logo-white.svg"
+            src="http://localhost:3002/logo-white.svg"
             alt="IVANA BEAUMOND"
             width={300}
             height={50}
@@ -60,8 +62,8 @@ export default function Menu({ createAppointment, lang, children }) {
               <nav className={styles.contactNav}>
                 <ul>
                   <li onClick={handleAppointment}>
-                    {useLangDict(lang).layout.menu.appointment}{' '}
-                    <FaChevronRight />
+                    {languageTraducted.layout.menu.appointment}{' '}
+                    <FaChevronRight size={20} />
                   </li>
                 </ul>
               </nav>
@@ -69,22 +71,22 @@ export default function Menu({ createAppointment, lang, children }) {
                 <ul>
                   <li>
                     <Link href={`/`} lang={lang}>
-                      {useLangDict(lang).layout.menu.menuItemOne.name}
+                      {languageTraducted.layout.menu.menuItemOne.name}
                     </Link>
                   </li>
                   <li>
                     <Link href={`/colecoes`} lang={lang}>
-                      {useLangDict(lang).layout.menu.menuItemTwo.name}
+                      {languageTraducted.layout.menu.menuItemTwo.name}
                     </Link>
                   </li>
                   <li>
                     <Link href={`/noticias`} lang={lang}>
-                      {useLangDict(lang).layout.menu.menuItemThree.name}
+                      {languageTraducted.layout.menu.menuItemThree.name}
                     </Link>
                   </li>
                   <li>
                     <Link href={`/eventos`} lang={lang}>
-                      {useLangDict(lang).layout.menu.menuItemFour.name}
+                      {languageTraducted.layout.menu.menuItemFour.name}
                     </Link>
                   </li>
                 </ul>

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import Image from 'next/image'
 
@@ -9,49 +9,49 @@ export default function PhotoSlidesCollections({ images }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
+  const changeSlideFromRight = useCallback(() => {
+    if (slide === 1) {
+      setSlide(2)
+      setSlideClass(styles.secondBanner)
+    }
+    if (slide === 2) {
+      setSlide(3)
+      setSlideClass(styles.thirdBanner)
+    }
+    if (slide === 3) {
+      setSlide(4)
+      setSlideClass(styles.fourthBanner)
+    }
+    if (slide === 4) {
+      setSlide(1)
+      setSlideClass(styles.firstBanner)
+    }
+  }, [slide])
+
+  const changeSlideFromLeft = useCallback(() => {
+    if (slide === 1) {
+      setSlide(4)
+      setSlideClass(styles.secondBanner)
+    }
+    if (slide === 2) {
+      setSlide(1)
+      setSlideClass(styles.thirdBanner)
+    }
+    if (slide === 3) {
+      setSlide(2)
+      setSlideClass(styles.fourthBanner)
+    }
+    if (slide === 4) {
+      setSlide(3)
+      setSlideClass(styles.firstBanner)
+    }
+  }, [slide])
+
   useEffect(() => {
     setTimeout(() => {
       changeSlideFromRight()
-    }, 15000)
-  }, [])
-
-  function changeSlideFromRight() {
-    if (slide === 1) {
-      setSlide(2)
-      setSlideClass(styles.secondSlide)
-    }
-    if (slide === 2) {
-      setSlide(3)
-      setSlideClass(styles.thirdSlide)
-    }
-    if (slide === 3) {
-      setSlide(4)
-      setSlideClass(styles.fourthSlide)
-    }
-    if (slide === 4) {
-      setSlide(1)
-      setSlideClass(styles.firstSlide)
-    }
-  }
-
-  function changeSlideFromLeft() {
-    if (slide === 1) {
-      setSlide(4)
-      setSlideClass(styles.fourthSlide)
-    }
-    if (slide === 2) {
-      setSlide(1)
-      setSlideClass(styles.firstSlide)
-    }
-    if (slide === 3) {
-      setSlide(2)
-      setSlideClass(styles.secondSlide)
-    }
-    if (slide === 4) {
-      setSlide(3)
-      setSlideClass(styles.thirdSlide)
-    }
-  }
+    }, 100000)
+  }, [changeSlideFromRight])
 
   return (
     <div className={styles.container}>

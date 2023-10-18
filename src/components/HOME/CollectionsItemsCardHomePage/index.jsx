@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
@@ -14,51 +14,43 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
-  function changeSlideFromRight() {
+  const changeSlideFromRight = useCallback(() => {
     if (slide === 1) {
       setSlide(2)
-      setSlideClass(styles.secondSlide)
+      setSlideClass(styles.secondBanner)
     }
     if (slide === 2) {
       setSlide(3)
-      setSlideClass(styles.thirdSlide)
+      setSlideClass(styles.thirdBanner)
     }
     if (slide === 3) {
       setSlide(4)
-      setSlideClass(styles.fourthSlide)
+      setSlideClass(styles.fourthBanner)
     }
     if (slide === 4) {
-      setSlide(5)
-      setSlideClass(styles.fifthSlide)
-    }
-    if (slide === 5) {
       setSlide(1)
-      setSlideClass(styles.firstSlide)
+      setSlideClass(styles.firstBanner)
     }
-  }
+  }, [slide])
 
-  function changeSlideFromLeft() {
+  const changeSlideFromLeft = useCallback(() => {
     if (slide === 1) {
-      setSlide(5)
-      setSlideClass(styles.fifthSlide)
+      setSlide(4)
+      setSlideClass(styles.secondBanner)
     }
     if (slide === 2) {
       setSlide(1)
-      setSlideClass(styles.firstSlide)
+      setSlideClass(styles.thirdBanner)
     }
     if (slide === 3) {
       setSlide(2)
-      setSlideClass(styles.secondSlide)
+      setSlideClass(styles.fourthBanner)
     }
     if (slide === 4) {
       setSlide(3)
-      setSlideClass(styles.thirdSlide)
+      setSlideClass(styles.firstBanner)
     }
-    if (slide === 5) {
-      setSlide(4)
-      setSlideClass(styles.fourthSlide)
-    }
-  }
+  }, [slide])
 
   return (
     <>
@@ -109,7 +101,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
                   <div className={styles.comments}>
                     <p>{categorie.subdescription}</p>
                     <button>
-                      <Link href={''}>
+                      <Link href={'/'}>
                         Descubra Agora <FaArrowRight />
                       </Link>
                     </button>

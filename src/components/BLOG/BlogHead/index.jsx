@@ -10,7 +10,10 @@ export default function BlogHead() {
           <span className={styles.year}>2023</span>
         </div>
 
-        <h1 className={styles.title}><span className={styles.titleTwo}>Ivana Beaumond</span><br /> é destaque na mídia com seu novo editorial no Pará</h1>
+        <h1 className={styles.title}>
+          <span className={styles.titleTwo}>Ivana Beaumond</span>
+          <br /> é destaque na mídia com seu novo editorial no Pará
+        </h1>
       </section>
     </>
   )

@@ -1,6 +1,5 @@
-import BlogContent from "@/components/BLOG/BlogContent";
-import BlogHead from "@/components/BLOG/BlogHead";
-
+import BlogContent from '@/components/BLOG/BlogContent'
+import BlogHead from '@/components/BLOG/BlogHead'
 
 export default function Page({ params }) {
   return (
