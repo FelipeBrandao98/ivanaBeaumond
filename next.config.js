@@ -23,6 +23,8 @@ module.exports = (phase, { defaultConfig }) => {
       serverActions: true,
     },
     images: {
+      loader: 'custom',
+      loaderFile: './src/configs/loader.js',
       remotePatterns: [
         {
           protocol: 'https',
