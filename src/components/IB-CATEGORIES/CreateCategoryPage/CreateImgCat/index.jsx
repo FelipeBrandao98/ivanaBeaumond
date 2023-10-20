@@ -74,20 +74,12 @@ export default function CreateImgCat({ createImage }) {
           </form>
           {image.src ? (
             <div className={styles.coverImage}>
-              <Image
-                width={800}
-                height={800}
-                src={image.url}
-                alt="Ivana"
-                className={styles.cover}
-              />
+              <Image src={image.url} alt="Ivana" className={styles.cover} />
             </div>
           ) : (
             <div className={styles.coverImage}>
               {category.cover?.url ? (
                 <Image
-                  width={800}
-                  height={800}
                   className={styles.cover}
                   src={category.cover.url}
                   alt={''}
