@@ -9,9 +9,9 @@ module.exports = (phase, { defaultConfig }) => {
       images: {
         remotePatterns: [
           {
-            protocol: 'http',
-            hostname: `localhost`,
-            port: '3001',
+            protocol: 'https',
+            hostname: 'ivana-beaumond-b64d10810150.herokuapp.com',
+            port: '8080',
           },
         ],
       },
