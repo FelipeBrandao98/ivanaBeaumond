@@ -28,6 +28,10 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
       setCardClass(styles.fourthCard)
     }
     if (card === 4) {
+      setCard(5)
+      setCardClass(styles.fifthCard)
+    }
+    if (card === 5) {
       setCard(1)
       setCardClass(styles.firstCard)
     }
@@ -35,20 +39,24 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
 
   function changeCardFromLeft() {
     if (card === 1) {
-      setCard(4)
-      setCardClass(styles.secondCard)
+      setCard(5)
+      setCardClass(styles.fifthCard)
     }
     if (card === 2) {
       setCard(1)
-      setCardClass(styles.thirdCard)
+      setCardClass(styles.firstCard)
     }
     if (card === 3) {
       setCard(2)
-      setCardClass(styles.fourthCard)
+      setCardClass(styles.secondCard)
     }
     if (card === 4) {
       setCard(3)
-      setCardClass(styles.firstCard)
+      setCardClass(styles.thirdCard)
+    }
+    if (card === 5) {
+      setCard(4)
+      setCardClass(styles.fourthCard)
     }
   }
 
