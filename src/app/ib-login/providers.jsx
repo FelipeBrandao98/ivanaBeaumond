@@ -6,6 +6,7 @@ import { CollectionsProvider } from '@/Context/CollectionsContext'
 import { CreateImageCategoryProvider } from '@/Context/CreateImageCategoryContext'
 import { CreateImageCollectionProvider } from '@/Context/CreateImageCollectionContext'
 import { CreateImageNewsProvider } from '@/Context/CreateImageNewsContext'
+import { NewsCategoryProvider } from '@/Context/NewsCategoryContext'
 import { NewsProvider } from '@/Context/NewsContext'
 
 export function Providers({ children }) {
@@ -17,7 +18,7 @@ export function Providers({ children }) {
             <NewsProvider>
               <CollectionsProvider>
                 <CollectionsCategoryProvider>
-                  {children}
+                  <NewsCategoryProvider>{children}</NewsCategoryProvider>
                 </CollectionsCategoryProvider>
               </CollectionsProvider>
             </NewsProvider>

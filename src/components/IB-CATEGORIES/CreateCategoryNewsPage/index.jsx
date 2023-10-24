@@ -3,7 +3,6 @@
 import { AuthContext } from '@/Context/AuthContext'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useContext } from 'react'
 
 import { useForm } from 'react-hook-form'
@@ -11,36 +10,29 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import ReactCountryFlag from 'react-country-flag'
-import { MdPhoto } from 'react-icons/md'
 
 import styles from './styles.module.css'
-import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
-import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
 import { useRouter } from 'next/navigation'
+import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
 const createNewsFormSchema = z.object({
   description: z.string(),
   descriptionDe: z.string(),
   descriptionFr: z.string(),
   descriptionEn: z.string(),
-  subdescription: z.string(),
-  subdescriptionDe: z.string(),
-  subdescriptionFr: z.string(),
-  subdescriptionEn: z.string(),
 })
 
-export default function CreateCategory({ createCategory, editCategory }) {
+export default function CreateCategoryNewsPage({ functions }) {
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
 
+  const { createCategory, editCategory } = functions
+
+  const { category, handleCategory } = useContext(NewsCategoryContext)
   const { token } = useContext(AuthContext)
-  const { category, handleCategory } = useContext(CollectionsCategoryContext)
-  const { image, handleShowCreateImage, handleChangeImage } = useContext(
-    CreateImageCategoryContext,
-  )
 
   const {
     register,
@@ -53,11 +45,9 @@ export default function CreateCategory({ createCategory, editCategory }) {
 
   async function handleCreateNews(formData) {
     setLoading(true)
-    formData.coverId = image.id
     category.id
       ? await editCategory(category.id, token, formData)
       : await createCategory(token, formData)
-    handleChangeImage({})
     router.back()
     setLoading(false)
   }
@@ -68,7 +58,7 @@ export default function CreateCategory({ createCategory, editCategory }) {
 
   return (
     <>
-      <h1>Nova Categoria de Coleção</h1>
+      <h1>Nova Categoria de Notícias</h1>
       <section className={styles.container}>
         <aside className={styles.content}>
           <div className={styles.tabArea}>
@@ -142,46 +132,6 @@ export default function CreateCategory({ createCategory, editCategory }) {
           )}
 
           <form action={handleSubmit(handleCreateNews)}>
-            {image.src ? (
-              <div
-                className={styles.coverImage}
-                onClick={handleShowCreateImage}
-              >
-                <Image
-                  width={800}
-                  height={800}
-                  src={image.url}
-                  alt="Ivana"
-                  className={styles.cover}
-                  onClick={handleShowCreateImage}
-                />
-              </div>
-            ) : (
-              <div
-                className={styles.coverImage}
-                onClick={handleShowCreateImage}
-              >
-                {category.cover?.url ? (
-                  <Image
-                    width={800}
-                    height={800}
-                    className={styles.cover}
-                    src={category.cover.url}
-                    alt={''}
-                  />
-                ) : (
-                  <>
-                    <MdPhoto
-                      width={100}
-                      height={100}
-                      className={styles.coverImageIcon}
-                    />
-                    Escolher foto de capa
-                  </>
-                )}
-              </div>
-            )}
-
             <div
               className={`${
                 tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
@@ -199,23 +149,6 @@ export default function CreateCategory({ createCategory, editCategory }) {
                 {errors.description && (
                   <span className={styles.error}>
                     {errors.description.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescription" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescription"
-                  defaultValue={
-                    category.subdescription && category.subdescription
-                  }
-                  {...register('subdescription')}
-                />
-                {errors.subdescription && (
-                  <span className={styles.error}>
-                    {errors.subdescription.message}
                   </span>
                 )}
               </label>
@@ -242,23 +175,6 @@ export default function CreateCategory({ createCategory, editCategory }) {
                   </span>
                 )}
               </label>
-              <label htmlFor="subdescriptionDe" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionDe"
-                  defaultValue={
-                    category.subdescriptionDe && category.subdescriptionDe
-                  }
-                  {...register('subdescriptionDe')}
-                />
-                {errors.subdescriptionDe && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionDe.message}
-                  </span>
-                )}
-              </label>
             </div>
             <div
               className={`${
@@ -282,23 +198,6 @@ export default function CreateCategory({ createCategory, editCategory }) {
                   </span>
                 )}
               </label>
-              <label htmlFor="subdescriptionFr" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionFr"
-                  defaultValue={
-                    category.subdescriptionFr && category.subdescriptionFr
-                  }
-                  {...register('subdescriptionFr')}
-                />
-                {errors.subdescriptionFr && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionFr.message}
-                  </span>
-                )}
-              </label>
             </div>
             <div
               className={`${
@@ -319,23 +218,6 @@ export default function CreateCategory({ createCategory, editCategory }) {
                 {errors.descriptionEn && (
                   <span className={styles.error}>
                     {errors.descriptionEn.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescriptionEn" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionEn"
-                  defaultValue={
-                    category.subdescriptionEn && category.subdescriptionEn
-                  }
-                  {...register('subdescriptionEn')}
-                />
-                {errors.subdescriptionEn && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionEn.message}
                   </span>
                 )}
               </label>
@@ -375,7 +257,7 @@ export default function CreateCategory({ createCategory, editCategory }) {
               </button>
               <Link
                 className={styles.cancelButton}
-                href={'/ib-login/dashboard/categorias'}
+                href={'/ib-login/dashboard/colecoes'}
               >
                 Cancelar
               </Link>

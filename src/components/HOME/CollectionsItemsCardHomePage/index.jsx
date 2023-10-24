@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'

@@ -416,3 +416,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## 2 - Finalizado adicionar e editar Categorias de coleções
 
 ## 3 - Método de vizualização de Fotos dentro das fotos de coleções
+
+### 24-10-23
+
+## 1 - Metodo de Adicionar e editar categoria de notícia

@@ -390,7 +390,7 @@ export default function CreateCollection({
               </button>
               <Link
                 className={styles.cancelButton}
-                href={'/ib-login/dashboard/noticias'}
+                href={'/ib-login/dashboard/colecoes'}
               >
                 Cancelar
               </Link>

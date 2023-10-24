@@ -17,6 +17,7 @@ import {
 
 import styles from './styles.module.css'
 import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
+import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
 export default function CategoriesPage({ functions }) {
   const [
@@ -31,7 +32,10 @@ export default function CategoriesPage({ functions }) {
   const { getCategoriesCollections, getCategoriesNews } = functions
 
   const { token } = useContext(AuthContext)
-  const { handleCategory } = useContext(CollectionsCategoryContext)
+  const { handleCategory: HandleCatCollections } = useContext(
+    CollectionsCategoryContext,
+  )
+  const { handleCategory: handleCatNews } = useContext(NewsCategoryContext)
 
   const getRepo = useCallback(async () => {
     const categoriesCollections = await getCategoriesCollections(token)
@@ -64,7 +68,7 @@ export default function CategoriesPage({ functions }) {
                 </button>
                 <Link
                   onClick={(e) => {
-                    handleCategory({})
+                    HandleCatCollections({})
                   }}
                   href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
                   className={styles.optionsButton}
@@ -119,7 +123,7 @@ export default function CategoriesPage({ functions }) {
                       <td>
                         <Link
                           onClick={(e) => {
-                            handleCategory(repo)
+                            HandleCatCollections(repo)
                           }}
                           href={
                             '/ib-login/dashboard/categorias/novacategoriacolecao'
@@ -171,8 +175,11 @@ export default function CategoriesPage({ functions }) {
                   <FiRefreshCcw width={40} height={40} />
                 </button>
                 <Link
-                  href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
+                  href={'/ib-login/dashboard/categorias/novacategorianoticia'}
                   className={styles.optionsButton}
+                  onClick={(e) => {
+                    handleCatNews({})
+                  }}
                 >
                   <FiPlus width={40} height={40} />
                 </Link>
@@ -228,14 +235,39 @@ export default function CategoriesPage({ functions }) {
             <table className={styles.table}>
               <thead>
                 <tr>
+                  <th>Editar Categoria</th>
                   <th>Nome da Categoria</th>
+                  <th>Excluir coleção</th>
                 </tr>
               </thead>
               <tbody>
                 {categoriesNewsRepositories.map((repo) => {
                   return (
                     <tr key={repo.id}>
+                      <td>
+                        <Link
+                          onClick={(e) => {
+                            handleCatNews(repo)
+                          }}
+                          href={
+                            '/ib-login/dashboard/categorias/novacategorianoticia'
+                          }
+                        >
+                          <FiEdit width={40} height={40} />
+                        </Link>
+                      </td>
                       <td>{repo.description}</td>
+                      <td>
+                        {' '}
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            getRepo()
+                          }}
+                        >
+                          <FiTrash2 width={40} height={40} />
+                        </button>
+                      </td>
                     </tr>
                   )
                 })}
