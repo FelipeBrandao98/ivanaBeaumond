@@ -14,7 +14,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
-  const changeSlideFromRight = useCallback(() => {
+  function changeSlideFromRight() {
     if (slide === 1) {
       setSlide(2)
       setSlideClass(styles.secondBanner)
@@ -31,9 +31,9 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
       setSlide(1)
       setSlideClass(styles.firstBanner)
     }
-  }, [slide])
+  }
 
-  const changeSlideFromLeft = useCallback(() => {
+  function changeSlideFromLeft() {
     if (slide === 1) {
       setSlide(4)
       setSlideClass(styles.secondBanner)
@@ -50,7 +50,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
       setSlide(3)
       setSlideClass(styles.firstBanner)
     }
-  }, [slide])
+  }
 
   return (
     <>
