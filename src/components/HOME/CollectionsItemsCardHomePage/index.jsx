@@ -11,44 +11,44 @@ import styles from './styles.module.css'
 import useLangDict from '@/utils/useLangDict'
 
 export default function CollectionsItemsCardHomePage({ lang, data }) {
-  const [slide, setSlide] = useState(2)
-  const [slideClass, setSlideClass] = useState(styles.secondSlide)
+  const [card, setCard] = useState(2)
+  const [cardClass, setCardClass] = useState(styles.secondCard)
 
-  function changeSlideFromRight() {
-    if (slide === 1) {
-      setSlide(2)
-      setSlideClass(styles.secondBanner)
+  function changeCardFromRight() {
+    if (card === 1) {
+      setCard(2)
+      setCardClass(styles.secondCard)
     }
-    if (slide === 2) {
-      setSlide(3)
-      setSlideClass(styles.thirdBanner)
+    if (card === 2) {
+      setCard(3)
+      setCardClass(styles.thirdCard)
     }
-    if (slide === 3) {
-      setSlide(4)
-      setSlideClass(styles.fourthBanner)
+    if (card === 3) {
+      setCard(4)
+      setCardClass(styles.fourthCard)
     }
-    if (slide === 4) {
-      setSlide(1)
-      setSlideClass(styles.firstBanner)
+    if (card === 4) {
+      setCard(1)
+      setCardClass(styles.firstCard)
     }
   }
 
-  function changeSlideFromLeft() {
-    if (slide === 1) {
-      setSlide(4)
-      setSlideClass(styles.secondBanner)
+  function changeCardFromLeft() {
+    if (card === 1) {
+      setCard(4)
+      setCardClass(styles.secondCard)
     }
-    if (slide === 2) {
-      setSlide(1)
-      setSlideClass(styles.thirdBanner)
+    if (card === 2) {
+      setCard(1)
+      setCardClass(styles.thirdCard)
     }
-    if (slide === 3) {
-      setSlide(2)
-      setSlideClass(styles.fourthBanner)
+    if (card === 3) {
+      setCard(2)
+      setCardClass(styles.fourthCard)
     }
-    if (slide === 4) {
-      setSlide(3)
-      setSlideClass(styles.firstBanner)
+    if (card === 4) {
+      setCard(3)
+      setCardClass(styles.firstCard)
     }
   }
 
@@ -70,7 +70,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
         <div className={styles.fromLeftArea}>
           <button
             className={styles.fromLeftButton}
-            onClick={changeSlideFromLeft}
+            onClick={changeCardFromLeft}
           >
             <FiArrowLeft
               className={styles.fromLeftImage}
@@ -80,11 +80,11 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
           </button>
         </div>
 
-        <div className={styles.slides}>
+        <div className={styles.cards}>
           <div
             className={`
-        ${styles.SlideArea}
-        ${slideClass}
+        ${styles.CardArea}
+        ${cardClass}
         `}
           >
             {data.map((categorie) => {
@@ -112,7 +112,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
           </div>
         </div>
 
-        <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
+        <div className={styles.fromRightArea} onClick={changeCardFromRight}>
           <button className={styles.fromRightButton}>
             <FiArrowRight
               className={styles.fromRightImage}

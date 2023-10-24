@@ -57,66 +57,66 @@
 }
 
 @media (min-width: 720px) {
-  .firstSlide {
+  .firstCard {
     margin-left: calc(-25vw / 2 + ((100vw - 8rem) / 2));
   }
 
-  .firstSlide .aside:nth-child(2),
-  .firstSlide .aside:nth-child(3),
-  .firstSlide .aside:nth-child(4),
-  .firstSlide .aside:nth-child(5) {
+  .firstCard .aside:nth-child(2),
+  .firstCard .aside:nth-child(3),
+  .firstCard .aside:nth-child(4),
+  .firstCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .secondSlide {
+  .secondCard {
     margin-left: calc(-25vw / 2 - 25vw - 2rem + ((100vw - 8rem) / 2));
   }
 
-  .secondSlide .aside:nth-child(1),
-  .secondSlide .aside:nth-child(3),
-  .secondSlide .aside:nth-child(4),
-  .secondSlide .aside:nth-child(5) {
+  .secondCard .aside:nth-child(1),
+  .secondCard .aside:nth-child(3),
+  .secondCard .aside:nth-child(4),
+  .secondCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .thirdSlide {
+  .thirdCard {
     margin-left: calc(-25vw / 2 - 50vw - 4rem + ((100vw - 8rem) / 2));
   }
 
-  .thirdSlide .aside:nth-child(1),
-  .thirdSlide .aside:nth-child(2),
-  .thirdSlide .aside:nth-child(4),
-  .thirdSlide .aside:nth-child(5) {
+  .thirdCard .aside:nth-child(1),
+  .thirdCard .aside:nth-child(2),
+  .thirdCard .aside:nth-child(4),
+  .thirdCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .fourthSlide {
+  .fourthCard {
     margin-left: calc(-25vw / 2 - 75vw - 6rem + ((100vw - 8rem) / 2));
   }
 
-  .fourthSlide .aside:nth-child(1),
-  .fourthSlide .aside:nth-child(2),
-  .fourthSlide .aside:nth-child(3),
-  .fourthSlide .aside:nth-child(5) {
+  .fourthCard .aside:nth-child(1),
+  .fourthCard .aside:nth-child(2),
+  .fourthCard .aside:nth-child(3),
+  .fourthCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .fifthSlide {
+  .fifthCard {
     margin-left: calc(-25vw / 2 - 100vw - 8rem + ((100vw - 8rem) / 2));
   }
 
-  .fifthSlide .aside:nth-child(1),
-  .fifthSlide .aside:nth-child(2),
-  .fifthSlide .aside:nth-child(3),
-  .fifthSlide .aside:nth-child(4) {
+  .fifthCard .aside:nth-child(1),
+  .fifthCard .aside:nth-child(2),
+  .fifthCard .aside:nth-child(3),
+  .fifthCard .aside:nth-child(4) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
@@ -286,7 +286,7 @@
   overflow: hidden;
 }
 
-.SlideArea {
+.CardArea {
   display: flex;
   gap: 2rem;
 
@@ -409,70 +409,70 @@
     position: absolute;
   }
 
-  .SlideArea {
+  .CardArea {
     gap: 1rem;
   }
 
-  .firstSlide {
+  .firstCard {
     margin-left: calc(2rem - (0 * (100vw - 8rem)));
   }
 
-  .firstSlide .aside:nth-child(2),
-  .firstSlide .aside:nth-child(3),
-  .firstSlide .aside:nth-child(4),
-  .firstSlide .aside:nth-child(5) {
+  .firstCard .aside:nth-child(2),
+  .firstCard .aside:nth-child(3),
+  .firstCard .aside:nth-child(4),
+  .firstCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .secondSlide {
+  .secondCard {
     margin-left: calc(3rem - (1 * (100vw - 8rem)));
   }
 
-  .secondSlide .aside:nth-child(1),
-  .secondSlide .aside:nth-child(3),
-  .secondSlide .aside:nth-child(4),
-  .secondSlide .aside:nth-child(5) {
+  .secondCard .aside:nth-child(1),
+  .secondCard .aside:nth-child(3),
+  .secondCard .aside:nth-child(4),
+  .secondCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .thirdSlide {
+  .thirdCard {
     margin-left: calc(4rem - (2 * (100vw - 8rem)));
   }
 
-  .thirdSlide .aside:nth-child(1),
-  .thirdSlide .aside:nth-child(2),
-  .thirdSlide .aside:nth-child(4),
-  .thirdSlide .aside:nth-child(5) {
+  .thirdCard .aside:nth-child(1),
+  .thirdCard .aside:nth-child(2),
+  .thirdCard .aside:nth-child(4),
+  .thirdCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .fourthSlide {
+  .fourthCard {
     margin-left: calc(5rem - (3 * (100vw - 8rem)));
   }
 
-  .fourthSlide .aside:nth-child(1),
-  .fourthSlide .aside:nth-child(2),
-  .fourthSlide .aside:nth-child(3),
-  .fourthSlide .aside:nth-child(5) {
+  .fourthCard .aside:nth-child(1),
+  .fourthCard .aside:nth-child(2),
+  .fourthCard .aside:nth-child(3),
+  .fourthCard .aside:nth-child(5) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
   }
 
-  .fifthSlide {
+  .fifthCard {
     margin-left: calc(6rem - (4 * (100vw - 8rem)));
   }
 
-  .fifthSlide .aside:nth-child(1),
-  .fifthSlide .aside:nth-child(2),
-  .fifthSlide .aside:nth-child(3),
-  .fifthSlide .aside:nth-child(4) {
+  .fifthCard .aside:nth-child(1),
+  .fifthCard .aside:nth-child(2),
+  .fifthCard .aside:nth-child(3),
+  .fifthCard .aside:nth-child(4) {
     filter: brightness(.3);
     transform: scale(.90);
     pointer-events: none;
