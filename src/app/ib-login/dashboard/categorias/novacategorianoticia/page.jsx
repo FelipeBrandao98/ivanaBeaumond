@@ -1,7 +1,10 @@
+// Components imports
 import CreateCategoryNewsPage from '@/components/IB-CATEGORIES/CreateCategoryNewsPage'
 
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function createCategory(token, createCategory) {
   'use server'
   console.log(createCategory)
@@ -21,7 +24,11 @@ async function editCategory(id, token, createCategory) {
     },
   })
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return <CreateCategoryNewsPage functions={{ createCategory, editCategory }} />
+  //
 }

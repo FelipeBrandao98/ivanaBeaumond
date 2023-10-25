@@ -26,7 +26,7 @@ const loginFormSchema = z.object({
     .max(20, 'A senha pode ter no máximo 20 caracteres'),
 })
 
-export function LoginPage({ login }) {
+export default function LoginPage({ login }) {
   const { handleChangeToken } = useContext(AuthContext)
 
   const {

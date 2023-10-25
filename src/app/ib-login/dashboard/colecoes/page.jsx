@@ -1,6 +1,10 @@
+// Components imports
 import CollectionsPage from '@/components/IB-COLLECTIONS/CollectionsPage'
+
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function getCollections(token) {
   'use server'
   const res = await api.get('/collections', {
@@ -20,7 +24,11 @@ async function deleteCollection(token, id) {
   })
   return res.data
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return <CollectionsPage functions={{ getCollections, deleteCollection }} />
+  //
 }

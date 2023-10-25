@@ -1,6 +1,10 @@
+// Components imports
 import CategoriesPage from '@/components/IB-CATEGORIES/CategoriesPage'
+
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function getCategoriesCollections(token) {
   'use server'
   const res = await api.get('/collections/category', {
@@ -20,11 +24,15 @@ async function getCategoriesNews(token) {
   })
   return res.data
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return (
     <CategoriesPage
       functions={{ getCategoriesCollections, getCategoriesNews }}
     />
   )
+  //
 }

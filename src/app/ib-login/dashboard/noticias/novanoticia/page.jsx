@@ -1,6 +1,10 @@
+// Components imports
 import CreateNewsPage from '@/components/IB-NEWS/CreateNewsPage'
+
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function createNews(token, createNews) {
   'use server'
   await api.post('/news', createNews, {
@@ -34,11 +38,15 @@ async function getCategories() {
   const res = await api.get('/news/category/pt-BR')
   return res.data
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return (
     <CreateNewsPage
       functions={{ createNews, editNews, createImage, getCategories }}
     />
   )
+  //
 }

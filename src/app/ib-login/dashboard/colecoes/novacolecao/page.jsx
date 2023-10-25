@@ -1,7 +1,10 @@
+// Components imports
 import CreateCollectionsPage from '@/components/IB-COLLECTIONS/CreateCollectionsPage'
 
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function createCollection(token, createCollection) {
   'use server'
   const res = await api.post('/collections', createCollection, {
@@ -37,8 +40,11 @@ async function getCategories() {
   const res = await api.get('/collections/category/pt-BR')
   return res.data
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return (
     <CreateCollectionsPage
       functions={{
@@ -49,4 +55,5 @@ export default function Page() {
       }}
     />
   )
+  //
 }

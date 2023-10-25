@@ -1,5 +1,6 @@
 'use client'
 
+// Providers imports
 import { AuthProvider } from '@/Context/AuthContext'
 import { CollectionsCategoryProvider } from '@/Context/CollectionsCategoryContext'
 import { CollectionsProvider } from '@/Context/CollectionsContext'
@@ -9,7 +10,9 @@ import { CreateImageNewsProvider } from '@/Context/CreateImageNewsContext'
 import { NewsCategoryProvider } from '@/Context/NewsCategoryContext'
 import { NewsProvider } from '@/Context/NewsContext'
 
+// Component Declaration
 export function Providers({ children }) {
+  // Return Components Providers
   return (
     <AuthProvider>
       <CreateImageNewsProvider>
@@ -27,4 +30,5 @@ export function Providers({ children }) {
       </CreateImageNewsProvider>
     </AuthProvider>
   )
+  //
 }

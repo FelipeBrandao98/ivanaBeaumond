@@ -34,8 +34,8 @@
   width: 2rem;
   height: 2rem;
   position: absolute;
-  top: 15vh;
-  right: 20vw;
+  top: calc(15vh + 1rem);
+  right: calc(20vw + 1rem);
 }
 
 .closeButton svg {

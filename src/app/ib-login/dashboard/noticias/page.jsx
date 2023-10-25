@@ -1,6 +1,10 @@
+// Components imports
 import NewsPage from '@/components/IB-NEWS/NewsPage'
+
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function getNews(token) {
   'use server'
   const res = await api.get('/news', {
@@ -20,7 +24,11 @@ async function deleteNews(token, id) {
   })
   return res.data
 }
+//
 
+// Component Declaration
 export default function Page() {
+  // Return components, with functions API
   return <NewsPage functions={{ getNews, deleteNews }} />
+  //
 }

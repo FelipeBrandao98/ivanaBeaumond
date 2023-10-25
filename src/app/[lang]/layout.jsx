@@ -1,3 +1,21 @@
+// Cookies imports
+import { cookies } from 'next/headers'
+
+// Components imports
+import AdressItem from '@/components/LAYOUT/AdressItem'
+import Footer from '@/components/LAYOUT/Footer'
+import GuideToBottomScroll from '@/components/LAYOUT/GuideToBottomScroll'
+import Menu from '@/components/LAYOUT/Menu'
+import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
+import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
+
+// Next.js Components imports
+import Head from 'next/head'
+
+// API Service imports
+import api from '@/services/api'
+
+// Fonts from google, resource of next.js imports
 import {
   Inter,
   Poppins,
@@ -13,23 +31,17 @@ import {
   Oooh_Baby,
   Playfair_Display,
 } from 'next/font/google'
-import { cookies } from 'next/headers'
-import Head from 'next/head'
 
+// Providers imports
 import { Providers } from './providers'
 
-import '@/styles/globals.css'
-
-import AdressItem from '@/components/LAYOUT/AdressItem'
-import Footer from '@/components/LAYOUT/Footer'
-import GuideToBottomScroll from '@/components/LAYOUT/GuideToBottomScroll'
-import Menu from '@/components/LAYOUT/Menu'
-import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
-import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
-
-import api from '@/services/api'
+// Google Analytics imports
 import GoogleAnalytics from '@/services/GoogleAnalytics'
 
+// Global Styles imports
+import '@/styles/globals.css'
+
+// Font instances to pass as variables
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -102,22 +114,28 @@ const playfair_display = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
+//
 
 export const metadata = {
   title: 'Ivana Beaumond',
   description: 'Seu site de noivas',
 }
 
+// functions to call API
 async function createAppointment(formData) {
   'use server'
   await api.post('/appointments', formData)
 }
 
+// Component Declaration
 export default async function RootLayout({ children }) {
+  // Try to get cookies from language
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
   const lang = langCookie?.value || 'pt-BR'
+  //
 
+  // Return components, with functions to call API and language
   return (
     <html lang={lang}>
       <Head>
@@ -168,4 +186,5 @@ export default async function RootLayout({ children }) {
       </body>
     </html>
   )
+  //
 }

@@ -1,13 +1,17 @@
+// Cookies imports
 import { cookies } from 'next/headers'
 
+// Components imports
 import BannerHomePage from '@/components/HOME/BannerHomePage'
 import CollectionsItemsCardHomePage from '@/components/HOME/CollectionsItemsCardHomePage'
 import DepositionsArea from '@/components/HOME/DepositionsArea'
 import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
 import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
 
+// API Service imports
 import api from '@/services/api'
 
+// functions to call API
 async function getCollectionsCategoryData(lang) {
   const res = await api.get(`/collections/category/${lang}`)
 
@@ -25,6 +29,7 @@ async function getLatestPosts(lang) {
 
   return res.data
 }
+//
 
 const events = {
   title: 'Eventos',
@@ -59,15 +64,21 @@ const events = {
   ],
 }
 
+// Component Declaration
 export default async function Page() {
+  // Try to get cookies from language
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
   const lang = langCookie?.value || 'pt-BR'
+  //
 
+  // Instantiate response objects from api, by language by the way
   const categories = await getCollectionsCategoryData(lang)
   const depositions = await getDepositionsData()
   const latestPosts = await getLatestPosts(lang)
+  //
 
+  // Return components, with data and language
   return (
     <>
       <main>
@@ -79,4 +90,5 @@ export default async function Page() {
       </main>
     </>
   )
+  //
 }
