@@ -1,15 +1,23 @@
 'use client'
 
+// React imports
 import React, { useEffect, useState } from 'react'
+
+// Icons imports
 import { BsArrowDownSquareFill } from 'react-icons/bs'
 
-import styles from './styles.module.css'
-
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function GuideToBottomScroll({ lang }) {
+  // States declaratios
   const [visible, setVisible] = useState(false)
 
+  // Functions to manipulate window object / state
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled < 300) {
@@ -17,18 +25,21 @@ export default function GuideToBottomScroll({ lang }) {
     }
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', toggleInvisible)
-    setTimeout(toggleVisible, 3000)
-  }, [])
-
   const toggleInvisible = () => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
       setVisible(false)
     }
   }
+  //
 
+  // Use Effects
+  useEffect(() => {
+    window.addEventListener('scroll', toggleInvisible)
+    setTimeout(toggleVisible, 3000)
+  }, [])
+
+  // Return components, with functions to call API and language
   return (
     <>
       <div className={visible ? styles.visible : styles.invisible}>
@@ -41,4 +52,5 @@ export default function GuideToBottomScroll({ lang }) {
       </div>
     </>
   )
+  //
 }

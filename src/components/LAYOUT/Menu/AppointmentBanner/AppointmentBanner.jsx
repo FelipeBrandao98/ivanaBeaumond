@@ -1,17 +1,24 @@
 'use client'
-
+// React imports
 import { useState } from 'react'
+
+// Next.js Components imports
+import Image from 'next/image'
+
+// Icons imports
 import { HiX } from 'react-icons/hi'
 import { AiOutlineLoading, AiOutlineCheckCircle } from 'react-icons/ai'
 
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import styles from './styles.module.css'
-
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
-import Image from 'next/image'
+
+// Styles imports
+import styles from './styles.module.css'
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
@@ -63,16 +70,20 @@ const createAppointmentFormSchema = z.object({
   }),
 })
 
+// Component Declaration
 export default function AppointmentBanner({
   lang,
   createAppointment,
   isHidden,
   close,
 }) {
+  // States declaratios
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -81,13 +92,16 @@ export default function AppointmentBanner({
   } = useForm({
     resolver: zodResolver(createAppointmentFormSchema),
   })
+  //
 
+  // Functions to manipulate on Form Send
   function handleCreateAppointment(formData) {
     setCreateAppointmentLoader('loading')
     createAppointment(formData)
-    setTimeout(setCreateAppointmentLoader('loaded'), 5000)
+    setCreateAppointmentLoader('loaded')
   }
 
+  // Return components, with functions to call API and language
   return (
     <>
       {isHidden && (
@@ -268,4 +282,5 @@ export default function AppointmentBanner({
       )}
     </>
   )
+  //
 }

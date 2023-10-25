@@ -1,20 +1,36 @@
 'use client'
 
+// React imports
 import { useEffect, useState, useCallback } from 'react'
+
+// Next.js Components imports
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
+// Icons imports
 import { FaChevronDown } from 'react-icons/fa'
 import ReactCountryFlag from 'react-country-flag'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function TraductionButton({ lang }) {
+  // States declaratios
   const [isOpen, setIsOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
 
+  // Instance of Router
   const router = useRouter()
 
+  // Remove languages from pathname, to persist original pathname
+  let pathname = usePathname().replace('/pt-BR', '')
+  pathname = usePathname().replace('/de', '')
+  pathname = usePathname().replace('/en', '')
+  pathname = usePathname().replace('/fr', '')
+  //
+
+  // Functions to manipulate window object
   const toggleHidden = useCallback(() => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
@@ -23,15 +39,15 @@ export default function TraductionButton({ lang }) {
       setHidden(false)
     }
   }, [])
+  //
 
-  let pathname = usePathname().replace('/pt-BR', '')
-  pathname = usePathname().replace('/de', '')
-  pathname = usePathname().replace('/en', '')
-  pathname = usePathname().replace('/fr', '')
-
+  // Functions to manipulate Events
   function handleIsOpen() {
     isOpen ? setIsOpen(false) : setIsOpen(true)
   }
+  //
+
+  // Use Effects
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
   }, [toggleHidden])
@@ -39,7 +55,9 @@ export default function TraductionButton({ lang }) {
   useEffect(() => {
     router.refresh()
   }, [router])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <div
@@ -201,4 +219,5 @@ export default function TraductionButton({ lang }) {
       </div>
     </>
   )
+  //
 }

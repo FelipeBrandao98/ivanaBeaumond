@@ -1,8 +1,12 @@
+// Icons imports
 import { BsFillTelephoneFill } from 'react-icons/bs'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function AdressItem() {
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.container}>
@@ -64,4 +68,5 @@ export default function AdressItem() {
       </section>
     </>
   )
+  //
 }

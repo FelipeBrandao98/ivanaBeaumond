@@ -1,21 +1,30 @@
 'use client'
 
+// React imports
 import { useState } from 'react'
+
+// Components imports
 import LoadingSubscribe from './LoadingSubscribe'
 import SuccessSubscribe from './SuccessSubscribe'
 
-import api from '@/services/api'
-
-import styles from './styles.module.css'
-
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// API Service imports
+import api from '@/services/api'
+
 export default function SubscribeItem({ lang, content }) {
+  // States declaratios
   const [loading, setLoading] = useState(false)
   const [checked, setChecked] = useState(false)
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Functions to manipulate on Form Send
   async function handleSubmit(event) {
     event.preventDefault()
 
@@ -34,7 +43,9 @@ export default function SubscribeItem({ lang, content }) {
     setLoading(false)
     setChecked(true)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.section}>
@@ -84,4 +95,5 @@ export default function SubscribeItem({ lang, content }) {
       </section>
     </>
   )
+  //
 }

@@ -1,10 +1,16 @@
-import { BsInstagram, BsFacebook, BsYoutube } from 'react-icons/bs'
-import { FaTiktok } from 'react-icons/fa'
+// Next.js Components imports
 import Image from 'next/image'
 
+// Icons imports
+import { BsInstagram, BsFacebook, BsYoutube } from 'react-icons/bs'
+import { FaTiktok } from 'react-icons/fa'
+
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function Footer() {
+  // Return components, with functions to call API and language
   return (
     <>
       <footer className={styles.footer}>
@@ -45,4 +51,5 @@ export default function Footer() {
       </footer>
     </>
   )
+  //
 }

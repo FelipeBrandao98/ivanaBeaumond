@@ -1,13 +1,20 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+// React imports
+import { useEffect, useState } from 'react'
+
+// Icons imports
 import { FaChevronUp } from 'react-icons/fa'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function ScrollToTop() {
+  // States declaratios
   const [visible, setVisible] = useState(false)
 
+  // Functions to manipulate window object / states
   function toggleVisible() {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
@@ -26,10 +33,13 @@ export default function ScrollToTop() {
     })
   }
 
+  // Use Effects
   useEffect(() => {
     window.addEventListener('scroll', toggleVisible)
   }, [])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <button
@@ -41,4 +51,5 @@ export default function ScrollToTop() {
       </button>
     </>
   )
+  //
 }

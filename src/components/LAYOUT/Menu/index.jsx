@@ -1,29 +1,42 @@
 'use client'
 
+// React imports
 import { useEffect, useState, useContext, useCallback } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Icons imports
 import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
 
+// Context imports
+import { AppointmentContext } from '@/Context/AppointmentContext'
+
+// Components imports
 import TraductionButton from './TraductionButton'
 import OpenMenuForMobile from './OpenMenuForMobile'
 import SearchButton from './SearchButton'
 import AppointmentBanner from './AppointmentBanner/AppointmentBanner'
 
-import { AppointmentContext } from '@/Context/AppointmentContext'
-
-import styles from './styles.module.css'
-
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function Menu({ createAppointment, lang, children }) {
+  // Instanciate and initialize Contexts functions
   const { appointment, handleAppointment } = useContext(AppointmentContext)
 
+  // States declaratios
   const [hidden, setHidden] = useState(false)
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Functions to manipulate window object
   const toggleHidden = useCallback(() => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
@@ -32,11 +45,14 @@ export default function Menu({ createAppointment, lang, children }) {
       setHidden(false)
     }
   }, [])
+  //
 
+  // Use Effects
   useEffect(() => {
     window.addEventListener('scroll', toggleHidden)
   }, [toggleHidden])
 
+  // Return components, with functions to call API and language
   return (
     <>
       <div
@@ -119,4 +135,5 @@ export default function Menu({ createAppointment, lang, children }) {
       </div>
     </>
   )
+  //
 }
