@@ -62,7 +62,7 @@ const events = {
 export default async function Page() {
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
-  const lang = langCookie.value
+  const lang = langCookie?.value || 'pt-BR'
 
   const categories = await getCollectionsCategoryData(lang)
   const depositions = await getDepositionsData()
@@ -71,25 +71,10 @@ export default async function Page() {
   return (
     <>
       <main>
-        {
-          // Language ✅
-        }
         <BannerHomePage lang={lang} />
-        {
-          // Language ✅
-        }
         <CollectionsItemsCardHomePage lang={lang} data={categories} />
-        {
-          // Language ✅
-        }
         <EventsItemsHomePage lang={lang} data={{ events }} />
-        {
-          // Language ✅
-        }
         <DepositionsArea lang={lang} data={depositions} />
-        {
-          // Language ✅
-        }
         <HighLightsHomePage lang={lang} data={latestPosts} />
       </main>
     </>

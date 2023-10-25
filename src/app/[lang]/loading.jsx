@@ -6,8 +6,8 @@ import styles from '@/styles/loading.module.css'
 
 export default function Loading() {
   const cookieStore = cookies()
-  const cookie = cookieStore.get('lang')
-  const lang = cookie.value
+  const langCookie = cookieStore.get('lang')
+  const lang = langCookie?.value || 'pt-BR'
 
   return (
     <div className={styles.content}>

@@ -119,7 +119,7 @@ export default async function RootLayout({ children }) {
   const lang = langCookie?.value || 'pt-BR'
 
   return (
-    <html lang={lang ? lang : 'pt-BR'}>
+    <html lang={lang}>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
