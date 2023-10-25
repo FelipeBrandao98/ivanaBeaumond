@@ -47,7 +47,7 @@ export default function Menu({ createAppointment, lang, children }) {
         <header className={styles.header}>
           <Image
             className={styles.logoInMenu}
-            src="http://localhost:3002/logo-white.svg"
+            src="/logo-white.svg"
             alt="IVANA BEAUMOND"
             width={300}
             height={50}

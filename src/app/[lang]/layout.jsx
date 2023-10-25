@@ -28,6 +28,7 @@ import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
 import api from '@/services/api'
+import GoogleAnalytics from '@/services/GoogleAnalytics'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -115,10 +116,10 @@ async function createAppointment(formData) {
 export default async function RootLayout({ children }) {
   const cookieStore = cookies()
   const langCookie = cookieStore.get('lang')
-  const lang = langCookie.value
+  const lang = langCookie?.value || 'pt-BR'
 
   return (
-    <html lang={lang}>
+    <html lang={lang ? lang : 'pt-BR'}>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
@@ -155,6 +156,7 @@ export default async function RootLayout({ children }) {
       >
         <Providers>
           <Menu createAppointment={createAppointment} lang={lang}>
+            <GoogleAnalytics />
             <main>{children}</main>
             <AdressItem />
             <SubscribeItem lang={lang} />

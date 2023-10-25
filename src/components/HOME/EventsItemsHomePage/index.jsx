@@ -57,7 +57,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
             return (
               <div className={styles.futureEventsCard} key={event.id}>
                 <p className={styles.futureEventsTitle}>{event.title}</p>
-                <IoIosCalendar className={styles.iconCalendar} size={'2rem'} />
+                <IoIosCalendar className={styles.iconCalendar} size={2} />
                 <p className={styles.futureEventsDate}>{event.date}</p>
               </div>
             )
