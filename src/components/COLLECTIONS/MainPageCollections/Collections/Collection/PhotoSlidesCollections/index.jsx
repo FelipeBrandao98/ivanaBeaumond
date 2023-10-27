@@ -1,14 +1,24 @@
 'use client'
+
+// React imports
 import { useState, useEffect, useCallback } from 'react'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+// Next.js Components imports
 import Image from 'next/image'
 
+// Icons imports
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function PhotoSlidesCollections({ images }) {
+  // States declaratios
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
+  // Functions to manipulate window object
   const changeSlideFromRight = useCallback(() => {
     if (slide === 1) {
       setSlide(2)
@@ -46,13 +56,17 @@ export default function PhotoSlidesCollections({ images }) {
       setSlideClass(styles.firstBanner)
     }
   }, [slide])
+  //
 
+  // Use Effects
   useEffect(() => {
     setTimeout(() => {
       changeSlideFromRight()
     }, 100000)
   }, [changeSlideFromRight])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <div className={styles.container}>
       <div className={styles.fromLeftArea}>
@@ -125,4 +139,5 @@ export default function PhotoSlidesCollections({ images }) {
       </div>
     </div>
   )
+  //
 }

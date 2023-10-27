@@ -1,13 +1,24 @@
 'use client'
-import Image from 'next/image'
+
+// React imports
 import { useCallback, useEffect, useState } from 'react'
+
+// Next.js Components imports
+import Image from 'next/image'
+
+// Icons imports
 import { TbHandClick } from 'react-icons/tb'
 
-import styles from './styles.module.css'
-
+// Components imports
 import PhotoSlidesCollections from './PhotoSlidesCollections'
+
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function Collection({
   id,
   lang,
@@ -16,26 +27,36 @@ export default function Collection({
   imageUrl,
   functions,
 }) {
+  // States declaratios
   const [displayed, setDisplayed] = useState(false)
   const [images, setImages] = useState([])
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Desestructured functions to call api
   const { getCollectionImages } = functions
 
+  // Functions to manipulate window object
   function handleDisplayDetails() {
     displayed ? setDisplayed(false) : setDisplayed(true)
   }
+  //
 
+  // functions to handle with datas from api
   const getCollectionImagesRepo = useCallback(async () => {
     const res = await getCollectionImages(id)
     setImages(res)
   }, [getCollectionImages, id])
+  //
 
+  // Use Effects
   useEffect(() => {
     getCollectionImagesRepo()
   }, [getCollectionImagesRepo])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <aside className={styles.collection} key={id}>
       {!displayed ? (
@@ -88,4 +109,5 @@ export default function Collection({
       />
     </aside>
   )
+  //
 }

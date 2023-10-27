@@ -1,14 +1,24 @@
 'use client'
-import Image from 'next/image'
+
+// React imports
 import { useState } from 'react'
+
+// Next.js Components imports
+import Image from 'next/image'
+
+// Icons imports
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function ItemCollection() {
+  // States declaratios
   const [hoverPoint, setHoverPoint] = useState(0)
   const [point, setPoint] = useState(0)
 
+  // Functions to manipulate window object
   function handlePointOne() {
     setPoint(1)
   }
@@ -24,7 +34,9 @@ export default function ItemCollection() {
   function handlePointFive() {
     setPoint(5)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <aside className={styles.container}>
       <Image
@@ -76,4 +88,5 @@ export default function ItemCollection() {
       </div>
     </aside>
   )
+  //
 }

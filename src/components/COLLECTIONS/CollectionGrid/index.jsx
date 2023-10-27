@@ -1,8 +1,12 @@
-import styles from './styles.module.css'
-
+// Components imports
 import ItemCollection from '../ItemCollection'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function CollectionGrid() {
+  // Return components, with functions to call API and language
   return (
     <section className={styles.container}>
       <ItemCollection />
@@ -19,4 +23,5 @@ export default function CollectionGrid() {
       <ItemCollection />
     </section>
   )
+  //
 }

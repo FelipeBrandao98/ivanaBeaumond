@@ -1,11 +1,21 @@
+// Next.js Components imports
 import Image from 'next/image'
 
+// Components imports
 import Collections from './Collections'
 
-import styles from './styles.module.css'
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function MainPageCollections({ lang, data, functions }) {
+  // Instance of Traductor
+  const languageTraducted = useLangDict(lang)
+
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.section}>
@@ -20,11 +30,12 @@ export default function MainPageCollections({ lang, data, functions }) {
         />
         <h1 className={styles.title}>{useLangDict(lang).collections.title}</h1>
         <div className={styles.subTitle}>
-          <h2>{useLangDict(lang).collections.subTitle}</h2>
+          <h2>{languageTraducted.collections.subTitle}</h2>
           <h3>Ivana Beaumond ©</h3>
         </div>
       </section>
       <Collections lang={lang} data={data} functions={functions} />
     </>
   )
+  //
 }
