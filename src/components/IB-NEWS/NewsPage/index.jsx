@@ -1,12 +1,13 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
+// React imports
 import { useCallback, useContext, useEffect, useState } from 'react'
+
+// Next.js Components imports
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { format } from 'date-fns'
-
+// Icons imports
 import {
   FiArchive,
   FiEdit,
@@ -18,21 +19,33 @@ import {
 } from 'react-icons/fi'
 import { AiOutlineLoading } from 'react-icons/ai'
 
-import styles from './styles.module.css'
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
 import { NewsContext } from '@/Context/NewsContext'
 import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
-export default function NewsPage({ functions }) {
-  const [newsRepositories, setNewsRepositories] = useState([])
-  const [isDeleteNews, setIsDeleteNews] = useState(false)
-  const [loading, setLoading] = useState(false)
+// Manipulate strings imports
+import { format } from 'date-fns'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
+export default function NewsPage({ functions }) {
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleNews } = useContext(NewsContext)
   const { handleChangeImage } = useContext(CreateImageNewsContext)
 
+  // States declaratios
+  const [newsRepositories, setNewsRepositories] = useState([])
+  const [isDeleteNews, setIsDeleteNews] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Desestructured functions to call api
   const { getNews, deleteNews } = functions
 
+  // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     const news = await getNews(token)
     setNewsRepositories(news)
@@ -45,11 +58,15 @@ export default function NewsPage({ functions }) {
     setIsDeleteNews(false)
     getRepo(token)
   }
+  //
 
+  // Use Effects
   useEffect(() => {
     getRepo(token)
   }, [getRepo, token])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Notícias</h1>
@@ -209,4 +226,5 @@ export default function NewsPage({ functions }) {
       )}
     </>
   )
+  //
 }

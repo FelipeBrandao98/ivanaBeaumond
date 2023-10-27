@@ -1,24 +1,32 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
-import { NewsContext } from '@/Context/NewsContext'
-import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
+// React imports
+import { useState, useContext } from 'react'
 
+// Next.js Components imports
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useContext } from 'react'
-import { useRouter } from 'next/navigation'
 
-import { format } from 'date-fns'
-
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-
+// Icons imports
 import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
 import { AiOutlineLoading } from 'react-icons/ai'
 
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+import { NewsContext } from '@/Context/NewsContext'
+import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
+
+// Manipulate strings imports
+import { format } from 'date-fns'
+
+// Hook form and Zod imports
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+// Styles imports
 import styles from './styles.module.css'
 
 const createNewsFormSchema = z.object({
@@ -51,17 +59,27 @@ const createNewsFormSchema = z.object({
   bodyFr: z.string(),
 })
 
+// Component Declaration
 export default function CreateNews({ categories, createNews, editNews }) {
-  const router = useRouter()
-
-  const [tab, setTab] = useState('pt-BR')
-  const [cancel, setCancel] = useState(false)
-  const [loading, setLoading] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage } = useContext(CreateImageNewsContext)
   const { news, handleNews } = useContext(NewsContext)
 
+  // States declaratios
+  const [tab, setTab] = useState('pt-BR')
+  const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Instance of Router
+  const router = useRouter()
+
+  // Functions to manipulate window object
+  function handleCancelModal() {
+    setCancel(!cancel)
+  }
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -70,7 +88,9 @@ export default function CreateNews({ categories, createNews, editNews }) {
   } = useForm({
     resolver: zodResolver(createNewsFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateNews(formData) {
     setLoading(true)
     formData.coverId = image.id
@@ -80,11 +100,9 @@ export default function CreateNews({ categories, createNews, editNews }) {
 
     router.back()
   }
+  //
 
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Nova Notícia</h1>
@@ -566,4 +584,5 @@ export default function CreateNews({ categories, createNews, editNews }) {
       )}
     </>
   )
+  //
 }

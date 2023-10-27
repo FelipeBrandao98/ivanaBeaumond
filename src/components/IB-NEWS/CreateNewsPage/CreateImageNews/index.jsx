@@ -1,33 +1,44 @@
 'use client'
 
+// React imports
 import { Suspense, useContext, useState } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 
+// Icons imports
 import { BsArrowLeft } from 'react-icons/bs'
+import { FaTruckLoading } from 'react-icons/fa'
+import { AiOutlineLoading } from 'react-icons/ai'
 
+// Context imports
+import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
+import { AuthContext } from '@/Context/AuthContext'
+
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
-
+// Styles imports
 import styles from './styles.module.css'
-import { AuthContext } from '@/Context/AuthContext'
-import { FaTruckLoading } from 'react-icons/fa'
-import { AiOutlineLoading } from 'react-icons/ai'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
+// Component Declaration
 export default function CreateImageNews({ createImage }) {
-  const [loading, setLoading] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageNewsContext,
   )
 
+  // States declaratios
+  const [loading, setLoading] = useState(false)
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -36,7 +47,9 @@ export default function CreateImageNews({ createImage }) {
   } = useForm({
     resolver: zodResolver(createImageFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateImage(formData) {
     setLoading(true)
     const file = new FormData()
@@ -45,7 +58,9 @@ export default function CreateImageNews({ createImage }) {
     handleChangeImage(res)
     setLoading(false)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <button onClick={handleShowCreateImage} className={styles.title}>
@@ -107,4 +122,5 @@ export default function CreateImageNews({ createImage }) {
       )}
     </>
   )
+  //
 }
