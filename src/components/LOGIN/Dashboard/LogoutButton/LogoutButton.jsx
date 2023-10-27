@@ -1,21 +1,32 @@
 'use client'
 
-import { ImExit } from 'react-icons/im'
+// React imports
 import { useContext, useState } from 'react'
 
+// Icons imports
+import { ImExit } from 'react-icons/im'
+
+// Context imports
 import { AuthContext } from '@/Context/AuthContext'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function LogoutButton() {
+  // Instanciate and initialize Contexts functions
   const { token, handleLogout } = useContext(AuthContext)
 
+  // States declaratios
   const [logoutModal, setLogoutModal] = useState(false)
 
+  // Functions to manipulate window object
   function handleExitModal() {
     setLogoutModal(!logoutModal)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <button
@@ -53,4 +64,5 @@ export default function LogoutButton() {
       )}
     </>
   )
+  //
 }

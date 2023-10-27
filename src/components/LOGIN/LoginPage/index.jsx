@@ -1,19 +1,28 @@
 'use client'
+
+// React imports
+import { useContext, useState } from 'react'
+
+// Next.js Components imports
+import Link from 'next/link'
+
+// Icons imports
 import {
   BsFillExclamationTriangleFill,
   BsFillArrowRightCircleFill,
 } from 'react-icons/bs'
 import { AiOutlineLoading } from 'react-icons/ai'
 
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { useContext, useState } from 'react'
-import { AuthContext } from '@/Context/AuthContext'
-
+// Styles imports
 import styles from './styles.module.css'
-import Link from 'next/link'
 
 const loginFormSchema = z.object({
   email: z
@@ -25,10 +34,17 @@ const loginFormSchema = z.object({
     .min(8, 'A senha precisa ter no mínimo 8 caracteres!')
     .max(20, 'A senha pode ter no máximo 20 caracteres'),
 })
+//
 
+// Component Declaration
 export default function LoginPage({ login }) {
+  // States declaratios
+  const [isAuthenticated, setIsAuthenticated] = useState('login')
+
+  // Contexts Declarations
   const { handleChangeToken } = useContext(AuthContext)
 
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -37,9 +53,9 @@ export default function LoginPage({ login }) {
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   })
+  //
 
-  const [isAuthenticated, setIsAuthenticated] = useState('login')
-
+  // Functions to manipulate on Form Send
   async function handleLogin(formData) {
     setIsAuthenticated('loading')
     try {
@@ -52,7 +68,9 @@ export default function LoginPage({ login }) {
       }
     }
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <aside className={styles.container}>
@@ -147,4 +165,5 @@ export default function LoginPage({ login }) {
       </aside>
     </>
   )
+  //
 }

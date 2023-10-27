@@ -1,11 +1,18 @@
+// Next.js Components imports
 import { useRouter } from 'next/navigation'
+
+// Icons imports
 import { BsFillExclamationTriangleFill } from 'react-icons/bs'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function AccessUnauthorized() {
+  // Instance of router
   const router = useRouter()
 
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.container}>
@@ -38,4 +45,5 @@ export default function AccessUnauthorized() {
       </section>
     </>
   )
+  //
 }
