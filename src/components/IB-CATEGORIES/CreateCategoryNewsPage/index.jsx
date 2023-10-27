@@ -1,19 +1,26 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
-
-import Link from 'next/link'
+// React imports
 import { useState, useContext } from 'react'
 
+// Next.js Components imports
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+// Icons imports
+import ReactCountryFlag from 'react-country-flag'
+
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
+
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import ReactCountryFlag from 'react-country-flag'
-
+// Styles imports
 import styles from './styles.module.css'
-import { useRouter } from 'next/navigation'
-import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
 const createNewsFormSchema = z.object({
   description: z.string(),
@@ -22,18 +29,30 @@ const createNewsFormSchema = z.object({
   descriptionEn: z.string(),
 })
 
+// Component Declaration
 export default function CreateCategoryNewsPage({ functions }) {
-  const router = useRouter()
+  // Instanciate and initialize Contexts functions
+  const { category, handleCategory } = useContext(NewsCategoryContext)
+  const { token } = useContext(AuthContext)
 
+  // States declaratios
   const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
 
+  // Desestructured functions to call api
   const { createCategory, editCategory } = functions
 
-  const { category, handleCategory } = useContext(NewsCategoryContext)
-  const { token } = useContext(AuthContext)
+  // Instance of Router
+  const router = useRouter()
 
+  // Functions to manipulate window object
+  function handleCancelModal() {
+    setCancel(!cancel)
+  }
+  //
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -42,7 +61,9 @@ export default function CreateCategoryNewsPage({ functions }) {
   } = useForm({
     resolver: zodResolver(createNewsFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateNews(formData) {
     setLoading(true)
     category.id
@@ -52,10 +73,7 @@ export default function CreateCategoryNewsPage({ functions }) {
     setLoading(false)
   }
 
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Nova Categoria de Notícias</h1>
@@ -267,4 +285,5 @@ export default function CreateCategoryNewsPage({ functions }) {
       )}
     </>
   )
+  //
 }

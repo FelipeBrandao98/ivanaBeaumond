@@ -1,22 +1,29 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
-
-import Link from 'next/link'
-import Image from 'next/image'
+// React imports
 import { useState, useContext } from 'react'
 
+// Next.js Components imports
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
+
+// Icons imports
+import ReactCountryFlag from 'react-country-flag'
+import { MdPhoto } from 'react-icons/md'
+
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
+import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
+
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import ReactCountryFlag from 'react-country-flag'
-import { MdPhoto } from 'react-icons/md'
-
+// Styles imports
 import styles from './styles.module.css'
-import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
-import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
-import { useRouter } from 'next/navigation'
 
 const createNewsFormSchema = z.object({
   description: z.string(),
@@ -29,19 +36,30 @@ const createNewsFormSchema = z.object({
   subdescriptionEn: z.string(),
 })
 
+// Component Declaration
 export default function CreateCategory({ createCategory, editCategory }) {
-  const router = useRouter()
-
-  const [loading, setLoading] = useState(false)
-  const [tab, setTab] = useState('pt-BR')
-  const [cancel, setCancel] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { category, handleCategory } = useContext(CollectionsCategoryContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCategoryContext,
   )
 
+  // States declaratios
+  const [loading, setLoading] = useState(false)
+  const [tab, setTab] = useState('pt-BR')
+  const [cancel, setCancel] = useState(false)
+
+  // Instance of Router
+  const router = useRouter()
+
+  // Functions to manipulate window object
+  function handleCancelModal() {
+    setCancel(!cancel)
+  }
+  //
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -50,7 +68,9 @@ export default function CreateCategory({ createCategory, editCategory }) {
   } = useForm({
     resolver: zodResolver(createNewsFormSchema),
   })
+  //
 
+  // Functions to manipulate on Form Send
   async function handleCreateNews(formData) {
     setLoading(true)
     formData.coverId = image.id
@@ -61,11 +81,9 @@ export default function CreateCategory({ createCategory, editCategory }) {
     router.back()
     setLoading(false)
   }
+  //
 
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Nova Categoria de Coleção</h1>
@@ -385,4 +403,5 @@ export default function CreateCategory({ createCategory, editCategory }) {
       )}
     </>
   )
+  //
 }

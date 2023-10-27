@@ -1,35 +1,45 @@
 'use client'
 
-import { Suspense, useContext, useState } from 'react'
+// React imports
+import { useContext, useState } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 
+// Icons imports
 import { BsArrowLeft } from 'react-icons/bs'
 import { AiOutlineLoading } from 'react-icons/ai'
 
+// Context imports
+import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
+import { AuthContext } from '@/Context/AuthContext'
+import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
+
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
-
+// Styles imports
 import styles from './styles.module.css'
-import { AuthContext } from '@/Context/AuthContext'
-import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
-import { FaTruckLoading } from 'react-icons/fa'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
+// Component Declaration
 export default function CreateImgCat({ createImage }) {
-  const [loading, setLoading] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { category, handleCategory } = useContext(CollectionsCategoryContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCategoryContext,
   )
 
+  // States declaratios
+  const [loading, setLoading] = useState(false)
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -38,7 +48,9 @@ export default function CreateImgCat({ createImage }) {
   } = useForm({
     resolver: zodResolver(createImageFormSchema),
   })
+  //
 
+  // Functions to manipulate on Form Send
   async function handleCreateImage(formData) {
     setLoading(true)
     const file = new FormData()
@@ -47,7 +59,9 @@ export default function CreateImgCat({ createImage }) {
     handleChangeImage(res)
     setLoading(false)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <button onClick={handleShowCreateImage} className={styles.title}>
@@ -105,4 +119,5 @@ export default function CreateImgCat({ createImage }) {
       </section>
     </>
   )
+  //
 }

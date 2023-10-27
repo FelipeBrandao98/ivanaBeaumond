@@ -1,10 +1,13 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
+// React imports
 import { useCallback, useContext, useEffect, useState } from 'react'
+
+// Next.js Components imports
 import Link from 'next/link'
 import Image from 'next/image'
 
+// Icons imports
 import {
   FiArchive,
   FiEdit,
@@ -15,39 +18,51 @@ import {
   FiTrash2,
 } from 'react-icons/fi'
 
-import styles from './styles.module.css'
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
 import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
 import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function CategoriesPage({ functions }) {
+  // Instanciate and initialize Contexts functions
+  const { token } = useContext(AuthContext)
+  const { handleCategory: handleCatNews } = useContext(NewsCategoryContext)
+  const { handleCategory: HandleCatCollections } = useContext(
+    CollectionsCategoryContext,
+  )
+
+  // States declaratios
   const [
     categoriesCollectionsRepositories,
     setCategoriesCollectionsRepositories,
   ] = useState([])
-
   const [categoriesNewsRepositories, setCategoriesNewsRepositories] = useState(
     [],
   )
 
+  // Desestructured functions to call api
   const { getCategoriesCollections, getCategoriesNews } = functions
 
-  const { token } = useContext(AuthContext)
-  const { handleCategory: HandleCatCollections } = useContext(
-    CollectionsCategoryContext,
-  )
-  const { handleCategory: handleCatNews } = useContext(NewsCategoryContext)
-
+  // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     const categoriesCollections = await getCategoriesCollections(token)
     const categoriesNews = await getCategoriesNews(token)
     setCategoriesCollectionsRepositories(categoriesCollections)
     setCategoriesNewsRepositories(categoriesNews)
   }, [getCategoriesCollections, getCategoriesNews, token])
+  //
 
+  // Use Effects
   useEffect(() => {
     getRepo(token)
   }, [getRepo, token])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Categorias</h1>
@@ -278,4 +293,5 @@ export default function CategoriesPage({ functions }) {
       </section>
     </>
   )
+  //
 }

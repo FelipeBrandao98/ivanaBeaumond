@@ -1,16 +1,24 @@
 'use client'
 
+// React imports
 import { useContext } from 'react'
 
-import CreateImgCat from './CreateImgCat'
-import CreateCategory from './CreateCategory'
+// Context imports
 import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
 
-export default function CreateCategoryPage({ functions }) {
-  const { createCategory, editCategory, createImage } = functions
+// Components imports
+import CreateImgCat from './CreateImgCat'
+import CreateCategory from './CreateCategory'
 
+// Component Declaration
+export default function CreateCategoryPage({ functions }) {
+  // Instanciate and initialize Contexts functions
   const { image, showCreateImage } = useContext(CreateImageCategoryContext)
 
+  // Desestructured functions to call api
+  const { createCategory, editCategory, createImage } = functions
+
+  // Return components, with functions to call API and language
   return (
     <>
       {showCreateImage === true ? (
@@ -23,4 +31,5 @@ export default function CreateCategoryPage({ functions }) {
       )}
     </>
   )
+  //
 }
