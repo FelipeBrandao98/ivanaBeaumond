@@ -1,5 +1,12 @@
 'use client'
+
+// React imports
+import { useState } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
+
+// Icons imports
 import {
   AiOutlineHeart,
   AiFillHeart,
@@ -7,15 +14,20 @@ import {
   AiFillStar,
 } from 'react-icons/ai'
 
+// Styles imports
 import styles from './styles.module.css'
-import { useState } from 'react'
 
+// Component Declaration
 export default function Deposition({ data }) {
+  // States declaratios
   const [liked, setLiked] = useState(false)
   const [likes, setLikes] = useState(data.likes)
+
+  // Variables
   const maxAvaliation = [1, 2, 3, 4, 5]
   const avaliation = data.avaliation
 
+  // Functions to manipulate window object
   function likeHeart() {
     if (liked) {
       setLikes(likes - 1)
@@ -25,7 +37,9 @@ export default function Deposition({ data }) {
       setLiked(true)
     }
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <aside className={styles.container}>
       <div className={styles.avatarArea}>
@@ -81,4 +95,5 @@ export default function Deposition({ data }) {
       </div>
     </aside>
   )
+  //
 }

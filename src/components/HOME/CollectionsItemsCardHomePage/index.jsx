@@ -1,19 +1,33 @@
 'use client'
 
+// React imports
+import { useState } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+
+// Icons imports
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 
-import styles from './styles.module.css'
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function CollectionsItemsCardHomePage({ lang, data }) {
+  // States declaratios
   const [card, setCard] = useState(2)
   const [cardClass, setCardClass] = useState(styles.secondCard)
 
+  // Instance of Traductor
+  const languageTraducted = useLangDict(lang)
+
+  // Functions to manipulate window object
   function changeCardFromRight() {
     if (card === 1) {
       setCard(2)
@@ -59,14 +73,16 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
       setCardClass(styles.fourthCard)
     }
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <div className={styles.titleArea}>
         <h1 className={styles.title}>
-          {useLangDict(lang).home.titlePartOne}
+          {languageTraducted.home.titlePartOne}
           <br />
-          {useLangDict(lang).home.titlePartTwo}
+          {languageTraducted.home.titlePartTwo}
         </h1>
         <HiOutlineArrowNarrowDown
           className={styles.arrowDown}

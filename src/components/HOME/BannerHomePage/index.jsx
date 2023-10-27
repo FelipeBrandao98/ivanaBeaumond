@@ -1,10 +1,16 @@
+// Next.js Components imports
 import Image from 'next/image'
-import { FaArrowRight } from 'react-icons/fa'
 import Link from 'next/link'
 
+// Icons imports
+import { FaArrowRight } from 'react-icons/fa'
+
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BannerHomePage() {
+  // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <article className={styles.article}>
@@ -29,4 +35,5 @@ export default function BannerHomePage() {
       </article>
     </section>
   )
+  //
 }

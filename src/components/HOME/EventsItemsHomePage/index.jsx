@@ -1,16 +1,26 @@
-import { BsStarHalf } from 'react-icons/bs'
-import { IoIosCalendar } from 'react-icons/io'
+// Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './styles.module.css'
+// Icons imports
+import { BsStarHalf } from 'react-icons/bs'
+import { IoIosCalendar } from 'react-icons/io'
+
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default async function EventsItemsHomePage({ lang, data }) {
+  // Variables
   const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <div className={styles.detachableAreaLeft}>
@@ -77,4 +87,5 @@ export default async function EventsItemsHomePage({ lang, data }) {
       </div>
     </section>
   )
+  //
 }
