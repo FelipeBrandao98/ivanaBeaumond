@@ -1,6 +1,9 @@
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BlogHead() {
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.container}>
@@ -17,4 +20,5 @@ export default function BlogHead() {
       </section>
     </>
   )
+  //
 }

@@ -1,19 +1,30 @@
 'use client'
 
-import Image from 'next/image'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+// React imports
 import { useState } from 'react'
-import { format } from 'date-fns'
 
+// Next.js Components imports
+import Image from 'next/image'
 import Link from 'next/link'
-import styles from './styles.module.css'
+
+// Icons imports
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+// Manipulate strings imports
+import { format } from 'date-fns'
 import formatToUrl from '@/utils/formatToUrl'
 import formatToSubTitle from '@/utils/formatToSubTitle'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function BlogOtherPosts({ title, data }) {
+  // States declaratios
   const [post, setPost] = useState(1)
   const [postClass, setPostClass] = useState(styles.firstPost)
 
+  // Functions to manipulate window object
   function changePostFromRight() {
     if (post === 1) {
       setPost(2)
@@ -51,7 +62,9 @@ export default function BlogOtherPosts({ title, data }) {
       setSlideClass(styles.thirdBanner)
     }
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <h4 className={styles.title}>{title || 'Título'}</h4>
@@ -118,4 +131,5 @@ export default function BlogOtherPosts({ title, data }) {
       </div>
     </section>
   )
+  //
 }

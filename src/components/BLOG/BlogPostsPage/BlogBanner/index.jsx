@@ -1,17 +1,30 @@
 'use client'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+// React imports
 import { useEffect, useState, useCallback } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 
-import styles from './styles.module.css'
+// Icons imports
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+
+// Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function BlogBanner({ lang, data }) {
+  // States declaratios
   const [slide, setSlide] = useState(2)
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
+  // Instance of Traductor
   const languageTraducted = useLangDict(lang)
 
+  // Functions to manipulate window object
   const changeSlideFromRight = useCallback(() => {
     if (slide === 1) {
       setSlide(2)
@@ -49,13 +62,17 @@ export default function BlogBanner({ lang, data }) {
       setSlideClass(styles.firstBanner)
     }
   }, [slide])
+  //
 
+  // Use Effects
   useEffect(() => {
     setTimeout(() => {
       changeSlideFromRight()
     }, 15000)
   }, [changeSlideFromRight])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <section className={styles.content}>
       <div className={styles.fromLeftArea}>
@@ -142,4 +159,5 @@ export default function BlogBanner({ lang, data }) {
       </div>
     </section>
   )
+  //
 }

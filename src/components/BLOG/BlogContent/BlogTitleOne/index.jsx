@@ -1,6 +1,9 @@
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BlogTitleOne() {
+  // Return components, with functions to call API and language
   return (
     <div className={styles.titleArea}>
       <h2 className={styles.title}>
@@ -9,4 +12,5 @@ export default function BlogTitleOne() {
       </h2>
     </div>
   )
+  //
 }

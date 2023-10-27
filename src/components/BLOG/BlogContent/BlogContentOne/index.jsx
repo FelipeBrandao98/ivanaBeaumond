@@ -1,8 +1,12 @@
+// Next.js Components imports
 import Image from 'next/image'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BlogContentOne() {
+  // Return components, with functions to call API and language
   return (
     <div className={styles.contentOne}>
       <p className={styles.contentOneText}>
@@ -26,4 +30,5 @@ export default function BlogContentOne() {
       </div>
     </div>
   )
+  //
 }

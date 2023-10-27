@@ -1,6 +1,9 @@
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BlogContentText() {
+  // Return components, with functions to call API and language
   return (
     <div className={styles.content}>
       <div className={styles.titleArea}>
@@ -68,4 +71,5 @@ export default function BlogContentText() {
       </div>
     </div>
   )
+  //
 }

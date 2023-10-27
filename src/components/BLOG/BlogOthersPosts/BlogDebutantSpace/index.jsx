@@ -1,9 +1,15 @@
+// Next.js Components imports
 import Image from 'next/image'
+
+// Icons imports
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function BlogDebutantSpace() {
+  // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <h4 className={styles.title}>Espaço Debutantes</h4>
@@ -83,4 +89,5 @@ export default function BlogDebutantSpace() {
       </div>
     </section>
   )
+  //
 }
