@@ -40,6 +40,7 @@ import GoogleAnalytics from '@/services/GoogleAnalytics'
 
 // Global Styles imports
 import '@/styles/globals.css'
+import CookieNotice from '@/hooks/CookieNotice'
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -182,6 +183,7 @@ export default async function RootLayout({ children }) {
             <GuideToBottomScroll lang={lang} />
             <ScrollToTop />
           </Menu>
+          <CookieNotice />
         </Providers>
       </body>
     </html>
