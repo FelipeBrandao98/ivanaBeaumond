@@ -1,14 +1,24 @@
 'use client'
-import Image from 'next/image'
+
+// React imports
 import { useState } from 'react'
+
+// Next.js Components imports
+import Image from 'next/image'
+
+// Icons imports
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
+// Styles imports
 import styles from './styles.module.css'
 
+// Component Declaration
 export default function Event({ title }) {
+  // States declaratios
   const [slide, setSlide] = useState(1)
   const [slideClass, setSlideClass] = useState(styles.firstArea)
 
+  // Functions to manipulate window object
   const changeSlideFromRight = useCallback((orderDetails) => {
     if (orderDetails === 1) {
       setSlide(orderDetails + 1)
@@ -46,7 +56,9 @@ export default function Event({ title }) {
       setSlideClass(styles.firstBanner)
     }
   }, [])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <h4 className={styles.title}>{title}</h4>
@@ -483,4 +495,5 @@ export default function Event({ title }) {
       </div>
     </section>
   )
+  //
 }

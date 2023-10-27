@@ -1,9 +1,15 @@
+// Next.js Components imports
 import Image from 'next/image'
 
-import styles from './styles.module.css'
+// Components imports
 import EventsOthersPosts from './EventsOthersPosts'
 
+// Styles imports
+import styles from './styles.module.css'
+
+// Component Declaration
 export default function MainPageEvents() {
+  // Return components, with functions to call API and language
   return (
     <>
       <section className={styles.section}>
@@ -31,4 +37,5 @@ export default function MainPageEvents() {
       <EventsOthersPosts />
     </>
   )
+  //
 }
