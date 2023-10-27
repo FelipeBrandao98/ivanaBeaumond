@@ -1,35 +1,46 @@
 'use client'
 
+// React imports
 import { Suspense, useContext, useState } from 'react'
+
+// Next.js Components imports
 import Image from 'next/image'
 
+// Icons imports
 import { BsArrowLeft } from 'react-icons/bs'
 import { FaTruckLoading } from 'react-icons/fa'
 import { AiOutlineLoading } from 'react-icons/ai'
 
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-
+// Context imports
 import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
 import { CollectionsContext } from '@/Context/CollectionsContext'
 import { AuthContext } from '@/Context/AuthContext'
 
+// Hook form and Zod imports
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+// Styles imports
 import styles from './styles.module.css'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
+// Component Declaration
 export default function CreateImageCollections({ createImage }) {
-  const [loading, setLoading] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { collections, handleCollections } = useContext(CollectionsContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCollectionContext,
   )
 
+  // States declaratios
+  const [loading, setLoading] = useState(false)
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -38,7 +49,9 @@ export default function CreateImageCollections({ createImage }) {
   } = useForm({
     resolver: zodResolver(createImageFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateImage(formData) {
     setLoading(true)
     const file = new FormData()
@@ -47,7 +60,9 @@ export default function CreateImageCollections({ createImage }) {
     handleChangeImage(res)
     setLoading(false)
   }
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <button onClick={handleShowCreateImage} className={styles.title}>
@@ -109,4 +124,5 @@ export default function CreateImageCollections({ createImage }) {
       )}
     </>
   )
+  //
 }

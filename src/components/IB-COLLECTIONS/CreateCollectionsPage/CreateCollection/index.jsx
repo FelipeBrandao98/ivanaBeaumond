@@ -1,23 +1,30 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
-import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
-
-import Link from 'next/link'
-import Image from 'next/image'
+// React imports
 import { useState, useContext } from 'react'
 
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+// Next.js Components imports
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
 
+// Icons imports
 import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
 import { AiOutlineLoading } from 'react-icons/ai'
 
-import styles from './styles.module.css'
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
 import { CollectionsContext } from '@/Context/CollectionsContext'
-import { useRouter } from 'next/navigation'
+
+// Hook form and Zod imports
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+// Styles imports
+import styles from './styles.module.css'
 
 const createCollectionFormSchema = z.object({
   categoryId: z
@@ -34,23 +41,33 @@ const createCollectionFormSchema = z.object({
   descriptionFr: z.string(),
 })
 
+// Component Declaration
 export default function CreateCollection({
   categories,
   createCollection,
   editCollection,
 }) {
-  const router = useRouter()
-
-  const [tab, setTab] = useState('pt-BR')
-  const [cancel, setCancel] = useState(false)
-  const [loading, setLoading] = useState(false)
-
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { collections, handleCollections } = useContext(CollectionsContext)
   const { image, handleShowCreateImage } = useContext(
     CreateImageCollectionContext,
   )
 
+  // States declaratios
+  const [tab, setTab] = useState('pt-BR')
+  const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Instance of Router
+  const router = useRouter()
+
+  // Functions to manipulate window object
+  function handleCancelModal() {
+    setCancel(!cancel)
+  }
+
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -59,7 +76,9 @@ export default function CreateCollection({
   } = useForm({
     resolver: zodResolver(createCollectionFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateCollection(formData) {
     setLoading(true)
     formData.coverId = image.id
@@ -69,11 +88,9 @@ export default function CreateCollection({
 
     router.back()
   }
+  //
 
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Nova Coleção</h1>
@@ -412,4 +429,5 @@ export default function CreateCollection({
       )}
     </>
   )
+  //
 }

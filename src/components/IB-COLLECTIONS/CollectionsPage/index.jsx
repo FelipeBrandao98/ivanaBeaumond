@@ -1,11 +1,13 @@
 'use client'
 
-import { AuthContext } from '@/Context/AuthContext'
-import { CollectionsContext } from '@/Context/CollectionsContext'
+// React imports
 import { useCallback, useContext, useEffect, useState } from 'react'
+
+// Next.js Components imports
 import Link from 'next/link'
 import Image from 'next/image'
 
+// Icons imports
 import {
   FiArchive,
   FiEdit,
@@ -18,19 +20,30 @@ import {
 import { BiPhotoAlbum } from 'react-icons/bi'
 import { AiOutlineLoading } from 'react-icons/ai'
 
-import styles from './styles.module.css'
+// Context imports
+import { AuthContext } from '@/Context/AuthContext'
+import { CollectionsContext } from '@/Context/CollectionsContext'
 import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
 
-export default function CollectionsPage({ functions }) {
-  const [collectionsRepositories, setCollectionsRepositories] = useState([])
-  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
-  const [loading, setLoading] = useState(false)
+// Styles imports
+import styles from './styles.module.css'
 
-  const { getCollections, deleteCollection } = functions
+// Component Declaration
+export default function CollectionsPage({ functions }) {
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleCollections } = useContext(CollectionsContext)
   const { handleChangeImage } = useContext(CreateImageCollectionContext)
 
+  // States declaratios
+  const [collectionsRepositories, setCollectionsRepositories] = useState([])
+  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Desestructured functions to call api
+  const { getCollections, deleteCollection } = functions
+
+  // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     const collections = await getCollections(token)
     setCollectionsRepositories(collections)
@@ -43,11 +56,15 @@ export default function CollectionsPage({ functions }) {
     setIsDeleteCollection(false)
     getRepo(token)
   }
+  //
 
+  // Use Effects
   useEffect(() => {
     getRepo(token)
   }, [getRepo, token])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>Coleções</h1>
@@ -217,4 +234,5 @@ export default function CollectionsPage({ functions }) {
       )}
     </>
   )
+  //
 }

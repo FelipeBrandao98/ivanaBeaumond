@@ -1,36 +1,48 @@
 'use client'
 
+// React imports
+import { useCallback, useContext, useEffect, useState } from 'react'
+
+// Next.js Components imports
+import Image from 'next/image'
+
+// Icons imports
+import { AiOutlineLoading } from 'react-icons/ai'
+import { IoIosExpand } from 'react-icons/io'
+import { FiX } from 'react-icons/fi'
+
+// Context imports
 import { CollectionsContext } from '@/Context/CollectionsContext'
 import { AuthContext } from '@/Context/AuthContext'
 
-import { AiOutlineLoading } from 'react-icons/ai'
-
-import Image from 'next/image'
-import { useCallback, useContext, useEffect, useState } from 'react'
-
+// Hook form and Zod imports
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+// Styles imports
 import styles from './styles.module.css'
-import { IoIosExpand } from 'react-icons/io'
-import { FiX } from 'react-icons/fi'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
+// Component Declaration
 export default function AddPhotosCollections({ functions }) {
+  // Instanciate and initialize Contexts functions
+  const { token } = useContext(AuthContext)
+  const { collections } = useContext(CollectionsContext)
+
+  // States declaratios
   const [loading, setLoading] = useState(false)
   const [resized, setResized] = useState(false)
   const [resizedImage, setResizedImage] = useState('')
   const [imagesRepositories, setImagesRepositories] = useState([])
 
-  const { token } = useContext(AuthContext)
-  const { collections, handleCollections } = useContext(CollectionsContext)
-
+  // Desestructured functions to call api
   const { createImagesCollections, getImagesCollections } = functions
 
+  // Instance of Hook Form
   const {
     register,
     handleSubmit,
@@ -39,7 +51,9 @@ export default function AddPhotosCollections({ functions }) {
   } = useForm({
     resolver: zodResolver(createImageFormSchema),
   })
+  //
 
+  // functions to handle with datas from api
   async function handleCreateImage(formData) {
     setLoading(true)
     const file = new FormData()
@@ -53,11 +67,15 @@ export default function AddPhotosCollections({ functions }) {
     const res = await getImagesCollections(collections.id)
     setImagesRepositories(res)
   }, [collections.id, getImagesCollections])
+  //
 
+  // Use Effects
   useEffect(() => {
     getImagesCollectionsData()
   }, [getImagesCollectionsData, collections.id])
+  //
 
+  // Return components, with functions to call API and language
   return (
     <>
       <h1>{collections.title}</h1>
@@ -170,4 +188,5 @@ export default function AddPhotosCollections({ functions }) {
       </section>
     </>
   )
+  //
 }
