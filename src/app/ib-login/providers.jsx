@@ -2,6 +2,7 @@
 
 // Providers imports
 import { AuthProvider } from '@/Context/AuthContext'
+import { CollectionsCatalogProvider } from '@/Context/CollectionsCatalogContext'
 import { CollectionsCategoryProvider } from '@/Context/CollectionsCategoryContext'
 import { CollectionsProvider } from '@/Context/CollectionsContext'
 import { CreateImageCategoryProvider } from '@/Context/CreateImageCategoryContext'
@@ -21,7 +22,11 @@ export function Providers({ children }) {
             <NewsProvider>
               <CollectionsProvider>
                 <CollectionsCategoryProvider>
-                  <NewsCategoryProvider>{children}</NewsCategoryProvider>
+                  <NewsCategoryProvider>
+                    <CollectionsCatalogProvider>
+                      {children}
+                    </CollectionsCatalogProvider>
+                  </NewsCategoryProvider>
                 </CollectionsCategoryProvider>
               </CollectionsProvider>
             </NewsProvider>

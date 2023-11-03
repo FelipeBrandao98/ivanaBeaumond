@@ -1,156 +1,133 @@
 'use client'
 
 // React imports
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useCallback } from 'react'
 
-// Next.js Components imports
+import {
+  FiEdit,
+  FiFilter,
+  FiSearch,
+  FiRefreshCcw,
+  FiPlus,
+  FiArchive,
+  FiTrash2,
+} from 'react-icons/fi'
+import { AiOutlineLoading } from 'react-icons/ai'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
-// Icons imports
-import {
-  FiArchive,
-  FiEdit,
-  FiFilter,
-  FiPlus,
-  FiRefreshCcw,
-  FiSearch,
-  FiTrash2,
-} from 'react-icons/fi'
-import { BiPhotoAlbum } from 'react-icons/bi'
-import { AiOutlineLoading } from 'react-icons/ai'
-
-// Context imports
-import { AuthContext } from '@/Context/AuthContext'
-import { CollectionsContext } from '@/Context/CollectionsContext'
 import { CollectionsCatalogContext } from '@/Context/CollectionsCatalogContext'
-import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
+import { AuthContext } from '@/Context/AuthContext'
 
 // Styles imports
 import styles from './styles.module.css'
+import { useRouter } from 'next/navigation'
 
-// Component Declaration
-export default function CollectionsPage({ functions }) {
-  // Instanciate and initialize Contexts functions
-  const { token } = useContext(AuthContext)
-  const { handleCollections } = useContext(CollectionsContext)
-  const { handleCollection: handleCatalog } = useContext(
-    CollectionsCatalogContext,
-  )
-  const { handleChangeImage } = useContext(CreateImageCollectionContext)
+export default function AddCatPage({ functions }) {
+  const router = useRouter()
 
-  // States declaratios
-  const [collectionsRepositories, setCollectionsRepositories] = useState([])
-  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
+  const [catalog, setCatalog] = useState([])
   const [loading, setLoading] = useState(false)
+  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
 
-  // Desestructured functions to call api
-  const { getCollections, deleteCollection } = functions
+  const { createCatalog, deleteCatalog, getCatalog } = functions
+  const { collection, handleCollection } = useContext(CollectionsCatalogContext)
+  const { token } = useContext(AuthContext)
 
-  // functions to handle with datas from api
-  const getRepo = useCallback(async () => {
-    const collections = await getCollections(token)
-    setCollectionsRepositories(collections)
-  }, [getCollections, token])
+  const getData = useCallback(async () => {
+    const catalog = await getCatalog(token, collection.id)
 
-  async function handleDeleteCollection(token, id) {
+    setCatalog(catalog)
+  }, [token, collection.id, getCatalog])
+
+  async function handleDeleteCatalog(catalogId) {
     setLoading(true)
-    await deleteCollection(token, id)
+    await deleteCatalog(token, catalogId)
+    router.refresh()
     setLoading(false)
-    setIsDeleteCollection(false)
-    getRepo(token)
   }
-  //
 
-  // Use Effects
   useEffect(() => {
-    getRepo(token)
-  }, [getRepo, token])
-  //
+    setLoading(true)
+    getData()
+    setLoading(false)
+  }, [getData])
 
-  // Return components, with functions to call API and language
   return (
     <>
-      <h1>Coleções</h1>
+      <h1>
+        Catágo da coleção: <br />
+        {collection.title}
+      </h1>
       <section className={styles.container}>
         <aside className={styles.content}>
           <div className={styles.optionsArea}>
-            Todas as Coleções{' '}
             <div className={styles.optionsButtons}>
               <button
                 onClick={(e) => {
                   e.preventDefault()
-                  getRepo()
+                  router.refresh()
                 }}
                 className={styles.optionsButton}
               >
                 <FiRefreshCcw width={40} height={40} />
               </button>
               <Link
-                href={'/ib-login/dashboard/colecoes/novacolecao'}
+                href={'/ib-login/dashboard/colecoes/addcat'}
                 className={styles.optionsButton}
-                onClick={(e) => {
-                  handleCollections({})
-                }}
+                onClick={(e) => {}}
               >
                 <FiPlus width={40} height={40} />
               </Link>
               <button
                 onClick={(e) => {
                   e.preventDefault()
-                  getRepo()
                 }}
                 className={styles.optionsButton}
               >
                 <FiArchive width={40} height={40} />
               </button>
             </div>
-          </div>
-          <div className={styles.optionsButtons}>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiFilter width={40} height={40} />
-            </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiSearch width={40} height={40} />
-            </button>
+            <div className={styles.optionsButtons}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                }}
+                className={styles.optionsButton}
+              >
+                <FiFilter width={40} height={40} />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                }}
+                className={styles.optionsButton}
+              >
+                <FiSearch width={40} height={40} />
+              </button>
+            </div>
           </div>
           <table className={styles.table}>
             <thead>
               <tr>
-                <th>Editar coleção</th>
-                <th>Foto de Capa</th>
-                <th>Título da Coleção</th>
-                <th>Descrição da Coleção</th>
-                <th>Categoria da Coleção</th>
-                <th>Editar Fotos</th>
-                <th>Catálogo</th>
-                <th>Excluir coleção</th>
+                <th>Editar Item</th>
+                <th>Foto do Item</th>
+                <th>Título do Item</th>
+                <th>Coleção</th>
+                <th>Likes</th>
+                <th>Excluir Item</th>
               </tr>
             </thead>
             <tbody>
-              {collectionsRepositories.map((repo) => {
+              {catalog.map((repo) => {
                 return (
                   <tr key={repo.id}>
                     <td>
                       <td>
                         <Link
                           href={'/ib-login/dashboard/colecoes/novacolecao'}
-                          onClick={(e) => {
-                            handleCollections(repo)
-                            handleChangeImage({})
-                          }}
+                          onClick={(e) => {}}
                           className={styles.editButton}
                         >
                           <FiEdit width={40} height={40} />
@@ -159,36 +136,16 @@ export default function CollectionsPage({ functions }) {
                     </td>
                     <td>
                       <Image
-                        width={200}
-                        height={100}
-                        src={repo.cover ? repo.cover.url : ''}
-                        alt={repo.cover ? repo.cover.author : ''}
                         className={styles.image}
+                        src={repo.cover?.url || ''}
+                        alt="Ivana"
+                        width={1000}
+                        height={1000}
                       />
                     </td>
-                    <td>{repo.title}</td>
-                    <td>{repo.description}</td>
-                    <td>{repo.category.description}</td>
-                    <td>
-                      <Link
-                        href={'/ib-login/dashboard/colecoes/addimagens'}
-                        onClick={(e) => {
-                          handleCollections(repo)
-                        }}
-                      >
-                        <BiPhotoAlbum width={100} height={100} />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        href={'/ib-login/dashboard/colecoes/addcat'}
-                        onClick={(e) => {
-                          handleCatalog(repo)
-                        }}
-                      >
-                        <BiPhotoAlbum width={100} height={100} />
-                      </Link>
-                    </td>
+                    <td>{repo.name}</td>
+                    <td>{repo.collection.title}</td>
+                    <td>{repo.likes}</td>
                     <td>
                       <button
                         onClick={(e) => {
@@ -218,7 +175,8 @@ export default function CollectionsPage({ functions }) {
                                 className={styles.confirmButton}
                                 onClick={(e) => {
                                   e.preventDefault()
-                                  handleDeleteCollection(token, repo.id)
+                                  handleDeleteCatalog(repo.id)
+                                  setIsDeleteCollection(false)
                                 }}
                               >
                                 Sim
@@ -249,5 +207,4 @@ export default function CollectionsPage({ functions }) {
       )}
     </>
   )
-  //
 }
