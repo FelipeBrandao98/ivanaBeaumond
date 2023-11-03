@@ -6,18 +6,29 @@ import { useState } from 'react'
 // Icons imports
 import { HiX } from 'react-icons/hi'
 
+// Utils imports
+import getLocalStorage from '@/utils/getLocalStorage'
+import setLocalStorage from '@/utils/setLocalStorage'
+
 // styles imports
 import styles from './styles.module.css'
+import { useEffect } from 'react'
 
 // Component Declaration
 export default function CookieNotice() {
   // States declaratios
-  const [close, setClose] = useState(true)
+  const [close, setClose] = useState(false)
+
+  // Use Effects
+  useEffect(() => {
+    setClose(getLocalStorage('lgpd'))
+  }, [])
+  //
 
   // Return modal, if cookies, don`t accepted
   return (
     <>
-      <section className={close ? `${styles.container}` : `${styles.hide}`}>
+      <section className={!close ? `${styles.container}` : `${styles.hide}`}>
         <aside className={styles.content}>
           <button
             className={styles.closeButton}
@@ -37,7 +48,7 @@ export default function CookieNotice() {
             indisponíveis. Use o botão “Aceitar” para consentir. Use o botão
             “Recusar” ou feche este aviso para continuar sem aceitar.
             <br />
-            <a href="">Política de Privacidade</a>
+            <a>Política de Privacidade</a>
           </p>
           <div className={styles.buttonArea}>
             <button className={styles.readMoreButton}>Saiba Mais!</button>
@@ -45,6 +56,7 @@ export default function CookieNotice() {
               className={styles.refuseButton}
               onClick={(e) => {
                 e.preventDefault()
+                setLocalStorage('lgpd', false)
                 setClose(!close)
               }}
             >
@@ -54,6 +66,7 @@ export default function CookieNotice() {
               className={styles.acceptButton}
               onClick={(e) => {
                 e.preventDefault()
+                setLocalStorage('lgpd', true)
                 setClose(!close)
               }}
             >
