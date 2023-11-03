@@ -2,6 +2,7 @@
 
 // React imports
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 // Icons imports
 import { HiX } from 'react-icons/hi'
@@ -12,7 +13,6 @@ import setLocalStorage from '@/utils/setLocalStorage'
 
 // styles imports
 import styles from './styles.module.css'
-import { useEffect } from 'react'
 
 // Component Declaration
 export default function CookieNotice() {
