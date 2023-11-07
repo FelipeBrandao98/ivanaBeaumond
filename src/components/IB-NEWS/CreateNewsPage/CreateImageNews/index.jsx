@@ -7,9 +7,7 @@ import { Suspense, useContext, useState } from 'react'
 import Image from 'next/image'
 
 // Icons imports
-import { BsArrowLeft } from 'react-icons/bs'
 import { FaTruckLoading } from 'react-icons/fa'
-import { AiOutlineLoading } from 'react-icons/ai'
 
 // Context imports
 import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
@@ -23,12 +21,23 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Styles imports
 import styles from './styles.module.css'
 
+// Atoms imports
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardButton from '@/atoms/DashboardButton'
+//
+
+// Schema Zod Definition
 const createImageFormSchema = z.object({
   file: z.any(),
 })
+//
 
 // Component Declaration
-export default function CreateImageNews({ createImage }) {
+export default function CreateImageNews({ functions }) {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
@@ -37,6 +46,9 @@ export default function CreateImageNews({ createImage }) {
 
   // States declaratios
   const [loading, setLoading] = useState(false)
+
+  // Desestructured functions to call api
+  const { createImage } = functions
 
   // Instance of Hook Form
   const {
@@ -63,63 +75,49 @@ export default function CreateImageNews({ createImage }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <button onClick={handleShowCreateImage} className={styles.title}>
-        <BsArrowLeft width={40} height={40} />
-        <h1>voltar</h1>
-      </button>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <form
-            className={styles.form}
-            action={handleSubmit(handleCreateImage)}
-          >
-            <label htmlFor="file" className={styles.label}>
-              <input
-                className={styles.input}
-                type="file"
-                id="file"
-                {...register('file')}
-              />
-            </label>
-            <button type="submit" className={styles.sendButton}>
-              Enviar Imagem
-            </button>
-          </form>
-          {image.src ? (
-            <Suspense
-              fallback={
-                <div className={styles.coverLoading}>
-                  Carregando... <FaTruckLoading width={40} height={40} />
-                </div>
-              }
-            >
-              <div className={styles.coverImage}>
-                <Image
-                  width={2000}
-                  height={2000}
-                  src={image.url}
-                  alt="Ivana"
-                  className={styles.cover}
-                />
-              </div>
-            </Suspense>
-          ) : (
-            <div className={styles.coverImage}>Escolha a foto de capa</div>
-          )}
-        </aside>
-      </section>
-      {loading && (
-        <section className={styles.loadingContainer}>
-          <aside className={styles.loadingContent}>
-            Enviando dados...{' '}
-            <AiOutlineLoading
-              width={100}
-              height={100}
-              className={styles.loading}
+      <DashboardMainTitle onClick={handleShowCreateImage} isBack>
+        voltar
+      </DashboardMainTitle>
+
+      <DashboardContainer>
+        <DashboardForm action={handleSubmit(handleCreateImage)}>
+          <DashboardLabel htmlFor="file" errors={errors.file}>
+            <input
+              className={styles.input}
+              type="file"
+              id="file"
+              {...register('file')}
             />
-          </aside>
-        </section>
-      )}
+          </DashboardLabel>
+          <DashboardButton type="submit" mode="submit">
+            Enviar Imagem
+          </DashboardButton>
+        </DashboardForm>
+
+        {image.src ? (
+          <Suspense
+            fallback={
+              <div className={styles.coverLoading}>
+                Carregando... <FaTruckLoading width={40} height={40} />
+              </div>
+            }
+          >
+            <div className={styles.coverImage}>
+              <Image
+                width={2000}
+                height={2000}
+                src={image.url}
+                alt="Ivana"
+                className={styles.cover}
+              />
+            </div>
+          </Suspense>
+        ) : (
+          <div className={styles.coverImage}>Escolha a foto de capa</div>
+        )}
+      </DashboardContainer>
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

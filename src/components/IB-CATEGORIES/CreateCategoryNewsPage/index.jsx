@@ -4,11 +4,7 @@
 import { useState, useContext } from 'react'
 
 // Next.js Components imports
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-
-// Icons imports
-import ReactCountryFlag from 'react-country-flag'
 
 // Context imports
 import { AuthContext } from '@/Context/AuthContext'
@@ -19,38 +15,48 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardCancel from '@/atoms/DashboardCancel'
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardButton from '@/atoms/DashboardButton'
+import DashboardTabLang from '@/atoms/DashboardTabLang'
+import DashboardTabLangTitle from '@/atoms/DashboardTabLangTitle'
+import DashboardTabPT from '@/atoms/DashboardTabPT'
+import DashboardTabDE from '@/atoms/DashboardTabDE'
+import DashboardTabFR from '@/atoms/DashboardTabFR'
+import DashboardTabEn from '@/atoms/DashboardTabEN'
+import DashboardButtonsArea from '@/atoms/DashboardButtonsArea'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardLoading from '@/atoms/DashboardLoading'
+//
 
+// Schema Zod Definition
 const createNewsFormSchema = z.object({
-  description: z.string(),
+  description: z.string().min(4),
   descriptionDe: z.string(),
   descriptionFr: z.string(),
   descriptionEn: z.string(),
 })
+//
 
 // Component Declaration
 export default function CreateCategoryNewsPage({ functions }) {
   // Instanciate and initialize Contexts functions
-  const { category, handleCategory } = useContext(NewsCategoryContext)
   const { token } = useContext(AuthContext)
+  const { category } = useContext(NewsCategoryContext)
 
   // States declaratios
-  const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   // Desestructured functions to call api
   const { createCategory, editCategory } = functions
 
   // Instance of Router
   const router = useRouter()
-
-  // Functions to manipulate window object
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-  //
 
   // Instance of Hook Form
   const {
@@ -76,213 +82,97 @@ export default function CreateCategoryNewsPage({ functions }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Nova Categoria de Notícias</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div className={styles.tabArea}>
-            <button
-              className={`${
-                tab === 'pt-BR' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('pt-BR')
-              }}
-            >
-              Português <ReactCountryFlag countryCode="BR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'de' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('de')
-              }}
-            >
-              Alemão <ReactCountryFlag countryCode="DE" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'fr' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('fr')
-              }}
-            >
-              Francês <ReactCountryFlag countryCode="FR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'en' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('en')
-              }}
-            >
-              Inglês <ReactCountryFlag countryCode="US" svg />
-            </button>
-          </div>
-          {tab === 'pt-BR' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Português{' '}
-              <ReactCountryFlag countryCode="BR" svg />
-            </h1>
-          ) : tab === 'de' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Alemão{' '}
-              <ReactCountryFlag countryCode="DE" svg />
-            </h1>
-          ) : tab === 'fr' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Francês{' '}
-              <ReactCountryFlag countryCode="FR" svg />
-            </h1>
-          ) : tab === 'en' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Inglês{' '}
-              <ReactCountryFlag countryCode="US" svg />
-            </h1>
-          ) : (
-            ''
-          )}
+      <DashboardMainTitle>Nova Categoria de Notícias</DashboardMainTitle>
+      <DashboardContainer hasTab>
+        <DashboardTabLang tab={tab} setTab={setTab} />
 
-          <form action={handleSubmit(handleCreateNews)}>
-            <div
-              className={`${
-                tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
-              }`}
+        <DashboardTabLangTitle tab={tab} name="Categoria de Coleção" />
+
+        <DashboardForm action={handleSubmit(handleCreateNews)}>
+          <DashboardTabPT tab={tab}>
+            <DashboardLabel
+              htmlFor="description"
+              name="Título em Português"
+              errors={errors.description}
             >
-              <label htmlFor="description" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="description"
-                  defaultValue={category.description && category.description}
-                  {...register('description')}
-                />
-                {errors.description && (
-                  <span className={styles.error}>
-                    {errors.description.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'de' ? styles.deActive : styles.deInactive
-              }`}
+              <input
+                type="text"
+                id="description"
+                defaultValue={category.description && category.description}
+                {...register('description')}
+              />
+            </DashboardLabel>
+          </DashboardTabPT>
+
+          <DashboardTabDE tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionDe"
+              name="Título em Alemão"
+              errors={errors.descriptionDe}
             >
-              <label htmlFor="descriptionDe" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionDe"
-                  defaultValue={
-                    category.descriptionDe && category.descriptionDe
-                  }
-                  {...register('descriptionDe')}
-                />
-                {errors.descriptionDe && (
-                  <span className={styles.error}>
-                    {errors.descriptionDe.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'fr' ? styles.frActive : styles.frInactive
-              }`}
+              <input
+                type="text"
+                id="descriptionDe"
+                defaultValue={category.descriptionDe && category.descriptionDe}
+                {...register('descriptionDe')}
+              />
+            </DashboardLabel>
+          </DashboardTabDE>
+
+          <DashboardTabFR tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionFr"
+              name="Título em Francês"
+              errors={errors.descriptionFr}
             >
-              <label htmlFor="descriptionFr" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionFr"
-                  defaultValue={
-                    category.descriptionFr && category.descriptionFr
-                  }
-                  {...register('descriptionFr')}
-                />
-                {errors.descriptionFr && (
-                  <span className={styles.error}>
-                    {errors.descriptionFr.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'en' ? styles.enActive : styles.enInactive
-              }`}
+              <input
+                type="text"
+                id="descriptionFr"
+                defaultValue={category.descriptionFr && category.descriptionFr}
+                {...register('descriptionFr')}
+              />
+            </DashboardLabel>
+          </DashboardTabFR>
+
+          <DashboardTabEn tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionEn"
+              name="Título em Inglês"
+              errors={errors.descriptionEn}
             >
-              <label htmlFor="descriptionEn" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionEn"
-                  defaultValue={
-                    category.descriptionEn && category.descriptionEn
-                  }
-                  {...register('descriptionEn')}
-                />
-                {errors.descriptionEn && (
-                  <span className={styles.error}>
-                    {errors.descriptionEn.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className={styles.formButtonsArea}>
-              <button
-                className={styles.cancelButton}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-              >
-                Cancelar
-              </button>
-              <button className={styles.submitButton} type="submit">
-                {category.id ? 'Editar Categoria' : 'Criar Categoria'}
-              </button>
-            </div>
-          </form>
-        </aside>
-      </section>
-      {cancel && (
-        <section className={styles.confirmCancelModalContainer}>
-          <aside className={styles.confirmCancelModalContent}>
-            <h1 className={styles.confirmCancelModalTitle}>
-              Tem certeza que você deseja cancelar?
-            </h1>
-            <div className={styles.buttonsArea}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-                className={styles.cancelButtonModal}
-              >
-                Não
-              </button>
-              <Link
-                className={styles.cancelButton}
-                href={'/ib-login/dashboard/colecoes'}
-              >
-                Cancelar
-              </Link>
-            </div>
-          </aside>
-        </section>
-      )}
+              <input
+                type="text"
+                id="descriptionEn"
+                defaultValue={category.descriptionEn && category.descriptionEn}
+                {...register('descriptionEn')}
+              />
+            </DashboardLabel>
+          </DashboardTabEn>
+
+          <DashboardButtonsArea justify="center">
+            <DashboardButton
+              onClick={(e) => {
+                e.preventDefault()
+                setCancel(!cancel)
+              }}
+              mode="cancel"
+            >
+              Cancelar
+            </DashboardButton>
+            <DashboardButton type="submit" mode="submit">
+              {category.id ? 'Editar Categoria' : 'Criar Categoria'}
+            </DashboardButton>
+          </DashboardButtonsArea>
+        </DashboardForm>
+      </DashboardContainer>
+
+      <DashboardCancel
+        href="/ib-login/dashboard/categorias"
+        cancel={cancel}
+        setCancel={setCancel}
+      />
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

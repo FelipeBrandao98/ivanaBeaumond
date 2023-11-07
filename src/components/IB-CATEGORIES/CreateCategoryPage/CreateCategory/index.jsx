@@ -5,11 +5,9 @@ import { useState, useContext } from 'react'
 
 // Next.js Components imports
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 
 // Icons imports
-import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
 
 // Context imports
@@ -25,6 +23,24 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Styles imports
 import styles from './styles.module.css'
 
+// Atoms imports
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardTabLang from '@/atoms/DashboardTabLang'
+import DashboardTabLangTitle from '@/atoms/DashboardTabLangTitle'
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardTabPT from '@/atoms/DashboardTabPT'
+import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardTabDE from '@/atoms/DashboardTabDE'
+import DashboardTabFR from '@/atoms/DashboardTabFR'
+import DashboardTabEn from '@/atoms/DashboardTabEN'
+import DashboardButtonsArea from '@/atoms/DashboardButtonsArea'
+import DashboardButton from '@/atoms/DashboardButton'
+import DashboardCancel from '@/atoms/DashboardCancel'
+import DashboardLoading from '@/atoms/DashboardLoading'
+//
+
+// Schema Zod Definition
 const createNewsFormSchema = z.object({
   description: z.string(),
   descriptionDe: z.string(),
@@ -35,29 +51,27 @@ const createNewsFormSchema = z.object({
   subdescriptionFr: z.string(),
   subdescriptionEn: z.string(),
 })
+//
 
 // Component Declaration
-export default function CreateCategory({ createCategory, editCategory }) {
+export default function CreateCategory({ functions }) {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
-  const { category, handleCategory } = useContext(CollectionsCategoryContext)
+  const { category } = useContext(CollectionsCategoryContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCategoryContext,
   )
 
   // States declaratios
-  const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  // Desestructured functions to call api
+  const { createCategory, editCategory } = functions
 
   // Instance of Router
   const router = useRouter()
-
-  // Functions to manipulate window object
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
-  //
 
   // Instance of Hook Form
   const {
@@ -86,321 +100,187 @@ export default function CreateCategory({ createCategory, editCategory }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Nova Categoria de Coleção</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div className={styles.tabArea}>
-            <button
-              className={`${
-                tab === 'pt-BR' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('pt-BR')
-              }}
-            >
-              Português <ReactCountryFlag countryCode="BR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'de' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('de')
-              }}
-            >
-              Alemão <ReactCountryFlag countryCode="DE" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'fr' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('fr')
-              }}
-            >
-              Francês <ReactCountryFlag countryCode="FR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'en' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('en')
-              }}
-            >
-              Inglês <ReactCountryFlag countryCode="US" svg />
-            </button>
-          </div>
-          {tab === 'pt-BR' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Português{' '}
-              <ReactCountryFlag countryCode="BR" svg />
-            </h1>
-          ) : tab === 'de' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Alemão{' '}
-              <ReactCountryFlag countryCode="DE" svg />
-            </h1>
-          ) : tab === 'fr' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Francês{' '}
-              <ReactCountryFlag countryCode="FR" svg />
-            </h1>
-          ) : tab === 'en' ? (
-            <h1 className={styles.title}>
-              Categoria de Coleção em Inglês{' '}
-              <ReactCountryFlag countryCode="US" svg />
-            </h1>
-          ) : (
-            ''
-          )}
+      <DashboardMainTitle>Nova Categoria de Coleção</DashboardMainTitle>
+      <DashboardContainer hasTab>
+        <DashboardTabLang tab={tab} setTab={setTab} />
 
-          <form action={handleSubmit(handleCreateNews)}>
-            {image.src ? (
-              <div
-                className={styles.coverImage}
+        <DashboardTabLangTitle tab={tab} name="Categoria de Coleção" />
+
+        <DashboardForm action={handleSubmit(handleCreateNews)}>
+          {image.src ? (
+            <div className={styles.coverImage} onClick={handleShowCreateImage}>
+              <Image
+                width={800}
+                height={800}
+                src={image.url}
+                alt="Ivana"
+                className={styles.cover}
                 onClick={handleShowCreateImage}
-              >
+              />
+            </div>
+          ) : (
+            <div className={styles.coverImage} onClick={handleShowCreateImage}>
+              {category.cover?.url ? (
                 <Image
                   width={800}
                   height={800}
-                  src={image.url}
-                  alt="Ivana"
                   className={styles.cover}
-                  onClick={handleShowCreateImage}
+                  src={category.cover.url}
+                  alt={''}
                 />
-              </div>
-            ) : (
-              <div
-                className={styles.coverImage}
-                onClick={handleShowCreateImage}
-              >
-                {category.cover?.url ? (
-                  <Image
-                    width={800}
-                    height={800}
-                    className={styles.cover}
-                    src={category.cover.url}
-                    alt={''}
+              ) : (
+                <>
+                  <MdPhoto
+                    width={100}
+                    height={100}
+                    className={styles.coverImageIcon}
                   />
-                ) : (
-                  <>
-                    <MdPhoto
-                      width={100}
-                      height={100}
-                      className={styles.coverImageIcon}
-                    />
-                    Escolher foto de capa
-                  </>
-                )}
-              </div>
-            )}
+                  Escolher foto de capa
+                </>
+              )}
+            </div>
+          )}
 
-            <div
-              className={`${
-                tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
-              }`}
+          <DashboardTabPT tab={tab}>
+            <DashboardLabel
+              htmlFor="description"
+              name="Título"
+              errors={errors.description}
             >
-              <label htmlFor="description" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="description"
-                  defaultValue={category.description && category.description}
-                  {...register('description')}
-                />
-                {errors.description && (
-                  <span className={styles.error}>
-                    {errors.description.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescription" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescription"
-                  defaultValue={
-                    category.subdescription && category.subdescription
-                  }
-                  {...register('subdescription')}
-                />
-                {errors.subdescription && (
-                  <span className={styles.error}>
-                    {errors.subdescription.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'de' ? styles.deActive : styles.deInactive
-              }`}
+              <input
+                type="text"
+                id="description"
+                defaultValue={category.description && category.description}
+                {...register('description')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="subdescription"
+              name="Descrição"
+              errors={errors.subdescription}
             >
-              <label htmlFor="descriptionDe" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionDe"
-                  defaultValue={
-                    category.descriptionDe && category.descriptionDe
-                  }
-                  {...register('descriptionDe')}
-                />
-                {errors.descriptionDe && (
-                  <span className={styles.error}>
-                    {errors.descriptionDe.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescriptionDe" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionDe"
-                  defaultValue={
-                    category.subdescriptionDe && category.subdescriptionDe
-                  }
-                  {...register('subdescriptionDe')}
-                />
-                {errors.subdescriptionDe && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionDe.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'fr' ? styles.frActive : styles.frInactive
-              }`}
+              <input
+                type="text"
+                id="subdescription"
+                defaultValue={
+                  category.subdescription && category.subdescription
+                }
+                {...register('subdescription')}
+              />
+            </DashboardLabel>
+          </DashboardTabPT>
+
+          <DashboardTabDE tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionDe"
+              name="Título"
+              errors={errors.descriptionDe}
             >
-              <label htmlFor="descriptionFr" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionFr"
-                  defaultValue={
-                    category.descriptionFr && category.descriptionFr
-                  }
-                  {...register('descriptionFr')}
-                />
-                {errors.descriptionFr && (
-                  <span className={styles.error}>
-                    {errors.descriptionFr.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescriptionFr" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionFr"
-                  defaultValue={
-                    category.subdescriptionFr && category.subdescriptionFr
-                  }
-                  {...register('subdescriptionFr')}
-                />
-                {errors.subdescriptionFr && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionFr.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'en' ? styles.enActive : styles.enInactive
-              }`}
+              <input
+                type="text"
+                id="descriptionDe"
+                defaultValue={category.descriptionDe && category.descriptionDe}
+                {...register('descriptionDe')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="subdescriptionDe"
+              name="Descrição"
+              errors={errors.subdescriptionDe}
             >
-              <label htmlFor="descriptionEn" className={styles.label}>
-                Título:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionEn"
-                  defaultValue={
-                    category.descriptionEn && category.descriptionEn
-                  }
-                  {...register('descriptionEn')}
-                />
-                {errors.descriptionEn && (
-                  <span className={styles.error}>
-                    {errors.descriptionEn.message}
-                  </span>
-                )}
-              </label>
-              <label htmlFor="subdescriptionEn" className={styles.label}>
-                Descrição:
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="subdescriptionEn"
-                  defaultValue={
-                    category.subdescriptionEn && category.subdescriptionEn
-                  }
-                  {...register('subdescriptionEn')}
-                />
-                {errors.subdescriptionEn && (
-                  <span className={styles.error}>
-                    {errors.subdescriptionEn.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className={styles.formButtonsArea}>
-              <button
-                className={styles.cancelButton}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-              >
-                Cancelar
-              </button>
-              <button className={styles.submitButton} type="submit">
-                {category.id ? 'Editar Categoria' : 'Criar Categoria'}
-              </button>
-            </div>
-          </form>
-        </aside>
-      </section>
-      {cancel && (
-        <section className={styles.confirmCancelModalContainer}>
-          <aside className={styles.confirmCancelModalContent}>
-            <h1 className={styles.confirmCancelModalTitle}>
-              Tem certeza que você deseja cancelar?
-            </h1>
-            <div className={styles.buttonsArea}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-                className={styles.cancelButtonModal}
-              >
-                Não
-              </button>
-              <Link
-                className={styles.cancelButton}
-                href={'/ib-login/dashboard/categorias'}
-              >
-                Cancelar
-              </Link>
-            </div>
-          </aside>
-        </section>
-      )}
+              <input
+                type="text"
+                id="subdescriptionDe"
+                defaultValue={
+                  category.subdescriptionDe && category.subdescriptionDe
+                }
+                {...register('subdescriptionDe')}
+              />
+            </DashboardLabel>
+          </DashboardTabDE>
+
+          <DashboardTabFR tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionFr"
+              name="Título"
+              errors={errors.descriptionFr}
+            >
+              <input
+                type="text"
+                id="descriptionFr"
+                defaultValue={category.descriptionFr && category.descriptionFr}
+                {...register('descriptionFr')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="subdescriptionFr"
+              name="Descrição"
+              errors={errors.subdescriptionFr}
+            >
+              <input
+                type="text"
+                id="subdescriptionFr"
+                defaultValue={
+                  category.subdescriptionFr && category.subdescriptionFr
+                }
+                {...register('subdescriptionFr')}
+              />
+            </DashboardLabel>
+          </DashboardTabFR>
+
+          <DashboardTabEn tab={tab}>
+            <DashboardLabel
+              htmlFor="descriptionEn"
+              name="Título"
+              errors={errors.descriptionEn}
+            >
+              <input
+                type="text"
+                id="descriptionEn"
+                defaultValue={category.descriptionEn && category.descriptionEn}
+                {...register('descriptionEn')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="subdescriptionEn"
+              name="Descrição"
+              errors={errors.subdescriptionEn}
+            >
+              <input
+                type="text"
+                id="subdescriptionEn"
+                defaultValue={
+                  category.subdescriptionEn && category.subdescriptionEn
+                }
+                {...register('subdescriptionEn')}
+              />
+            </DashboardLabel>
+          </DashboardTabEn>
+
+          <DashboardButtonsArea>
+            <DashboardButton
+              mode="cancel"
+              onClick={(e) => {
+                e.preventDefault()
+                setCancel(!cancel)
+              }}
+            >
+              Cancelar
+            </DashboardButton>
+            <DashboardButton type="submit" mode="submit">
+              {category.id ? 'Editar Categoria' : 'Criar Categoria'}
+            </DashboardButton>
+          </DashboardButtonsArea>
+        </DashboardForm>
+      </DashboardContainer>
+
+      <DashboardCancel
+        cancel={cancel}
+        setCancel={setCancel}
+        href={'/ib-login/dashboard/categorias'}
+      />
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

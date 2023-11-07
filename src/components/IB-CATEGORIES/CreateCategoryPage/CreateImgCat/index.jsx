@@ -6,10 +6,6 @@ import { useContext, useState } from 'react'
 // Next.js Components imports
 import Image from 'next/image'
 
-// Icons imports
-import { BsArrowLeft } from 'react-icons/bs'
-import { AiOutlineLoading } from 'react-icons/ai'
-
 // Context imports
 import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
 import { AuthContext } from '@/Context/AuthContext'
@@ -23,21 +19,35 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Styles imports
 import styles from './styles.module.css'
 
+// Atoms imports
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardButton from '@/atoms/DashboardButton'
+//
+
+// Schema Zod Definition
 const createImageFormSchema = z.object({
   file: z.any(),
 })
+//
 
 // Component Declaration
-export default function CreateImgCat({ createImage }) {
+export default function CreateImgCat({ functions }) {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
-  const { category, handleCategory } = useContext(CollectionsCategoryContext)
+  const { category } = useContext(CollectionsCategoryContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
     CreateImageCategoryContext,
   )
 
   // States declaratios
   const [loading, setLoading] = useState(false)
+
+  // Desestructured functions to call api
+  const { createImage } = functions
 
   // Instance of Hook Form
   const {
@@ -64,59 +74,47 @@ export default function CreateImgCat({ createImage }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <button onClick={handleShowCreateImage} className={styles.title}>
-        <BsArrowLeft width={40} height={40} />
-        <h1>voltar</h1>
-      </button>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <form
-            className={styles.form}
-            action={handleSubmit(handleCreateImage)}
-          >
-            <label htmlFor="file" className={styles.label}>
-              <input
-                className={styles.input}
-                type="file"
-                id="file"
-                {...register('file')}
+      <DashboardMainTitle onClick={handleShowCreateImage} isBack>
+        voltar
+      </DashboardMainTitle>
+
+      <DashboardContainer>
+        <DashboardForm action={handleSubmit(handleCreateImage)}>
+          <DashboardLabel htmlFor="file" errors={errors.file}>
+            <input type="file" id="file" {...register('file')} />
+          </DashboardLabel>
+          <DashboardButton type="submit" mode="submit">
+            Enviar Imagem
+          </DashboardButton>
+        </DashboardForm>
+        {image.src ? (
+          <div className={styles.coverImage}>
+            <Image
+              src={image.url}
+              width={500}
+              height={500}
+              alt="Ivana"
+              className={styles.cover}
+            />
+          </div>
+        ) : (
+          <div className={styles.coverImage}>
+            {category.cover?.url ? (
+              <Image
+                className={styles.cover}
+                src={category.cover.url}
+                width={500}
+                height={500}
+                alt={''}
               />
-            </label>
-            <button type="submit" className={styles.sendButton}>
-              Enviar Imagem
-            </button>
-          </form>
-          {image.src ? (
-            <div className={styles.coverImage}>
-              <Image src={image.url} alt="Ivana" className={styles.cover} />
-            </div>
-          ) : (
-            <div className={styles.coverImage}>
-              {category.cover?.url ? (
-                <Image
-                  className={styles.cover}
-                  src={category.cover.url}
-                  alt={''}
-                />
-              ) : (
-                <>Escolher foto de capa</>
-              )}
-            </div>
-          )}
-        </aside>
-        {loading && (
-          <section className={styles.loadingContainer}>
-            <aside className={styles.loadingContent}>
-              Enviando dados...{' '}
-              <AiOutlineLoading
-                width={100}
-                height={100}
-                className={styles.loading}
-              />
-            </aside>
-          </section>
+            ) : (
+              <>Escolher foto de capa</>
+            )}
+          </div>
         )}
-      </section>
+      </DashboardContainer>
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

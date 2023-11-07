@@ -12,7 +12,6 @@ import {
   FiArchive,
   FiTrash2,
 } from 'react-icons/fi'
-import { AiOutlineLoading } from 'react-icons/ai'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -23,6 +22,9 @@ import { AuthContext } from '@/Context/AuthContext'
 // Styles imports
 import styles from './styles.module.css'
 import { useRouter } from 'next/navigation'
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
 
 export default function AddCatPage({ functions }) {
   const router = useRouter()
@@ -56,155 +58,143 @@ export default function AddCatPage({ functions }) {
 
   return (
     <>
-      <h1>
-        Catágo da coleção: <br />
+      <DashboardMainTitle>
+        Catálogo da coleção: <br />
         {collection.title}
-      </h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div className={styles.optionsArea}>
-            <div className={styles.optionsButtons}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  router.refresh()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiRefreshCcw width={40} height={40} />
-              </button>
-              <Link
-                href={'/ib-login/dashboard/colecoes/addcat'}
-                className={styles.optionsButton}
-                onClick={(e) => {}}
-              >
-                <FiPlus width={40} height={40} />
-              </Link>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiArchive width={40} height={40} />
-              </button>
-            </div>
-            <div className={styles.optionsButtons}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiFilter width={40} height={40} />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiSearch width={40} height={40} />
-              </button>
-            </div>
+      </DashboardMainTitle>
+      <DashboardContainer>
+        <div className={styles.optionsArea}>
+          <div className={styles.optionsButtons}>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                router.refresh()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiRefreshCcw width={40} height={40} />
+            </button>
+            <Link
+              href={'/ib-login/dashboard/colecoes/addcat'}
+              className={styles.optionsButton}
+              onClick={(e) => {}}
+            >
+              <FiPlus width={40} height={40} />
+            </Link>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiArchive width={40} height={40} />
+            </button>
           </div>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Editar Item</th>
-                <th>Foto do Item</th>
-                <th>Título do Item</th>
-                <th>Coleção</th>
-                <th>Likes</th>
-                <th>Excluir Item</th>
-              </tr>
-            </thead>
-            <tbody>
-              {catalog.map((repo) => {
-                return (
-                  <tr key={repo.id}>
+          <div className={styles.optionsButtons}>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiFilter width={40} height={40} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiSearch width={40} height={40} />
+            </button>
+          </div>
+        </div>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Editar Item</th>
+              <th>Foto do Item</th>
+              <th>Título do Item</th>
+              <th>Coleção</th>
+              <th>Likes</th>
+              <th>Excluir Item</th>
+            </tr>
+          </thead>
+          <tbody>
+            {catalog.map((repo) => {
+              return (
+                <tr key={repo.id}>
+                  <td>
                     <td>
-                      <td>
-                        <Link
-                          href={'/ib-login/dashboard/colecoes/novacolecao'}
-                          onClick={(e) => {}}
-                          className={styles.editButton}
-                        >
-                          <FiEdit width={40} height={40} />
-                        </Link>
-                      </td>
-                    </td>
-                    <td>
-                      <Image
-                        className={styles.image}
-                        src={repo.cover?.url || ''}
-                        alt="Ivana"
-                        width={1000}
-                        height={1000}
-                      />
-                    </td>
-                    <td>{repo.name}</td>
-                    <td>{repo.collection.title}</td>
-                    <td>{repo.likes}</td>
-                    <td>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault()
-                          setIsDeleteCollection(true)
-                        }}
+                      <Link
+                        href={'/ib-login/dashboard/colecoes/novacolecao'}
+                        onClick={(e) => {}}
+                        className={styles.editButton}
                       >
-                        <FiTrash2 width={40} height={40} />
-                      </button>
-                      {isDeleteCollection && (
-                        <section className={styles.confirmCancelModalContainer}>
-                          <aside className={styles.confirmCancelModalContent}>
-                            <h1 className={styles.confirmCancelModalTitle}>
-                              Tem certeza que você deseja deletar essa notícia?
-                            </h1>
-                            <div className={styles.buttonsArea}>
-                              <button
-                                onClick={(e) => {
-                                  e.preventDefault()
-                                  setIsDeleteCollection(false)
-                                }}
-                                className={styles.cancelButtonModal}
-                              >
-                                Não
-                              </button>
-                              <button
-                                className={styles.confirmButton}
-                                onClick={(e) => {
-                                  e.preventDefault()
-                                  handleDeleteCatalog(repo.id)
-                                  setIsDeleteCollection(false)
-                                }}
-                              >
-                                Sim
-                              </button>
-                            </div>
-                          </aside>
-                        </section>
-                      )}
+                        <FiEdit width={40} height={40} />
+                      </Link>
                     </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </aside>
-      </section>
-      {loading && (
-        <section className={styles.loadingContainer}>
-          <aside className={styles.loadingContent}>
-            Enviando dados...{' '}
-            <AiOutlineLoading
-              width={100}
-              height={100}
-              className={styles.loading}
-            />
-          </aside>
-        </section>
-      )}
+                  </td>
+                  <td>
+                    <Image
+                      className={styles.image}
+                      src={repo.cover?.url || ''}
+                      alt="Ivana"
+                      width={1000}
+                      height={1000}
+                    />
+                  </td>
+                  <td>{repo.name}</td>
+                  <td>{repo.collection.title}</td>
+                  <td>{repo.likes}</td>
+                  <td>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setIsDeleteCollection(true)
+                      }}
+                    >
+                      <FiTrash2 width={40} height={40} />
+                    </button>
+                    {isDeleteCollection && (
+                      <section className={styles.confirmCancelModalContainer}>
+                        <aside className={styles.confirmCancelModalContent}>
+                          <h1 className={styles.confirmCancelModalTitle}>
+                            Tem certeza que você deseja deletar essa notícia?
+                          </h1>
+                          <div className={styles.buttonsArea}>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setIsDeleteCollection(false)
+                              }}
+                              className={styles.cancelButtonModal}
+                            >
+                              Não
+                            </button>
+                            <button
+                              className={styles.confirmButton}
+                              onClick={(e) => {
+                                e.preventDefault()
+                                handleDeleteCatalog(repo.id)
+                                setIsDeleteCollection(false)
+                              }}
+                            >
+                              Sim
+                            </button>
+                          </div>
+                        </aside>
+                      </section>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </DashboardContainer>
+
+      <DashboardLoading loading={loading} />
     </>
   )
 }

@@ -13,7 +13,7 @@ import CreateCategory from './CreateCategory'
 // Component Declaration
 export default function CreateCategoryPage({ functions }) {
   // Instanciate and initialize Contexts functions
-  const { image, showCreateImage } = useContext(CreateImageCategoryContext)
+  const { showCreateImage } = useContext(CreateImageCategoryContext)
 
   // Desestructured functions to call api
   const { createCategory, editCategory, createImage } = functions
@@ -22,12 +22,9 @@ export default function CreateCategoryPage({ functions }) {
   return (
     <>
       {showCreateImage === true ? (
-        <CreateImgCat createImage={createImage} />
+        <CreateImgCat functions={{ createImage }} />
       ) : (
-        <CreateCategory
-          createCategory={createCategory}
-          editCategory={editCategory}
-        />
+        <CreateCategory functions={{ createCategory, editCategory }} />
       )}
     </>
   )

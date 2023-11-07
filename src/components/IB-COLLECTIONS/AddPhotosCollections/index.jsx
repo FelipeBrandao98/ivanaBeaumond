@@ -22,6 +22,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 // Styles imports
 import styles from './styles.module.css'
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
 
 const createImageFormSchema = z.object({
   file: z.any(),
@@ -79,93 +81,79 @@ export default function AddPhotosCollections({ functions }) {
   return (
     <>
       <h1>{collections.title}</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <Image
-            src={collections.cover.url}
-            alt={'ivana'}
-            width={800}
-            height={800}
-            className={styles.coverImage}
-          />
+      <DashboardContainer>
+        <Image
+          src={collections.cover.url}
+          alt={'ivana'}
+          width={800}
+          height={800}
+          className={styles.coverImage}
+        />
 
-          <div className={styles.listContent}>
-            <div className={styles.sendFile}>
-              <form
-                className={styles.form}
-                action={handleSubmit(handleCreateImage)}
-              >
-                <label htmlFor="file" className={styles.label}>
-                  <input
-                    className={styles.input}
-                    type="file"
-                    id="file"
-                    {...register('file')}
-                  />
-                </label>
-                <button type="submit" className={styles.sendButton}>
-                  Enviar Imagem
-                </button>
-              </form>
-            </div>
-
-            <div className={styles.fileList}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>Editar Foto</th>
-                    <th>Foto</th>
-                    <th>Excluir Foto</th>
-                  </tr>
-                </thead>
-                <tbody className={styles.body}>
-                  {imagesRepositories.map((repo) => {
-                    return (
-                      <tr key={repo.id}>
-                        <td></td>
-                        <td>
-                          <div
-                            className={styles.imageArea}
-                            onClick={(e) => {
-                              setResized(true)
-                              setResizedImage(repo.url)
-                            }}
-                          >
-                            <Image
-                              width={300}
-                              height={300}
-                              src={repo.url}
-                              alt="Ivana"
-                              className={styles.image}
-                            />
-                            <IoIosExpand
-                              width={50}
-                              height={50}
-                              className={styles.expand}
-                            />
-                          </div>
-                        </td>
-                        <td></td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
+        <div className={styles.listContent}>
+          <div className={styles.sendFile}>
+            <form
+              className={styles.form}
+              action={handleSubmit(handleCreateImage)}
+            >
+              <label htmlFor="file" className={styles.label}>
+                <input
+                  className={styles.input}
+                  type="file"
+                  id="file"
+                  {...register('file')}
+                />
+              </label>
+              <button type="submit" className={styles.sendButton}>
+                Enviar Imagem
+              </button>
+            </form>
           </div>
-        </aside>
-        {loading && (
-          <section className={styles.loadingContainer}>
-            <aside className={styles.loadingContent}>
-              Enviando dados...{' '}
-              <AiOutlineLoading
-                width={100}
-                height={100}
-                className={styles.loading}
-              />
-            </aside>
-          </section>
-        )}
+
+          <div className={styles.fileList}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Editar Foto</th>
+                  <th>Foto</th>
+                  <th>Excluir Foto</th>
+                </tr>
+              </thead>
+              <tbody className={styles.body}>
+                {imagesRepositories.map((repo) => {
+                  return (
+                    <tr key={repo.id}>
+                      <td></td>
+                      <td>
+                        <div
+                          className={styles.imageArea}
+                          onClick={(e) => {
+                            setResized(true)
+                            setResizedImage(repo.url)
+                          }}
+                        >
+                          <Image
+                            width={300}
+                            height={300}
+                            src={repo.url}
+                            alt="Ivana"
+                            className={styles.image}
+                          />
+                          <IoIosExpand
+                            width={50}
+                            height={50}
+                            className={styles.expand}
+                          />
+                        </div>
+                      </td>
+                      <td></td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
         {resized && (
           <section className={styles.resizedModalContainer}>
             <aside className={styles.resizedModalContent}>
@@ -185,7 +173,8 @@ export default function AddPhotosCollections({ functions }) {
             </aside>
           </section>
         )}
-      </section>
+      </DashboardContainer>
+      {loading && <DashboardLoading />}
     </>
   )
   //

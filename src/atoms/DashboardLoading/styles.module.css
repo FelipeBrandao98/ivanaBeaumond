@@ -1,0 +1,47 @@
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  -moz-backdrop-filter: blur(20px);
+
+  cursor: wait;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-france);
+  gap: 2rem;
+}
+
+.loading {
+  animation: rotation 1s linear infinite;
+  color: var(--red-france);
+  width: 2rem;
+  height: 2rem;
+}

@@ -25,6 +25,8 @@ import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
 // Styles imports
 import styles from './styles.module.css'
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
 
 // Component Declaration
 export default function CategoriesPage({ functions }) {
@@ -65,42 +67,11 @@ export default function CategoriesPage({ functions }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Categorias</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div>
-            <div className={styles.optionsArea}>
-              Todas as Categorias de Coleções{' '}
-              <div className={styles.optionsButtons}>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiRefreshCcw width={40} height={40} />
-                </button>
-                <Link
-                  onClick={(e) => {
-                    HandleCatCollections({})
-                  }}
-                  href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
-                  className={styles.optionsButton}
-                >
-                  <FiPlus width={40} height={40} />
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiArchive width={40} height={40} />
-                </button>
-              </div>
-            </div>
+      <DashboardMainTitle>Categorias</DashboardMainTitle>
+      <DashboardContainer>
+        <div>
+          <div className={styles.optionsArea}>
+            Todas as Categorias de Coleções{' '}
             <div className={styles.optionsButtons}>
               <button
                 onClick={(e) => {
@@ -109,8 +80,17 @@ export default function CategoriesPage({ functions }) {
                 }}
                 className={styles.optionsButton}
               >
-                <FiFilter width={40} height={40} />
+                <FiRefreshCcw width={40} height={40} />
               </button>
+              <Link
+                onClick={(e) => {
+                  HandleCatCollections({})
+                }}
+                href={'/ib-login/dashboard/categorias/novacategoriacolecao'}
+                className={styles.optionsButton}
+              >
+                <FiPlus width={40} height={40} />
+              </Link>
               <button
                 onClick={(e) => {
                   e.preventDefault()
@@ -118,115 +98,88 @@ export default function CategoriesPage({ functions }) {
                 }}
                 className={styles.optionsButton}
               >
-                <FiSearch width={40} height={40} />
+                <FiArchive width={40} height={40} />
               </button>
             </div>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Editar Categoria</th>
-                  <th>Foto de Capa</th>
-                  <th>Título da Categoria</th>
-                  <th>Descrição da Categoria</th>
-                  <th>Excluir coleção</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categoriesCollectionsRepositories.map((repo) => {
-                  return (
-                    <tr key={repo.id}>
-                      <td>
-                        <Link
-                          onClick={(e) => {
-                            HandleCatCollections(repo)
-                          }}
-                          href={
-                            '/ib-login/dashboard/categorias/novacategoriacolecao'
-                          }
-                        >
-                          <FiEdit width={40} height={40} />
-                        </Link>
-                      </td>
-                      <td>
-                        <Image
-                          width={200}
-                          height={100}
-                          src={repo.cover ? repo.cover.url : ''}
-                          alt={repo.cover ? repo.cover.author : ''}
-                          className={styles.image}
-                        />
-                      </td>
-                      <td>{repo.description}</td>
-                      <td>{repo.subdescription}</td>
-                      <td>
-                        {' '}
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault()
-                            getRepo()
-                          }}
-                        >
-                          <FiTrash2 width={40} height={40} />
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
           </div>
+          <div className={styles.optionsButtons}>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                getRepo()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiFilter width={40} height={40} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                getRepo()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiSearch width={40} height={40} />
+            </button>
+          </div>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Editar Categoria</th>
+                <th>Foto de Capa</th>
+                <th>Título da Categoria</th>
+                <th>Descrição da Categoria</th>
+                <th>Excluir coleção</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categoriesCollectionsRepositories.map((repo) => {
+                return (
+                  <tr key={repo.id}>
+                    <td>
+                      <Link
+                        onClick={(e) => {
+                          HandleCatCollections(repo)
+                        }}
+                        href={
+                          '/ib-login/dashboard/categorias/novacategoriacolecao'
+                        }
+                      >
+                        <FiEdit width={40} height={40} />
+                      </Link>
+                    </td>
+                    <td>
+                      <Image
+                        width={200}
+                        height={100}
+                        src={repo.cover ? repo.cover.url : ''}
+                        alt={repo.cover ? repo.cover.author : ''}
+                        className={styles.image}
+                      />
+                    </td>
+                    <td>{repo.description}</td>
+                    <td>{repo.subdescription}</td>
+                    <td>
+                      {' '}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          getRepo()
+                        }}
+                      >
+                        <FiTrash2 width={40} height={40} />
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
 
-          <div>
-            <div className={styles.optionsArea}>
-              Todas as Categorias de Notícias{' '}
-              <div className={styles.optionsButtons}>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiRefreshCcw width={40} height={40} />
-                </button>
-                <Link
-                  href={'/ib-login/dashboard/categorias/novacategorianoticia'}
-                  className={styles.optionsButton}
-                  onClick={(e) => {
-                    handleCatNews({})
-                  }}
-                >
-                  <FiPlus width={40} height={40} />
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiTrash2 width={40} height={40} />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiArchive width={40} height={40} />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    getRepo()
-                  }}
-                  className={styles.optionsButton}
-                >
-                  <FiEdit width={40} height={40} />
-                </button>
-              </div>
-            </div>
+        <div>
+          <div className={styles.optionsArea}>
+            Todas as Categorias de Notícias{' '}
             <div className={styles.optionsButtons}>
               <button
                 onClick={(e) => {
@@ -235,7 +188,25 @@ export default function CategoriesPage({ functions }) {
                 }}
                 className={styles.optionsButton}
               >
-                <FiFilter width={40} height={40} />
+                <FiRefreshCcw width={40} height={40} />
+              </button>
+              <Link
+                href={'/ib-login/dashboard/categorias/novacategorianoticia'}
+                className={styles.optionsButton}
+                onClick={(e) => {
+                  handleCatNews({})
+                }}
+              >
+                <FiPlus width={40} height={40} />
+              </Link>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  getRepo()
+                }}
+                className={styles.optionsButton}
+              >
+                <FiTrash2 width={40} height={40} />
               </button>
               <button
                 onClick={(e) => {
@@ -244,53 +215,82 @@ export default function CategoriesPage({ functions }) {
                 }}
                 className={styles.optionsButton}
               >
-                <FiSearch width={40} height={40} />
+                <FiArchive width={40} height={40} />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  getRepo()
+                }}
+                className={styles.optionsButton}
+              >
+                <FiEdit width={40} height={40} />
               </button>
             </div>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Editar Categoria</th>
-                  <th>Nome da Categoria</th>
-                  <th>Excluir coleção</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categoriesNewsRepositories.map((repo) => {
-                  return (
-                    <tr key={repo.id}>
-                      <td>
-                        <Link
-                          onClick={(e) => {
-                            handleCatNews(repo)
-                          }}
-                          href={
-                            '/ib-login/dashboard/categorias/novacategorianoticia'
-                          }
-                        >
-                          <FiEdit width={40} height={40} />
-                        </Link>
-                      </td>
-                      <td>{repo.description}</td>
-                      <td>
-                        {' '}
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault()
-                            getRepo()
-                          }}
-                        >
-                          <FiTrash2 width={40} height={40} />
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
           </div>
-        </aside>
-      </section>
+          <div className={styles.optionsButtons}>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                getRepo()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiFilter width={40} height={40} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                getRepo()
+              }}
+              className={styles.optionsButton}
+            >
+              <FiSearch width={40} height={40} />
+            </button>
+          </div>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Editar Categoria</th>
+                <th>Nome da Categoria</th>
+                <th>Excluir coleção</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categoriesNewsRepositories.map((repo) => {
+                return (
+                  <tr key={repo.id}>
+                    <td>
+                      <Link
+                        onClick={(e) => {
+                          handleCatNews(repo)
+                        }}
+                        href={
+                          '/ib-login/dashboard/categorias/novacategorianoticia'
+                        }
+                      >
+                        <FiEdit width={40} height={40} />
+                      </Link>
+                    </td>
+                    <td>{repo.description}</td>
+                    <td>
+                      {' '}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault()
+                          getRepo()
+                        }}
+                      >
+                        <FiTrash2 width={40} height={40} />
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </DashboardContainer>
     </>
   )
   //

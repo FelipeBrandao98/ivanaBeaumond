@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white-100);
+  font-size: 2rem;
+  font-family: var(--font-bebas-neue);
+  transition: all .2s;
+}
+
+.isBack {
+  cursor: pointer;
+}
+
+.isBack:hover {
+  filter: brightness(1.2);
+}

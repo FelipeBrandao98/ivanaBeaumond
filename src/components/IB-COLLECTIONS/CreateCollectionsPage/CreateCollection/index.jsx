@@ -5,13 +5,10 @@ import { useState, useContext } from 'react'
 
 // Next.js Components imports
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 
 // Icons imports
-import ReactCountryFlag from 'react-country-flag'
 import { MdPhoto } from 'react-icons/md'
-import { AiOutlineLoading } from 'react-icons/ai'
 
 // Context imports
 import { AuthContext } from '@/Context/AuthContext'
@@ -26,6 +23,24 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Styles imports
 import styles from './styles.module.css'
 
+// Atoms imports
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardTabLang from '@/atoms/DashboardTabLang'
+import DashboardTabLangTitle from '@/atoms/DashboardTabLangTitle'
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardCancel from '@/atoms/DashboardCancel'
+import DashboardTabPT from '@/atoms/DashboardTabPT'
+import DashboardTabDE from '@/atoms/DashboardTabDE'
+import DashboardTabFR from '@/atoms/DashboardTabFR'
+import DashboardTabEn from '@/atoms/DashboardTabEN'
+import DashboardButtonsArea from '@/atoms/DashboardButtonsArea'
+import DashboardButton from '@/atoms/DashboardButton'
+//
+
+// Schema Zod Definition
 const createCollectionFormSchema = z.object({
   categoryId: z
     .string()
@@ -40,13 +55,10 @@ const createCollectionFormSchema = z.object({
   descriptionEn: z.string(),
   descriptionFr: z.string(),
 })
+//
 
 // Component Declaration
-export default function CreateCollection({
-  categories,
-  createCollection,
-  editCollection,
-}) {
+export default function CreateCollection({ categories, functions }) {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { collections, handleCollections } = useContext(CollectionsContext)
@@ -59,13 +71,11 @@ export default function CreateCollection({
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  // Desestructured functions to call api
+  const { createCollection, editCollection } = functions
+
   // Instance of Router
   const router = useRouter()
-
-  // Functions to manipulate window object
-  function handleCancelModal() {
-    setCancel(!cancel)
-  }
 
   // Instance of Hook Form
   const {
@@ -93,340 +103,211 @@ export default function CreateCollection({
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Nova Coleção</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div className={styles.tabArea}>
-            <button
-              className={`${
-                tab === 'pt-BR' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('pt-BR')
-              }}
-            >
-              Português <ReactCountryFlag countryCode="BR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'de' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('de')
-              }}
-            >
-              Alemão <ReactCountryFlag countryCode="DE" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'fr' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('fr')
-              }}
-            >
-              Francês <ReactCountryFlag countryCode="FR" svg />
-            </button>
-            <button
-              className={`${
-                tab === 'en' ? styles.tabActive : styles.tabInactive
-              }`}
-              onClick={(e) => {
-                e.preventDefault()
-                setTab('en')
-              }}
-            >
-              Inglês <ReactCountryFlag countryCode="US" svg />
-            </button>
-          </div>
-          {tab === 'pt-BR' ? (
-            <h1 className={styles.title}>
-              Coleção em Português <ReactCountryFlag countryCode="BR" svg />
-            </h1>
-          ) : tab === 'de' ? (
-            <h1 className={styles.title}>
-              Coleção em Alemão <ReactCountryFlag countryCode="DE" svg />
-            </h1>
-          ) : tab === 'fr' ? (
-            <h1 className={styles.title}>
-              Coleção em Francês <ReactCountryFlag countryCode="FR" svg />
-            </h1>
-          ) : tab === 'en' ? (
-            <h1 className={styles.title}>
-              Coleção em Inglês <ReactCountryFlag countryCode="US" svg />
-            </h1>
-          ) : (
-            ''
-          )}
+      <DashboardMainTitle>Nova Coleção</DashboardMainTitle>
+      <DashboardContainer hasTab>
+        <DashboardTabLang tab={tab} setTab={setTab} />
 
-          <form action={handleSubmit(handleCreateCollection)}>
-            <label htmlFor="categoryId" className={styles.labelCategory}>
-              Categoria da Coleção
-              <select
-                id="categoryId"
-                className={styles.select}
-                defaultValue={collections.categoryId && collections.categoryId}
-                {...register('categoryId')}
-              >
-                <option value="" disabled>
-                  Selecione uma opção
-                </option>
-                {categories.map((category) => {
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {category.description}
-                    </option>
-                  )
-                })}
-              </select>
-              {errors.categoryId && (
-                <span className={styles.error}>
-                  {errors.categoryId.message}
-                </span>
-              )}
-            </label>
-            {image.src ? (
-              <div
-                className={styles.coverImage}
+        <DashboardTabLangTitle tab={tab} name="Nova coleção" />
+
+        <DashboardForm action={handleSubmit(handleCreateCollection)}>
+          <DashboardLabel
+            htmlFor="categoryId"
+            name="Categoria da Coleção"
+            errors={errors.categoryId}
+          >
+            <select
+              id="categoryId"
+              className={styles.select}
+              defaultValue={collections.categoryId && collections.categoryId}
+              {...register('categoryId')}
+            >
+              <option value="" disabled>
+                Selecione uma opção
+              </option>
+              {categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.description}
+                  </option>
+                )
+              })}
+            </select>
+          </DashboardLabel>
+
+          {image.src ? (
+            <div className={styles.coverImage} onClick={handleShowCreateImage}>
+              <Image
+                width={800}
+                height={800}
+                src={image.url}
+                alt="Ivana"
+                className={styles.cover}
                 onClick={handleShowCreateImage}
-              >
+              />
+            </div>
+          ) : (
+            <div className={styles.coverImage} onClick={handleShowCreateImage}>
+              {collections.cover?.url ? (
                 <Image
                   width={800}
                   height={800}
-                  src={image.url}
-                  alt="Ivana"
                   className={styles.cover}
-                  onClick={handleShowCreateImage}
+                  src={collections.cover.url}
+                  alt={''}
                 />
-              </div>
-            ) : (
-              <div
-                className={styles.coverImage}
-                onClick={handleShowCreateImage}
-              >
-                {collections.cover?.url ? (
-                  <Image
-                    width={800}
-                    height={800}
-                    className={styles.cover}
-                    src={collections.cover.url}
-                    alt={''}
+              ) : (
+                <>
+                  <MdPhoto
+                    width={100}
+                    height={100}
+                    className={styles.coverImageIcon}
                   />
-                ) : (
-                  <>
-                    <MdPhoto
-                      width={100}
-                      height={100}
-                      className={styles.coverImageIcon}
-                    />
-                    Escolher foto de capa
-                  </>
-                )}
-              </div>
-            )}
+                  Escolher foto de capa
+                </>
+              )}
+            </div>
+          )}
 
-            <div
-              className={`${
-                tab === 'pt-BR' ? styles.ptActive : styles.ptInactive
-              }`}
+          <DashboardTabPT tab={tab}>
+            <DashboardLabel
+              htmlFor="title"
+              name="Título da Coleção"
+              errors={errors.title}
             >
-              <label htmlFor="title" className={styles.label}>
-                Título da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="title"
-                  defaultValue={collections.title && collections.title}
-                  {...register('title')}
-                />
-                {errors.title && (
-                  <span className={styles.error}>{errors.title.message}</span>
-                )}
-              </label>
-              <label htmlFor="description" className={styles.label}>
-                Descrição da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="description"
-                  defaultValue={
-                    collections.description && collections.description
-                  }
-                  {...register('description')}
-                />
-                {errors.description && (
-                  <span className={styles.error}>
-                    {errors.description.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'de' ? styles.deActive : styles.deInactive
-              }`}
+              <input
+                type="text"
+                id="title"
+                defaultValue={collections.title && collections.title}
+                {...register('title')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="description"
+              name="Descrição da Coleção"
+              errors={errors.description}
             >
-              <label htmlFor="titleDe" className={styles.label}>
-                Título da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="titleDe"
-                  defaultValue={collections.titleDe && collections.titleDe}
-                  {...register('titleDe')}
-                />
-                {errors.titleDe && (
-                  <span className={styles.error}>{errors.titleDe.message}</span>
-                )}
-              </label>
-              <label htmlFor="descriptionDe" className={styles.label}>
-                Descrição da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionDe"
-                  defaultValue={
-                    collections.descriptionDe && collections.descriptionDe
-                  }
-                  {...register('descriptionDe')}
-                />
-                {errors.descriptionDe && (
-                  <span className={styles.error}>
-                    {errors.descriptionDe.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'fr' ? styles.frActive : styles.frInactive
-              }`}
+              <input
+                type="text"
+                id="description"
+                defaultValue={
+                  collections.description && collections.description
+                }
+                {...register('description')}
+              />
+            </DashboardLabel>
+          </DashboardTabPT>
+
+          <DashboardTabDE tab={tab}>
+            <DashboardLabel
+              htmlFor="titleDe"
+              name="Título da Coleção"
+              errors={errors.titleDe}
             >
-              <label htmlFor="titleFr" className={styles.label}>
-                Título da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="titleFr"
-                  defaultValue={collections.titleFr && collections.titleFr}
-                  {...register('titleFr')}
-                />
-                {errors.titleFr && (
-                  <span className={styles.error}>{errors.titleFr.message}</span>
-                )}
-              </label>
-              <label htmlFor="descriptionFr" className={styles.label}>
-                Descrição da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionFr"
-                  defaultValue={
-                    collections.descriptionFr && collections.descriptionFr
-                  }
-                  {...register('descriptionFr')}
-                />
-                {errors.descriptionFr && (
-                  <span className={styles.error}>
-                    {errors.descriptionFr.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div
-              className={`${
-                tab === 'en' ? styles.enActive : styles.enInactive
-              }`}
+              <input
+                type="text"
+                id="titleDe"
+                defaultValue={collections.titleDe && collections.titleDe}
+                {...register('titleDe')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="descriptionDe"
+              name="Descrição da Coleção"
+              errors={errors.descriptionDe}
             >
-              <label htmlFor="titleEn" className={styles.label}>
-                Título da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="titleEn"
-                  defaultValue={collections.titleEn && collections.titleEn}
-                  {...register('titleEn')}
-                />
-                {errors.titleEn && (
-                  <span className={styles.error}>{errors.titleEn.message}</span>
-                )}
-              </label>
-              <label htmlFor="descriptionEn" className={styles.label}>
-                Descrição da Coleção
-                <input
-                  type="text"
-                  className={styles.input}
-                  id="descriptionEn"
-                  defaultValue={
-                    collections.descriptionEn && collections.descriptionEn
-                  }
-                  {...register('descriptionEn')}
-                />
-                {errors.descriptionEn && (
-                  <span className={styles.error}>
-                    {errors.descriptionEn.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className={styles.formButtonsArea}>
-              <button
-                className={styles.cancelButton}
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-              >
-                Cancelar
-              </button>
-              <button className={styles.submitButton} type="submit">
-                {collections.id ? 'Editar Coleção' : 'Criar Coleção'}
-              </button>
-            </div>
-          </form>
-        </aside>
-      </section>
-      {cancel && (
-        <section className={styles.confirmCancelModalContainer}>
-          <aside className={styles.confirmCancelModalContent}>
-            <h1 className={styles.confirmCancelModalTitle}>
-              Tem certeza que você deseja cancelar?
-            </h1>
-            <div className={styles.buttonsArea}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleCancelModal()
-                }}
-                className={styles.cancelButtonModal}
-              >
-                Não
-              </button>
-              <Link
-                className={styles.cancelButton}
-                href={'/ib-login/dashboard/colecoes'}
-              >
-                Cancelar
-              </Link>
-            </div>
-          </aside>
-        </section>
-      )}
-      {loading && (
-        <section className={styles.loadingContainer}>
-          <aside className={styles.loadingContent}>
-            Enviando dados...{' '}
-            <AiOutlineLoading
-              width={100}
-              height={100}
-              className={styles.loading}
-            />
-          </aside>
-        </section>
-      )}
+              <input
+                type="text"
+                id="descriptionDe"
+                defaultValue={
+                  collections.descriptionDe && collections.descriptionDe
+                }
+                {...register('descriptionDe')}
+              />
+            </DashboardLabel>
+          </DashboardTabDE>
+
+          <DashboardTabFR tab={tab}>
+            <DashboardLabel
+              htmlFor="titleFr"
+              name="Título da Coleção"
+              errors={errors.titleFr}
+            >
+              <input
+                type="text"
+                id="titleFr"
+                defaultValue={collections.titleFr && collections.titleFr}
+                {...register('titleFr')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="descriptionFr"
+              name="Descrição da Coleção"
+              errors={errors.descriptionFr}
+            >
+              <input
+                type="text"
+                id="descriptionFr"
+                defaultValue={
+                  collections.descriptionFr && collections.descriptionFr
+                }
+                {...register('descriptionFr')}
+              />
+            </DashboardLabel>
+          </DashboardTabFR>
+
+          <DashboardTabEn tab={tab}>
+            <DashboardLabel
+              htmlFor="titleEn"
+              name="Título da Coleção"
+              errors={errors.titleEn}
+            >
+              <input
+                type="text"
+                id="titleEn"
+                defaultValue={collections.titleEn && collections.titleEn}
+                {...register('titleEn')}
+              />
+            </DashboardLabel>
+            <DashboardLabel
+              htmlFor="descriptionEn"
+              name="Descrição da Coleção"
+              errors={errors.descriptionEn}
+            >
+              <input
+                type="text"
+                id="descriptionEn"
+                defaultValue={
+                  collections.descriptionEn && collections.descriptionEn
+                }
+                {...register('descriptionEn')}
+              />
+            </DashboardLabel>
+          </DashboardTabEn>
+
+          <DashboardButtonsArea>
+            <DashboardButton
+              mode="cancel"
+              onClick={(e) => {
+                e.preventDefault()
+                setCancel(!cancel)
+              }}
+            >
+              Cancelar
+            </DashboardButton>
+            <DashboardButton mode="submit" type="submit">
+              {collections.id ? 'Editar Coleção' : 'Criar Coleção'}
+            </DashboardButton>
+          </DashboardButtonsArea>
+        </DashboardForm>
+      </DashboardContainer>
+
+      <DashboardCancel
+        href={'/ib-login/dashboard/colecoes'}
+        cancel={cancel}
+        setCancel={setCancel}
+      />
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

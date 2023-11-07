@@ -38,12 +38,11 @@ export default function CreateNewsPage({ functions }) {
   return (
     <>
       {showCreateImage === true ? (
-        <CreateImageNews createImage={createImage} />
+        <CreateImageNews functions={createImage} />
       ) : (
         <CreateNews
+          functions={{ createNews, editNews }}
           categories={categories}
-          createNews={createNews}
-          editNews={editNews}
         />
       )}
     </>

@@ -1,0 +1,37 @@
+
+.buttonsArea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cancelButtonModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 3rem;
+  background-color: var(--black-300);
+  color: var(--white-100);
+  border-radius: .5rem;
+  border: none;
+  font-size: 1.2rem;
+  transition: all .2s;
+}
+
+.cancelButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 4rem;
+  background-color: var(--red-france);
+  color: var(--white-100);
+  border-radius: .5rem;
+  border: none;
+  transition: all .2s;
+}
+
+.cancelButton:hover {
+  filter: brightness(1.2);
+}

@@ -29,6 +29,9 @@ import { format } from 'date-fns'
 
 // Styles imports
 import styles from './styles.module.css'
+import DashboardContainer from '@/atoms/DashboardContainer'
+import DashboardLoading from '@/atoms/DashboardLoading'
+import DashboardMainTitle from '@/atoms/DashboardMainTitle'
 
 // Component Declaration
 export default function NewsPage({ functions }) {
@@ -69,42 +72,10 @@ export default function NewsPage({ functions }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Notícias</h1>
-      <section className={styles.container}>
-        <aside className={styles.content}>
-          <div className={styles.optionsArea}>
-            Todas as notícias{' '}
-            <div className={styles.optionsButtons}>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  getRepo()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiRefreshCcw width={40} height={40} />
-              </button>
-              <Link
-                href={'/ib-login/dashboard/noticias/novanoticia'}
-                className={styles.optionsButton}
-                onClick={(e) => {
-                  handleNews({})
-                  handleChangeImage({})
-                }}
-              >
-                <FiPlus width={40} height={40} />
-              </Link>
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  getRepo()
-                }}
-                className={styles.optionsButton}
-              >
-                <FiArchive width={40} height={40} />
-              </button>
-            </div>
-          </div>
+      <DashboardMainTitle>Notícias</DashboardMainTitle>
+      <DashboardContainer>
+        <div className={styles.optionsArea}>
+          Todas as notícias{' '}
           <div className={styles.optionsButtons}>
             <button
               onClick={(e) => {
@@ -113,8 +84,18 @@ export default function NewsPage({ functions }) {
               }}
               className={styles.optionsButton}
             >
-              <FiFilter width={40} height={40} />
+              <FiRefreshCcw width={40} height={40} />
             </button>
+            <Link
+              href={'/ib-login/dashboard/noticias/novanoticia'}
+              className={styles.optionsButton}
+              onClick={(e) => {
+                handleNews({})
+                handleChangeImage({})
+              }}
+            >
+              <FiPlus width={40} height={40} />
+            </Link>
             <button
               onClick={(e) => {
                 e.preventDefault()
@@ -122,108 +103,118 @@ export default function NewsPage({ functions }) {
               }}
               className={styles.optionsButton}
             >
-              <FiSearch width={40} height={40} />
+              <FiArchive width={40} height={40} />
             </button>
           </div>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Editar Notícia</th>
-                <th>Foto de Capa</th>
-                <th>Título da Notícia</th>
-                <th>Categoria</th>
-                <th>Data de Publicação</th>
-                <th>Deletar Notícia</th>
-              </tr>
-            </thead>
-            <tbody>
-              {newsRepositories.map((repo) => {
-                return (
-                  <tr key={repo.id}>
-                    <td>
-                      <Link
-                        href={'/ib-login/dashboard/noticias/novanoticia'}
-                        onClick={(e) => {
-                          handleNews(repo)
-                          handleChangeImage({})
-                        }}
-                        className={styles.editButton}
-                      >
-                        <FiEdit width={40} height={40} />
-                      </Link>
-                    </td>
-                    <td>
-                      <Image
-                        width={200}
-                        height={100}
-                        src={repo.cover ? repo.cover.url : ''}
-                        alt={repo.cover ? repo.cover.author : ''}
-                        className={styles.image}
-                      />
-                    </td>
-                    <td>{repo.title}</td>
-                    <td>{repo.category.description}</td>
-                    <td>
-                      {format(new Date(repo.publishDate), "dd'/'MM'/'yyyy")}
-                    </td>
-                    <td>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault()
-                          setIsDeleteNews(true)
-                        }}
-                      >
-                        <FiTrash2 width={40} height={40} />
-                      </button>
-                      {isDeleteNews && (
-                        <section className={styles.confirmCancelModalContainer}>
-                          <aside className={styles.confirmCancelModalContent}>
-                            <h1 className={styles.confirmCancelModalTitle}>
-                              Tem certeza que você deseja deletar essa notícia?
-                            </h1>
-                            <div className={styles.buttonsArea}>
-                              <button
-                                onClick={(e) => {
-                                  e.preventDefault()
-                                  setIsDeleteNews(false)
-                                }}
-                                className={styles.cancelButtonModal}
-                              >
-                                Não
-                              </button>
-                              <button
-                                className={styles.confirmButton}
-                                onClick={(e) => {
-                                  e.preventDefault()
-                                  handleDeleteNews(token, repo.id)
-                                }}
-                              >
-                                Sim
-                              </button>
-                            </div>
-                          </aside>
-                        </section>
-                      )}
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </aside>
-      </section>
-      {loading && (
-        <section className={styles.loadingContainer}>
-          <aside className={styles.loadingContent}>
-            Enviando dados...{' '}
-            <AiOutlineLoading
-              width={100}
-              height={100}
-              className={styles.loading}
-            />
-          </aside>
-        </section>
-      )}
+        </div>
+        <div className={styles.optionsButtons}>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              getRepo()
+            }}
+            className={styles.optionsButton}
+          >
+            <FiFilter width={40} height={40} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              getRepo()
+            }}
+            className={styles.optionsButton}
+          >
+            <FiSearch width={40} height={40} />
+          </button>
+        </div>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Editar Notícia</th>
+              <th>Foto de Capa</th>
+              <th>Título da Notícia</th>
+              <th>Categoria</th>
+              <th>Data de Publicação</th>
+              <th>Deletar Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {newsRepositories.map((repo) => {
+              return (
+                <tr key={repo.id}>
+                  <td>
+                    <Link
+                      href={'/ib-login/dashboard/noticias/novanoticia'}
+                      onClick={(e) => {
+                        handleNews(repo)
+                        handleChangeImage({})
+                      }}
+                      className={styles.editButton}
+                    >
+                      <FiEdit width={40} height={40} />
+                    </Link>
+                  </td>
+                  <td>
+                    <Image
+                      width={200}
+                      height={100}
+                      src={repo.cover ? repo.cover.url : ''}
+                      alt={repo.cover ? repo.cover.author : ''}
+                      className={styles.image}
+                    />
+                  </td>
+                  <td>{repo.title}</td>
+                  <td>{repo.category.description}</td>
+                  <td>
+                    {format(new Date(repo.publishDate), "dd'/'MM'/'yyyy")}
+                  </td>
+                  <td>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setIsDeleteNews(true)
+                      }}
+                    >
+                      <FiTrash2 width={40} height={40} />
+                    </button>
+                    {isDeleteNews && (
+                      <section className={styles.confirmCancelModalContainer}>
+                        <aside className={styles.confirmCancelModalContent}>
+                          <h1 className={styles.confirmCancelModalTitle}>
+                            Tem certeza que você deseja deletar essa notícia?
+                          </h1>
+                          <div className={styles.buttonsArea}>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setIsDeleteNews(false)
+                              }}
+                              className={styles.cancelButtonModal}
+                            >
+                              Não
+                            </button>
+                            <button
+                              className={styles.confirmButton}
+                              onClick={(e) => {
+                                e.preventDefault()
+                                handleDeleteNews(token, repo.id)
+                              }}
+                            >
+                              Sim
+                            </button>
+                          </div>
+                        </aside>
+                      </section>
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </DashboardContainer>
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

@@ -1,0 +1,19 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 100%;
+}
+
+.error {
+  font-size: .8rem;
+  color: var(--red-france);
+  margin-left: .5rem;
+}
+
+.label input {
+  border: 1px solid var(--black-800);
+  padding: .1rem 1rem;
+
+  width: 100%;
+}

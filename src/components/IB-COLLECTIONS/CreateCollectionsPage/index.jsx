@@ -39,12 +39,11 @@ export default function CreateCollectionsPage({ functions }) {
   return (
     <>
       {showCreateImage === true ? (
-        <CreateImageCollections createImage={createImage} />
+        <CreateImageCollections functions={{ createImage }} />
       ) : (
         <CreateCollection
+          functions={{ createCollection, editCollection }}
           categories={categories}
-          createCollection={createCollection}
-          editCollection={editCollection}
         />
       )}
     </>
