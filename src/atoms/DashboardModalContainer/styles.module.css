@@ -16,6 +16,7 @@
 }
 
 .content {
+  box-shadow: 0 0 15rem var(--black-800);
   background-color: var(--white-300);
   padding: 2rem;
   border-radius: 1rem;

@@ -1,23 +1,21 @@
 // Components imports
 import LogoutButton from './LogoutButton/LogoutButton'
-import DashboardMenu from './DashboardMenu'
+import DashboardMenuNavigation from './DashboardMenuNavigation'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
+import DashboardMenuContainer from '@/atoms/DashboardMenuContainer'
 
 // Component Declaration
-export default function Dashboard({ children }) {
+export default function DashboardMenu({ children }) {
   // Return components, with functions to call API and language
   return (
-    <section className={styles.container}>
-      <menu className={styles.mainMenuContainer}>
-        <section className={styles.mainMenu}>
-          <DashboardMenu />
-          <LogoutButton />
-        </section>
-      </menu>
+    <>
+      <DashboardMenuContainer>
+        <DashboardMenuNavigation />
+        <LogoutButton />
+      </DashboardMenuContainer>
       {children}
-    </section>
+    </>
   )
   //
 }

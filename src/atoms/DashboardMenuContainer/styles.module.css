@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  padding: 1rem;
+
+  justify-content: flex-end;
+  
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -5rem;
+
+  width: 11rem;
+
+  background-color: var(--black-300);
+  color: var(--black-800);
+
+  border-right: 1px solid var(--black);
+  box-shadow: 0 0 1rem var(--black);
+
+  transition: all .2s;
+}
+
+.content {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  transition: all .2s;
+}
+
+.content ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.expandButton {
+  width: 4rem;
+  height: 4rem;
+  background-color: transparent;
+  border: none;
+  color: var(--white-100);
+}
+
+.expandButton svg {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+.expanded {
+  left: 0;
+}
+
+.expanded .content {
+  align-items: center;
+}

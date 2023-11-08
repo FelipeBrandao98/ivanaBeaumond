@@ -24,6 +24,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 // Styles imports
 import styles from './styles.module.css'
 
+// Atoms imports
+import DashboardForm from '@/atoms/DashboardForm'
+import DashboardLabel from '@/atoms/DashboardLabel'
+
 const loginFormSchema = z.object({
   email: z
     .string()
@@ -91,31 +95,32 @@ export default function LoginPage({ login }) {
 
           <h1 className={styles.title}>Faça seu Login</h1>
 
-          <form className={styles.form} action={handleSubmit(handleLogin)}>
-            <label htmlFor="email" className={styles.label}>
-              E-mail:
+          <DashboardForm
+            className={styles.form}
+            action={handleSubmit(handleLogin)}
+          >
+            <DashboardLabel htmlFor="email" name="E-mail" errors={errors.email}>
               <input
                 type="email"
                 id="email"
                 className={styles.input}
                 {...register('email')}
               />
-              {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
-              )}
-            </label>
-            <label htmlFor="password" className={styles.label}>
-              Senha:
+            </DashboardLabel>
+
+            <DashboardLabel
+              htmlFor="password"
+              name="Senha"
+              errors={errors.password}
+            >
               <input
                 type="password"
                 id="password"
                 className={styles.input}
                 {...register('password')}
               />
-              {errors.password && (
-                <span className={styles.error}>{errors.password.message}</span>
-              )}
-            </label>
+            </DashboardLabel>
+
             {isAuthenticated === 'loading' ? (
               <button
                 onClick={(e) => e.preventDefault()}
@@ -160,7 +165,7 @@ export default function LoginPage({ login }) {
                 <button className={styles.button}>Entrar</button>
               )
             )}
-          </form>
+          </DashboardForm>
         </section>
       </aside>
     </>
