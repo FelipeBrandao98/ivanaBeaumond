@@ -120,7 +120,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
                     <h3>{categorie.description}</h3>
                     <Image
                       className={styles.image}
-                      src={categorie.cover.url}
+                      src={categorie.cover?.url || ''}
                       alt={categorie.cover?.author || 'Ivana'}
                       width={1080}
                       height={1920}
