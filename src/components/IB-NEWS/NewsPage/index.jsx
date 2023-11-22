@@ -8,16 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 // Icons imports
-import {
-  FiArchive,
-  FiEdit,
-  FiFilter,
-  FiPlus,
-  FiRefreshCcw,
-  FiSearch,
-  FiTrash2,
-} from 'react-icons/fi'
-import { AiOutlineLoading } from 'react-icons/ai'
+import { FiEdit, FiFilter, FiSearch, FiTrash2 } from 'react-icons/fi'
 
 // Context imports
 import { AuthContext } from '@/Context/AuthContext'
@@ -29,9 +20,13 @@ import { format } from 'date-fns'
 
 // Styles imports
 import styles from './styles.module.css'
-import DashboardContainer from '@/atoms/DashboardContainer'
-import DashboardLoading from '@/atoms/DashboardLoading'
-import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
+import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
+import DashboardTable from '@/atoms/Dashboard/DashboardTable'
+import DashboardModalContainer from '@/atoms/Dashboard/DashboardModalContainer'
+import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
+import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
 // Component Declaration
 export default function NewsPage({ functions }) {
@@ -42,7 +37,7 @@ export default function NewsPage({ functions }) {
 
   // States declaratios
   const [newsRepositories, setNewsRepositories] = useState([])
-  const [isDeleteNews, setIsDeleteNews] = useState(false)
+  const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
 
   // Desestructured functions to call api
@@ -50,15 +45,16 @@ export default function NewsPage({ functions }) {
 
   // functions to handle with datas from api
   const getRepo = useCallback(async () => {
+    setLoading(true)
     const news = await getNews(token)
     setNewsRepositories(news)
+    setLoading(false)
   }, [getNews, token])
 
   async function handleDeleteNews(token, id) {
     setLoading(true)
     await deleteNews(token, id)
     setLoading(false)
-    setIsDeleteNews(false)
     getRepo(token)
   }
   //
@@ -74,39 +70,13 @@ export default function NewsPage({ functions }) {
     <>
       <DashboardMainTitle>Notícias</DashboardMainTitle>
       <DashboardContainer>
-        <div className={styles.optionsArea}>
-          Todas as notícias{' '}
-          <div className={styles.optionsButtons}>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiRefreshCcw width={40} height={40} />
-            </button>
-            <Link
-              href={'/ib-login/dashboard/noticias/novanoticia'}
-              className={styles.optionsButton}
-              onClick={(e) => {
-                handleNews({})
-                handleChangeImage({})
-              }}
-            >
-              <FiPlus width={40} height={40} />
-            </Link>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiArchive width={40} height={40} />
-            </button>
-          </div>
-        </div>
+        <DashboardActionButtons
+          title=""
+          cleanContext={handleNews}
+          getRepo={getRepo}
+          createLink={'/noticias/novanoticia'}
+        />
+
         <div className={styles.optionsButtons}>
           <button
             onClick={(e) => {
@@ -127,14 +97,20 @@ export default function NewsPage({ functions }) {
             <FiSearch width={40} height={40} />
           </button>
         </div>
-        <table className={styles.table}>
+
+        <DashboardTable>
           <thead>
             <tr>
               <th>Editar Notícia</th>
+
               <th>Foto de Capa</th>
+
               <th>Título da Notícia</th>
+
               <th>Categoria</th>
+
               <th>Data de Publicação</th>
+
               <th>Deletar Notícia</th>
             </tr>
           </thead>
@@ -154,6 +130,7 @@ export default function NewsPage({ functions }) {
                       <FiEdit width={40} height={40} />
                     </Link>
                   </td>
+
                   <td>
                     <Image
                       width={200}
@@ -163,55 +140,38 @@ export default function NewsPage({ functions }) {
                       className={styles.image}
                     />
                   </td>
+
                   <td>{repo.title}</td>
+
                   <td>{repo.category.description}</td>
+
                   <td>
                     {format(new Date(repo.publishDate), "dd'/'MM'/'yyyy")}
                   </td>
+
                   <td>
                     <button
                       onClick={(e) => {
                         e.preventDefault()
-                        setIsDeleteNews(true)
+                        setCancel(!cancel)
                       }}
                     >
+                      <DashboardCancel
+                        cancel={cancel}
+                        setCancel={setCancel}
+                        message="Tem certeza que deseja excluir essa notícia? uma vez excluída, não é possível recuperar!"
+                        href={handleDeleteNews}
+                        token={token}
+                        id={repo.id}
+                      />
                       <FiTrash2 width={40} height={40} />
                     </button>
-                    {isDeleteNews && (
-                      <section className={styles.confirmCancelModalContainer}>
-                        <aside className={styles.confirmCancelModalContent}>
-                          <h1 className={styles.confirmCancelModalTitle}>
-                            Tem certeza que você deseja deletar essa notícia?
-                          </h1>
-                          <div className={styles.buttonsArea}>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                setIsDeleteNews(false)
-                              }}
-                              className={styles.cancelButtonModal}
-                            >
-                              Não
-                            </button>
-                            <button
-                              className={styles.confirmButton}
-                              onClick={(e) => {
-                                e.preventDefault()
-                                handleDeleteNews(token, repo.id)
-                              }}
-                            >
-                              Sim
-                            </button>
-                          </div>
-                        </aside>
-                      </section>
-                    )}
                   </td>
                 </tr>
               )
             })}
           </tbody>
-        </table>
+        </DashboardTable>
       </DashboardContainer>
 
       <DashboardLoading loading={loading} />

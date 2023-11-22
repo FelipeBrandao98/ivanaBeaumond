@@ -3,7 +3,7 @@ import LogoutButton from './LogoutButton/LogoutButton'
 import DashboardMenuNavigation from './DashboardMenuNavigation'
 
 // Atoms imports
-import DashboardMenuContainer from '@/atoms/DashboardMenuContainer'
+import DashboardMenuContainer from '@/atoms/Dashboard/DashboardMenuContainer'
 
 // Component Declaration
 export default function DashboardMenu({ children }) {

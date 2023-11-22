@@ -8,17 +8,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 // Icons imports
-import {
-  FiArchive,
-  FiEdit,
-  FiFilter,
-  FiPlus,
-  FiRefreshCcw,
-  FiSearch,
-  FiTrash2,
-} from 'react-icons/fi'
+import { FiEdit, FiFilter, FiSearch, FiTrash2 } from 'react-icons/fi'
 import { BiPhotoAlbum } from 'react-icons/bi'
-import { AiOutlineLoading } from 'react-icons/ai'
 
 // Context imports
 import { AuthContext } from '@/Context/AuthContext'
@@ -28,8 +19,14 @@ import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionCon
 
 // Styles imports
 import styles from './styles.module.css'
-import DashboardContainer from '@/atoms/DashboardContainer'
-import DashboardLoading from '@/atoms/DashboardLoading'
+
+// Atoms imports
+import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
+import DashboardTable from '@/atoms/Dashboard/DashboardTable'
+import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
+import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
+import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
 // Component Declaration
 export default function CollectionsPage({ functions }) {
@@ -43,7 +40,7 @@ export default function CollectionsPage({ functions }) {
 
   // States declaratios
   const [collectionsRepositories, setCollectionsRepositories] = useState([])
-  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
+  const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
 
   // Desestructured functions to call api
@@ -51,15 +48,16 @@ export default function CollectionsPage({ functions }) {
 
   // functions to handle with datas from api
   const getRepo = useCallback(async () => {
+    setLoading(true)
     const collections = await getCollections(token)
     setCollectionsRepositories(collections)
+    setLoading(false)
   }, [getCollections, token])
 
   async function handleDeleteCollection(token, id) {
     setLoading(true)
     await deleteCollection(token, id)
     setLoading(false)
-    setIsDeleteCollection(false)
     getRepo(token)
   }
   //
@@ -73,40 +71,15 @@ export default function CollectionsPage({ functions }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <h1>Coleções</h1>
+      <DashboardMainTitle>Coleções</DashboardMainTitle>
       <DashboardContainer>
-        <div className={styles.optionsArea}>
-          Todas as Coleções{' '}
-          <div className={styles.optionsButtons}>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiRefreshCcw width={40} height={40} />
-            </button>
-            <Link
-              href={'/ib-login/dashboard/colecoes/novacolecao'}
-              className={styles.optionsButton}
-              onClick={(e) => {
-                handleCollections({})
-              }}
-            >
-              <FiPlus width={40} height={40} />
-            </Link>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                getRepo()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiArchive width={40} height={40} />
-            </button>
-          </div>
-        </div>
+        <DashboardActionButtons
+          title=""
+          cleanContext={handleCollections}
+          getRepo={getRepo}
+          createLink={'/colecoes/novacolecao'}
+        />
+
         <div className={styles.optionsButtons}>
           <button
             onClick={(e) => {
@@ -127,7 +100,8 @@ export default function CollectionsPage({ functions }) {
             <FiSearch width={40} height={40} />
           </button>
         </div>
-        <table className={styles.table}>
+
+        <DashboardTable>
           <thead>
             <tr>
               <th>Editar coleção</th>
@@ -194,48 +168,28 @@ export default function CollectionsPage({ functions }) {
                     <button
                       onClick={(e) => {
                         e.preventDefault()
-                        setIsDeleteCollection(true)
+                        setCancel(!cancel)
                       }}
                     >
+                      <DashboardCancel
+                        cancel={cancel}
+                        setCancel={setCancel}
+                        message="Tem certeza que deseja excluir essa notícia? uma vez excluída, não é possível recuperar!"
+                        href={handleDeleteCollection}
+                        token={token}
+                        id={repo.id}
+                      />
                       <FiTrash2 width={40} height={40} />
                     </button>
-                    {isDeleteCollection && (
-                      <section className={styles.confirmCancelModalContainer}>
-                        <aside className={styles.confirmCancelModalContent}>
-                          <h1 className={styles.confirmCancelModalTitle}>
-                            Tem certeza que você deseja deletar essa notícia?
-                          </h1>
-                          <div className={styles.buttonsArea}>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                setIsDeleteCollection(false)
-                              }}
-                              className={styles.cancelButtonModal}
-                            >
-                              Não
-                            </button>
-                            <button
-                              className={styles.confirmButton}
-                              onClick={(e) => {
-                                e.preventDefault()
-                                handleDeleteCollection(token, repo.id)
-                              }}
-                            >
-                              Sim
-                            </button>
-                          </div>
-                        </aside>
-                      </section>
-                    )}
                   </td>
                 </tr>
               )
             })}
           </tbody>
-        </table>
+        </DashboardTable>
       </DashboardContainer>
-      {loading && <DashboardLoading />}
+
+      <DashboardLoading loading={loading} />
     </>
   )
   //

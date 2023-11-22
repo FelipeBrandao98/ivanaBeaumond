@@ -15,6 +15,7 @@ async function getLatestPosts(lang) {
 
   return res.data
 }
+//
 
 // Component Declaration
 export default async function Page() {

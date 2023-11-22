@@ -17,6 +17,8 @@ import useLangDict from '@/utils/useLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
+import { Suspense } from 'react'
+import CardItemLoading from '@/atoms/Home/CardItemLoading'
 
 // Component Declaration
 export default function CollectionsItemsCardHomePage({ lang, data }) {
@@ -78,74 +80,76 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <div className={styles.titleArea}>
-        <h1 className={styles.title}>
-          {languageTraducted.home.titlePartOne}
-          <br />
-          {languageTraducted.home.titlePartTwo}
-        </h1>
-        <HiOutlineArrowNarrowDown
-          className={styles.arrowDown}
-          width={100}
-          height={100}
-        />
-      </div>
-      <section className={styles.section}>
-        <div className={styles.fromLeftArea}>
-          <button
-            className={styles.fromLeftButton}
-            onClick={changeCardFromLeft}
-          >
-            <FiArrowLeft
-              className={styles.fromLeftImage}
-              width={100}
-              height={100}
-            />
-          </button>
+      <Suspense fallback={<CardItemLoading />}>
+        <div className={styles.titleArea}>
+          <h1 className={styles.title}>
+            {languageTraducted.home.titlePartOne}
+            <br />
+            {languageTraducted.home.titlePartTwo}
+          </h1>
+          <HiOutlineArrowNarrowDown
+            className={styles.arrowDown}
+            width={100}
+            height={100}
+          />
         </div>
+        <section className={styles.section}>
+          <div className={styles.fromLeftArea}>
+            <button
+              className={styles.fromLeftButton}
+              onClick={changeCardFromLeft}
+            >
+              <FiArrowLeft
+                className={styles.fromLeftImage}
+                width={100}
+                height={100}
+              />
+            </button>
+          </div>
 
-        <div className={styles.cards}>
-          <div
-            className={`
+          <div className={styles.cards}>
+            <div
+              className={`
         ${styles.CardArea}
         ${cardClass}
         `}
-          >
-            {data.map((categorie) => {
-              return (
-                <aside key={categorie.id} className={styles.aside}>
-                  <h3>{categorie.description}</h3>
-                  <Image
-                    className={styles.image}
-                    src={categorie.cover.url}
-                    alt={categorie.cover?.author || 'Ivana'}
-                    width={1080}
-                    height={1920}
-                  />
-                  <div className={styles.comments}>
-                    <p>{categorie.subdescription}</p>
-                    <button>
-                      <Link href={'/'}>
-                        Descubra Agora <FaArrowRight />
-                      </Link>
-                    </button>
-                  </div>
-                </aside>
-              )
-            })}
+            >
+              {data.map((categorie) => {
+                return (
+                  <aside key={categorie.id} className={styles.aside}>
+                    <h3>{categorie.description}</h3>
+                    <Image
+                      className={styles.image}
+                      src={categorie.cover.url}
+                      alt={categorie.cover?.author || 'Ivana'}
+                      width={1080}
+                      height={1920}
+                    />
+                    <div className={styles.comments}>
+                      <p>{categorie.subdescription}</p>
+                      <button>
+                        <Link href={'/'}>
+                          Descubra Agora <FaArrowRight />
+                        </Link>
+                      </button>
+                    </div>
+                  </aside>
+                )
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className={styles.fromRightArea} onClick={changeCardFromRight}>
-          <button className={styles.fromRightButton}>
-            <FiArrowRight
-              className={styles.fromRightImage}
-              width={100}
-              height={100}
-            />
-          </button>
-        </div>
-      </section>
+          <div className={styles.fromRightArea} onClick={changeCardFromRight}>
+            <button className={styles.fromRightButton}>
+              <FiArrowRight
+                className={styles.fromRightImage}
+                width={100}
+                height={100}
+              />
+            </button>
+          </div>
+        </section>
+      </Suspense>
     </>
   )
 }

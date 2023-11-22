@@ -25,8 +25,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardForm from '@/atoms/DashboardForm'
-import DashboardLabel from '@/atoms/DashboardLabel'
+import DashboardForm from '@/atoms/Dashboard/DashboardForm'
+import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
 
 const loginFormSchema = z.object({
   email: z

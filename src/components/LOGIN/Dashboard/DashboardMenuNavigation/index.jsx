@@ -2,7 +2,7 @@
 import { ImNewspaper, ImMail3, ImTicket, ImListNumbered } from 'react-icons/im'
 
 // Atoms imports
-import DashboardButtonItem from '@/atoms/DashboardButtonItem'
+import DashboardButtonItem from '@/atoms/Dashboard/DashboardButtonItem'
 //
 
 // Component Declaration
@@ -26,7 +26,7 @@ export default function DashboardMenuNavigation() {
           <ImTicket width={40} height={40} />
         </DashboardButtonItem>
 
-        <DashboardButtonItem href={'/ib-login/dashboard/noticias'} selected>
+        <DashboardButtonItem href={'/ib-login/dashboard/noticias'}>
           Notícias
           <ImNewspaper width={40} height={40} />
         </DashboardButtonItem>

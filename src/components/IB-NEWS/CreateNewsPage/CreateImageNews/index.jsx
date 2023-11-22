@@ -22,12 +22,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardContainer from '@/atoms/DashboardContainer'
-import DashboardLoading from '@/atoms/DashboardLoading'
-import DashboardMainTitle from '@/atoms/DashboardMainTitle'
-import DashboardForm from '@/atoms/DashboardForm'
-import DashboardLabel from '@/atoms/DashboardLabel'
-import DashboardButton from '@/atoms/DashboardButton'
+import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
+import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
+import DashboardForm from '@/atoms/Dashboard/DashboardForm'
+import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
+import DashboardButton from '@/atoms/Dashboard/DashboardButton'
 //
 
 // Schema Zod Definition

@@ -7,7 +7,7 @@ import api from '@/services/api'
 // functions to call API
 async function login(formData) {
   'use server'
-  const res = await api.post('/auth/login', formData)
+  const res = await api.post('/login', formData)
   return res.data
 }
 // Component Declaration

@@ -8,8 +8,8 @@ import { useContext } from 'react'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardContainer from '@/atoms/DashboardContainer'
-import DashboardMainTitle from '@/atoms/DashboardMainTitle'
+import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
+import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 
 // Component Declaration
 export default function MailerPage() {

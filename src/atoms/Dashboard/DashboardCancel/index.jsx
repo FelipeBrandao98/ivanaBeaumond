@@ -9,7 +9,14 @@ import DashboardTitle from '../DashboardTitle'
 import DashboardButtonsArea from '../DashboardButtonsArea'
 //
 
-export default function DashboardCancel({ href, cancel, setCancel, message }) {
+export default function DashboardCancel({
+  href,
+  cancel,
+  setCancel,
+  message,
+  token,
+  id,
+}) {
   return (
     <>
       {cancel && (
@@ -35,10 +42,10 @@ export default function DashboardCancel({ href, cancel, setCancel, message }) {
                 mode="cancel"
                 onClick={(e) => {
                   e.preventDefault()
-                  href()
+                  id ? href(token, id) : href()
                 }}
               >
-                Sair
+                {id ? 'Deletar' : 'Sair'}
               </DashboardButton>
             )}
           </DashboardButtonsArea>
