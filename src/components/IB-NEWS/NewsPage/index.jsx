@@ -28,8 +28,11 @@ import DashboardModalContainer from '@/atoms/Dashboard/DashboardModalContainer'
 import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
+import getNews from '@/api/getNews'
+import deleteNews from '@/api/deleteNews'
+
 // Component Declaration
-export default function NewsPage({ functions }) {
+export default function NewsPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleNews } = useContext(NewsContext)
@@ -40,16 +43,13 @@ export default function NewsPage({ functions }) {
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  // Desestructured functions to call api
-  const { getNews, deleteNews } = functions
-
   // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     setLoading(true)
     const news = await getNews(token)
     setNewsRepositories(news)
     setLoading(false)
-  }, [getNews, token])
+  }, [token])
 
   async function handleDeleteNews(token, id) {
     setLoading(true)

@@ -43,6 +43,9 @@ import DashboardTabFR from '@/atoms/Dashboard/DashboardTabFR'
 import DashboardTabEn from '@/atoms/Dashboard/DashboardTabEN'
 //
 
+import createNews from '@/api/createNews'
+import editNews from '@/api/editNews'
+
 // Schema Zod Definition
 const createNewsFormSchema = z.object({
   publishDate: z
@@ -76,7 +79,7 @@ const createNewsFormSchema = z.object({
 //
 
 // Component Declaration
-export default function CreateNews({ categories, functions }) {
+export default function CreateNews({ categories }) {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage } = useContext(CreateImageNewsContext)
@@ -86,9 +89,6 @@ export default function CreateNews({ categories, functions }) {
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  // Desestructured functions to call api
-  const { createNews, editNews } = functions
 
   // Instance of Router
   const router = useRouter()

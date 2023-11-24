@@ -27,8 +27,13 @@ import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 //
 
+import getCategoryCollections from '@/api/getCategoryCollections'
+import getCategoryNews from '@/api/getCategoryNews'
+import deleteCategoryCollection from '@/api/deleteCategoryCollection'
+import deleteCategoryNews from '@/api/deleteCategoryNews'
+
 // Component Declaration
-export default function CategoriesPage({ functions }) {
+export default function CategoriesPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleCategory: handleCatNews } = useContext(NewsCategoryContext)
@@ -47,35 +52,27 @@ export default function CategoriesPage({ functions }) {
     [],
   )
 
-  // Desestructured functions to call api
-  const {
-    getCategoriesCollections,
-    getCategoriesNews,
-    deleteCategoriesCollection,
-    deleteCategoriesNews,
-  } = functions
-
   // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     setLoading(true)
-    const categoriesCollections = await getCategoriesCollections(token)
-    const categoriesNews = await getCategoriesNews(token)
+    const categoriesCollections = await getCategoryCollections(token)
+    const categoriesNews = await getCategoryNews(token)
     setCategoriesCollectionsRepositories(categoriesCollections)
     setCategoriesNewsRepositories(categoriesNews)
     setLoading(false)
-  }, [getCategoriesCollections, getCategoriesNews, token])
+  }, [token])
   //
 
   async function handleDeleteCategorieCollection(token, id) {
     setLoading(true)
-    await deleteCategoriesCollection(token, id)
+    await deleteCategoryCollection(token, id)
     getRepo(token)
     setLoading(false)
   }
 
   async function handleDeleteCategorieNews(token, id) {
     setLoading(true)
-    await deleteCategoriesNews(token, id)
+    await deleteCategoryNews(token, id)
     getRepo(token)
     setLoading(false)
   }

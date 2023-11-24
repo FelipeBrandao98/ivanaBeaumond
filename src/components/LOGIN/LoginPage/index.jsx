@@ -28,6 +28,8 @@ import styles from './styles.module.css'
 import DashboardForm from '@/atoms/Dashboard/DashboardForm'
 import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
 
+import login from '@/api/login'
+
 const loginFormSchema = z.object({
   email: z
     .string()
@@ -41,7 +43,7 @@ const loginFormSchema = z.object({
 //
 
 // Component Declaration
-export default function LoginPage({ login }) {
+export default function LoginPage() {
   // States declaratios
   const [isAuthenticated, setIsAuthenticated] = useState('login')
 

@@ -7,24 +7,21 @@ import { useContext } from 'react'
 import { CreateImageCategoryContext } from '@/Context/CreateImageCategoryContext'
 
 // Components imports
-import CreateImgCat from './CreateImgCat'
-import CreateCategory from './CreateCategory'
+import CreateImgCategoryCollection from './CreateImgCategoryCollection'
+import CreateCategoryCollection from './CreateCategoryCollection'
 
 // Component Declaration
-export default function CreateCategoryPage({ functions }) {
+export default function CreateCategoryCollectionPage({ functions }) {
   // Instanciate and initialize Contexts functions
   const { showCreateImage } = useContext(CreateImageCategoryContext)
-
-  // Desestructured functions to call api
-  const { createCategory, editCategory, createImage } = functions
 
   // Return components, with functions to call API and language
   return (
     <>
       {showCreateImage === true ? (
-        <CreateImgCat functions={{ createImage }} />
+        <CreateImgCategoryCollection />
       ) : (
-        <CreateCategory functions={{ createCategory, editCategory }} />
+        <CreateCategoryCollection />
       )}
     </>
   )

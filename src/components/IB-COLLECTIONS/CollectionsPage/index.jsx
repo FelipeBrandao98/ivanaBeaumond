@@ -28,8 +28,11 @@ import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
+import getCollections from '@/api/getCollections'
+import deleteCollection from '@/api/deleteCollection'
+
 // Component Declaration
-export default function CollectionsPage({ functions }) {
+export default function CollectionsPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleCollections } = useContext(CollectionsContext)
@@ -43,16 +46,13 @@ export default function CollectionsPage({ functions }) {
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  // Desestructured functions to call api
-  const { getCollections, deleteCollection } = functions
-
   // functions to handle with datas from api
   const getRepo = useCallback(async () => {
     setLoading(true)
     const collections = await getCollections(token)
     setCollectionsRepositories(collections)
     setLoading(false)
-  }, [getCollections, token])
+  }, [token])
 
   async function handleDeleteCollection(token, id) {
     setLoading(true)

@@ -40,6 +40,9 @@ import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 //
 
+import editCategoryCollection from '@/api/editCategoryCollection'
+import createCategoryCollection from '@/api/createCategoryCollection'
+
 // Schema Zod Definition
 const createNewsFormSchema = z.object({
   description: z.string(),
@@ -54,7 +57,7 @@ const createNewsFormSchema = z.object({
 //
 
 // Component Declaration
-export default function CreateCategory({ functions }) {
+export default function CreateCategoryCollection() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { category } = useContext(CollectionsCategoryContext)
@@ -66,9 +69,6 @@ export default function CreateCategory({ functions }) {
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  // Desestructured functions to call api
-  const { createCategory, editCategory } = functions
 
   // Instance of Router
   const router = useRouter()
@@ -89,8 +89,8 @@ export default function CreateCategory({ functions }) {
     setLoading(true)
     formData.coverId = image.id
     category.id
-      ? await editCategory(category.id, token, formData)
-      : await createCategory(token, formData)
+      ? await editCategoryCollection(category.id, token, formData)
+      : await createCategoryCollection(token, formData)
     handleChangeImage({})
     router.back()
     setLoading(false)

@@ -30,6 +30,8 @@ import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
 import DashboardButton from '@/atoms/Dashboard/DashboardButton'
 //
 
+import createImage from '@/api/createImage'
+
 // Schema Zod Definition
 const createImageFormSchema = z.object({
   file: z.any(),
@@ -37,7 +39,7 @@ const createImageFormSchema = z.object({
 //
 
 // Component Declaration
-export default function CreateImageNews({ functions }) {
+export default function CreateImageNews() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { image, handleShowCreateImage, handleChangeImage } = useContext(
@@ -46,9 +48,6 @@ export default function CreateImageNews({ functions }) {
 
   // States declaratios
   const [loading, setLoading] = useState(false)
-
-  // Desestructured functions to call api
-  const { createImage } = functions
 
   // Instance of Hook Form
   const {

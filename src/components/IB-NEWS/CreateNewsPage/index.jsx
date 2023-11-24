@@ -10,22 +10,22 @@ import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 import CreateImageNews from '@/components/IB-NEWS/CreateNewsPage/CreateImageNews'
 import CreateNews from '@/components/IB-NEWS/CreateNewsPage/CreateNews'
 
+// Api Functions imports
+import getCategoryNews from '@/api/getCategoryNews'
+
 // Component Declaration
-export default function CreateNewsPage({ functions }) {
+export default function CreateNewsPage() {
   // Instanciate and initialize Contexts functions
   const { image, showCreateImage } = useContext(CreateImageNewsContext)
 
   // States declaratios
   const [categories, setCategories] = useState([])
 
-  // Desestructured functions to call api
-  const { createNews, editNews, getCategories, createImage } = functions
-
   // functions to handle with datas from api
   const getCat = useCallback(async () => {
-    const res = await getCategories()
+    const res = await getCategoryNews()
     setCategories(res)
-  }, [getCategories])
+  }, [])
   //
 
   // Use Effects
@@ -38,12 +38,9 @@ export default function CreateNewsPage({ functions }) {
   return (
     <>
       {showCreateImage === true ? (
-        <CreateImageNews functions={createImage} />
+        <CreateImageNews />
       ) : (
-        <CreateNews
-          functions={{ createNews, editNews }}
-          categories={categories}
-        />
+        <CreateNews categories={categories} />
       )}
     </>
   )

@@ -32,6 +32,9 @@ import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 //
 
+import createCategoryNews from '@/api/createCategoryNews'
+import editCategoryNews from '@/api/editCategoryNews'
+
 // Schema Zod Definition
 const createNewsFormSchema = z.object({
   description: z.string().min(4),
@@ -42,7 +45,7 @@ const createNewsFormSchema = z.object({
 //
 
 // Component Declaration
-export default function CreateCategoryNewsPage({ functions }) {
+export default function CreateCategoryNewsPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { category } = useContext(NewsCategoryContext)
@@ -51,9 +54,6 @@ export default function CreateCategoryNewsPage({ functions }) {
   const [tab, setTab] = useState('pt-BR')
   const [cancel, setCancel] = useState(false)
   const [loading, setLoading] = useState(false)
-
-  // Desestructured functions to call api
-  const { createCategory, editCategory } = functions
 
   // Instance of Router
   const router = useRouter()
@@ -73,8 +73,8 @@ export default function CreateCategoryNewsPage({ functions }) {
   async function handleCreateNews(formData) {
     setLoading(true)
     category.id
-      ? await editCategory(category.id, token, formData)
-      : await createCategory(token, formData)
+      ? await editCategoryNews(category.id, token, formData)
+      : await createCategoryNews(token, formData)
     router.back()
     setLoading(false)
   }

@@ -28,6 +28,8 @@ import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
 import DashboardButton from '@/atoms/Dashboard/DashboardButton'
 //
 
+import createImage from '@/api/createImage'
+
 // Schema Zod Definition
 const createImageFormSchema = z.object({
   file: z.any(),
@@ -35,7 +37,7 @@ const createImageFormSchema = z.object({
 //
 
 // Component Declaration
-export default function CreateImgCat({ functions }) {
+export default function CreateImgCategoryCollection() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { category } = useContext(CollectionsCategoryContext)
@@ -45,9 +47,6 @@ export default function CreateImgCat({ functions }) {
 
   // States declaratios
   const [loading, setLoading] = useState(false)
-
-  // Desestructured functions to call api
-  const { createImage } = functions
 
   // Instance of Hook Form
   const {
