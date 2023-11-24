@@ -30,8 +30,6 @@ export default async function Page({ params }) {
   // Return components, with data and language
   return (
     <>
-      {console.log(post)}
-      <NewsPageHead lang={lang} data={post} />
       <NewsPageContent lang={lang} data={post} />
     </>
   )

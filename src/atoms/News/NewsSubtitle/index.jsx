@@ -3,8 +3,8 @@ import Image from 'next/image'
 // Styles imports
 import styles from './styles.module.css'
 
-export default function NewsSubtitle({ lang, content }) {
-  const { text, imageUrl, imageCredit } = content
+export default function NewsSubtitle({ lang, data }) {
+  const { text, imageUrl, imageCredit } = data
 
   return (
     <div className={styles.content}>

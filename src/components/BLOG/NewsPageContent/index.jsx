@@ -2,12 +2,13 @@
 import BlogContentOne from './BlogContentOne'
 import BlogTitleOne from './BlogTitleOne'
 import BlogContentTwo from './BlogContentTwo'
-import BlogContentText from './BlogContentText'
-import BlogOthersPosts from '../BlogOthersPosts'
 
 // Atoms imports
 import NewsContainer from '@/atoms/News/NewsContainer'
 import NewsSubtitle from '@/atoms/News/NewsSubtitle'
+import NewsPageHead from '../NewsPageHead'
+import NewsBodyConstructor from '../NewsBodyConstructor'
+import NewsOthersPosts from '../NewsOthersPosts'
 
 // Component Declaration
 export default function NewsPageContent({ lang, data }) {
@@ -21,13 +22,14 @@ export default function NewsPageContent({ lang, data }) {
   return (
     <>
       <NewsContainer>
-        <NewsSubtitle lang={lang} content={subtitle} />
-        <BlogContentOne />
-        <BlogTitleOne />
-        <BlogContentTwo />
-        <BlogContentText />
+        <NewsPageHead lang={lang} data={data} />
+        <NewsSubtitle lang={lang} data={subtitle} />
+        <NewsBodyConstructor lang={lang} data={data.body} />
+        {
+          //
+        }
+        <NewsOthersPosts />
       </NewsContainer>
-      <BlogOthersPosts />
     </>
   )
   //

@@ -8,11 +8,11 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function BlogInTheMedia() {
+export default function NewsOtherPostsSmall({ title }) {
   // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
-      <h4 className={styles.title}>Na mídia</h4>
+      <h4 className={styles.title}>{title}</h4>
 
       <div className={styles.contentArea}>
         <div className={styles.fromLeftArea}>

@@ -1,0 +1,12 @@
+.paragraph {
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  padding: 2rem 4rem;
+}
+
+.paragraph::before {
+  content: '';
+  padding: 1rem;
+}

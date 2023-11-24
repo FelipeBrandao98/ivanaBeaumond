@@ -8,11 +8,11 @@
 }
 
 .text {
-  width: 20rem;
+  max-width: 18rem;
   font-family: var(--font-merriweather);
   line-height: 1.8rem;
   letter-spacing: .05rem;
-  text-align: center;
+  text-align: justify;
 }
 
 .firstLetter {

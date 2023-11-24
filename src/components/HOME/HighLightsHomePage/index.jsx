@@ -5,12 +5,18 @@ import { useEffect, useState, useCallback } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Icons imports
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
 // Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
+
+// Manipulate strings imports
+import { format } from 'date-fns'
+import formatToUrl from '@/utils/formatToUrl'
+import formatToSubTitle from '@/utils/formatToSubTitle'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -139,9 +145,12 @@ export default function HighLightsHomePage({ lang, data }) {
 
                 <div className={styles.descriptionArea}>
                   <h2 className={styles.description}>{item.subtitle}</h2>
-                  <button className={styles.button}>
+                  <Link
+                    className={styles.button}
+                    href={`/noticias/${formatToUrl(item.title)}/${item.id}`}
+                  >
                     {languageTraducted.layout.events.seeMore}
-                  </button>
+                  </Link>
                 </div>
 
                 <div className={styles.imageArea}>

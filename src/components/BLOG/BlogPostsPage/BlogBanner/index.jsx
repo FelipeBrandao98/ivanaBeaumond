@@ -12,8 +12,14 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 // Function to traduct component imports
 import useLangDict from '@/utils/useLangDict'
 
+// Manipulate strings imports
+import { format } from 'date-fns'
+import formatToUrl from '@/utils/formatToUrl'
+import formatToSubTitle from '@/utils/formatToSubTitle'
+
 // Styles imports
 import styles from './styles.module.css'
+import Link from 'next/link'
 
 // Component Declaration
 export default function BlogBanner({ lang, data }) {
@@ -129,9 +135,12 @@ export default function BlogBanner({ lang, data }) {
 
               <div className={styles.descriptionArea}>
                 <h2 className={styles.description}>{item.subtitle}</h2>
-                <button className={styles.button}>
+                <Link
+                  className={styles.button}
+                  href={`/noticias/${formatToUrl(item.title)}/${item.id}`}
+                >
                   {languageTraducted.layout.events.seeMore}
-                </button>
+                </Link>
               </div>
 
               <div className={styles.imageArea}>

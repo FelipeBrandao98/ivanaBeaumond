@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+  margin-top: 2rem;
+}
+
+.black {
+  color: var(--black-800);
+}
+
+.white {
+  color: var(--white-100);
+}
+
+.font1rem {
+  font-size: 1rem;
+}
+
+.font2rem {
+  font-size: 2rem;
+}
+
+.font3rem {
+  font-size: 3rem;
+}

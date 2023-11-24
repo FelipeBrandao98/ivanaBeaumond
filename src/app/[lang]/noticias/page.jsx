@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 
 // Components imports
 import BlogBanner from '@/components/BLOG/BlogPostsPage/BlogBanner'
-import BlogOtherPosts from '@/components/BLOG/BlogPostsPage/BlogOtherPosts'
+import BlogOtherPosts from '@/components/BLOG/BlogOtherPosts'
 import BlogPostPage from '@/components/BLOG/BlogPostsPage'
 
 // API Service imports

@@ -2,15 +2,14 @@
   display: flex;
   flex-direction: row;
   margin-top: calc(50px + 45px + 2rem + .5rem);
-  width: calc(100% + 4rem);
-  margin-left: -2rem;
+  width: calc(100%);
   padding: 4rem;
 
   background-color: var(--white-100);
 
   gap: 3rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .dateArea {
@@ -21,9 +20,6 @@
   gap: .5rem;
   padding-left: .5rem;
   border-left: 1px solid var(--black-800);
-
-  position: absolute;
-  left: 4rem;
 }
 
 .day {
@@ -44,6 +40,7 @@
   font-size: 2rem;
   font-family: var(--font-bebas-neue);
   text-align: center;
+  max-width: 40rem;
 }
 
 .titleTwo {

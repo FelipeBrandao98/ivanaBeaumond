@@ -6,9 +6,11 @@
   gap: 1rem;
   padding: 1rem .5rem;
 
-  width: 50vw;
+  max-width: 48vw;
 
   background-color: var(--white-300);
+
+  border-radius: .5rem;
 }
 
 .title {

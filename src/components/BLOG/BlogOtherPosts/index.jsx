@@ -109,7 +109,7 @@ export default function BlogOtherPosts({ title, data }) {
                 <div className={styles.seeMoreArea}>
                   <Link
                     className={styles.seeMoreButton}
-                    href={`/noticias/${formatToUrl(data.title)}`}
+                    href={`/noticias/${formatToUrl(data.title)}/${data.id}`}
                   >
                     Leia Mais
                   </Link>
