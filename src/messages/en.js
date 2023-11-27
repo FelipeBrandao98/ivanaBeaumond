@@ -96,6 +96,11 @@ const dictionaryEn = {
       description: `Ivana Beaumond, the bridal store that has enchanted and made dreams come true for over a decade, presents a vast and exclusive collection of wedding dresses for women who want to feel like true princesses on the most special day of their lives. With a touch of elegance and sophistication, our dresses are carefully selected and made to provide a stunning and unforgettable look. Our commitment is to offer brides a unique and personalized experience, ensuring that every detail is perfectly aligned with their expectations and style.`,
       url: 'https://www.ivanabeaumond.com/en',
     },
+    // Pages Metadatas
+    news: {
+      title: 'News',
+      description: `Ivana Beaumond News is your definitive destination for all the latest news and information about fashion, media, tricks and tips for brides. If you are looking for a reliable and professional website that offers comprehensive and up-to-date coverage on the latest trends and news related to the world of brides and women, then you have come to the right place.`,
+    },
   },
 }
 

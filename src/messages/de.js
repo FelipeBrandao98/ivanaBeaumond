@@ -101,6 +101,11 @@ const dictionaryDe = {
       description: `Ivana Beaumond, das Brautmodengeschäft, das seit über einem Jahrzehnt verzaubert und Träume wahr werden lässt, präsentiert eine umfangreiche und exklusive Kollektion an Brautkleidern für Frauen, die sich am schönsten Tag ihres Lebens wie echte Prinzessinnen fühlen möchten. Mit einem Hauch von Eleganz und Raffinesse werden unsere Kleider sorgfältig ausgewählt und gefertigt, um einen atemberaubenden und unvergesslichen Look zu verleihen. Unser Ziel ist es, den Bräuten ein einzigartiges und persönliches Erlebnis zu bieten und sicherzustellen, dass jedes Detail perfekt auf ihre Erwartungen und ihren Stil abgestimmt ist.`,
       url: 'https://www.ivanabeaumond.com/de',
     },
+    // Pages Metadatas
+    news: {
+      title: 'Nachricht',
+      description: `Ivana Beaumond News ist Ihr definitives Ziel für die neuesten Nachrichten und Informationen zu Mode, Medien, Tricks und Tipps für Bräute. Wenn Sie auf der Suche nach einer zuverlässigen und professionellen Website sind, die eine umfassende und aktuelle Berichterstattung über die neuesten Trends und Neuigkeiten aus der Welt der Bräute und Frauen bietet, dann sind Sie bei uns genau richtig.`,
+    },
   },
 }
 

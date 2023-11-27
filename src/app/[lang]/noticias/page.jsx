@@ -8,6 +8,7 @@ import BlogPostPage from '@/components/BLOG/BlogPostsPage'
 
 // API Service imports
 import api from '@/services/api'
+import getLangDict from '@/utils/getLangDict'
 
 // functions to call API
 async function getLatestPosts(lang) {
@@ -17,9 +18,19 @@ async function getLatestPosts(lang) {
 }
 //
 
-export const metadata = {
-  title: 'Notícias',
-  description: '',
+export async function generateMetadata({ params }) {
+  const { lang } = params
+
+  const traductedMeta = getLangDict(lang)
+
+  return {
+    title: traductedMeta.metadata.news.title,
+    description: traductedMeta.metadata.news.description,
+    openGraph: {
+      title: traductedMeta.metadata.news.title,
+      description: traductedMeta.metadata.news.description,
+    },
+  }
 }
 
 // Component Declaration

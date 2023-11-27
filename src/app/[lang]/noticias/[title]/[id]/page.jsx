@@ -5,16 +5,23 @@ import { cookies } from 'next/headers'
 import NewsPageHead from '@/components/BLOG/NewsPageHead'
 import NewsPageContent from '@/components/BLOG/NewsPageContent'
 
-// API Service imports
-import api from '@/services/api'
+import getUniqueNews from '@/api/getUniqueNews'
 
-// functions to call API
-async function getPost(lang, id) {
-  const res = await api.get(`/news/${lang}/${id}`)
+export async function generateMetadata({ params }) {
+  const { lang, id } = params
 
-  return res.data
+  const news = await getUniqueNews(lang ? lang : 'pt-BR', id)
+
+  return {
+    title: news.title,
+    description: news.subtitle,
+    openGraph: {
+      title: news.title,
+      description: news.subtitle,
+      images: news.cover.url,
+    },
+  }
 }
-//
 
 // Component Declaration
 export default async function Page({ params }) {
@@ -23,9 +30,9 @@ export default async function Page({ params }) {
   const langCookie = cookieStore.get('lang')
   const lang = langCookie.value
 
-  const { title, id } = params
+  const { id } = params
 
-  const post = await getPost(lang, id)
+  const post = await getUniqueNews(lang, id)
 
   // Return components, with data and language
   return (

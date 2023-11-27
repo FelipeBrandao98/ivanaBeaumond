@@ -96,6 +96,11 @@ const dictionaryFr = {
       description: `Ivana Beaumond, la boutique de mariage qui enchante et réalise les rêves depuis plus d'une décennie, présente une vaste et exclusive collection de robes de mariée pour les femmes qui veulent se sentir comme de vraies princesses le jour le plus spécial de leur vie. Avec une touche d'élégance et de sophistication, nos robes sont soigneusement sélectionnées et confectionnées pour offrir un look époustouflant et inoubliable. Notre engagement est d'offrir aux mariées une expérience unique et personnalisée, en veillant à ce que chaque détail soit parfaitement en adéquation avec leurs attentes et leur style.`,
       url: 'https://www.ivanabeaumond.com/fr',
     },
+    // Pages Metadatas
+    news: {
+      title: 'Nouvelles',
+      description: `Ivana Beaumond News est votre destination définitive pour toutes les dernières nouvelles et informations sur la mode, les médias, les trucs et astuces pour les mariées. Si vous recherchez un site Web fiable et professionnel offrant une couverture complète et à jour des dernières tendances et actualités liées au monde des mariées et des femmes, alors vous êtes au bon endroit.`,
+    },
   },
 }
 
