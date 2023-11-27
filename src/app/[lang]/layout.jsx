@@ -118,8 +118,27 @@ const playfair_display = Playfair_Display({
 //
 
 export const metadata = {
-  title: 'Ivana Beaumond',
+  generator: 'Next.js',
+  applicationName: 'Ivana Beaumond Site',
+  creator: 'Felipe Brandão',
+  title: 'Ivana Beaumond - Home',
   description: 'Seu site de noivas',
+  //
+  openGraph: {
+    title: 'Ivana Beaumond',
+    description: 'O melhor site de noivas',
+    url: 'https://www.ivanabeaumond.com',
+    images: [
+      {
+        url: '/homeimage.jpg',
+        width: 800,
+        heigh: 600,
+        alt: 'Ivana Beaumond Homepage',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
 }
 
 // functions to call API

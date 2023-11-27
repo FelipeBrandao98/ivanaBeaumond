@@ -22,6 +22,11 @@ async function getCollectionImages(id) {
 }
 //
 
+export const metadata = {
+  title: 'Ivana Beaumond - Coleções',
+  description: '',
+}
+
 // Component Declaration
 export default async function Page() {
   // Try to get cookies from language

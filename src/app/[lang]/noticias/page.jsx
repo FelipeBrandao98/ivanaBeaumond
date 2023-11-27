@@ -17,6 +17,11 @@ async function getLatestPosts(lang) {
 }
 //
 
+export const metadata = {
+  title: 'Ivana Beaumond - Notícias',
+  description: '',
+}
+
 // Component Declaration
 export default async function Page() {
   // Try to get cookies from language
