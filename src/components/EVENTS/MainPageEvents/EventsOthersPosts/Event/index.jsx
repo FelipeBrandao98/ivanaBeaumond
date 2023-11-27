@@ -1,7 +1,7 @@
 'use client'
 
 // React imports
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'

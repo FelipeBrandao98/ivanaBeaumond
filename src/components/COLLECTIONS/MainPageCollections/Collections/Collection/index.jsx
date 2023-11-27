@@ -13,7 +13,7 @@ import { TbHandClick } from 'react-icons/tb'
 import PhotoSlidesCollections from './PhotoSlidesCollections'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -32,7 +32,7 @@ export default function Collection({
   const [images, setImages] = useState([])
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Desestructured functions to call api
   const { getCollectionImages } = functions
@@ -96,7 +96,7 @@ export default function Collection({
         </div>
         <div className={styles.buttonArea}>
           <button className={styles.button}>
-            {useLangDict(lang).collections.seeMore}
+            {languageTraducted.collections.seeMore}
           </button>
         </div>
       </div>

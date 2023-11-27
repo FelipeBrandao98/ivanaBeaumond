@@ -13,7 +13,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -27,7 +27,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
   const [cardClass, setCardClass] = useState(styles.secondCard)
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate window object
   function changeCardFromRight() {

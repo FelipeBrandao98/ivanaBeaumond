@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from '@/styles/loading.module.css'
@@ -18,7 +18,7 @@ export default function Loading() {
   // Return components, with functions to call API and language
   return (
     <div className={styles.content}>
-      <h1 className={styles.loading}>{useLangDict(lang).loading.title}</h1>
+      <h1 className={styles.loading}>{getLangDict(lang).loading.title}</h1>
       <div className={styles.flagArea}>
         <div className={styles.blueArea}></div>
         <div className={styles.whiteArea}></div>

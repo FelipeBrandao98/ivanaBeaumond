@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Collections from './Collections'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -13,7 +13,7 @@ import styles from './styles.module.css'
 // Component Declaration
 export default function MainPageCollections({ lang, data, functions }) {
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Return components, with functions to call API and language
   return (
@@ -28,7 +28,7 @@ export default function MainPageCollections({ lang, data, functions }) {
           width={1920}
           height={1080}
         />
-        <h1 className={styles.title}>{useLangDict(lang).collections.title}</h1>
+        <h1 className={styles.title}>{languageTraducted.collections.title}</h1>
         <div className={styles.subTitle}>
           <h2>{languageTraducted.collections.subTitle}</h2>
           <h3>Ivana Beaumond ©</h3>

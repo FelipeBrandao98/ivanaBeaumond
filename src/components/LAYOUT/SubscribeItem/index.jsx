@@ -8,7 +8,7 @@ import LoadingSubscribe from './LoadingSubscribe'
 import SuccessSubscribe from './SuccessSubscribe'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -22,7 +22,7 @@ export default function SubscribeItem({ lang, content }) {
   const [checked, setChecked] = useState(false)
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate on Form Send
   async function handleSubmit(event) {

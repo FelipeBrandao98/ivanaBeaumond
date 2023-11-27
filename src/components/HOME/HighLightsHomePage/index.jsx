@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Manipulate strings imports
 import { format } from 'date-fns'
@@ -28,7 +28,7 @@ export default function HighLightsHomePage({ lang, data }) {
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate window object
   const changeSlideFromRight = useCallback(() => {
@@ -83,7 +83,7 @@ export default function HighLightsHomePage({ lang, data }) {
     <div className={styles.container}>
       <div className={styles.mainTitleArea}>
         <h1 className={styles.mainTitle}>
-          {useLangDict(lang).layout.latestPosts.title}
+          {languageTraducted.layout.latestPosts.title}
         </h1>
       </div>
 

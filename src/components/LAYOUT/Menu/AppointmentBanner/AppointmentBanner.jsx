@@ -15,7 +15,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -81,7 +81,7 @@ export default function AppointmentBanner({
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Instance of Hook Form
   const {

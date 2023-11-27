@@ -3,7 +3,7 @@ import dictionaryPt from '@/messages/pt-BR'
 import dictionaryFr from '@/messages/fr'
 import dictionaryEn from '@/messages/en'
 
-export default function useLangDict(lang) {
+export default function getLangDict(lang) {
   if (lang === 'de') {
     return dictionaryDe
   }

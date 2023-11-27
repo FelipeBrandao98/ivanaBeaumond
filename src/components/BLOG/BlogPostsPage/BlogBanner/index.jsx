@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Manipulate strings imports
 import { format } from 'date-fns'
@@ -28,7 +28,7 @@ export default function BlogBanner({ lang, data }) {
   const [slideClass, setSlideClass] = useState(styles.secondBanner)
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate window object
   const changeSlideFromRight = useCallback(() => {

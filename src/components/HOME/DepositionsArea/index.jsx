@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Deposition from './Deposition'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -13,12 +13,12 @@ import styles from './styles.module.css'
 // Component Declaration
 export default function DepositionsArea({ lang, data }) {
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Return components, with functions to call API and language
   return (
     <section className={styles.container}>
-      <h1 className={styles.h1}>{useLangDict(lang).home.depositions.title}</h1>
+      <h1 className={styles.h1}>{languageTraducted.home.depositions.title}</h1>
       <div className={styles.row}>
         {data.map((deposition) => {
           return <Deposition key={deposition.id} data={deposition} />

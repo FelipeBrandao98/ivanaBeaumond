@@ -1,6 +1,9 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Function to traduct component imports
+import getLangDict from '@/utils/getLangDict'
+
 // Components imports
 import AdressItem from '@/components/LAYOUT/AdressItem'
 import Footer from '@/components/LAYOUT/Footer'
@@ -38,10 +41,11 @@ import { Providers } from './providers'
 // Google Analytics imports
 import GoogleAnalytics from '@/services/GoogleAnalytics'
 
+// Hooks imports
+import CookieNotice from '@/hooks/CookieNotice'
+
 // Global Styles imports
 import '@/styles/globals.css'
-import CookieNotice from '@/hooks/CookieNotice'
-import useLangDict from '@/utils/useLangDict'
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -121,7 +125,7 @@ const playfair_display = Playfair_Display({
 export async function generateMetadata({ params }) {
   const { lang } = params
 
-  const traductedMeta = useLangDict(lang)
+  const traductedMeta = getLangDict(lang)
 
   return {
     //

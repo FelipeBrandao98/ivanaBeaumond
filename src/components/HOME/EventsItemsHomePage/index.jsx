@@ -7,7 +7,7 @@ import { BsStarHalf } from 'react-icons/bs'
 import { IoIosCalendar } from 'react-icons/io'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -18,7 +18,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
   const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Return components, with functions to call API and language
   return (

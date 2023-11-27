@@ -20,7 +20,7 @@ import SearchButton from './SearchButton'
 import AppointmentBanner from './AppointmentBanner/AppointmentBanner'
 
 // Function to traduct component imports
-import useLangDict from '@/utils/useLangDict'
+import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
@@ -34,7 +34,7 @@ export default function Menu({ createAppointment, lang, children }) {
   const [hidden, setHidden] = useState(false)
 
   // Instance of Traductor
-  const languageTraducted = useLangDict(lang)
+  const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate window object
   const toggleHidden = useCallback(() => {
