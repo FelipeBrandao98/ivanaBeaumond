@@ -23,7 +23,7 @@ async function getCollectionImages(id) {
 //
 
 export const metadata = {
-  title: 'Ivana Beaumond - Coleções',
+  title: 'Coleções',
   description: '',
 }
 

@@ -77,6 +77,31 @@ const dictionaryDe = {
       title: 'Neueste Nachrichten',
     },
   },
+
+  metadata: {
+    metadataBase: new URL('https://www.ivanabeaumond.com/de'),
+
+    keywords: [
+      'Bräute',
+      'Brautkleid',
+      'Kleidung des Bräutigams',
+      'Party Kleid',
+    ],
+
+    title: {
+      default: 'Ivana Beaumond',
+      template: 'Ivana Beaumond - Französisches Atelier | %s',
+      absolute: 'Ivana Beaumond - Französisches Atelier | Homepage',
+    },
+
+    description: `Im Atelier Ivana Beaumond finden Sie exklusive Brautkleider, Debütanten- und Herrenbekleidung. Mit mehr als 20 Jahren Erfahrung kreiert die Designerin einzigartige Kollektionen, die die Essenz der brasilianischen Frau mit französischer Eleganz verbinden. Besuchen Sie unser Brautmodengeschäft in Rio de Janeiro oder Paris, um das perfekte Kleid für Ihre Hochzeit oder 15. Geburtstagsfeier zu finden.`,
+
+    openGraph: {
+      title: 'Ivana Beaumond',
+      description: `Ivana Beaumond, das Brautmodengeschäft, das seit über einem Jahrzehnt verzaubert und Träume wahr werden lässt, präsentiert eine umfangreiche und exklusive Kollektion an Brautkleidern für Frauen, die sich am schönsten Tag ihres Lebens wie echte Prinzessinnen fühlen möchten. Mit einem Hauch von Eleganz und Raffinesse werden unsere Kleider sorgfältig ausgewählt und gefertigt, um einen atemberaubenden und unvergesslichen Look zu verleihen. Unser Ziel ist es, den Bräuten ein einzigartiges und persönliches Erlebnis zu bieten und sicherzustellen, dass jedes Detail perfekt auf ihre Erwartungen und ihren Stil abgestimmt ist.`,
+      url: 'https://www.ivanabeaumond.com/de',
+    },
+  },
 }
 
 export default dictionaryDe

@@ -18,7 +18,7 @@ async function getLatestPosts(lang) {
 //
 
 export const metadata = {
-  title: 'Ivana Beaumond - Notícias',
+  title: 'Notícias',
   description: '',
 }
 

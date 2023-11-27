@@ -77,6 +77,26 @@ const dictionaryEn = {
       title: 'Latest news',
     },
   },
+
+  metadata: {
+    metadataBase: new URL('https://www.ivanabeaumond.com/en'),
+
+    keywords: ['Brides', `Bride's dress`, `Groom's Attire`, 'Party Dress'],
+
+    title: {
+      default: 'Ivana Beaumond',
+      template: 'Ivana Beaumond - French Atelier | %s',
+      absolute: 'Ivana Beaumond - French Atelier | Homepage',
+    },
+
+    description: `Find exclusive wedding dresses, debutantes and men's attire at Atelier Ivana Beaumond. With more than 20 years of experience, the designer creates unique collections that combine the essence of the Brazilian woman with French elegance. Visit our bridal shop in Rio de Janeiro or Paris to find the perfect dress for your wedding or 15th birthday party.`,
+
+    openGraph: {
+      title: 'Ivana Beaumond',
+      description: `Ivana Beaumond, the bridal store that has enchanted and made dreams come true for over a decade, presents a vast and exclusive collection of wedding dresses for women who want to feel like true princesses on the most special day of their lives. With a touch of elegance and sophistication, our dresses are carefully selected and made to provide a stunning and unforgettable look. Our commitment is to offer brides a unique and personalized experience, ensuring that every detail is perfectly aligned with their expectations and style.`,
+      url: 'https://www.ivanabeaumond.com/en',
+    },
+  },
 }
 
 export default dictionaryEn

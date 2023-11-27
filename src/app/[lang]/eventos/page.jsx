@@ -1,7 +1,7 @@
 import MainPageEvents from '@/components/EVENTS/MainPageEvents'
 
 export const metadata = {
-  title: 'Ivana Beaumond - Eventos',
+  title: 'Eventos',
   description: '',
 }
 

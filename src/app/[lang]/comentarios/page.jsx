@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Ivana Beaumond - Comentários',
+  title: 'Comentários',
   description: '',
 }
 

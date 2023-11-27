@@ -77,6 +77,26 @@ const dictionaryFr = {
       title: 'Dernières nouvelles',
     },
   },
+
+  metadata: {
+    metadataBase: new URL('https://www.ivanabeaumond.com/fr'),
+
+    keywords: ['Mariées', 'Robe de mariée', 'Tenue du marié', 'Robe de fête'],
+
+    title: {
+      default: 'Ivana Beaumond',
+      template: 'Ivana Beaumond - Atelier français | %s',
+      absolute: 'Ivana Beaumond - Atelier français | Homepage',
+    },
+
+    description: `Trouvez des robes de mariée exclusives, des débutantes et des vêtements pour hommes à l'Atelier Ivana Beaumond. Avec plus de 20 ans d'expérience, la créatrice crée des collections uniques qui allient l'essence de la femme brésilienne à l'élégance à la française. Visitez notre boutique de mariage à Rio de Janeiro ou à Paris pour trouver la robe parfaite pour votre mariage ou votre 15e anniversaire.`,
+
+    openGraph: {
+      title: 'Ivana Beaumond',
+      description: `Ivana Beaumond, la boutique de mariage qui enchante et réalise les rêves depuis plus d'une décennie, présente une vaste et exclusive collection de robes de mariée pour les femmes qui veulent se sentir comme de vraies princesses le jour le plus spécial de leur vie. Avec une touche d'élégance et de sophistication, nos robes sont soigneusement sélectionnées et confectionnées pour offrir un look époustouflant et inoubliable. Notre engagement est d'offrir aux mariées une expérience unique et personnalisée, en veillant à ce que chaque détail soit parfaitement en adéquation avec leurs attentes et leur style.`,
+      url: 'https://www.ivanabeaumond.com/fr',
+    },
+  },
 }
 
 export default dictionaryFr

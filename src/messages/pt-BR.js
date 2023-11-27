@@ -77,6 +77,33 @@ const dictionaryPt = {
       title: 'Últimas Notícias',
     },
   },
+
+  metadata: {
+    metadataBase: new URL('https://www.ivanabeaumond.com/pt-BR'),
+
+    keywords: [
+      'Noivas',
+      'Vestido de Noivas',
+      'Traje do Noivo',
+      'Vestido de Festa',
+    ],
+
+    title: {
+      default: 'Ivana Beaumond',
+      template: 'Ivana Beaumond - Ateliê Francês | %s',
+      absolute: 'Ivana Beaumond - Ateliê Francês | Homepage',
+    },
+
+    description:
+      'Encontre vestidos de noiva, debutantes e trajes masculinos exclusivos no Atelier Ivana Beaumond. Com mais de 20 anos de experiência, a estilista cria coleções únicas que unem a essência da mulher brasileira com a elegância francesa. Visite nossa loja de noivas no Rio de Janeiro ou Paris para encontrar o vestido perfeito para seu casamento ou festa de 15 anos.',
+
+    openGraph: {
+      title: 'Ivana Beaumond',
+      description:
+        'Ivana Beaumond, a loja de noivas que encanta e realiza sonhos há mais de uma década, apresenta uma vasta e exclusiva coleção de vestidos de noiva para mulheres que desejam se sentir verdadeiras princesas no dia mais especial de suas vidas. Com um toque de elegância e sofisticação, nossos vestidos são cuidadosamente selecionados e confeccionados para proporcionar um visual deslumbrante e inesquecível. Nosso compromisso é oferecer às noivas uma experiência única e personalizada, garantindo que cada detalhe seja perfeitamente alinhado com suas expectativas e estilo.',
+      url: 'https://www.ivanabeaumond.com/pt-BR',
+    },
+  },
 }
 
 export default dictionaryPt

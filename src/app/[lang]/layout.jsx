@@ -41,6 +41,7 @@ import GoogleAnalytics from '@/services/GoogleAnalytics'
 // Global Styles imports
 import '@/styles/globals.css'
 import CookieNotice from '@/hooks/CookieNotice'
+import useLangDict from '@/utils/useLangDict'
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -117,28 +118,74 @@ const playfair_display = Playfair_Display({
 })
 //
 
-export const metadata = {
-  generator: 'Next.js',
-  applicationName: 'Ivana Beaumond Site',
-  creator: 'Felipe Brandão',
-  title: 'Ivana Beaumond - Home',
-  description: 'Seu site de noivas',
-  //
-  openGraph: {
-    title: 'Ivana Beaumond',
-    description: 'O melhor site de noivas',
-    url: 'https://www.ivanabeaumond.com',
-    images: [
-      {
-        url: '/homeimage.jpg',
-        width: 800,
-        heigh: 600,
-        alt: 'Ivana Beaumond Homepage',
+export async function generateMetadata({ params }) {
+  const { lang } = params
+
+  const traductedMeta = useLangDict(lang)
+
+  return {
+    //
+    //
+    metadataBase: traductedMeta.metadata.metadataBase,
+    generator: 'Next.js',
+    applicationName: 'Website - Ivana Beaumond',
+    creator: 'Felipe Brandão',
+    keywords: traductedMeta.metadata.keywords,
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    alternates: {
+      canonical: '/',
+      languages: {
+        'pt-BR': '/pt-BR',
+        'de-DE': '/de',
+        'fr-FR': '/fr',
+        'en-US': '/en',
       },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
+    },
+    title: traductedMeta.metadata.title,
+    description: traductedMeta.metadata.description,
+    //
+    //
+    openGraph: {
+      title: traductedMeta.metadata.openGraph.title,
+      description: traductedMeta.metadata.openGraph.description,
+      url: traductedMeta.metadata.openGraph.url,
+      images: [
+        {
+          url: 'https://ivana-backend-0a6d1ff75854.herokuapp.com/images/homeimage-d3c53481-7236-44da-ad04-2da9beae9ea6',
+          width: 800,
+          heigh: 600,
+          alt: 'Ivana Beaumond Homepage',
+        },
+      ],
+      type: 'website',
+    },
+    //
+    //
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+    },
+    //
+    //
+    alternates: {
+      canonical: 'https://www.ivanabeaumond.com',
+      languages: {
+        'pt-BR': 'https://www.ivanabeaumond.com/pt-BR',
+        'de-DE': 'https://www.ivanabeaumond.com/de',
+        'fr-FR': 'https://www.ivanabeaumond.com/fr',
+        'en-US': 'https://www.ivanabeaumond.com/en',
+        'en-UK': 'https://www.ivanabeaumond.com/en',
+      },
+      media: {
+        'only screen and (max-width: 720px)':
+          'https://www.ivanabeaumond.com/mobile',
+      },
+    },
+  }
 }
 
 // functions to call API
@@ -159,21 +206,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={lang}>
       <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Encontre vestidos de noiva, debutantes e trajes masculinos exclusivos no Atelier Ivana Beaumond. Com mais de 20 anos de experiência, a estilista cria coleções únicas que unem a essência da mulher brasileira com a elegância francesa. Visite nossa loja de noivas no Rio de Janeiro ou Paris para encontrar o vestido perfeito para seu casamento ou festa de 15 anos."
-        />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-
-        <meta property="og:title" content="Ivana Beaumond - Ateliê Francês" />
-        <meta
-          property="og:description"
-          content="Descubra os vestidos mais exclusivos e elegantes para noivas, debutantes e convidados no Atelier Ivana Beaumond! Com mais de 20 anos de experiência, a designer une a essência da mulher brasileira com a elegância francesa para criar coleções únicas. Encontre o traje perfeito para o casamento ou 15 anos dos seus sonhos. Visite nossa loja no Rio de Janeiro ou Paris hoje mesmo! Palavras-chave: Vestidos de Noiva, Vestidos de Debutantes, Trajes Masculinos, Casamento, 15 Anos, Loja de Noiva."
-        />
-        <meta property="og:url" content="https://ivanabeaumond.com.br/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="" />
       </Head>
       <body
         className={`
