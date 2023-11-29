@@ -1,0 +1,61 @@
+.container {
+  transition: all .5s;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  text-decoration: none;
+  list-style: none;
+
+  gap: .2rem;
+
+  transition: all 2s;
+}
+
+.container ul li {
+  font-size: .8rem;
+  font-weight: thin;
+  padding: .1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+}
+
+.container ul li:hover,
+.contactNav ul li:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (min-width: 720px) {
+  .short {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: 100%;
+  }
+
+  .container ul {
+    position: inherit;
+    align-items: flex-end;
+    gap: .5rem;
+  }
+
+  .container ul li {
+    font-size: 1rem;
+  }
+}

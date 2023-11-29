@@ -1,6 +1,6 @@
 'use client'
 // React imports
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
@@ -14,11 +14,15 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+// Context imports
+import { AppointmentContext } from '@/Context/AppointmentContext'
+
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
 // Styles imports
 import styles from './styles.module.css'
+import createAppointment from '@/api/CallsWithoutToken/createAppointment'
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
@@ -71,12 +75,10 @@ const createAppointmentFormSchema = z.object({
 })
 
 // Component Declaration
-export default function AppointmentBanner({
-  lang,
-  createAppointment,
-  isHidden,
-  close,
-}) {
+export default function AppointmentBanner({ lang }) {
+  // Instanciate and initialize Contexts functions
+  const { appointment, handleAppointment } = useContext(AppointmentContext)
+
   // States declaratios
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
 
@@ -104,10 +106,10 @@ export default function AppointmentBanner({
   // Return components, with functions to call API and language
   return (
     <>
-      {isHidden && (
+      {appointment && (
         <section className={styles.container}>
           <aside className={styles.content}>
-            <span className={styles.closeButton} onClick={close}>
+            <span className={styles.closeButton} onClick={handleAppointment}>
               <HiX width={20} height={20} />
             </span>
 

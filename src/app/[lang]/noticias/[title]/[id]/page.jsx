@@ -2,16 +2,20 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import NewsPageHead from '@/components/BLOG/NewsPageHead'
 import NewsPageContent from '@/components/BLOG/NewsPageContent'
 
-import getUniqueNews from '@/api/getUniqueNews'
+// Calls api imports
+import getUniqueNews from '@/api/CallsWithoutToken/getUniqueNews'
 
+// Metadata
 export async function generateMetadata({ params }) {
+  // getParams
   const { lang, id } = params
 
+  // Fetch to api
   const news = await getUniqueNews(lang ? lang : 'pt-BR', id)
 
+  // return metadata
   return {
     title: news.title,
     description: news.subtitle,
@@ -21,7 +25,9 @@ export async function generateMetadata({ params }) {
       images: news.cover.url,
     },
   }
+  //
 }
+//
 
 // Component Declaration
 export default async function Page({ params }) {

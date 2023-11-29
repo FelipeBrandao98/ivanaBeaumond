@@ -11,7 +11,7 @@ import getLangDict from '@/utils/getLangDict'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function MainPageCollections({ lang, data, functions }) {
+export default function CollectionsPage({ lang, data, functions }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 

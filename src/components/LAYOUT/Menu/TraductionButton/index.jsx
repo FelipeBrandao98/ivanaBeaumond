@@ -11,11 +11,11 @@ import Link from 'next/link'
 import { FaChevronDown } from 'react-icons/fa'
 import ReactCountryFlag from 'react-country-flag'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
+import MenuTraductionButtonContainer from '@/atoms/Layout/Menu/MenuTraductionButtonContainer'
 
 // Component Declaration
-export default function TraductionButton({ lang }) {
+export default function TraductionButton({ lang, short }) {
   // States declaratios
   const [isOpen, setIsOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -60,163 +60,157 @@ export default function TraductionButton({ lang }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <div
-        className={`
-          ${hidden ? styles.hidden : ''}
-        `}
-      >
-        <ol className={isOpen ? styles.open : styles.close}>
-          {lang === 'en' ? (
-            <>
-              <li onClick={handleIsOpen}>
-                <div className={styles.row}>
-                  US
-                  <ReactCountryFlag countryCode="US" svg />
-                </div>
-                <FaChevronDown size={10} />
-              </li>
+      <MenuTraductionButtonContainer isOpen={isOpen} short={short}>
+        {lang === 'en' ? (
+          <>
+            <li onClick={handleIsOpen}>
+              <div>
+                US
+                <ReactCountryFlag countryCode="US" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
 
-              <li>
-                <Link href={`/pt-BR${pathname}`}>
-                  <div className={styles.row}>
-                    BR
-                    <ReactCountryFlag countryCode="BR" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/fr${pathname}`}>
-                  <div className={styles.row}>
-                    FR
-                    <ReactCountryFlag countryCode="FR" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/de${pathname}`}>
-                  <div className={styles.row}>
-                    DE
-                    <ReactCountryFlag countryCode="DE" svg />
-                  </div>
-                </Link>
-              </li>
-            </>
-          ) : lang === 'de' ? (
-            <>
-              <li onClick={handleIsOpen}>
-                <div className={styles.row}>
-                  DE
-                  <ReactCountryFlag countryCode="DE" svg />
-                </div>
-                <FaChevronDown size={10} />
-              </li>
-
-              <li>
-                <Link href={`/pt-BR${pathname}`}>
-                  <div className={styles.row}>
-                    BR
-                    <ReactCountryFlag countryCode="BR" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/fr${pathname}`}>
-                  <div className={styles.row}>
-                    FR
-                    <ReactCountryFlag countryCode="FR" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/en${pathname}`}>
-                  <div className={styles.row}>
-                    US
-                    <ReactCountryFlag countryCode="US" svg />
-                  </div>
-                </Link>
-              </li>
-            </>
-          ) : lang === 'fr' ? (
-            <>
-              <li onClick={handleIsOpen}>
-                <div className={styles.row}>
-                  FR
-                  <ReactCountryFlag countryCode="FR" svg />
-                </div>
-                <FaChevronDown size={10} />
-              </li>
-
-              <li>
-                <Link href={`/pt-BR${pathname}`}>
-                  <div className={styles.row}>
-                    BR
-                    <ReactCountryFlag countryCode="BR" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/en${pathname}`}>
-                  <div className={styles.row}>
-                    US
-                    <ReactCountryFlag countryCode="US" svg />
-                  </div>
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`/de${pathname}`}>
-                  <div className={styles.row}>
-                    DE
-                    <ReactCountryFlag countryCode="DE" svg />
-                  </div>
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li onClick={handleIsOpen}>
-                <div className={styles.row}>
+            <li>
+              <Link href={`/pt-BR${pathname}`}>
+                <div>
                   BR
                   <ReactCountryFlag countryCode="BR" svg />
                 </div>
-                <FaChevronDown size={10} />
-              </li>
+              </Link>
+            </li>
 
-              <li>
-                <Link href={`/fr${pathname}`}>
-                  <div className={styles.row}>
-                    FR
-                    <ReactCountryFlag countryCode="FR" svg />
-                  </div>
-                </Link>
-              </li>
+            <li>
+              <Link href={`/fr${pathname}`}>
+                <div>
+                  FR
+                  <ReactCountryFlag countryCode="FR" svg />
+                </div>
+              </Link>
+            </li>
 
-              <li>
-                <Link href={`/en${pathname}`}>
-                  <div className={styles.row}>
-                    US
-                    <ReactCountryFlag countryCode="US" svg />
-                  </div>
-                </Link>
-              </li>
+            <li>
+              <Link href={`/de${pathname}`}>
+                <div>
+                  DE
+                  <ReactCountryFlag countryCode="DE" svg />
+                </div>
+              </Link>
+            </li>
+          </>
+        ) : lang === 'de' ? (
+          <>
+            <li onClick={handleIsOpen}>
+              <div>
+                DE
+                <ReactCountryFlag countryCode="DE" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
 
-              <li>
-                <Link href={`/de${pathname}`}>
-                  <div className={styles.row}>
-                    DE
-                    <ReactCountryFlag countryCode="DE" svg />
-                  </div>
-                </Link>
-              </li>
-            </>
-          )}
-        </ol>
-      </div>
+            <li>
+              <Link href={`/pt-BR${pathname}`}>
+                <div>
+                  BR
+                  <ReactCountryFlag countryCode="BR" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/fr${pathname}`}>
+                <div>
+                  FR
+                  <ReactCountryFlag countryCode="FR" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/en${pathname}`}>
+                <div>
+                  US
+                  <ReactCountryFlag countryCode="US" svg />
+                </div>
+              </Link>
+            </li>
+          </>
+        ) : lang === 'fr' ? (
+          <>
+            <li onClick={handleIsOpen}>
+              <div>
+                FR
+                <ReactCountryFlag countryCode="FR" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
+
+            <li>
+              <Link href={`/pt-BR${pathname}`}>
+                <div>
+                  BR
+                  <ReactCountryFlag countryCode="BR" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/en${pathname}`}>
+                <div>
+                  US
+                  <ReactCountryFlag countryCode="US" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/de${pathname}`}>
+                <div>
+                  DE
+                  <ReactCountryFlag countryCode="DE" svg />
+                </div>
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li onClick={handleIsOpen}>
+              <div>
+                BR
+                <ReactCountryFlag countryCode="BR" svg />
+              </div>
+              <FaChevronDown size={10} />
+            </li>
+
+            <li>
+              <Link href={`/fr${pathname}`}>
+                <div>
+                  FR
+                  <ReactCountryFlag countryCode="FR" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/en${pathname}`}>
+                <div>
+                  US
+                  <ReactCountryFlag countryCode="US" svg />
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link href={`/de${pathname}`}>
+                <div>
+                  DE
+                  <ReactCountryFlag countryCode="DE" svg />
+                </div>
+              </Link>
+            </li>
+          </>
+        )}
+      </MenuTraductionButtonContainer>
     </>
   )
   //

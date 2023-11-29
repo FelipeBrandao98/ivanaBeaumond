@@ -7,16 +7,8 @@ import BlogOtherPosts from '@/components/BLOG/BlogOtherPosts'
 import BlogPostPage from '@/components/BLOG/BlogPostsPage'
 
 // API Service imports
-import api from '@/services/api'
 import getLangDict from '@/utils/getLangDict'
-
-// functions to call API
-async function getLatestPosts(lang) {
-  const res = await api.get(`/news/latest/${lang}`)
-
-  return res.data
-}
-//
+import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -42,7 +34,7 @@ export default async function Page() {
   //
 
   // Instantiate response objects from api, by language by the way
-  const latestPosts = await getLatestPosts(lang)
+  const latestPosts = await getLatestNews(lang)
 
   // Return components, with data and language
   return (

@@ -1,3 +1,11 @@
+{
+  /* 
+    This is the "Layout" component, it is responsible for creating the complete
+    Layout of the page, it is the first instance of the "App", This is where
+    the application's standard metadata, Privacy Policy Banner and
+    Google Analytics instance are created.
+*/
+}
 // Cookies imports
 import { cookies } from 'next/headers'
 
@@ -14,9 +22,6 @@ import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
 // Next.js Components imports
 import Head from 'next/head'
-
-// API Service imports
-import api from '@/services/api'
 
 // Fonts from google, resource of next.js imports
 import {
@@ -122,11 +127,15 @@ const playfair_display = Playfair_Display({
 })
 //
 
+// Default Metadata
 export async function generateMetadata({ params }) {
+  // getParams
   const { lang } = params
 
+  // Traduct
   const traductedMeta = getLangDict(lang)
 
+  // Return Metadatas
   return {
     //
     //
@@ -143,6 +152,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: '/',
       languages: {
+        '/': '/pt-BR',
         'pt-BR': '/pt-BR',
         'de-DE': '/de',
         'fr-FR': '/fr',
@@ -170,8 +180,8 @@ export async function generateMetadata({ params }) {
     //
     //
     icons: {
-      icon: '/favicon.ico',
-      shortcut: '/favicon.ico',
+      icon: '/favicon.svg',
+      shortcut: '/favicon.svg',
     },
     //
     //
@@ -191,12 +201,7 @@ export async function generateMetadata({ params }) {
     },
   }
 }
-
-// functions to call API
-async function createAppointment(formData) {
-  'use server'
-  await api.post('/appointments', formData)
-}
+//
 
 // Component Declaration
 export default async function RootLayout({ children }) {
@@ -209,9 +214,7 @@ export default async function RootLayout({ children }) {
   // Return components, with functions to call API and language
   return (
     <html lang={lang}>
-      <Head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-      </Head>
+      {/* send font variables */}
       <body
         className={`
         ${inter.variable}
@@ -230,16 +233,22 @@ export default async function RootLayout({ children }) {
         `}
       >
         <Providers>
-          <Menu createAppointment={createAppointment} lang={lang}>
-            <GoogleAnalytics />
-            <main>{children}</main>
-            <AdressItem />
-            <SubscribeItem lang={lang} />
-            <Footer />
-            <GuideToBottomScroll lang={lang} />
-            <ScrollToTop />
-          </Menu>
-          <CookieNotice />
+          {/* Layouts Components */}
+          <Menu lang={lang} />
+
+          {/* Main component, Where all pages are rendered */}
+          <main>{children}</main>
+
+          {/* Layout Components */}
+          <AdressItem lang={lang} />
+          <SubscribeItem lang={lang} />
+          <Footer lang={lang} />
+
+          {/* Utility Components */}
+          <GuideToBottomScroll lang={lang} />
+          <ScrollToTop lang={lang} />
+          <CookieNotice lang={lang} />
+          <GoogleAnalytics />
         </Providers>
       </body>
     </html>

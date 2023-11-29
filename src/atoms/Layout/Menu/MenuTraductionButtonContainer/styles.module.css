@@ -1,13 +1,13 @@
 @media (min-width: 720px) {
-
-  .hidden .close,
-  .hidden .open {
+  .short .close,
+  .short .open {
     top: .5rem;
     transition: all .8s;
   }
 }
 
-.row {
+.close li div,
+.open li div {
   display: flex;
   flex-direction: row;
   align-items: center;

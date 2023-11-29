@@ -1,0 +1,35 @@
+.container {
+  position: absolute;
+  top: 1.5rem;
+  right: 50%;
+  transform: translateX(50%);
+
+  transition: all .5s;
+}
+
+.container img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.short {
+  top: -4rem;
+}
+
+@media (max-width: 720px) {
+  .container {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+
+    height: calc(30px + 2rem + .2rem);
+    width: 10rem;
+  }
+
+  .container img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+}

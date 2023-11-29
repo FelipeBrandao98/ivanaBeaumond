@@ -2,25 +2,10 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import MainPageCollections from '@/components/COLLECTIONS/MainPageCollections'
+import CollectionsPage from '@/components/COLLECTIONS/CollectionsPage'
 
 // API Service imports
-import api from '@/services/api'
-
-// functions to call API
-async function getData(lang) {
-  const res = await api.get(`/collections/${lang}`)
-
-  return res.data
-}
-
-async function getCollectionImages(id) {
-  'use server'
-  const res = await api.get(`/collections/images/collection-id/${id}`)
-
-  return res.data
-}
-//
+import getCollections from '@/api/CallsWithToken/getCollections'
 
 export const metadata = {
   title: 'Coleções',
@@ -36,16 +21,12 @@ export default async function Page() {
   //
 
   // Instantiate response objects from api, by language by the way
-  let data = await getData(lang)
+  const collections = await getCollections(lang)
 
   // Return components, with functions to call API and language
   return (
     <>
-      <MainPageCollections
-        lang={lang}
-        data={data}
-        functions={{ getCollectionImages }}
-      />
+      <CollectionsPage lang={lang} data={collections} />
     </>
   )
   //

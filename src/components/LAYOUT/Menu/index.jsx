@@ -1,138 +1,155 @@
 'use client'
 
+{
+  /* 
+    This is the "Menu" component, it is responsible for creating the upper Menu
+    rendered on all pages of the application, it contains the following functions:
+      - 1) Navigate between application pages;
+      - 2) Change the language option;
+      - 3) Call the create schedules component, which in turn becomes global
+      throughout the application, due to being instantiated in the Menu component.
+
+    Other menu functions (responsible for making it "Client Side Rendering") are
+    styling functions, including:
+      - 1 ) "Short", the short state is used to shorten the menu when scrolling
+      the screen;
+      - 2) "Mobile Menu", the Mobile Menu is a component that encapsulates menu
+      items, to be rearranged separately into an open/close menu when on mobile
+  */
+}
+
 // React imports
-import { useEffect, useState, useContext, useCallback } from 'react'
+import { useEffect, useContext, useState, useCallback } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
 
 // Icons imports
-import { FaInstagram, FaFacebookSquare, FaChevronRight } from 'react-icons/fa'
+import { FaInstagram, FaFacebookSquare } from 'react-icons/fa'
 
 // Context imports
 import { AppointmentContext } from '@/Context/AppointmentContext'
 
 // Components imports
 import TraductionButton from './TraductionButton'
-import OpenMenuForMobile from './OpenMenuForMobile'
+import MenuMobile from './MenuMobile'
 import SearchButton from './SearchButton'
 import AppointmentBanner from './AppointmentBanner/AppointmentBanner'
 
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
+import MenuContainer from '@/atoms/Layout/Menu/MenuContainer'
+import MenuLogoInHeader from '@/atoms/Layout/Menu/MenuLogoInHeader'
+import AppointmentButton from './AppointmentButton'
+import MenuPagesArea from '@/atoms/Layout/Menu/MenuPagesArea'
+import MenuSocialMedia from '@/atoms/Layout/Menu/MenuSocialMedia'
+//
 
 // Component Declaration
-export default function Menu({ createAppointment, lang, children }) {
+export default function Menu({ lang }) {
   // Instanciate and initialize Contexts functions
-  const { appointment, handleAppointment } = useContext(AppointmentContext)
+  const { appointment } = useContext(AppointmentContext)
 
   // States declaratios
-  const [hidden, setHidden] = useState(false)
+  const [short, setShort] = useState(false)
 
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
   // Functions to manipulate window object
-  const toggleHidden = useCallback(() => {
+  const toggleShort = useCallback(() => {
     const scrolled = document.documentElement.scrollTop
     if (scrolled > 300) {
-      setHidden(true)
+      setShort(true)
     } else if (scrolled <= 300) {
-      setHidden(false)
+      setShort(false)
     }
   }, [])
   //
 
   // Use Effects
   useEffect(() => {
-    window.addEventListener('scroll', toggleHidden)
-  }, [toggleHidden])
+    window.addEventListener('scroll', toggleShort)
+  }, [toggleShort])
 
   // Return components, with functions to call API and language
   return (
     <>
-      <div
-        className={`
-          ${hidden ? styles.hidden : ''}
-        `}
-      >
-        <header className={styles.header}>
+      {
+        // short is a variable that represents when the menu is suspended,
+        // when scrolling down the screen
+      }
+      <MenuContainer short={short}>
+        <MenuLogoInHeader short={short}>
           <Image
-            className={styles.logoInMenu}
             src="/logo-white.svg"
             alt="IVANA BEAUMOND"
             width={300}
             height={50}
           />
+        </MenuLogoInHeader>
 
-          <TraductionButton lang={lang} hidden={hidden} />
+        <SearchButton lang={lang} short={short} />
 
-          <SearchButton />
+        <TraductionButton lang={lang} short={short} />
 
-          <OpenMenuForMobile>
-            <div className={styles.menuNavsArea}>
-              <nav className={styles.contactNav}>
-                <ul>
-                  <li onClick={handleAppointment}>
-                    {languageTraducted.layout.menu.appointment}{' '}
-                    <FaChevronRight size={20} />
-                  </li>
-                </ul>
-              </nav>
-              <nav className={styles.nav}>
-                <ul>
-                  <li>
-                    <Link href={`/`} lang={lang}>
-                      {languageTraducted.layout.menu.menuItemOne.name}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`/colecoes`} lang={lang}>
-                      {languageTraducted.layout.menu.menuItemTwo.name}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`/noticias`} lang={lang}>
-                      {languageTraducted.layout.menu.menuItemThree.name}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`/eventos`} lang={lang}>
-                      {languageTraducted.layout.menu.menuItemFour.name}
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-              <nav className={styles.navSociaMedia}>
-                <ul>
-                  <li>
-                    @ivanabeaumond <FaInstagram />
-                  </li>
-                  <li>
-                    IvanaBeaumond <FaFacebookSquare />
-                  </li>
-                  <li>
-                    @ivanaparisdebutantes <FaInstagram />
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </OpenMenuForMobile>
-        </header>
+        {
+          // "MenuMobile" is the component that represents the area
+          // to be hidden when in mobile mode, when in desktop mode,
+          // child components are normally organized on the screen
+          // corresponding to the Menu
+        }
 
-        <AppointmentBanner
-          lang={lang}
-          createAppointment={createAppointment}
-          isHidden={appointment}
-          close={handleAppointment}
-        />
+        <MenuMobile lang={lang} short={short}>
+          <AppointmentButton lang={lang} short={short}>
+            {languageTraducted.layout.menu.appointment}
+          </AppointmentButton>
 
-        {children}
-      </div>
+          <MenuPagesArea lang={lang} short={short}>
+            <ul>
+              <li>
+                <Link href={`/`} lang={lang}>
+                  {languageTraducted.layout.menu.menuItemOne.name}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/colecoes`} lang={lang}>
+                  {languageTraducted.layout.menu.menuItemTwo.name}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/noticias`} lang={lang}>
+                  {languageTraducted.layout.menu.menuItemThree.name}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/eventos`} lang={lang}>
+                  {languageTraducted.layout.menu.menuItemFour.name}
+                </Link>
+              </li>
+            </ul>
+          </MenuPagesArea>
+
+          <MenuSocialMedia lang={lang} short={short}>
+            <ul>
+              <li>
+                @ivanabeaumond <FaInstagram />
+              </li>
+              <li>
+                IvanaBeaumond <FaFacebookSquare />
+              </li>
+              <li>
+                @ivanaparisdebutantes <FaInstagram />
+              </li>
+            </ul>
+          </MenuSocialMedia>
+        </MenuMobile>
+      </MenuContainer>
+
+      {appointment && <AppointmentBanner lang={lang} />}
     </>
   )
   //

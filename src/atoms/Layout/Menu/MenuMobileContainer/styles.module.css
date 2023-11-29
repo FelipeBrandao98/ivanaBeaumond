@@ -46,11 +46,17 @@
 
   }
 
-  .menuNavsArea {
+  /*
+
+    Content
+
+  */
+
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1rem;
 
     position: fixed;
@@ -71,11 +77,11 @@
     transition: all .2s;
   }
 
-  .open .menuNavsArea {
+  .open .content {
     left: 0;
   }
 
-  .close .menuNavsArea {
+  .close .content {
     left: -18rem;
   }
 }

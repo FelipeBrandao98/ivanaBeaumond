@@ -9,27 +9,9 @@ import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
 import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
 
 // API Service imports
-import api from '@/services/api'
-
-// functions to call API
-async function getCollectionsCategoryData(lang) {
-  const res = await api.get(`/collections/category/${lang}`)
-
-  return res.data
-}
-
-async function getDepositionsData() {
-  const res = await api.get('/comments')
-
-  return res.data
-}
-
-async function getLatestPosts(lang) {
-  const res = await api.get(`/news/latest/${lang}`)
-
-  return res.data
-}
-//
+import getCategoryCollections from '@/api/CallsWithoutToken/getCategoryCollections'
+import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
+import getComments from '@/api/CallsWithoutToken/getComments'
 
 const events = {
   title: 'Eventos',
@@ -73,9 +55,9 @@ export default async function Page() {
   //
 
   // Instantiate response objects from api, by language by the way
-  const categories = await getCollectionsCategoryData(lang)
-  const depositions = await getDepositionsData()
-  const latestPosts = await getLatestPosts(lang)
+  const categories = await getCategoryCollections(lang)
+  const latestNews = await getLatestNews(lang)
+  const depositions = await getComments()
   //
 
   // Return components, with data and language
@@ -86,7 +68,7 @@ export default async function Page() {
         <CollectionsItemsCardHomePage lang={lang} data={categories} />
         <EventsItemsHomePage lang={lang} data={{ events }} />
         <DepositionsArea lang={lang} data={depositions} />
-        <HighLightsHomePage lang={lang} data={latestPosts} />
+        <HighLightsHomePage lang={lang} data={latestNews} />
       </main>
     </>
   )
