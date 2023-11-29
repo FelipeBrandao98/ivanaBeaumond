@@ -1,22 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Getting Started
 
-## Getting Started
+## Index
+<!--ts-->
+   * [Installation](#install)
+      * [Development Mode](#dev)
+      * [Production Mode](#prod)
+      * [Firsts Steps](#firststep)
+   * [Tests](#testes)
+   * [Tecnologias](#tecnologias)
+<!--te-->
 
-First, run the development server:
+<h2><a href="#dev" styles="center">To run in developer mode</a></h2>
 
 ```bash
-npm run dev
+npm run start:dev
 # or
-yarn dev
+yarn start:dev
 # or
-pnpm dev
+pnpm start:dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h2><a href="#dev" styles="center">To run in production mode</a></h2>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+##### First you need build the application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
+
+##### Now you can start the already built application
+
+```bash
+npm run start:prod
+# or
+yarn start:prod
+# or
+pnpm start:prod
+```
+
+
+<h2><a href="#firststep" styles="center">First Steps</a></h2>
+
+<h3>Setting the variables</h3>
+
+To access the application, you need to create your environment variables in the `.env` file, according to the `.exemple.env` template file.
+
+```shell
+####################
+BACKEND_URL=
+
+--> this variable informs the address of the restful api, necessary to run the application (is the sum of the following 3 variables)
+
+####################
+BACKEND_PROTOCOL=
+
+####################
+BACKEND_HOSTNAME=
+
+####################
+PORT=
+
+####################
+NEXT_PUBLIC_GOOGLE_ANALYTICS=
+
+####################
+
+```
+
+After this step, we proceed to access the application through the page (http: //localhost/(--port0)), where (--port) is the port variable in the `.env` file.
 
 ## Learn More
 
@@ -26,397 +81,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-# COMMITS
-
-## 05-17-2023
-
-### criado menu superior (Apenas versão desktop)
-
-## 05-19-2023
-
-### 1 - mais alguns ajustes no menu superior: tamanho do menu (Apenas versão desktop)
-
-### 2 - finalização do Banner Home (Apenas versão desktop)
-
-### 3 - mais alguns ajustes no menu superior: cor da fonte do menu (Apenas versão desktop)
-
-### 4 - Adição do Menu de coleções (Apenas versão desktop)
-
-## 05-20-2023
-
-### 1 - Ajustes no Banner Home (Apenas versão desktop)
-
-### 2 - Ajustes no Collections Items Card (Apenas versão desktop) e Ajustes no espaçamento do body
-
-### 3 - Ajustes no espaçamento superior do Banner Home (Apenas versão desktop)
-
-### 4 - Consertado um bug UI Idratation e adicionado Suit Banner Home Page (Apenas versão desktop)
-
-## 05-22-2023
-
-### 1 - Ajuste no banner home para não ficar maior que a página (Apenas versão desktop)
-
-### 2 - Animações no Collections Items Card (Apenas versão desktop)
-
-### 3 - Adição do botão To Top
-
-### 4 - Mais alguns ajustes no Collection Items Card
-
-### 5 - Adição do Subscrib Item
-
-### 6 - Adição do Debutant Banner Home
-
-## 05-24-23
-
-### 1 - Melhoramento do Collection Items (Descrição aparece após passar o mouse por cima)
-
-### 2 - Adição de Metatags
-
-### 3 - Adição do Botão de Idioma
-
-## 05-26-23
-
-### 1 - Melhoramento do botão de Idioma
-
-### 2 - Adição do botão de abrir menu para mobile
-
-### 3 - Adaptação do Banner Home Page para Mobile
-
-### 4 - Adaptação do Subscribe Item para Mobile
-
-### 5 - Adaptação do Debutant Banner Home Page para Mobile, Redimensionamento do Logo dentro do menu para Mobile, e Troca das logos na public para arquivos .svg com mais qualidade
-
-### 6 - Resolvido o problema do 'windows is not defined'
-
-### 7 - Reorganização dos componentes dentro do menu
-
-## 05-27-23
-
-### 1 - Criação do mecanismo de abrir e fechar do menu em Mobile
-
-### 2 - Resolução de bug, quando em versão desktop, não aparecia os navigations
-
-### 3 - Estilização do menu principal para mobile
-
-### 4 - Estilização do menu de redes sociais para mobile
-
-### 5 - Troca das Setas por Chevron
-
-### 6 - Reajuste da posição do Traduction button
-
-### 7 - Reajuste do Tamanho do menu superior para mobile
-
-## 05-29-23
-
-### 1 - Adição da Animação do botão arrastar no site mobile
-
-### 2 - Reajuste do Tamanho do Collection Items para Mobile
-
-### 3 - Adição do Ingresso de Eventos na Home (Apenas para Desktop)
-
-### 4 - Adição do Rodapé da página (Apenas para Desktop)
-
-### 5 - Estilização do Ingresso de Eventos na Home para Mobile
-
-### 6 - Reajuste do Banner Home Page
-
-## 06-06-23
-
-### 1 - Configurado o Axios
-
-## 06-09-23
-
-### 1 - Reorganização das Rotas
-
-### 2 - Data Fetching
-
-### 3 - Adição do Link para Blog
-
-### 4 - Atualizado a lógica da troca de linguagem através do Hook LanguageContext
-
-## 06-10-2023
-
-### 1 - Reorganização dos arquivos dentro das rotas
-
-### 2 - Redirecionamento de Rota
-
-### 3 - Loading Page
-
-## 06-14-2023
-
-### 1 - Adição da LoadingPage nas Rotas pt-BR
-
-## 06-16-2023
-
-### 1 - Adição das Fontes e do component Header do Blog
-
-### 2 - Adição do ContentOneBlog
-
-### 3 - Adição do BlogTitleOne
-
-## 06-17-2023
-
-### 1 - Adição do BlogContentTwo
-
-### 2 - Adicionado a descrição da imagem no BlogContentOne
-
-### 3 - Adicionado o BlogContentText
-
-### 4 - Reorganizado Globals.css, criado OtherPosts component
-
-## 06-19-2023
-
-### 1 - Reorganização dos components do blog
-
-### 2 - Reorganização dos components do blog
-
-### 3 - Adição do componente na mídia
-
-### 4 - Finalização do BlogInTheMedia
-
-### 5 - Adição e Finalização do BlogOurBrides
-
-### 6 - Adição e Finalização do BlogDebutantSpace e BlogTipsAndTricks
-
-### 7 - Instalação da Fonte Playfair Display
-
-### 8 - Reajuste nas importações das rotas
-
-## 06-21-23
-
-### 1 - Adicionado OtherPost na PostsPage
-
-### 2 - Adicionado BlogBanner na PostPage
-
-## 06-23-23
-
-### 1 - Adicionado 3 banners e função de correr para a direita no BlogBanner
-
-### 2 - Resolvido erro do scroll aparecendo ao trocar o banner
-
-### 3 - Adicionado botões guias para o banner
-
-### 4 - Adicionado troca automática de banner a cada 15 segundos
-
-### 5 - Adaptação do BlogBanner para mobile
-
-### 6 - Adaptação do BlogHead para mobile
-
-### 7 - Finalizado BlogContent para mobile
-
-## 06-26-23
-
-### 1 - Adaptação do BlogDebutantInPage para mobile
-
-### 2 - Adaptação dos Componentes de Exibir Outras Postagens para um componente único na PostsPage
-
-### 3 - Adição de dados dinâmicos no componente Other posts
-
-## 06-28-23
-
-### 1 - Criação da página de Coleções e banner da página
-
-### 2 - Adaptação do Banner da página de Coleções para mobile
-
-### 3 - Criação do Conteúdo da coleção dentro da página de coleção
-
-## 06-30-23
-
-### 1 - Criação do slider dentro da página de coleção
-
-### 2 - Finalização do item collections dentro da página de coleção
-
-### 3 - Alteração da lógica de mudança de idioma no menu
-
-### 4 - Função de encurtar o menu ao rolar a página
-
-### 5 - Conserto do Banner da Home Page
-
-## 07-01-23
-
-### 1 - Conserto do Banner da Home Page para mobile
-
-### 2 - Alteração da lógica de renderização do componente CollectionsItemCard
-
-### 3 - Atualização do component CollectionsItemCard (não finalizado)
-
-## 07-03-23
-
-### 1 - Finalizado CollectionsItemCard (desktop e mobile)
-
-### 2 - Atualização do component EventsItemsHomePage (não finalizado)
-
-## 07-05-23
-
-### 1 - Finalizado Componente EventosItemsHomePage
-
-### 2 - Reformulado SubscribeItem para Layout
-
-### 3 - pequena alteração no CollectionsItemsCardHomePage
-
-### 4 - Adição da Bandeirinha de país no botão de Tradução
-
-## 07-08-23
-
-### 1 - Adição do componente HighlightsHomePage
-
-### 2 - Adição do componente AddressItem (não finalizado)
-
-## 07-19-23
-
-### 1 - conserto da responsividade do menu superior
-
-### 2 - Ajustes no Rodapé
-
-### 3 - Adição do botão de buscar (apenas para desktop)
-
-## 07-24-23
-
-### 1 -  Finalizado botão de buscar
-
-### 2 - Animação do SubscribeItem ao enviar um e-mail
-
-## 07-26-23
-
-### 1 - Adaptação do Collections para Mobile
-
-## 07-29-23
-
-### 1 - Criado a página de listagem de coleções
-
-## 08-02-23
-
-### 1 - Criação da página de eventos, e componente de comentários na homePage
-
-## 08-04-23
-
-### 1 - Atualização do componente de comentário na homePage
-
-### 2 - Atualização do componente de comentário na homePage para Mobile
-
-### 3 - Função de fechar menu mobile, ao clicar fora
-
-## 08-05-23
-
-### 1 - Criado funçao de chamada na api para cadastrar e-mail
-
-## 16-08-23
-
-### 1 - Feito chamada a api para noticias, formatação de dados, alteração do next.config.js para chamadas externas de imagens e funcil util para otimizar o título para url
-
-### 18-08-23
-
-## 1 - Criado a função util de reduzir tamanho do subtítulo e instalado e configurado eslint com prettier
-
-## 2 - Readaptação do layout de post para ficar simétrico
-
-### 19-08-23
-
-## 1 - Feito chamada a api para Categories Items Home
-
-### 25-08-23
-
-## 1 - Finalizado render de comentários na home page
-
-## 2 - Mudanças nas rotas e botão de tradução
-
-### 28-08-23
-
-## 1 - Criação domiddleware de redirecionamento para linguagem (a terminar)
-
-### 30-08-23
-
-## 1 = Middleware de redirecionamento finalizado (Falta funcionalidade de armazenar linguagem alterada ao trocar de rota)
-
-## 2 - Finalizado middleware de internacionalização
-
-## 3 -  criado mecanismo de tradução automárica na tela de carregamento
-
-### 1-09-23
-
-## 1 - Finalizado a lógica de tradução das páginas
-
-### 04-09-23
-
-## 1 - Tradução do componente EventsHome e Nova Chamada a api, selecionando a linguagem
-
-### 06-09-23
-
-## 1 - Feito tradução da página de coleções
-
-## 2 - Finalizado mecanismo de troca de linguagem
-
-## 3 - Criação do Banner de contato (Não finalizado | Apenas para Desktop)
-
-### 11-09-23
-
-## 1 - Instalação do Zod, react-hook-form e @hookform, validação dos dados de Appointment (Não finalizado)
-
-### 15-09-23
-
-## 1 - Finalização do AppointmentBanner (Falta estilização)
-
-### 21-09-23
-
-## 1 - Criado Página de login, AuthHook e toda a lógica de autenticação
-
-### 22-09-23
-
-## 1 - Finalizado toda relação de login (falta middleware de autenticação)
-
-## 2 - Dashboard com Botão de sair (Não Finalizado)
-
-## 3 - Feito páginas dentro do dashboard
-
-## 4 - Finalizado toda a lógica de login e finalização de login
-
-### 25-09-23
-
-## 1 - Criado formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
-
-## 2 - Criado Modal de Cancelamento no formulário de Nova Notícia (Falta Captura dos dados para mandar para a api)
-
-### 27-09-23
-
-## 1 - Finalizado pagina de cadastro de notícia, falta método de adicionar foto de capa
-
-### 29-09-23
-
-## 1 - Feito toda a lógica de adicionar Notícias, (Contexto de Adicionar imagens)
-
-## 2 - Finalizado rota de adicionar notícias
-
-## 3 - Finalizado rotas de listar notícias e coleções no dashboard
-
-### 04-10-23
-
-## 1 - Feito toda a lógica de adicionar Coleção
-
-## 2 - Feito Método de edição de Notícias (Falta animação de enviar dados para a api e redirecionamento para NewsPage)
-
-### 06-10-23
-
-## 1 - Finalizado completamente a rota de adicionar, editar e deletar Notícias
-
-## 2 - Finalizado rota de adicionar imagens em coleções
-
-## 3 - Chamada api de Imagens de coleções na página de collections
-
-### 11-10-23
-
-## 1 - Finalizado adicionar e editar colecoes e noticias
-
-## 2 - Finalizado adicionar e editar Categorias de coleções
-
-## 3 - Método de vizualização de Fotos dentro das fotos de coleções
-
-### 24-10-23
-
-## 1 - Metodo de Adicionar e editar categoria de notícia
