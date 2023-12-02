@@ -1,5 +1,6 @@
 // Next.js Components imports
 import Image from 'next/image'
+import barCode from '@/../public/bar-code.svg'
 import Link from 'next/link'
 
 // Icons imports
@@ -33,7 +34,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
       <div className={styles.barCodeArea}>
         <Image
           className={styles.barCodeImage}
-          src="/bar-code.svg"
+          src={barCode}
           alt={languageTraducted.layout.events.barCodeAlt}
           width={40}
           height={20}
@@ -55,7 +56,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
           <h2 className={styles.nextEventP}>
             {languageTraducted.layout.events.nextEvent}
           </h2>
-          <Link href={'/'} className={styles.nextEventTitle}>
+          <Link href={'/'} className={styles.nextEventTitle} legacyBehavior>
             {data.events.nextEvent.title}
           </Link>
           <h4 className={styles.nextEventDate}>{data.events.nextEvent.date}</h4>
@@ -74,7 +75,7 @@ export default async function EventsItemsHomePage({ lang, data }) {
           })}
         </div>
 
-        <Link href={'/'} className={styles.seeMore}>
+        <Link href={'/'} className={styles.seeMore} legacyBehavior>
           {languageTraducted.layout.events.seeMore}
         </Link>
       </aside>

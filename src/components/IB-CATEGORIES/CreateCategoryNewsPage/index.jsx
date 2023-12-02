@@ -32,8 +32,10 @@ import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 //
 
-import createCategoryNews from '@/api/createCategoryNews'
-import editCategoryNews from '@/api/editCategoryNews'
+// Api imports
+import editCategoryNews from '@/api/CallsWithToken/editCategoryNews'
+import createCategoryNews from '@/api/CallsWithToken/createCategoryNews'
+//
 
 // Schema Zod Definition
 const createNewsFormSchema = z.object({

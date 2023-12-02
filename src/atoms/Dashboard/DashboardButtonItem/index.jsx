@@ -13,6 +13,7 @@ export default function DashboardButtonItem({ children, href, selected }) {
               : `${styles.button}`
           }
           href={href}
+          legacyBehavior
         >
           {children}
         </Link>

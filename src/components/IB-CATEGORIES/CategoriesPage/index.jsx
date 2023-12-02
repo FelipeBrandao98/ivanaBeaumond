@@ -27,10 +27,12 @@ import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 //
 
-import getCategoryCollections from '@/api/getCategoryCollections'
-import getCategoryNews from '@/api/getCategoryNews'
-import deleteCategoryCollection from '@/api/deleteCategoryCollection'
-import deleteCategoryNews from '@/api/deleteCategoryNews'
+// Api imports
+import getCategoryCollections from '@/api/CallsWithToken/getCategoryCollections'
+import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
+import deleteCategoryCollection from '@/api/CallsWithToken/deleteCategoryCollection'
+import deleteCategoryNews from '@/api/CallsWithToken/deleteCategoryNews'
+//
 
 // Component Declaration
 export default function CategoriesPage() {
@@ -138,6 +140,7 @@ export default function CategoriesPage() {
                       href={
                         '/ib-login/dashboard/categorias/novacategoriacolecao'
                       }
+                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>
@@ -227,6 +230,7 @@ export default function CategoriesPage() {
                       href={
                         '/ib-login/dashboard/categorias/novacategorianoticia'
                       }
+                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>

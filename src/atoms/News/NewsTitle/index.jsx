@@ -24,7 +24,7 @@ export default function NewsTitle({ children, color, size }) {
   useEffect(() => {
     getFontColor(color)
     getFontSize(size)
-  }, [])
+  }, [color, size])
 
   return (
     <>

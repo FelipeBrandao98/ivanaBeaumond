@@ -2,10 +2,10 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import CollectionsPage from '@/components/COLLECTIONS/CollectionsPage'
+import MainPageCollections from '@/components/COLLECTIONS/MainPageCollections'
 
 // API Service imports
-import getCollections from '@/api/CallsWithToken/getCollections'
+import getCollections from '@/api/CallsWithoutToken/getCollections'
 
 export const metadata = {
   title: 'Coleções',
@@ -26,7 +26,8 @@ export default async function Page() {
   // Return components, with functions to call API and language
   return (
     <>
-      <CollectionsPage lang={lang} data={collections} />
+      {console.log(collections)}
+      <MainPageCollections lang={lang} data={collections} />
     </>
   )
   //

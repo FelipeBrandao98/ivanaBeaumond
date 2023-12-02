@@ -31,7 +31,8 @@ import DashboardButton from '@/atoms/Dashboard/DashboardButton'
 //
 
 // Api Functions imports
-import createImage from '@/api/createImage'
+import createImage from '@/api/CallsWithToken/createImage'
+//
 
 // Schema Zod Definition
 const createImageFormSchema = z.object({

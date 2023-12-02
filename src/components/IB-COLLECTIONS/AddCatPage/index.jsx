@@ -78,6 +78,7 @@ export default function AddCatPage({ functions }) {
               href={'/ib-login/dashboard/colecoes/addcat'}
               className={styles.optionsButton}
               onClick={(e) => {}}
+              legacyBehavior
             >
               <FiPlus width={40} height={40} />
             </Link>
@@ -130,6 +131,7 @@ export default function AddCatPage({ functions }) {
                         href={'/ib-login/dashboard/colecoes/novacolecao'}
                         onClick={(e) => {}}
                         className={styles.editButton}
+                        legacyBehavior
                       >
                         <FiEdit width={40} height={40} />
                       </Link>

@@ -24,12 +24,11 @@ import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
 import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 import DashboardTable from '@/atoms/Dashboard/DashboardTable'
-import DashboardModalContainer from '@/atoms/Dashboard/DashboardModalContainer'
 import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
-import getNews from '@/api/getNews'
-import deleteNews from '@/api/deleteNews'
+// Api imports
+import getNews from '@/api/CallsWithToken/getNews'
 
 // Component Declaration
 export default function NewsPage() {
@@ -126,6 +125,7 @@ export default function NewsPage() {
                         handleChangeImage({})
                       }}
                       className={styles.editButton}
+                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>

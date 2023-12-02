@@ -1,4 +1,7 @@
+// Next.js imports
 import Image from 'next/image'
+
+// Atoms imports
 import NewsParagraph from '@/atoms/News/NewsParagraph'
 import NewsTitle from '@/atoms/News/NewsTitle'
 

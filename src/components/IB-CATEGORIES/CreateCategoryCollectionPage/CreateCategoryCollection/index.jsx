@@ -40,8 +40,8 @@ import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
 //
 
-import editCategoryCollection from '@/api/editCategoryCollection'
-import createCategoryCollection from '@/api/createCategoryCollection'
+import editCategoryCollection from '@/api/CallsWithToken/editCategoryCollection'
+import createCategoryCollection from '@/api/CallsWithToken/createCategoryCollection'
 
 // Schema Zod Definition
 const createNewsFormSchema = z.object({

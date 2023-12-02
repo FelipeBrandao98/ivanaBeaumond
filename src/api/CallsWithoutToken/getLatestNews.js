@@ -3,7 +3,11 @@
 import api from '@/services/api'
 
 export default async function getLatestNews(lang) {
-  const res = await api.get(`/news/latest/${lang}`)
+  try {
+    const res = await api.get(`/news/latest/${lang}`)
 
-  return res.data
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
 }

@@ -11,7 +11,8 @@ import CreateImageNews from '@/components/IB-NEWS/CreateNewsPage/CreateImageNews
 import CreateNews from '@/components/IB-NEWS/CreateNewsPage/CreateNews'
 
 // Api Functions imports
-import getCategoryNews from '@/api/getCategoryNews'
+import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
+//
 
 // Component Declaration
 export default function CreateNewsPage() {

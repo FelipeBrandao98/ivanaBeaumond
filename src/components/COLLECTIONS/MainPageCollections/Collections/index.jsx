@@ -7,7 +7,7 @@ import Collection from './Collection'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function Collections({ lang, data, functions }) {
+export default function Collections({ lang, data }) {
   // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
@@ -15,12 +15,11 @@ export default function Collections({ lang, data, functions }) {
         return (
           <Collection
             key={data.id}
-            id={data.id}
+            collectionId={data.id}
             lang={lang}
             title={data.title}
             description={data.description}
-            imageUrl={data.cover.url}
-            functions={functions}
+            imageUrl={data.cover.url || ''}
           />
         )
       })}

@@ -10,8 +10,8 @@ export default function DashboardButton(props) {
           mode === 'submit'
             ? `${styles.button} ${styles.submit}`
             : mode === 'cancel'
-            ? `${styles.button} ${styles.cancel}`
-            : `${styles.button}`
+              ? `${styles.button} ${styles.cancel}`
+              : `${styles.button}`
         }
         {...props}
       >

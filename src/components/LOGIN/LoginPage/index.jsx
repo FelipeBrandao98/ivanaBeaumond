@@ -28,7 +28,9 @@ import styles from './styles.module.css'
 import DashboardForm from '@/atoms/Dashboard/DashboardForm'
 import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
 
-import login from '@/api/login'
+// Api imports
+import login from '@/api/CallsWithoutToken/login'
+//
 
 const loginFormSchema = z.object({
   email: z
@@ -141,6 +143,7 @@ export default function LoginPage() {
                 <Link
                   href={'ib-login/dashboard'}
                   className={`${styles.button} ${styles.buttonSuccess}`}
+                  legacyBehavior
                 >
                   Acessar Dashboard!
                   <BsFillArrowRightCircleFill width={40} height={40} />

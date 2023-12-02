@@ -11,7 +11,7 @@ import getLangDict from '@/utils/getLangDict'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function CollectionsPage({ lang, data, functions }) {
+export default function MainPageCollections({ lang, data }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
@@ -34,7 +34,7 @@ export default function CollectionsPage({ lang, data, functions }) {
           <h3>Ivana Beaumond ©</h3>
         </div>
       </section>
-      <Collections lang={lang} data={data} functions={functions} />
+      <Collections lang={lang} data={data} />
     </>
   )
   //

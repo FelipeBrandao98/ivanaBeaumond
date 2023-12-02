@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 // Next.js Components imports
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 // Icons imports
 import { TbHandClick } from 'react-icons/tb'
@@ -18,14 +18,16 @@ import getLangDict from '@/utils/getLangDict'
 // Styles imports
 import styles from './styles.module.css'
 
+// Api imports
+import getClothes from '@/api/CallsWithoutToken/getClothes'
+
 // Component Declaration
 export default function Collection({
-  id,
+  collectionId,
   lang,
   title,
   description,
   imageUrl,
-  functions,
 }) {
   // States declaratios
   const [displayed, setDisplayed] = useState(false)
@@ -34,9 +36,6 @@ export default function Collection({
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
-  // Desestructured functions to call api
-  const { getCollectionImages } = functions
-
   // Functions to manipulate window object
   function handleDisplayDetails() {
     displayed ? setDisplayed(false) : setDisplayed(true)
@@ -44,21 +43,21 @@ export default function Collection({
   //
 
   // functions to handle with datas from api
-  const getCollectionImagesRepo = useCallback(async () => {
-    const res = await getCollectionImages(id)
+  const getClothesRepo = useCallback(async () => {
+    const res = await getClothes(lang, collectionId)
     setImages(res)
-  }, [getCollectionImages, id])
+  }, [lang, collectionId])
   //
 
   // Use Effects
   useEffect(() => {
-    getCollectionImagesRepo()
-  }, [getCollectionImagesRepo])
+    getClothesRepo()
+  }, [getClothesRepo])
   //
 
   // Return components, with functions to call API and language
   return (
-    <aside className={styles.collection} key={id}>
+    <aside className={styles.collection}>
       {!displayed ? (
         <div className={styles.openDetails}>
           <span
@@ -102,7 +101,7 @@ export default function Collection({
       </div>
       <Image
         className={styles.image}
-        src={imageUrl}
+        src={imageUrl || ''}
         alt="Ivana Beaumond"
         width={1920}
         height={1080}

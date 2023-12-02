@@ -23,6 +23,7 @@ import { useEffect, useContext, useState, useCallback } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
+import logo from '@/../public/logo-white.svg'
 import Link from 'next/link'
 
 // Icons imports
@@ -82,19 +83,14 @@ export default function Menu({ lang }) {
         // short is a variable that represents when the menu is suspended,
         // when scrolling down the screen
       }
-      <MenuContainer short={short}>
-        <MenuLogoInHeader short={short}>
-          <Image
-            src="/logo-white.svg"
-            alt="IVANA BEAUMOND"
-            width={300}
-            height={50}
-          />
+      <MenuContainer short={short ? short : undefined}>
+        <MenuLogoInHeader short={short ? short : undefined}>
+          <Image src={logo} alt="IVANA BEAUMOND" width={300} height={50} />
         </MenuLogoInHeader>
 
-        <SearchButton lang={lang} short={short} />
+        <SearchButton lang={lang} short={short ? short : undefined} />
 
-        <TraductionButton lang={lang} short={short} />
+        <TraductionButton lang={lang} short={short ? short : undefined} />
 
         {
           // "MenuMobile" is the component that represents the area
@@ -103,12 +99,12 @@ export default function Menu({ lang }) {
           // corresponding to the Menu
         }
 
-        <MenuMobile lang={lang} short={short}>
-          <AppointmentButton lang={lang} short={short}>
+        <MenuMobile lang={lang} short={short ? short : undefined}>
+          <AppointmentButton lang={lang} short={short ? short : undefined}>
             {languageTraducted.layout.menu.appointment}
           </AppointmentButton>
 
-          <MenuPagesArea lang={lang} short={short}>
+          <MenuPagesArea lang={lang} short={short ? short : undefined}>
             <ul>
               <li>
                 <Link href={`/`} lang={lang}>
@@ -133,7 +129,7 @@ export default function Menu({ lang }) {
             </ul>
           </MenuPagesArea>
 
-          <MenuSocialMedia lang={lang} short={short}>
+          <MenuSocialMedia lang={lang} short={short ? short : undefined}>
             <ul>
               <li>
                 @ivanabeaumond <FaInstagram />

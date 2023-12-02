@@ -4,6 +4,7 @@ import { useState, useContext } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
+import imageCover from '@/../public/IMG_2967.jpg'
 
 // Icons imports
 import { HiX } from 'react-icons/hi'
@@ -273,7 +274,8 @@ export default function AppointmentBanner({ lang }) {
                 <Image
                   className={styles.image}
                   alt="Foto de Capa"
-                  src={'/IMG_2967.jpg'}
+                  src={imageCover}
+                  placeholder="blur"
                   width={1280}
                   height={720}
                 />

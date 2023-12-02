@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Icons imports
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
@@ -19,7 +20,6 @@ import formatToSubTitle from '@/utils/formatToSubTitle'
 
 // Styles imports
 import styles from './styles.module.css'
-import Link from 'next/link'
 
 // Component Declaration
 export default function BlogBanner({ lang, data }) {

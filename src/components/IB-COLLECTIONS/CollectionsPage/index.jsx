@@ -28,8 +28,10 @@ import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
 import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
 
-import getCollections from '@/api/getCollections'
-import deleteCollection from '@/api/deleteCollection'
+// Api imports
+import getCollections from '@/api/CallsWithToken/getCollections'
+import deleteCollection from '@/api/CallsWithToken/deleteCollection'
+//
 
 // Component Declaration
 export default function CollectionsPage() {
@@ -127,6 +129,7 @@ export default function CollectionsPage() {
                           handleChangeImage({})
                         }}
                         className={styles.editButton}
+                        legacyBehavior
                       >
                         <FiEdit width={40} height={40} />
                       </Link>
@@ -150,6 +153,7 @@ export default function CollectionsPage() {
                       onClick={(e) => {
                         handleCollections(repo)
                       }}
+                      legacyBehavior
                     >
                       <BiPhotoAlbum width={100} height={100} />
                     </Link>
@@ -160,6 +164,7 @@ export default function CollectionsPage() {
                       onClick={(e) => {
                         handleCatalog(repo)
                       }}
+                      legacyBehavior
                     >
                       <BiPhotoAlbum width={100} height={100} />
                     </Link>

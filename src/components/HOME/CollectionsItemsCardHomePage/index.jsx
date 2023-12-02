@@ -110,9 +110,9 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
           <div className={styles.cards}>
             <div
               className={`
-        ${styles.CardArea}
-        ${cardClass}
-        `}
+      ${styles.CardArea}
+      ${cardClass}
+      `}
             >
               {data.map((categorie) => {
                 return (

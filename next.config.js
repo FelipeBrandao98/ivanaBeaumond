@@ -4,10 +4,6 @@ module.exports = (phase, { defaultConfig }) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       reactStrictMode: true,
-      concurrentFeatures: true,
-      experimental: {
-        serverActions: true,
-      },
       images: {
         remotePatterns: [
           {
@@ -22,10 +18,6 @@ module.exports = (phase, { defaultConfig }) => {
 
   return {
     reactStrictMode: true,
-    concurrentFeatures: true,
-    experimental: {
-      serverActions: true,
-    },
     images: {
       loader: 'custom',
       loaderFile: './src/configs/loader.js',

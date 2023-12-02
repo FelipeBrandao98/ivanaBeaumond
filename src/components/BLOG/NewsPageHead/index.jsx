@@ -14,12 +14,12 @@ export default function NewsPageHead({ lang, data }) {
       lang === 'pt-BR'
         ? ptBR
         : lang === 'de'
-        ? de
-        : lang === 'fr'
-        ? fr
-        : lang === 'en'
-        ? enUS
-        : ptBR,
+          ? de
+          : lang === 'fr'
+            ? fr
+            : lang === 'en'
+              ? enUS
+              : ptBR,
   }).split('/')
   const day = date[0]
   const month = date[1]

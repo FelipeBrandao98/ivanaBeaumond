@@ -7,7 +7,6 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 
 // Icons imports
-import { AiOutlineLoading } from 'react-icons/ai'
 import { IoIosExpand } from 'react-icons/io'
 import { FiX } from 'react-icons/fi'
 

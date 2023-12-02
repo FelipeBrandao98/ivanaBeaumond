@@ -3,7 +3,11 @@
 import api from '@/services/api'
 
 export default async function getComments() {
-  const res = await api.get('/comments')
+  try {
+    const res = await api.get('/comments')
 
-  return res.data
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
 }
