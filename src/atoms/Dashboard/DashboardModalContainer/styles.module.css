@@ -13,6 +13,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   -moz-backdrop-filter: blur(20px);
+  z-index: 1000;
 }
 
 .content {

@@ -143,7 +143,6 @@ export default function LoginPage() {
                 <Link
                   href={'ib-login/dashboard'}
                   className={`${styles.button} ${styles.buttonSuccess}`}
-                  legacyBehavior
                 >
                   Acessar Dashboard!
                   <BsFillArrowRightCircleFill width={40} height={40} />

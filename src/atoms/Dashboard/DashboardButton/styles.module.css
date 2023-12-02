@@ -8,6 +8,7 @@
   border-radius: .5rem;
   border: none;
   transition: all .2s;
+  z-index: 1001;
 }
 
 .submit {

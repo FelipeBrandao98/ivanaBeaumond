@@ -32,7 +32,6 @@ export default function DashboardActionButtons({
           }}
           href={`/ib-login/dashboard/${createLink}`}
           className={styles.button}
-          legacyBehavior
         >
           <FiPlus width={40} height={40} />
           Novo

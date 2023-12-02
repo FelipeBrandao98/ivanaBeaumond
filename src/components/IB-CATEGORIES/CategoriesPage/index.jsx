@@ -140,7 +140,6 @@ export default function CategoriesPage() {
                       href={
                         '/ib-login/dashboard/categorias/novacategoriacolecao'
                       }
-                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>
@@ -230,7 +229,6 @@ export default function CategoriesPage() {
                       href={
                         '/ib-login/dashboard/categorias/novacategorianoticia'
                       }
-                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>

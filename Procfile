@@ -1,2 +1,2 @@
-web: npm run build --force
-web: npm run start:prod
+web: pnpm run build --force
+web: pnpm run start:prod
