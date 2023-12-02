@@ -20,9 +20,6 @@ import Menu from '@/components/LAYOUT/Menu'
 import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
 import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 
-// Next.js Components imports
-import Head from 'next/head'
-
 // Fonts from google, resource of next.js imports
 import {
   Inter,
@@ -139,11 +136,11 @@ export async function generateMetadata({ params }) {
   return {
     //
     //
-    metadataBase: traductedMeta.metadata.metadataBase,
+    metadataBase: traductedMeta?.metadata.metadataBase,
     generator: 'Next.js',
     applicationName: 'Website - Ivana Beaumond',
     creator: 'Felipe Brandão',
-    keywords: traductedMeta.metadata.keywords,
+    keywords: traductedMeta?.metadata.keywords,
     formatDetection: {
       email: false,
       address: false,
@@ -159,14 +156,14 @@ export async function generateMetadata({ params }) {
         'en-US': '/en',
       },
     },
-    title: traductedMeta.metadata.title,
-    description: traductedMeta.metadata.description,
+    title: traductedMeta?.metadata.title,
+    description: traductedMeta?.metadata.description,
     //
     //
     openGraph: {
-      title: traductedMeta.metadata.openGraph.title,
-      description: traductedMeta.metadata.openGraph.description,
-      url: traductedMeta.metadata.openGraph.url,
+      title: traductedMeta?.metadata.openGraph.title,
+      description: traductedMeta?.metadata.openGraph.description,
+      url: traductedMeta?.metadata.openGraph.url,
       images: [
         {
           url: 'https://ivana-backend-0a6d1ff75854.herokuapp.com/images/homeimage-d3c53481-7236-44da-ad04-2da9beae9ea6',
@@ -248,7 +245,11 @@ export default async function RootLayout({ children }) {
           <GuideToBottomScroll lang={lang} />
           <ScrollToTop lang={lang} />
           <CookieNotice lang={lang} />
-          <GoogleAnalytics />
+
+          {/* Google Analytics */}
+          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+            <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+          ) : null}
         </Providers>
       </body>
     </html>

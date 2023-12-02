@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import homeImage from '@/../public/homeimage.jpg'
+
 // Icons imports
 import { FaArrowRight } from 'react-icons/fa'
 
@@ -19,7 +21,8 @@ export default function BannerHomePage() {
         <article className={styles.article}>
           <Image
             className={styles.image}
-            src="/homeimage.jpg"
+            src={homeImage}
+            placeholder="blur"
             alt="Foto de Noiva na Praia"
             fill
           />
