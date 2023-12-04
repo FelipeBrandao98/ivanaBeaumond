@@ -1,14 +1,11 @@
 'use client'
+
 // React imports
 import { useState, useContext } from 'react'
 
 // Next.js Components imports
 import Image from 'next/image'
 import imageCover from '@/../public/IMG_2967.jpg'
-
-// Icons imports
-import { HiX } from 'react-icons/hi'
-import { AiOutlineLoading, AiOutlineCheckCircle } from 'react-icons/ai'
 
 // Hook form and Zod imports
 import { useForm } from 'react-hook-form'
@@ -21,9 +18,16 @@ import { AppointmentContext } from '@/Context/AppointmentContext'
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
 import createAppointment from '@/api/CallsWithoutToken/createAppointment'
+import MenuAppointmentContainer from '@/atoms/Layout/Menu/MenuAppointmentContainer'
+import EndUserForm from '@/atoms/Forms/EndUserForm'
+import MenuAppointmentCloseButton from '@/atoms/Layout/Menu/MenuAppointmentCloseButton'
+import MenuApppointmentImage from '@/atoms/Layout/Menu/MenuAppointmentImage'
+import EndUserLabel from '@/atoms/Forms/EndUserLabel'
+import EndUserCheckBoxLabel from '@/atoms/Forms/EndUserCheckBoxLabel'
+import EndUserSendButton from '@/atoms/Forms/EndUserSendButton'
+//
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
@@ -108,181 +112,138 @@ export default function AppointmentBanner({ lang }) {
   return (
     <>
       {appointment && (
-        <section className={styles.container}>
-          <aside className={styles.content}>
-            <span className={styles.closeButton} onClick={handleAppointment}>
-              <HiX width={20} height={20} />
-            </span>
+        <MenuAppointmentContainer>
+          <MenuAppointmentCloseButton onClick={handleAppointment} />
 
-            <div className={styles.row}>
-              <form
-                action={handleSubmit(handleCreateAppointment)}
-                className={styles.form}
+          <div>
+            <EndUserForm
+              action={handleSubmit(handleCreateAppointment)}
+              inAppointment
+            >
+              <h1>{languageTraducted.layout.menu.appointmentBanner.title}</h1>
+              <EndUserLabel
+                name={languageTraducted.layout.menu.appointmentBanner.yourName}
+                htmlFor="name"
+                errors={errors.name}
               >
-                <h1 className={styles.title}>
-                  {languageTraducted.layout.menu.appointmentBanner.title}
-                </h1>
-
-                <label className={styles.label} htmlFor="name">
-                  {languageTraducted.layout.menu.appointmentBanner.yourName}
+                <input type="text" id="name" {...register('name')} />
+              </EndUserLabel>
+              <EndUserLabel
+                name={languageTraducted.layout.menu.appointmentBanner.yourEmail}
+                htmlFor="mail"
+                errors={errors.email}
+              >
+                <input type="email" id="email" {...register('email')} />
+              </EndUserLabel>
+              <EndUserLabel
+                name={languageTraducted.layout.menu.appointmentBanner.yourPhone}
+                htmlFor="phone"
+                errors={errors.phone}
+              >
+                <input type="tel" id="phone" {...register('phone')} />
+              </EndUserLabel>
+              {languageTraducted.layout.menu.appointmentBanner.rent}
+              <fieldset>
+                <EndUserCheckBoxLabel
+                  name={languageTraducted.layout.menu.appointmentBanner.bride}
+                  htmlFor="bride"
+                >
                   <input
-                    className={styles.input}
-                    type="text"
-                    id="name"
-                    {...register('name')}
+                    type="checkbox"
+                    name="bride"
+                    id="bride"
+                    {...register('bride')}
                   />
-                  {errors.name && (
-                    <span className={styles.error}>{errors.name.message}</span>
-                  )}
-                </label>
+                </EndUserCheckBoxLabel>
 
-                <label className={styles.label} htmlFor="mail">
-                  {languageTraducted.layout.menu.appointmentBanner.yourEmail}
+                <EndUserCheckBoxLabel
+                  name={languageTraducted.layout.menu.appointmentBanner.groom}
+                  htmlFor="groom"
+                >
                   <input
-                    className={styles.input}
-                    type="email"
-                    id="email"
-                    {...register('email')}
+                    type="checkbox"
+                    name=""
+                    id="groom"
+                    {...register('groom')}
                   />
-                  {errors.email && (
-                    <span className={styles.error}>{errors.email.message}</span>
-                  )}
-                </label>
+                </EndUserCheckBoxLabel>
 
-                <label className={styles.label} htmlFor="phone">
-                  {languageTraducted.layout.menu.appointmentBanner.yourPhone}
+                <EndUserCheckBoxLabel
+                  name={
+                    languageTraducted.layout.menu.appointmentBanner.debutant
+                  }
+                  htmlFor="debutant"
+                >
                   <input
-                    className={styles.input}
-                    type="tel"
-                    id="phone"
-                    {...register('phone')}
+                    type="checkbox"
+                    name="debutant"
+                    id="debutant"
+                    {...register('debutant')}
                   />
-                  {errors.phone && (
-                    <span className={styles.error}>{errors.phone.message}</span>
-                  )}
-                </label>
+                </EndUserCheckBoxLabel>
 
-                {languageTraducted.layout.menu.appointmentBanner.rent}
-
-                <fieldset className={styles.checkArea}>
-                  <label className={styles.labelTwo} htmlFor="bride">
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      name="bride"
-                      id="bride"
-                      {...register('bride')}
-                    />
-                    <span className={styles.newCheckbox}></span>
-                    {languageTraducted.layout.menu.appointmentBanner.bride}
-                  </label>
-
-                  <label className={styles.labelTwo} htmlFor="groom">
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      name=""
-                      id="groom"
-                      {...register('groom')}
-                    />
-                    <span className={styles.newCheckbox}></span>
-                    {languageTraducted.layout.menu.appointmentBanner.groom}
-                  </label>
-
-                  <label className={styles.labelTwo} htmlFor="debutant">
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      name="debutant"
-                      id="debutant"
-                      {...register('debutant')}
-                    />
-                    <span className={styles.newCheckbox}></span>
-                    {languageTraducted.layout.menu.appointmentBanner.debutant}
-                  </label>
-
-                  <label className={styles.labelTwo} htmlFor="bridesmaid">
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      name="bridesmaid"
-                      id="bridesmaid"
-                      {...register('bridesmaid')}
-                    />
-                    <span className={styles.newCheckbox}></span>
-                    {languageTraducted.layout.menu.appointmentBanner.bridesmaid}
-                  </label>
-
-                  <label className={styles.labelTwo} htmlFor="party">
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      name="party"
-                      id="party"
-                      {...register('party')}
-                    />
-                    <span className={styles.newCheckbox}></span>
-                    {languageTraducted.layout.menu.appointmentBanner.party}
-                  </label>
-                </fieldset>
-
-                <label htmlFor="merryDate">
-                  {languageTraducted.layout.menu.appointmentBanner.merryDate}
+                <EndUserCheckBoxLabel
+                  name={
+                    languageTraducted.layout.menu.appointmentBanner.bridesmaid
+                  }
+                  htmlFor="bridesmaid"
+                >
                   <input
-                    className={styles.input}
-                    type="date"
-                    id="merryDate"
-                    {...register('merryDate')}
+                    type="checkbox"
+                    name="bridesmaid"
+                    id="bridesmaid"
+                    {...register('bridesmaid')}
                   />
-                  {errors.merryDate && (
-                    <span className={styles.error}>
-                      {errors.merryDate.message}
-                    </span>
-                  )}
-                </label>
+                </EndUserCheckBoxLabel>
 
-                {createAppointmentLoader === 'loading' ? (
-                  <button className={styles.buttonLoading}>
-                    {
-                      languageTraducted.layout.menu.appointmentBanner.button
-                        .sending
-                    }
-                    <AiOutlineLoading
-                      className={styles.rotating}
-                      width={50}
-                      height={50}
-                    />
-                  </button>
-                ) : createAppointmentLoader === 'loaded' ? (
-                  <button className={styles.buttonLoaded}>
-                    {
-                      languageTraducted.layout.menu.appointmentBanner.button
-                        .sent
-                    }{' '}
-                    <AiOutlineCheckCircle width={50} height={50} />
-                  </button>
-                ) : (
-                  <button className={styles.button} type="submit">
-                    {
-                      languageTraducted.layout.menu.appointmentBanner.button
-                        .send
-                    }
-                  </button>
-                )}
-              </form>
-              <div className={styles.imageArea}>
-                <Image
-                  className={styles.image}
-                  alt="Foto de Capa"
-                  src={imageCover}
-                  placeholder="blur"
-                  width={1280}
-                  height={720}
-                />
-              </div>
-            </div>
-          </aside>
-        </section>
+                <EndUserCheckBoxLabel
+                  name={languageTraducted.layout.menu.appointmentBanner.party}
+                  htmlFor="party"
+                >
+                  <input
+                    type="checkbox"
+                    name="party"
+                    id="party"
+                    {...register('party')}
+                  />
+                </EndUserCheckBoxLabel>
+              </fieldset>
+              <EndUserLabel
+                name={languageTraducted.layout.menu.appointmentBanner.merryDate}
+                htmlFor="merryDate"
+                errors={errors.merryDate}
+              >
+                <input type="date" id="merryDate" {...register('merryDate')} />
+              </EndUserLabel>
+              {createAppointmentLoader === 'loading' ? (
+                <EndUserSendButton loader="loading">
+                  {
+                    languageTraducted.layout.menu.appointmentBanner.button
+                      .sending
+                  }
+                </EndUserSendButton>
+              ) : createAppointmentLoader === 'loaded' ? (
+                <EndUserSendButton loader="loaded">
+                  {languageTraducted.layout.menu.appointmentBanner.button.sent}{' '}
+                </EndUserSendButton>
+              ) : (
+                <EndUserSendButton type="submit">
+                  {languageTraducted.layout.menu.appointmentBanner.button.send}
+                </EndUserSendButton>
+              )}
+            </EndUserForm>
+
+            <MenuApppointmentImage>
+              <Image
+                alt="Foto de Capa"
+                src={imageCover}
+                placeholder="blur"
+                width={1280}
+                height={720}
+              />
+            </MenuApppointmentImage>
+          </div>
+        </MenuAppointmentContainer>
       )}
     </>
   )

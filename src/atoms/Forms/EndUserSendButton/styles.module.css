@@ -1,0 +1,75 @@
+.button {
+  border: 1px solid var(--black-800);
+  border-radius: none;
+  padding: .1rem 1rem;
+
+  color: var(--white-100);
+  background-color: var(--black-800);
+
+  transition: all .2s;
+}
+
+.button:hover {
+  filter: brightness(1.2);
+}
+
+.error {
+  font-size: .8rem;
+  color: var(--red-france);
+  margin-left: .5rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+
+  border: 1px solid var(--black-800);
+  border-radius: none;
+  padding: .1rem 1rem;
+
+  color: var(--white-100);
+  background-color: var(--blue-france);
+
+  transition: all .2s;
+}
+
+.loaded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+
+  border: 1px solid var(--black-800);
+  border-radius: none;
+  padding: .1rem 1rem;
+
+  color: var(--white-100);
+  background-color: var(--green-success);
+
+  transition: all .2s;
+}
+
+.loading:hover,
+.loaded:hover {
+  cursor: not-allowed;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotation 2s linear infinite;
+}

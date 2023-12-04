@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: calc(15vh + 1rem);
+  right: calc(20vw + 1rem);
+}
+
+.container svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: 4rem;
+    height: 4rem;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .container svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
