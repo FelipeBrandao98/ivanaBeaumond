@@ -61,8 +61,8 @@ To access the application, you need to create your environment variables in the 
 
 ```python
 BACKEND_URL=
-
---> this variable informs the address of the restful api, necessary to run the application (is the sum of the following 2 variables)
+  |
+  |-> this variable informs the address of the restful api, necessary to run the application (is the sum of the following 2 variables)
 
 ------------------------
 BACKEND_PROTOCOL=
@@ -91,7 +91,7 @@ NEXT_PUBLIC_GOOGLE_ANALYTICS=
 
 ```
 
-After this step, we proceed to access the application through the page (http: //localhost/${--port}), where ${--port} is the port variable in the `.env` file.
+After this step, we proceed to access the application through the page ``http://localhost:--port``, where `--port` is the port variable in the `.env` file.
 
 # Techs
 

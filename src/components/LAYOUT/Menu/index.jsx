@@ -85,7 +85,12 @@ export default function Menu({ lang }) {
       }
       <MenuContainer short={short ? short : undefined}>
         <MenuLogoInHeader short={short ? short : undefined}>
-          <Image src={logo} alt="IVANA BEAUMOND" width={300} height={50} />
+          <Image
+            src={logo}
+            alt="Logo Ivana Beaumond | Ateliê Francês"
+            width={300}
+            height={50}
+          />
         </MenuLogoInHeader>
 
         <SearchButton lang={lang} short={short ? short : undefined} />
