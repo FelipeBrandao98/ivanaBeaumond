@@ -1,28 +1,18 @@
-.container {
-  transition: all .5s;
-}
-
 .container ul {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-
   text-decoration: none;
   list-style: none;
 
   gap: .2rem;
-
-  transition: all 2s;
 }
 
 .container ul li {
-  font-size: .8rem;
+  font-size: 1rem;
   font-weight: thin;
-  padding: .1rem;
+  padding: .5rem;
 
   display: flex;
   align-items: center;
@@ -30,19 +20,34 @@
   gap: .2rem;
 }
 
+.container ul li svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
 .container ul li:hover,
 .contactNav ul li:hover {
   filter: brightness(1.2);
+  background-color: var(--background-blur-dark);
+  border-radius: .5rem;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 @media (min-width: 720px) {
+  .container {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+
+    transition: all .5s;
+  }
+
   .short {
-    opacity: 0;
     pointer-events: none;
+    top: -7rem;
   }
 }
+
 
 @media (max-width: 720px) {
   .container {
@@ -52,7 +57,7 @@
   .container ul {
     position: inherit;
     align-items: flex-end;
-    gap: .5rem;
+    gap: .2rem;
   }
 
   .container ul li {
