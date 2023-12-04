@@ -137,13 +137,19 @@ export default function Menu({ lang }) {
           <MenuSocialMedia lang={lang} short={short ? short : undefined}>
             <ul>
               <li>
-                @ivanabeaumond <FaInstagram />
+                <Link href="https://www.instagram.com/ivanabeaumond/">
+                  @ivanabeaumond <FaInstagram />
+                </Link>
               </li>
               <li>
-                IvanaBeaumond <FaFacebookSquare />
+                <Link href="https://www.facebook.com/IvanaBeaumond/">
+                  IvanaBeaumond <FaFacebookSquare />
+                </Link>
               </li>
               <li>
-                @ivanaparisdebutantes <FaInstagram />
+                <Link href="https://www.instagram.com/ivanaparisdebutantes/">
+                  @ivanaparisdebutantes <FaInstagram />
+                </Link>
               </li>
             </ul>
           </MenuSocialMedia>
