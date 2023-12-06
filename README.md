@@ -154,27 +154,27 @@ Route (app)                                              Size     First Load JS
 
 ##### The project follows the following doctrine, starting at `./app/`, we have:
 
-  - [ ] Layout.jsx[ˆ1]
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
-    > [!IMPORTANT]
-    > This component is a hook used to create schedules on any EndUser page of the Application.
+
+  - Layout.jsx
+  <br>
+  <sub>**A root layout is the top-most layout in the root app directory. It is used to define the <html> and <body> tags and other globally shared UI.**</sup>
 
     - [ ] Providers
 
-      > [!IMPORTANT]
-      > components rendered on all EndUser pages of the application.
+    > This component is a hook used to create schedules on any EndUser page of the Application.
 
       - [ ] - Menu
       - [ ] - AdressItem
       - [ ] - SubscribeItem
       - [ ] - Footer
 
-      > [!IMPORTANT]
-      > Utility components rendered on all EndUser pages of the application.
+      > components rendered on all EndUser pages of the application.
 
       - [ ] - GuideToBottomScroll
       - [ ] - ScrollToTop
       - [ ] - CookieNotice
       - [ ] - GoogleAnalytics
 
-[ˆ1]: A root layout is the top-most layout in the root app directory. It is used to define the <html> and <body> tags and other globally shared UI.
+      > Utility components rendered on all EndUser pages of the application.
