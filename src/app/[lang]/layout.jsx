@@ -16,12 +16,12 @@ import getLangDict from '@/utils/getLangDict'
 import { Providers } from './providers'
 
 // Components imports
-import Menu from '@/components/LAYOUT/Menu'
-import AdressItem from '@/components/LAYOUT/AdressItem'
-import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
-import Footer from '@/components/LAYOUT/Footer'
-import GuideToBottomScroll from '@/components/LAYOUT/GuideToBottomScroll'
-import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
+import Menu from '@/components/EndUsersRoute/LAYOUT/Menu'
+import AdressItem from '@/components/EndUsersRoute/LAYOUT/AdressItem'
+import SubscribeItem from '@/components/EndUsersRoute/LAYOUT/SubscribeItem'
+import Footer from '@/components/EndUsersRoute/LAYOUT/Footer'
+import GuideToBottomScroll from '@/components/EndUsersRoute/LAYOUT/GuideToBottomScroll'
+import ScrollToTop from '@/components/EndUsersRoute/LAYOUT/ScrollToTop'
 
 // Hooks imports
 import CookieNotice from '@/hooks/CookieNotice'
@@ -50,7 +50,7 @@ import {
 import '@/styles/globals.css'
 
 // Atoms imports
-import MenuSpacement from '@/atoms/Layout/MenuSpacement'
+import MenuSpacement from '@/atoms/EndUsersRoute/Layout/MenuSpacement'
 
 // Font instances to pass as variables
 const inter = Inter({

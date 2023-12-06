@@ -2,7 +2,8 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import ContactPage from '@/components/CONTACT/ContactPage'
+import ContactHeader from '@/components/EndUsersRoute/PAGES/CONTACT/ContactHeader'
+import AppointmentForm from '@/components/EndUsersRoute/PAGES/CONTACT/AppointmentForm'
 
 // export async function generateMetadata({ params }) {
 //   const { lang } = params
@@ -30,7 +31,9 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <ContactPage lang={lang} />
+      <ContactHeader lang={lang} />
+
+      <AppointmentForm lang={lang} />
     </>
   )
   //

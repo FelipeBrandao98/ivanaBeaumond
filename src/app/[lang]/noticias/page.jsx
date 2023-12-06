@@ -2,15 +2,13 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import BlogBanner from '@/components/BLOG/BlogBanner'
-import BlogOtherPosts from '@/components/BLOG/BlogOtherPosts'
+import NewsHeader from '@/components/EndUsersRoute/PAGES/NEWS/NewsHeader'
+import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
+import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
 
 // API Service imports
 import getLangDict from '@/utils/getLangDict'
 import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
-
-// Atoms imports
-import NewsContainer from '@/atoms/News/NewsContainer'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -41,13 +39,16 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <NewsContainer>
-        <BlogBanner lang={lang} data={latestPosts} />
-        <BlogOtherPosts title="Espaço Debutantes" data={latestPosts} />
-        <BlogOtherPosts title="Na Mídia" data={latestPosts} />
-        <BlogOtherPosts title="Nossas Noivas" data={latestPosts} />
-        <BlogOtherPosts title="Dicas e Truques" data={latestPosts} />
-      </NewsContainer>
+      <NewsHeader lang={lang} />
+
+      <NewsBanner lang={lang} data={latestPosts} />
+      {
+        //
+      }
+      <OtherNews title="Espaço Debutantes" data={latestPosts} />
+      <OtherNews title="Na Mídia" data={latestPosts} />
+      <OtherNews title="Nossas Noivas" data={latestPosts} />
+      <OtherNews title="Dicas e Truques" data={latestPosts} />
     </>
   )
   //

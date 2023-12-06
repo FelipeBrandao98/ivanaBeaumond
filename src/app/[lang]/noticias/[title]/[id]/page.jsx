@@ -2,10 +2,12 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import NewsPageContent from '@/components/BLOG/NewsPageContent'
+import CONSTRUCTOR from '@/components/EndUsersRoute/PAGES/NEWS/CONSTRUCTOR'
+import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
 
 // Calls api imports
 import getUniqueNews from '@/api/CallsWithoutToken/getUniqueNews'
+import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
 
 // Metadata
 export async function generateMetadata({ params }) {
@@ -38,12 +40,21 @@ export default async function Page({ params }) {
 
   const { id } = params
 
-  const post = await getUniqueNews(lang, id)
+  // Instantiate response objects from api, by language by the way
+  const news = await getUniqueNews(lang, id)
+  const otherNews = await getLatestNews(lang)
 
   // Return components, with data and language
   return (
     <>
-      <NewsPageContent lang={lang} data={post} />
+      <CONSTRUCTOR lang={lang} data={news} />
+      {
+        //
+      }
+      <OtherNews title="Espaço Debutantes" data={otherNews} />
+      <OtherNews title="Na Mídia" data={otherNews} />
+      <OtherNews title="Nossas Noivas" data={otherNews} />
+      <OtherNews title="Dicas e Truques" data={otherNews} />
     </>
   )
   //

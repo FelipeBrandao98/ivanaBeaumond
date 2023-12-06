@@ -1,0 +1,66 @@
+.contentOne {
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--white-100);
+}
+
+.contentOneText {
+  width: 20rem;
+  font-family: var(--font-merriweather);
+  line-height: 1.8rem;
+  letter-spacing: .1rem;
+  text-align: justify;
+}
+
+.contentOneTextFirstLetter {
+  font-size: 3rem;
+  line-height: 1.8rem;
+  font-family: var(--font-rouge-script);
+}
+
+.contentTwoImageArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: .1rem;
+}
+
+.contentTwoImageDescriptionOne {
+  font-family: var(--font-bebas-neue);
+  margin-left: 1rem;
+  color: tomato;
+}
+
+.contentOneImage {
+  width: 40rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: .1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: .11rem .11rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 720px) {
+  .contentOne {
+    padding: 2rem .5rem;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .contentOneText {
+    width: 20rem;
+    font-family: var(--font-merriweather);
+    line-height: 1.8rem;
+    letter-spacing: .1rem;
+    text-align: left;
+  }
+
+  .contentOneImage {
+    width: calc(100% + 1rem);
+    margin-left: -.5rem;
+  }
+}

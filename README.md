@@ -9,7 +9,7 @@
    * [Application](#application)
    * [Project](#project)
       * [Layout.jsx](#layoutjsx)
-      * [Page.jsx](#page.jsx)
+      * [Page.jsx](#pagejsx)
 
 # Installation
 
@@ -193,8 +193,8 @@ Route (app)                                              Size     First Load JS
 
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
-  - [ ] - BannerHomePage
-  - [ ] - CollectionsItemsCardHomePage
+  - [x] - BannerHomePage
+  - [x] - CollectionsItemsCardHomePage
   - [ ] - EventsItemsHomePage
   - [ ] - DepositionsAreaHomePage
   - [ ] - HighLightsHomePage

@@ -5,7 +5,7 @@ import Head from 'next/head'
 import { Providers } from './providers'
 
 // Global Styles imports
-import '@/styles/login.css'
+import '@/styles/globals.css'
 
 export const metadata = {
   title: 'Login Page',

@@ -2,11 +2,11 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import BannerHomePage from '@/components/HOME/BannerHomePage'
-import CollectionsItemsCardHomePage from '@/components/HOME/CollectionsItemsCardHomePage'
-import DepositionsAreaHomePage from '@/components/HOME/DepositionsAreaHomePage'
-import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
-import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
+import BannerHome from '@/components/EndUsersRoute/PAGES/HOME/BannerHome'
+import CollectionsHome from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionsHome'
+import EventsHome from '@/components/EndUsersRoute/PAGES/EVENTS/EventsHome'
+import CommentsHome from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsHome'
+import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
 
 // API Service imports
 import getCategoryCollections from '@/api/CallsWithoutToken/getCategoryCollections'
@@ -63,11 +63,15 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <BannerHomePage lang={lang} />
-      <CollectionsItemsCardHomePage lang={lang} data={categories} />
-      <EventsItemsHomePage lang={lang} data={{ events }} />
-      <DepositionsAreaHomePage lang={lang} data={depositions} />
-      <HighLightsHomePage lang={lang} data={latestNews} />
+      <BannerHome lang={lang} />
+
+      <CollectionsHome lang={lang} data={categories} />
+
+      <EventsHome lang={lang} data={{ events }} />
+
+      <CommentsHome lang={lang} data={depositions} />
+
+      <NewsBanner lang={lang} data={latestNews} />
     </>
   )
   //

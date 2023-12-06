@@ -2,7 +2,8 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import MainPageCollections from '@/components/COLLECTIONS/MainPageCollections'
+import CollectionsHeader from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionsHeader'
+import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/MainPageCollections/Collections'
 
 // API Service imports
 import getCollections from '@/api/CallsWithoutToken/getCollections'
@@ -36,7 +37,8 @@ export default async function Page() {
   // Return components, with functions to call API and language
   return (
     <>
-      <MainPageCollections lang={lang} data={collections} />
+      <CollectionsHeader lang={lang} />
+      <Collections lang={lang} data={collections} />
     </>
   )
   //

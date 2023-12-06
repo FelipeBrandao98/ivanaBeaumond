@@ -25,11 +25,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardForm from '@/atoms/Dashboard/DashboardForm'
-import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
+import DashboardForm from '@/atoms/AdminUsersRoute/Dashboard/DashboardForm'
+import DashboardLabel from '@/atoms/AdminUsersRoute/Dashboard/DashboardLabel'
 
 // Api imports
 import login from '@/api/CallsWithoutToken/login'
+import LoginContainer from '@/atoms/LOGIN/LoginContainer'
 //
 
 const loginFormSchema = z.object({
@@ -81,97 +82,81 @@ export default function LoginPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <aside className={styles.container}>
-        <section className={styles.content}>
-          <h1 className={styles.caution}>
-            <span className={styles.cautionIcon}>
-              Atenção{' '}
-              <BsFillExclamationTriangleFill
-                width={50}
-                height={50}
-                className={styles.icon}
-              />
-            </span>
-            <span className={styles.cautionTwo}>
-              acesso apenas para pessoas autorizadas!
-            </span>
-          </h1>
+      <LoginContainer>
+        <h1>Faça seu Login</h1>
 
-          <h1 className={styles.title}>Faça seu Login</h1>
+        <DashboardForm
+          className={styles.form}
+          action={handleSubmit(handleLogin)}
+        >
+          <DashboardLabel htmlFor="email" name="E-mail" errors={errors.email}>
+            <input
+              type="email"
+              id="email"
+              className={styles.input}
+              {...register('email')}
+            />
+          </DashboardLabel>
 
-          <DashboardForm
-            className={styles.form}
-            action={handleSubmit(handleLogin)}
+          <DashboardLabel
+            htmlFor="password"
+            name="Senha"
+            errors={errors.password}
           >
-            <DashboardLabel htmlFor="email" name="E-mail" errors={errors.email}>
-              <input
-                type="email"
-                id="email"
-                className={styles.input}
-                {...register('email')}
-              />
-            </DashboardLabel>
+            <input
+              type="password"
+              id="password"
+              className={styles.input}
+              {...register('password')}
+            />
+          </DashboardLabel>
 
-            <DashboardLabel
-              htmlFor="password"
-              name="Senha"
-              errors={errors.password}
+          {isAuthenticated === 'loading' ? (
+            <button
+              onClick={(e) => e.preventDefault()}
+              className={`${styles.button} ${styles.buttonLoading}`}
             >
-              <input
-                type="password"
-                id="password"
-                className={styles.input}
-                {...register('password')}
+              Carregando...{' '}
+              <AiOutlineLoading
+                width={40}
+                height={40}
+                className={styles.buttonIcon}
               />
-            </DashboardLabel>
-
-            {isAuthenticated === 'loading' ? (
-              <button
-                onClick={(e) => e.preventDefault()}
-                className={`${styles.button} ${styles.buttonLoading}`}
+            </button>
+          ) : isAuthenticated === 'success' ? (
+            <>
+              <p className={styles.succesMessage}>Login bem-sucedido!</p>
+              <Link
+                href={'ib-login/dashboard'}
+                className={`${styles.button} ${styles.buttonSuccess}`}
               >
-                Carregando...{' '}
-                <AiOutlineLoading
-                  width={40}
-                  height={40}
-                  className={styles.buttonIcon}
-                />
+                Acessar Dashboard!
+                <BsFillArrowRightCircleFill width={40} height={40} />
+              </Link>
+            </>
+          ) : isAuthenticated === 'failed' ? (
+            <>
+              <p className={styles.failedMessage}>
+                Erro ao tentar fazer a autenticação
+              </p>
+              <button
+                onClick={(e) => {
+                  e.preventDefault()
+                  setIsAuthenticated('login')
+                }}
+                className={`${styles.button} ${styles.buttonRetry}`}
+              >
+                Tente Novamente
+                <BsFillArrowRightCircleFill width={40} height={40} />
               </button>
-            ) : isAuthenticated === 'success' ? (
-              <>
-                <p className={styles.succesMessage}>Login bem-sucedido!</p>
-                <Link
-                  href={'ib-login/dashboard'}
-                  className={`${styles.button} ${styles.buttonSuccess}`}
-                >
-                  Acessar Dashboard!
-                  <BsFillArrowRightCircleFill width={40} height={40} />
-                </Link>
-              </>
-            ) : isAuthenticated === 'failed' ? (
-              <>
-                <p className={styles.failedMessage}>
-                  Erro ao tentar fazer a autenticação
-                </p>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    setIsAuthenticated('login')
-                  }}
-                  className={`${styles.button} ${styles.buttonRetry}`}
-                >
-                  Tente Novamente
-                  <BsFillArrowRightCircleFill width={40} height={40} />
-                </button>
-              </>
-            ) : (
-              isAuthenticated === 'login' && (
-                <button className={styles.button}>Entrar</button>
-              )
-            )}
-          </DashboardForm>
-        </section>
-      </aside>
+            </>
+          ) : (
+            isAuthenticated === 'login' && (
+              <button className={styles.button}>Entrar</button>
+            )
+          )}
+        </DashboardForm>
+      </LoginContainer>
     </>
   )
   //
