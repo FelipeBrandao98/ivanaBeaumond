@@ -37,7 +37,8 @@
   transition: all .2s;
 }
 
-.description {
+.visible p,
+.invisible p {
 
   font-size: .9rem;
   color: var(--white);
@@ -45,7 +46,8 @@
   text-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.icon {
+.visible svg,
+.invisible svg {
   display: flex;
   width: 5rem;
   height: 5rem;

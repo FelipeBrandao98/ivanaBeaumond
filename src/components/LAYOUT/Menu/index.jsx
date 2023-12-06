@@ -93,7 +93,7 @@ export default function Menu({ lang }) {
           />
         </MenuLogoInHeader>
 
-        <SearchButton lang={lang} short={short ? short : undefined} />
+        {/* <SearchButton lang={lang} short={short ? short : undefined} /> */}
 
         <TraductionButton lang={lang} short={short ? short : undefined} />
 

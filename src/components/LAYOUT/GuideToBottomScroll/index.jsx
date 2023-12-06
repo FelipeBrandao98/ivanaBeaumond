@@ -9,8 +9,8 @@ import { BsArrowDownSquareFill } from 'react-icons/bs'
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
-// Styles imports
-import styles from './styles.module.css'
+// Atoms imports
+import GuideToBottomScrollContainer from '@/atoms/Layout/GuideToBottomScroll/GuideToBottomScrollContainer'
 
 // Component Declaration
 export default function GuideToBottomScroll({ lang }) {
@@ -45,14 +45,14 @@ export default function GuideToBottomScroll({ lang }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <div className={visible ? styles.visible : styles.invisible}>
-        <p className={styles.description}>
+      <GuideToBottomScrollContainer visible={visible}>
+        <p>
           {languageTraducted.layout.guideToBottomScroll.titlePartOne} <br />{' '}
           {languageTraducted.layout.guideToBottomScroll.titlePartTwo}
         </p>
 
-        <BsArrowDownSquareFill className={styles.icon} size={50} />
-      </div>
+        <BsArrowDownSquareFill size={50} />
+      </GuideToBottomScrollContainer>
     </>
   )
   //

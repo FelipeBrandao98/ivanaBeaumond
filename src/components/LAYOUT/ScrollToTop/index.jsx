@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react'
 // Icons imports
 import { FaChevronUp } from 'react-icons/fa'
 
-// Styles imports
-import styles from './styles.module.css'
+//Atoms imports
+import ScrollToTopButton from '@/atoms/Layout/ScrollToTop/ScrollToTopButton'
 
 // Component Declaration
 export default function ScrollToTop() {
@@ -42,13 +42,12 @@ export default function ScrollToTop() {
   // Return components, with functions to call API and language
   return (
     <>
-      <button
-        className={styles.button}
+      <ScrollToTopButton
         onClick={scrollToTop}
-        style={{ display: visible ? 'inline' : 'none' }}
+        visible={visible ? visible : undefined}
       >
         <FaChevronUp size={20} />
-      </button>
+      </ScrollToTopButton>
     </>
   )
   //
