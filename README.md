@@ -158,8 +158,7 @@ Route (app)                                              Size     First Load JS
 
 
   - Layout.jsx
-  <br>
-  <sub>**A root layout is the top-most layout in the root app directory. It is used to define the <html> and <body> tags and other globally shared UI.**</sup>
+  <sub>A root layout is the top-most layout in the root app directory. It is used to define the <html> and <body> tags and other globally shared UI.</sup>
 
     - [ ] Providers
 
