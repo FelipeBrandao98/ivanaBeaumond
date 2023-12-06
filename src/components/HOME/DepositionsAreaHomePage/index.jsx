@@ -11,7 +11,7 @@ import getLangDict from '@/utils/getLangDict'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function DepositionsArea({ lang, data }) {
+export default function DepositionsAreaHomePage({ lang, data }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 

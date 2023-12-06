@@ -38,6 +38,10 @@ const dictionaryFr = {
         name: 'Événements',
         route: '/eventos',
       },
+      menuItemFive: {
+        name: 'Contact',
+        route: '/contato',
+      },
       appointmentBanner: {
         title: 'Prenez votre rendez-vous',
         yourName: 'Votre Nom :',

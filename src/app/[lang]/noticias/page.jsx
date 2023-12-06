@@ -40,13 +40,15 @@ export default async function Page() {
 
   // Return components, with data and language
   return (
-    <NewsContainer>
-      <BlogBanner lang={lang} data={latestPosts} />
-      <BlogOtherPosts title="Espaço Debutantes" data={latestPosts} />
-      <BlogOtherPosts title="Na Mídia" data={latestPosts} />
-      <BlogOtherPosts title="Nossas Noivas" data={latestPosts} />
-      <BlogOtherPosts title="Dicas e Truques" data={latestPosts} />
-    </NewsContainer>
+    <>
+      <NewsContainer>
+        <BlogBanner lang={lang} data={latestPosts} />
+        <BlogOtherPosts title="Espaço Debutantes" data={latestPosts} />
+        <BlogOtherPosts title="Na Mídia" data={latestPosts} />
+        <BlogOtherPosts title="Nossas Noivas" data={latestPosts} />
+        <BlogOtherPosts title="Dicas e Truques" data={latestPosts} />
+      </NewsContainer>
+    </>
   )
   //
 }

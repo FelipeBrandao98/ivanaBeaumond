@@ -112,23 +112,43 @@ export default function Menu({ lang }) {
           <MenuPagesArea lang={lang} short={short ? short : undefined}>
             <ul>
               <li>
-                <Link href={`/`} lang={lang}>
+                <Link
+                  href={`${lang}/${languageTraducted.layout.menu.menuItemOne.route}`}
+                  lang={lang}
+                >
                   {languageTraducted.layout.menu.menuItemOne.name}
                 </Link>
               </li>
               <li>
-                <Link href={`/colecoes`} lang={lang}>
+                <Link
+                  href={`${lang}/${languageTraducted.layout.menu.menuItemTwo.route}`}
+                  lang={lang}
+                >
                   {languageTraducted.layout.menu.menuItemTwo.name}
                 </Link>
               </li>
               <li>
-                <Link href={`/noticias`} lang={lang}>
+                <Link
+                  href={`${lang}/${languageTraducted.layout.menu.menuItemThree.route}`}
+                  lang={lang}
+                >
                   {languageTraducted.layout.menu.menuItemThree.name}
                 </Link>
               </li>
               <li>
-                <Link href={`/eventos`} lang={lang}>
+                <Link
+                  href={`${lang}/${languageTraducted.layout.menu.menuItemFour.route}`}
+                  lang={lang}
+                >
                   {languageTraducted.layout.menu.menuItemFour.name}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`${lang}/${languageTraducted.layout.menu.menuItemFive.route}`}
+                  lang={lang}
+                >
+                  {languageTraducted.layout.menu.menuItemFive.name}
                 </Link>
               </li>
             </ul>

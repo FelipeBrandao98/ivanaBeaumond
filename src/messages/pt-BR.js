@@ -38,6 +38,10 @@ const dictionaryPt = {
         name: 'Eventos',
         route: '/eventos',
       },
+      menuItemFive: {
+        name: 'Contato',
+        route: '/contato',
+      },
       appointmentBanner: {
         title: 'Faça seu agendamento',
         yourName: 'Seu Nome:',

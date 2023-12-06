@@ -7,6 +7,7 @@
       * [First Steps](#first-steps)
    * [Techs](#techs)
    * [Application](#application)
+   * [Project](#project)
 
 # Installation
 
@@ -148,3 +149,32 @@ Route (app)                                              Size     First Load JS
   * 🇬🇧 / 🇺🇸 English [en].
 
 ##### The routes preceded by ib-login, are the website's data manipulation routes, for administrator users, in them you can add, change and delete News, Events, Categories and Collections.
+
+# Project
+
+##### The project follows the following doctrine, starting at `./app/`, we have:
+
+  - [ ] Layout.jsx[ˆ1]
+
+    > [!IMPORTANT]
+    > This component is a hook used to create schedules on any EndUser page of the Application.
+
+    - [ ] Providers
+
+      > [!IMPORTANT]
+      > components rendered on all EndUser pages of the application.
+
+      - [ ] - Menu
+      - [ ] - AdressItem
+      - [ ] - SubscribeItem
+      - [ ] - Footer
+
+      > [!IMPORTANT]
+      > Utility components rendered on all EndUser pages of the application.
+
+      - [ ] - GuideToBottomScroll
+      - [ ] - ScrollToTop
+      - [ ] - CookieNotice
+      - [ ] - GoogleAnalytics
+
+[ˆ1]: A root layout is the top-most layout in the root app directory. It is used to define the <html> and <body> tags and other globally shared UI.

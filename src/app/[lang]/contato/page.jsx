@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import CollectionGrid from '@/components/COLLECTIONS/CollectionGrid'
+import ContactPage from '@/components/CONTACT/ContactPage'
 
 // export async function generateMetadata({ params }) {
 //   const { lang } = params
@@ -10,11 +10,11 @@ import CollectionGrid from '@/components/COLLECTIONS/CollectionGrid'
 //   const traductedMeta = getLangDict(lang)
 
 //   return {
-//     title: traductedMeta.metadata.search.title,
-//     description: traductedMeta.metadata.search.description,
+//     title: traductedMeta.metadata.contact.title,
+//     description: traductedMeta.metadata.contact.description,
 //     openGraph: {
-//       title: traductedMeta.metadata.search.title,
-//       description: traductedMeta.metadata.search.description,
+//       title: traductedMeta.metadata.contact.title,
+//       description: traductedMeta.metadata.contact.description,
 //     },
 //   }
 // }
@@ -30,7 +30,7 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <CollectionGrid />
+      <ContactPage lang={lang} />
     </>
   )
   //

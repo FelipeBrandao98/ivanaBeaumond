@@ -1,8 +1,6 @@
 .section {
   display: flex;
-  width: calc(100% + 4rem);
-  margin-top: calc(50px + 45px + 2rem + .5rem);
-  margin-left: -2rem;
+  width: calc(100%);
   height: calc(100vh - (50px + 45px + 2rem + .5rem));
 
   overflow: hidden;

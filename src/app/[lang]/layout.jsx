@@ -12,13 +12,22 @@ import { cookies } from 'next/headers'
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
+// Providers imports
+import { Providers } from './providers'
+
 // Components imports
+import Menu from '@/components/LAYOUT/Menu'
 import AdressItem from '@/components/LAYOUT/AdressItem'
+import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
 import Footer from '@/components/LAYOUT/Footer'
 import GuideToBottomScroll from '@/components/LAYOUT/GuideToBottomScroll'
-import Menu from '@/components/LAYOUT/Menu'
 import ScrollToTop from '@/components/LAYOUT/ScrollToTop'
-import SubscribeItem from '@/components/LAYOUT/SubscribeItem'
+
+// Hooks imports
+import CookieNotice from '@/hooks/CookieNotice'
+
+// Google Analytics imports
+import GoogleAnalytics from '@/services/GoogleAnalytics'
 
 // Fonts from google, resource of next.js imports
 import {
@@ -37,17 +46,11 @@ import {
   Playfair_Display,
 } from 'next/font/google'
 
-// Providers imports
-import { Providers } from './providers'
-
-// Google Analytics imports
-import GoogleAnalytics from '@/services/GoogleAnalytics'
-
-// Hooks imports
-import CookieNotice from '@/hooks/CookieNotice'
-
 // Global Styles imports
 import '@/styles/globals.css'
+
+// Atoms imports
+import MenuSpacement from '@/atoms/Layout/MenuSpacement'
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -234,7 +237,10 @@ export default async function RootLayout({ children }) {
           <Menu lang={lang} />
 
           {/* Main component, Where all pages are rendered */}
-          <main>{children}</main>
+          <main>
+            <MenuSpacement />
+            {children}
+          </main>
 
           {/* Layout Components */}
           <AdressItem lang={lang} />

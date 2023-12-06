@@ -93,6 +93,7 @@ export default function CollectionsItemsCardHomePage({ lang, data }) {
             height={100}
           />
         </div>
+
         <section className={styles.section}>
           <div className={styles.fromLeftArea}>
             <button

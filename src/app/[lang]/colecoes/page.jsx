@@ -7,10 +7,20 @@ import MainPageCollections from '@/components/COLLECTIONS/MainPageCollections'
 // API Service imports
 import getCollections from '@/api/CallsWithoutToken/getCollections'
 
-export const metadata = {
-  title: 'Coleções',
-  description: '',
-}
+// export async function generateMetadata({ params }) {
+//   const { lang } = params
+
+//   const traductedMeta = getLangDict(lang)
+
+//   return {
+//     title: traductedMeta.metadata.collections.title,
+//     description: traductedMeta.metadata.collections.description,
+//     openGraph: {
+//       title: traductedMeta.metadata.collections.title,
+//       description: traductedMeta.metadata.collections.description,
+//     },
+//   }
+// }
 
 // Component Declaration
 export default async function Page() {
@@ -26,7 +36,6 @@ export default async function Page() {
   // Return components, with functions to call API and language
   return (
     <>
-      {console.log(collections)}
       <MainPageCollections lang={lang} data={collections} />
     </>
   )

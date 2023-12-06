@@ -1,8 +1,10 @@
 .container {
   display: flex;
-  width: 30vw;
-  height: 70vh;
   border-left: 1px solid var(--black-800);
+
+  height: 70vh;
+  width: 100%;
+  max-width: 60vw;
 }
 
 .container img {
@@ -16,6 +18,8 @@
 @media (max-width: 720px) {
   .container {
     display: none;
+    width: 0;
+    height: 0;
   }
 
   .container img {

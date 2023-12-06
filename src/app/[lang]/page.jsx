@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 // Components imports
 import BannerHomePage from '@/components/HOME/BannerHomePage'
 import CollectionsItemsCardHomePage from '@/components/HOME/CollectionsItemsCardHomePage'
-import DepositionsArea from '@/components/HOME/DepositionsArea'
+import DepositionsAreaHomePage from '@/components/HOME/DepositionsAreaHomePage'
 import EventsItemsHomePage from '@/components/HOME/EventsItemsHomePage'
 import HighLightsHomePage from '@/components/HOME/HighLightsHomePage'
 
@@ -63,13 +63,11 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <main>
-        <BannerHomePage lang={lang} />
-        <CollectionsItemsCardHomePage lang={lang} data={categories} />
-        <EventsItemsHomePage lang={lang} data={{ events }} />
-        <DepositionsArea lang={lang} data={depositions} />
-        <HighLightsHomePage lang={lang} data={latestNews} />
-      </main>
+      <BannerHomePage lang={lang} />
+      <CollectionsItemsCardHomePage lang={lang} data={categories} />
+      <EventsItemsHomePage lang={lang} data={{ events }} />
+      <DepositionsAreaHomePage lang={lang} data={depositions} />
+      <HighLightsHomePage lang={lang} data={latestNews} />
     </>
   )
   //
