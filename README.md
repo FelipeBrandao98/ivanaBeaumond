@@ -8,6 +8,8 @@
    * [Techs](#techs)
    * [Application](#application)
    * [Project](#project)
+      * [Layout.jsx](#layoutjsx)
+      * [Page.jsx](#page.jsx)
 
 # Installation
 
@@ -157,24 +159,42 @@ Route (app)                                              Size     First Load JS
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
 
-  ## Layout.jsx
+## Layout.jsx
+
+##### A root layout is the top-most layout in the root app directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.
+
+- [x] Providers
+
+> This component is a hook used to create schedules on any EndUser page of the Application.
+
+- [x] - Menu
+- [ ] - AdressItem
+- [ ] - SubscribeItem
+- [ ] - Footer
+
+> components rendered on all EndUser pages of the application.
+
+- [x] - GuideToBottomScroll
+- [x] - ScrollToTop
+- [ ] - CookieNotice
+- [ ] - GoogleAnalytics
+
+> Utility components rendered on all EndUser pages of the application.
+
+## Page.jsx
+
+##### A page is UI that is unique to a route. The scheme used in this application is:
+
+  * The `Page.jsx` file reads the cookie provided by the `middleware.js` file, and distributes it to the components used on the page.
   
-  ##### A root layout is the top-most layout in the root app directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.
+  * The `Page.jsx` file is also responsible for generating the application's metadata.
 
-  - [x] Providers
+  * The `Page.jsx` file is also ultimately and preferably responsible for API calls, where in this scheme you must make a request, store your response in a variable and transfer this same variable to the component through a property to be rendered by the component
 
-  > This component is a hook used to create schedules on any EndUser page of the Application.
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
-  - [x] - Menu
-  - [ ] - AdressItem
-  - [ ] - SubscribeItem
-  - [ ] - Footer
-
-  > components rendered on all EndUser pages of the application.
-
-  - [x] - GuideToBottomScroll
-  - [x] - ScrollToTop
-  - [ ] - CookieNotice
-  - [ ] - GoogleAnalytics
-
-  > Utility components rendered on all EndUser pages of the application.
+  - [ ] - BannerHomePage
+  - [ ] - CollectionsItemsCardHomePage
+  - [ ] - EventsItemsHomePage
+  - [ ] - DepositionsAreaHomePage
+  - [ ] - HighLightsHomePage
