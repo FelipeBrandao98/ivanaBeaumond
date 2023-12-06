@@ -193,7 +193,7 @@ Route (app)                                              Size     First Load JS
 
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
-  - [ ] - BannerHomePage
+  - [x] - BannerHomePage
   - [ ] - CollectionsItemsCardHomePage
   - [ ] - EventsItemsHomePage
   - [ ] - DepositionsAreaHomePage

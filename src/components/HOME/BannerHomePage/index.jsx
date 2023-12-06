@@ -1,45 +1,38 @@
 // Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
-
 import homeImage from '@/../public/homeimage.jpg'
 
 // Icons imports
 import { FaArrowRight } from 'react-icons/fa'
 
-// Styles imports
-import styles from './styles.module.css'
-import { Suspense } from 'react'
-import BannerLoading from '@/atoms/Home/BannerLoading'
+// Atoms imports
+import BannerHomePageContainer from '@/atoms/Home/BannerHomePage/BannerHomePageContainer'
 
 // Component Declaration
 export default function BannerHomePage() {
   // Return components, with functions to call API and language
   return (
-    <Suspense fallback={<BannerLoading />}>
-      <section className={styles.section}>
-        <article className={styles.article}>
-          <Image
-            className={styles.image}
-            src={homeImage}
-            placeholder="blur"
-            alt="Foto de Noiva na Praia"
-            fill
-          />
-          <h1 className={styles.h1}>
-            DÉCOUVREZ LE MONDE MERVEILLEUX DE
-            <br />
-            IVANA BEAUMOND
-          </h1>
-          <h3 className={styles.h3}>
-            <Link href="pt-BR/collections">
-              DÉCOUVREZ MAINTENANT
-              <FaArrowRight className={styles.span} />
-            </Link>
-          </h3>
-        </article>
-      </section>
-    </Suspense>
+    <>
+      <BannerHomePageContainer>
+        <Image
+          src={homeImage}
+          placeholder="blur"
+          alt="HomePage Ivana Beaumond | Ateliê Francês"
+        />
+        <h1>
+          DÉCOUVREZ LE MONDE MERVEILLEUX DE
+          <br />
+          IVANA BEAUMOND
+        </h1>
+        <h3>
+          <Link href="pt-BR/collections">
+            DÉCOUVREZ MAINTENANT
+            <FaArrowRight width={50} height={50} />
+          </Link>
+        </h3>
+      </BannerHomePageContainer>
+    </>
   )
   //
 }
