@@ -15,6 +15,7 @@
         * [[title]/[id]/Page.jsx]()
       * [News](#news)
         * [Page.jsx]()
+        * [[title]/[id]/Page.jsx]()
 
 # Installation
 
