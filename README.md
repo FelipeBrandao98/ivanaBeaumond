@@ -12,6 +12,7 @@
       * [Page.jsx](#pagejsx)
       * [Collections](#collections)
         * [Page.jsx](#colecoes/page.jsx)
+        * [[title]/[id]/Page.jsx]()
 
 # Installation
 
@@ -165,6 +166,7 @@ Route (app)                                              Size     First Load JS
 
 ##### A root layout is the top-most layout in the root app directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.
 
+- [x] Metadatas
 - [x] Providers
 
 > This component is a hook used to create schedules on any EndUser page of the Application.
@@ -193,6 +195,8 @@ Route (app)                                              Size     First Load JS
 
   * The `Page.jsx` file is also ultimately and preferably responsible for API calls, where in this scheme you must make a request, store your response in a variable and transfer this same variable to the component through a property to be rendered by the component
 
+  - [ ] Metadatas
+
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
   - [x] - BannerHomePage --> BannerHome
@@ -205,7 +209,9 @@ Route (app)                                              Size     First Load JS
 
 ### Page.jsx
 
-##### All `Ppge.jsx` files follow the same scheme
+##### All `Page.jsx` files follow the same scheme
+
+  - [ ] Metadatas
 
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
@@ -213,3 +219,13 @@ Route (app)                                              Size     First Load JS
   - [x] - Collections (Needs Atomization)
 
   > This component is responsible for distributing data coming from the API, it renders all collections on the page
+
+### [title]/[id]Page.jsx
+
+##### All `Page.jsx` files follow the same scheme, this page is responsible for rendering each collection individually, that is, it renders a different page per collection
+
+  - [ ] Metadatas
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [ ] CollectionGrid
