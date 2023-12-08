@@ -1,37 +1,32 @@
 // Next.js Components imports
 import Image from 'next/image'
+import headerImg from '@/../public/ivana-beaumond-event-homepage.jpg'
 
-// Styles imports
-import styles from './styles.module.css'
+// Function to traduct component imports
+import getLangDict from '@/utils/getLangDict'
 
 //Atoms imports
 import PageHeader from '@/atoms/EndUsersRoute/PageHeader'
 
 // Component Declaration
-export default function CollectionsHeader() {
+export default function CollectionsHeader({ lang }) {
+  // Instance of Traductor
+  const languageTraducted = getLangDict(lang)
+
   // Return components, with functions to call API and language
   return (
     <>
       <PageHeader>
         <Image
-          className={styles.imageHeader}
-          src={'/ivana-beaumond-event-homepage.jpg'}
+          src={headerImg}
           alt="Ivana Beaumond"
+          placeholder="blur"
           width={1920}
           height={1080}
         />
-        <h1 className={styles.title}>Coleções</h1>
-        <div className={styles.subTitle}>
-          <h2>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident
-            nam aliquam aperiam ipsam doloremque quo in eligendi magnam officia
-            id dignissimos minima aliquid eveniet, sed excepturi veniam sint.
-            Culpa, quis. Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Possimus totam animi beatae nam tenetur eveniet doloribus
-            distinctio fugiat, saepe porro minima cum? Consequuntur tempore
-            architecto enim ullam atque eum velit.
-          </h2>
-          <h3>Ivana Beaumond ©</h3>
+        <h1>{languageTraducted.collections.title}</h1>
+        <div>
+          <h2>{languageTraducted.collections.subTitle}</h2>
         </div>
       </PageHeader>
     </>

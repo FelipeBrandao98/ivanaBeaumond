@@ -14,7 +14,7 @@ const dictionaryPt = {
 
   collections: {
     title: 'Coleções',
-    subTitle: `Welcome to Ivana Beaumond, the most charming and elegant wedding dress rental store in town! Here, we understand that every special occasion deserves an attire to match, which is why we are committed to bringing you the best options. Our collections are carefully crafted, from the wedding dresses to the groom's attire, all made to a high standard of quality. And for those memorable moments, like debutante parties and sophisticated events, we also have options that will make you shine. Inspired by France, we are ready to help you find the dress of your dreams. So, get ready to fall in love with our collections and immerse yourself in the enchanting world of Ivana Beaumond!`,
+    subTitle: `Bem-vindo à Ivana Beaumond, a locadora de vestidos de noiva mais charmosa e elegante da cidade! Aqui entendemos que cada ocasião especial merece um traje à altura, por isso nos comprometemos a levar até você as melhores opções. Nossas coleções são cuidadosamente elaboradas, desde os vestidos de noiva até os trajes do noivo, tudo confeccionado com alto padrão de qualidade. E para aqueles momentos memoráveis, como festas de debutantes e eventos sofisticados, também temos opções que vão fazer você brilhar. Inspirados na França, estamos prontos para ajudá-lo a encontrar o vestido dos seus sonhos. Então prepare-se para se apaixonar pelas nossas coleções e mergulhar no mundo encantador de Ivana Beaumond!`,
     seeMore: 'SAIBA TUDO SOBRE A COLEÇÃO',
     moreInfo: 'Clique aqui para mais informações',
   },

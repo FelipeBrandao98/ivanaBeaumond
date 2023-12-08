@@ -38,6 +38,7 @@ export default async function Page() {
   return (
     <>
       <CollectionsHeader lang={lang} />
+
       <Collections lang={lang} data={collections} />
     </>
   )

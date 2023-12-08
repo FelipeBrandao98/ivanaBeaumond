@@ -10,6 +10,8 @@
    * [Project](#project)
       * [Layout.jsx](#layoutjsx)
       * [Page.jsx](#pagejsx)
+      * [Collections](#collections)
+        * [Page.jsx](#colecoes/page.jsx)
 
 # Installation
 
@@ -198,3 +200,16 @@ Route (app)                                              Size     First Load JS
   - [x] - EventsItemsHomePage --> EventsHome (Needs Atomization)
   - [x] - DepositionsAreaHomePage --> CommentsHome (Needs Atomization)
   - [x] - HighLightsHomePage --> NewsBanner (Needs Atomization)
+
+## Collections
+
+### Page.jsx
+
+##### All `Ppge.jsx` files follow the same scheme
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [x] - CollectionsHeader
+  - [x] - Collections (Needs Atomization)
+
+  > This component is responsible for distributing data coming from the API, it renders all collections on the page
