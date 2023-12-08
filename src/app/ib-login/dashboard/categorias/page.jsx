@@ -1,5 +1,5 @@
 // Components imports
-import CategoriesPage from '@/components/IB-CATEGORIES/CategoriesPage'
+import CategoriesPage from '@/components/AdminUsersRoute/IB-CATEGORIES/CategoriesPage'
 
 // Component Declaration
 export default function Page() {

@@ -1,5 +1,5 @@
 // Components imports
-import CreateCollectionsPage from '@/components/IB-COLLECTIONS/CreateCollectionsPage'
+import CreateCollectionsPage from '@/components/AdminUsersRoute/IB-COLLECTIONS/CreateCollectionsPage'
 
 // API Service imports
 import api from '@/services/api'

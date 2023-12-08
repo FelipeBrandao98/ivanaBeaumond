@@ -7,10 +7,7 @@ import { useContext, useState } from 'react'
 import Link from 'next/link'
 
 // Icons imports
-import {
-  BsFillExclamationTriangleFill,
-  BsFillArrowRightCircleFill,
-} from 'react-icons/bs'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 import { AiOutlineLoading } from 'react-icons/ai'
 
 // Context imports
@@ -25,12 +22,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 
 // Atoms imports
+import LoginContainer from '@/atoms/LOGIN/LoginContainer'
 import DashboardForm from '@/atoms/AdminUsersRoute/Dashboard/DashboardForm'
 import DashboardLabel from '@/atoms/AdminUsersRoute/Dashboard/DashboardLabel'
 
 // Api imports
 import login from '@/api/CallsWithoutToken/login'
-import LoginContainer from '@/atoms/LOGIN/LoginContainer'
 //
 
 const loginFormSchema = z.object({

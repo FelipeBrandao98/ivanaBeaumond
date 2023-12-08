@@ -13,7 +13,7 @@ import { AuthContext } from '@/Context/AuthContext'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
 
 // Component Declaration
 export default function LogoutButton() {

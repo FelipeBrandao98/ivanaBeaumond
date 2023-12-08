@@ -21,12 +21,12 @@ import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionCon
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
-import DashboardTable from '@/atoms/Dashboard/DashboardTable'
-import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
-import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
-import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import DashboardTable from '@/atoms/AdminUsersRoute/Dashboard/DashboardTable'
+import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
+import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 
 // Api imports
 import getCollections from '@/api/CallsWithToken/getCollections'

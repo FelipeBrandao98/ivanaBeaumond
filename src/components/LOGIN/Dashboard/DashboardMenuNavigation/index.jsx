@@ -2,7 +2,7 @@
 import { ImNewspaper, ImMail3, ImTicket, ImListNumbered } from 'react-icons/im'
 
 // Atoms imports
-import DashboardButtonItem from '@/atoms/Dashboard/DashboardButtonItem'
+import DashboardButtonItem from '@/atoms/AdminUsersRoute/Dashboard/DashboardButtonItem'
 //
 
 // Component Declaration

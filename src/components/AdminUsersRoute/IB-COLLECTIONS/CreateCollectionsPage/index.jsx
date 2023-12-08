@@ -7,8 +7,8 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { CreateImageCollectionContext } from '@/Context/CreateImageCollectionContext'
 
 // Components imports
-import CreateCollection from '@/components/IB-COLLECTIONS/CreateCollectionsPage/CreateCollection'
-import CreateImageCollections from '@/components/IB-COLLECTIONS/CreateCollectionsPage/CreateImageCollections'
+import CreateCollection from './CreateCollection'
+import CreateImageCollections from './CreateImageCollections'
 
 // Component Declaration
 export default function CreateCollectionsPage({ functions }) {

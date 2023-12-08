@@ -1,5 +1,5 @@
 // Components imports
-import CreateNewsPage from '@/components/IB-NEWS/CreateNewsPage'
+import CreateNewsPage from '@/components/AdminUsersRoute/IB-NEWS/CreateNewsPage'
 
 // Component Declaration
 export default function Page() {

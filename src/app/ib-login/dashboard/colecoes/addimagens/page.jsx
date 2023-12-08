@@ -1,5 +1,5 @@
 // Components imports
-import AddPhotosCollections from '@/components/IB-COLLECTIONS/AddPhotosCollections'
+import AddPhotosCollections from '@/components/AdminUsersRoute/IB-COLLECTIONS/AddPhotosCollections'
 
 // API Service imports
 import api from '@/services/api'

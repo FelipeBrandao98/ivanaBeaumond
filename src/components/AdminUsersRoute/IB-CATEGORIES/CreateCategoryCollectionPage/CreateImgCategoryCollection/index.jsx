@@ -20,12 +20,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
-import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
-import DashboardForm from '@/atoms/Dashboard/DashboardForm'
-import DashboardLabel from '@/atoms/Dashboard/DashboardLabel'
-import DashboardButton from '@/atoms/Dashboard/DashboardButton'
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
+import DashboardForm from '@/atoms/AdminUsersRoute/Dashboard/DashboardForm'
+import DashboardLabel from '@/atoms/AdminUsersRoute/Dashboard/DashboardLabel'
+import DashboardButton from '@/atoms/AdminUsersRoute/Dashboard/DashboardButton'
 //
 
 // Api imports

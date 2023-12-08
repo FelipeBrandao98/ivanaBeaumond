@@ -1,5 +1,5 @@
 // Components imports
-import CreateCategoryNewsPage from '@/components/IB-CATEGORIES/CreateCategoryNewsPage'
+import CreateCategoryNewsPage from '@/components/AdminUsersRoute/IB-CATEGORIES/CreateCategoryNewsPage'
 
 // Component Declaration
 export default function Page() {

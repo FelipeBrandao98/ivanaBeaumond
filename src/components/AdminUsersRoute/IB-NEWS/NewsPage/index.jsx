@@ -20,12 +20,14 @@ import { format } from 'date-fns'
 
 // Styles imports
 import styles from './styles.module.css'
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
-import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
-import DashboardTable from '@/atoms/Dashboard/DashboardTable'
-import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
-import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
+
+// Atoms imports
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
+import DashboardTable from '@/atoms/AdminUsersRoute/Dashboard/DashboardTable'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
+import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 
 // Api imports
 import getNews from '@/api/CallsWithToken/getNews'

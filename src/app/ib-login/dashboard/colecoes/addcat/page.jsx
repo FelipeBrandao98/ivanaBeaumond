@@ -1,5 +1,5 @@
 // Components imports
-import AddCatPage from '@/components/IB-COLLECTIONS/AddCatPage'
+import AddCatPage from '@/components/AdminUsersRoute/IB-COLLECTIONS/AddCatPage'
 
 // API Service imports
 import api from '@/services/api'

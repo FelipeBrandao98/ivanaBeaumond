@@ -9,6 +9,7 @@ import { AuthContext } from '@/Context/AuthContext'
 // Componentsimports
 import AccessUnauthorized from '@/components/LOGIN/AccessUnauthorized'
 import Dashboard from '@/components/LOGIN/Dashboard'
+import DashboardSpacement from '@/atoms/AdminUsersRoute/DashboardSpacement'
 
 // Component Declaration
 export default function CheckIfIsLogged({ children }) {
@@ -17,7 +18,15 @@ export default function CheckIfIsLogged({ children }) {
 
   // Return Dashboard or block if has no token
   return (
-    <>{token ? <Dashboard>{children}</Dashboard> : <AccessUnauthorized />}</>
+    <>
+      {token ? (
+        <Dashboard>
+          <DashboardSpacement>{children}</DashboardSpacement>
+        </Dashboard>
+      ) : (
+        <AccessUnauthorized />
+      )}
+    </>
   )
   //
 }

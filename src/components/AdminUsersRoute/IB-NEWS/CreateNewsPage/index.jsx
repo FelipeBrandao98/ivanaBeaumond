@@ -7,8 +7,8 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { CreateImageNewsContext } from '@/Context/CreateImageNewsContext'
 
 // Components imports
-import CreateImageNews from '@/components/IB-NEWS/CreateNewsPage/CreateImageNews'
-import CreateNews from '@/components/IB-NEWS/CreateNewsPage/CreateNews'
+import CreateImageNews from './CreateImageNews'
+import CreateNews from './CreateNews'
 
 // Api Functions imports
 import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'

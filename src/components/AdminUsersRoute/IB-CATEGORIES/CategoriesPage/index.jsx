@@ -19,12 +19,12 @@ import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 import styles from './styles.module.css'
 
 // Atoms imports
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
-import DashboardTable from '@/atoms/Dashboard/DashboardTable'
-import DashboardCancel from '@/atoms/Dashboard/DashboardCancel'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
-import DashboardActionButtons from '@/atoms/Dashboard/DashboardActionButtons'
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
+import DashboardTable from '@/atoms/AdminUsersRoute/Dashboard/DashboardTable'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 //
 
 // Api imports
