@@ -1,4 +1,5 @@
 // Cookies imports
+import CommentsHeader from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsHeader'
 import { cookies } from 'next/headers'
 
 // export async function generateMetadata({ params }) {
@@ -27,7 +28,7 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <h1>Comentários</h1>
+      <CommentsHeader lang={lang} />
     </>
   )
   //

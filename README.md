@@ -16,6 +16,8 @@
       * [News](#news)
         * [Page.jsx]()
         * [[title]/[id]/Page.jsx]()
+      * [Contact](#contact)
+        * [Page.jsx]()
 
 # Installation
 
@@ -258,3 +260,27 @@ Route (app)                                              Size     First Load JS
 
   - [x] - CONSTRUCTOR (Needs Atomization)
   - [ ] - OtherNews
+
+## Contact
+
+### Page.jsx
+
+##### All `Page.jsx` files follow the same scheme
+
+  - [ ] Metadatas
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [x] - ContactHeader
+
+## Comments
+
+### Page.jsx
+
+##### All `Page.jsx` files follow the same scheme
+
+  - [ ] Metadatas
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [x] - CommentsHeader

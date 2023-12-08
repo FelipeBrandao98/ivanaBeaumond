@@ -24,6 +24,16 @@ const dictionaryDe = {
     subTitle: `Willkommen im News-Bereich der Ivana Beaumond-Galerie | Französisches Atelier! Hier finden Sie alle in den Medien hervorgehobenen Informationen zu Ivana Beaumond sowie exklusive Tipps für Bräute, Debütantinnen und viele andere. Unsere Mission ist es, Sie über die neuesten Kollektionen und Trends in der Modewelt sowie wichtige Ereignisse im Zusammenhang mit Ivana Beaumond auf dem Laufenden zu halten. Machen Sie sich bereit, in eine Welt voller Eleganz und Raffinesse einzutauchen, während wir gemeinsam den ganzen Charme der Marke entdecken. Willkommen in einem Universum`,
   },
 
+  contact: {
+    title: 'Kontakt',
+    subTitle: `Willkommen im Kontaktbereich der renommierten Galerie Ivana Beaumond | Französisches Atelier! Hier bieten wir Ihnen die Möglichkeit, direkt mit uns in Kontakt zu treten und mehr über unsere außergewöhnliche Sammlung französischer Kunst zu erfahren. Wir sind eine einzigartige Galerie, die sich der Förderung der Schönheit und des kulturellen Reichtums Frankreichs durch großartige Werke verschrieben hat. In unserem Kontaktbereich finden Sie alle Möglichkeiten, mit uns in Kontakt zu treten. Das größte Highlight ist jedoch unser exklusives Terminvereinbarungsformular. Jetzt haben Sie die Möglichkeit, direkt hier einen Besuch in unserem Store zu buchen!`,
+  },
+
+  comments: {
+    title: 'Kommentare',
+    subTitle: `Willkommen im Blog von Atelier Francês Ivana Beaumond! Heute sprechen wir über einen ganz besonderen Bereich in unserer Galerie: Kommentare. In diesem Bereich haben unsere Kunden die Möglichkeit, ihre Meinung zu äußern und ihre Erfahrungen über unseren Shop auszutauschen. Wir glauben, dass die Stimme unserer Kunden für uns von entscheidender Bedeutung ist, um unsere Kollektionen weiter zu verbessern und den bestmöglichen Service zu bieten. Lesen Sie also weiter, um herauszufinden, was die Leute über Ivana Beaumond sagen | Besuchen Sie das French Atelier und tauchen Sie ein in eine Welt voller Eleganz und Raffinesse.`,
+  },
+
   layout: {
     menu: {
       appointment: 'Buchen Sie einen Termin',

@@ -24,6 +24,16 @@ const dictionaryFr = {
     subTitle: `Bienvenue dans la section Actualités de la galerie Ivana Beaumond | Atelier français ! Vous trouverez ici toutes les informations liées à Ivana Beaumond qui sont mises en avant dans les médias, ainsi que des conseils exclusifs pour les mariées, les débutantes et bien d'autres. Notre mission est de vous tenir au courant des dernières collections et tendances du monde de la mode et des événements importants liés à Ivana Beaumond. Préparez-vous à plonger dans un monde d'élégance et de sophistication en découvrant ensemble tout le charme qu'offre la marque. Bienvenue dans un univers`,
   },
 
+  contact: {
+    title: 'Contact',
+    subTitle: `Bienvenue dans la section Contact de la célèbre galerie Ivana Beaumond | Atelier français ! Nous vous offrons ici la possibilité de nous contacter directement et d'en découvrir davantage sur notre extraordinaire collection d'art français. Nous sommes une galerie unique, dédiée à la promotion de la beauté et de la richesse culturelle de la France à travers de magnifiques œuvres. Dans notre section Contact, vous trouverez tous les moyens de nous contacter, mais le point fort est notre formulaire de planification exclusif. Désormais, vous aurez la possibilité de réserver une visite à notre magasin directement ici !`,
+  },
+
+  comments: {
+    title: 'commentaires',
+    subTitle: `Bienvenue sur le blog de l'Ateliê Francês Ivana Beaumond ! Aujourd'hui, nous allons parler d'une section très spéciale de notre galerie : les commentaires. Dans cet espace, nos clients ont la possibilité d'exprimer leurs avis et de partager leurs expériences sur notre magasin. Nous pensons que la voix de nos clients est essentielle pour continuer à améliorer nos collections et à offrir le meilleur service possible. Alors poursuivez votre lecture pour découvrir ce que les gens disent d'Ivana Beaumond | French Atelier et plongez-vous dans un monde d'élégance et de sophistication.`,
+  },
+
   layout: {
     menu: {
       appointment: 'Réservez une heure',

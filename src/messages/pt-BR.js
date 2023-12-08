@@ -30,6 +30,16 @@ const dictionaryPt = {
     subTitle: `Bem-vindos à seção de Notícias da galeria Ivana Beaumond | Ateliê Francês! Aqui, você encontrará todas as informações relacionadas a Ivana Beaumond que estão em destaque na mídia, assim como dicas exclusivas para Noivas, Debutantes e muitos outros. Nossa missão é mantê-los atualizados sobre as últimas coleções e tendências do universo da moda e eventos importantes relacionados a Ivana Beaumond. Prepare-se para mergulhar em um mundo de elegância e sofisticação enquanto descobrimos juntos todo o encanto que a marca oferece. Seja bem-vindo a um universo`,
   },
 
+  contact: {
+    title: 'Contato',
+    subTitle: `Bem-vindos à seção de Contato da renomada galeria Ivana Beaumond | Ateliê Francês! Aqui, oferecemos a você a oportunidade de nos contatar diretamente e descobrir mais sobre nossa extraordinária coleção de arte francesa. Somos uma galeria única, dedicada a promover a beleza e a riqueza cultural da França por meio de obras magníficas. Em nossa seção de Contato, você encontrará todas as formas de entrar em contato conosco, mas o principal destaque é o nosso formulário exclusivo de agendamento. Agora, você terá a chance de reservar uma visita à nossa loja diretamente por aqui!`,
+  },
+
+  comments: {
+    title: 'Comentários',
+    subTitle: `Bem-vindo(a) ao blog do Ateliê Francês Ivana Beaumond! Hoje vamos falar sobre uma seção muito especial em nossa galeria: os Comentários. Neste espaço, nossos clientes têm a oportunidade de expressar suas opiniões e compartilhar suas experiências sobre a nossa loja. Acreditamos que a voz de nossos clientes é essencial para continuarmos aprimorando nossas coleções e oferecer o melhor serviço possível. Portanto, continue lendo para descobrir o que as pessoas estão dizendo sobre o Ivana Beaumond | Ateliê Francês e mergulhe em um mundo de elegância e sofisticação.`,
+  },
+
   layout: {
     menu: {
       appointment: 'Marque um Horário',

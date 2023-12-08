@@ -24,6 +24,16 @@ const dictionaryEn = {
     subTitle: `Welcome to the News section of the Ivana Beaumond gallery | French Atelier! Here, you will find all the information related to Ivana Beaumond that is highlighted in the media, as well as exclusive tips for Brides, Debutantes and many others. Our mission is to keep you updated on the latest collections and trends in the fashion world and important events related to Ivana Beaumond. Get ready to dive into a world of elegance and sophistication as we discover together all the charm that the brand offers. Welcome to a universe`,
   },
 
+  contact: {
+    title: 'Contact',
+    subTitle: `Welcome to the Contact section of the renowned gallery Ivana Beaumond | French Atelier! Here we offer you the opportunity to contact us directly and discover more about our extraordinary collection of French art. We are a unique gallery, dedicated to promoting the beauty and cultural richness of France through magnificent works. In our Contact section, you will find all the ways to get in touch with us, but the main highlight is our exclusive scheduling form. Now, you will have the chance to book a visit to our store directly here!`,
+  },
+
+  comments: {
+    title: 'Comments',
+    subTitle: `Welcome to the Ateliê Francês Ivana Beaumond blog! Today we're going to talk about a very special section in our gallery: Comments. In this space, our customers have the opportunity to express their opinions and share their experiences about our store. We believe that the voice of our customers is essential for us to continue improving our collections and offering the best service possible. So read on to find out what people are saying about Ivana Beaumond | French Atelier and immerse yourself in a world of elegance and sophistication.`,
+  },
+
   layout: {
     menu: {
       appointment: 'Make an appointment',
