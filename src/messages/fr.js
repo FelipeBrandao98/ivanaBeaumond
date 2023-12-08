@@ -19,6 +19,11 @@ const dictionaryFr = {
     moreInfo: `Cliquez ici pour plus d'informations`,
   },
 
+  news: {
+    title: 'Nouvelles',
+    subTitle: `Bienvenue dans la section Actualités de la galerie Ivana Beaumond | Atelier français ! Vous trouverez ici toutes les informations liées à Ivana Beaumond qui sont mises en avant dans les médias, ainsi que des conseils exclusifs pour les mariées, les débutantes et bien d'autres. Notre mission est de vous tenir au courant des dernières collections et tendances du monde de la mode et des événements importants liés à Ivana Beaumond. Préparez-vous à plonger dans un monde d'élégance et de sophistication en découvrant ensemble tout le charme qu'offre la marque. Bienvenue dans un univers`,
+  },
+
   layout: {
     menu: {
       appointment: 'Réservez une heure',

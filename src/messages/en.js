@@ -19,6 +19,11 @@ const dictionaryEn = {
     moreInfo: 'Click here for more information',
   },
 
+  news: {
+    title: 'News',
+    subTitle: `Welcome to the News section of the Ivana Beaumond gallery | French Atelier! Here, you will find all the information related to Ivana Beaumond that is highlighted in the media, as well as exclusive tips for Brides, Debutantes and many others. Our mission is to keep you updated on the latest collections and trends in the fashion world and important events related to Ivana Beaumond. Get ready to dive into a world of elegance and sophistication as we discover together all the charm that the brand offers. Welcome to a universe`,
+  },
+
   layout: {
     menu: {
       appointment: 'Make an appointment',

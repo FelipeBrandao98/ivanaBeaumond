@@ -19,6 +19,11 @@ const dictionaryDe = {
     moreInfo: 'Klicken Sie hier für weitere Informationen',
   },
 
+  news: {
+    title: 'Nachricht',
+    subTitle: `Willkommen im News-Bereich der Ivana Beaumond-Galerie | Französisches Atelier! Hier finden Sie alle in den Medien hervorgehobenen Informationen zu Ivana Beaumond sowie exklusive Tipps für Bräute, Debütantinnen und viele andere. Unsere Mission ist es, Sie über die neuesten Kollektionen und Trends in der Modewelt sowie wichtige Ereignisse im Zusammenhang mit Ivana Beaumond auf dem Laufenden zu halten. Machen Sie sich bereit, in eine Welt voller Eleganz und Raffinesse einzutauchen, während wir gemeinsam den ganzen Charme der Marke entdecken. Willkommen in einem Universum`,
+  },
+
   layout: {
     menu: {
       appointment: 'Buchen Sie einen Termin',
