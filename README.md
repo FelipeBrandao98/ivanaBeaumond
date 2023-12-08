@@ -251,7 +251,7 @@ Route (app)                                              Size     First Load JS
 
 ##### All `Page.jsx` files follow the same scheme, this page is responsible for rendering each News individually, that is, it renders a different page per News
 
-  - [ ] Metadatas
+  - [x] Metadatas
 
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
