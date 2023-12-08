@@ -34,6 +34,11 @@ const dictionaryFr = {
     subTitle: `Bienvenue sur le blog de l'Ateliê Francês Ivana Beaumond ! Aujourd'hui, nous allons parler d'une section très spéciale de notre galerie : les commentaires. Dans cet espace, nos clients ont la possibilité d'exprimer leurs avis et de partager leurs expériences sur notre magasin. Nous pensons que la voix de nos clients est essentielle pour continuer à améliorer nos collections et à offrir le meilleur service possible. Alors poursuivez votre lecture pour découvrir ce que les gens disent d'Ivana Beaumond | French Atelier et plongez-vous dans un monde d'élégance et de sophistication.`,
   },
 
+  events: {
+    title: 'Événements',
+    subTitle: `Bienvenue sur le blog de l'Atelier Français de Ivana Beaumond ! Dans cet article, nous discuterons d'une section spéciale de la galerie qui retient certainement l'attention de tous les amateurs d'art : les événements. Vous trouverez ici des informations sur les événements à venir et passés auxquels la talentueuse Ivana Beaumond a eu le plaisir de participer. Préparez-vous à être enchanté par les collections exclusives et les expériences uniques proposées par cet artiste français de renom. Prêt à plonger dans ce monde incroyable de créativité et de beauté ? Suivez-nous dans ce voyage !`,
+  },
+
   layout: {
     menu: {
       appointment: 'Réservez une heure',

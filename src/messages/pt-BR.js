@@ -40,6 +40,11 @@ const dictionaryPt = {
     subTitle: `Bem-vindo(a) ao blog do Ateliê Francês Ivana Beaumond! Hoje vamos falar sobre uma seção muito especial em nossa galeria: os Comentários. Neste espaço, nossos clientes têm a oportunidade de expressar suas opiniões e compartilhar suas experiências sobre a nossa loja. Acreditamos que a voz de nossos clientes é essencial para continuarmos aprimorando nossas coleções e oferecer o melhor serviço possível. Portanto, continue lendo para descobrir o que as pessoas estão dizendo sobre o Ivana Beaumond | Ateliê Francês e mergulhe em um mundo de elegância e sofisticação.`,
   },
 
+  events: {
+    title: 'Eventos',
+    subTitle: `Bem-vindos ao blog do Ateliê Francês de Ivana Beaumond! Nesta postagem, vamos discutir sobre uma seção especial da galeria que certamente chama a atenção de todos os amantes da arte: os eventos. Aqui, você encontrará informações sobre os eventos futuros e passados nos quais a talentosa Ivana Beaumond teve o prazer de participar. Prepare-se para se encantar com as coleções exclusivas e as experiências únicas proporcionadas por esta renomada artista francesa. Pronto para mergulhar nesse incrível mundo de criatividade e beleza? Acompanhe-nos nesta jornada!`,
+  },
+
   layout: {
     menu: {
       appointment: 'Marque um Horário',

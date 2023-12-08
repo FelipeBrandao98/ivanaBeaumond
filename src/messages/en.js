@@ -34,6 +34,11 @@ const dictionaryEn = {
     subTitle: `Welcome to the Ateliê Francês Ivana Beaumond blog! Today we're going to talk about a very special section in our gallery: Comments. In this space, our customers have the opportunity to express their opinions and share their experiences about our store. We believe that the voice of our customers is essential for us to continue improving our collections and offering the best service possible. So read on to find out what people are saying about Ivana Beaumond | French Atelier and immerse yourself in a world of elegance and sophistication.`,
   },
 
+  events: {
+    title: 'Events',
+    subTitle: `Welcome to the Atelier Français de Ivana Beaumond blog! In this post, we will discuss about a special section of the gallery that certainly catches the attention of all art lovers: the events. Here, you will find information about upcoming and past events that the talented Ivana Beaumond has had the pleasure of participating in. Prepare to be enchanted by the exclusive collections and unique experiences provided by this renowned French artist. Ready to dive into this incredible world of creativity and beauty? Follow us on this journey!`,
+  },
+
   layout: {
     menu: {
       appointment: 'Make an appointment',

@@ -18,6 +18,11 @@
         * [[title]/[id]/Page.jsx]()
       * [Contact](#contact)
         * [Page.jsx]()
+      * [Comments](#comments)
+        * [Page.jsx]()
+      * [Events](#events)
+        * [Page.jsx]()
+        * [[title]/[id]/Page.jsx]()
 
 # Installation
 
@@ -284,3 +289,28 @@ Route (app)                                              Size     First Load JS
   > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
 
   - [x] - CommentsHeader
+
+## Events
+
+### Page.jsx
+
+##### All `Page.jsx` files follow the same scheme
+
+  - [x] Metadatas
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [x] - EventsHeader
+  - [ ] - OtherEvents
+
+
+### [title]/[id]Page.jsx
+
+##### All `Page.jsx` files follow the same scheme, this page is responsible for rendering each News individually, that is, it renders a different page per News
+
+  - [x] Metadatas
+
+  > When checked, it means that the component met the 3 testing requirements `Mobile and Desktop optimization`, `Translation` and `Atomization`
+
+  - [x] - CONSTRUCTOR (Needs Atomization)
+  - [ ] - OtherEvents
