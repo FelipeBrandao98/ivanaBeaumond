@@ -54,7 +54,7 @@ body {
 }
 
 main {
-  overflow-x: none;
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: column;

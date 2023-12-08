@@ -71,55 +71,16 @@ export default function NewsBanner({ lang, data }) {
   //
 
   // Use Effects
-  useEffect(() => {
-    setTimeout(() => {
-      changeSlideFromRight()
-    }, 15000)
-  }, [changeSlideFromRight])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     changeSlideFromRight()
+  //   }, 15000)
+  // }, [changeSlideFromRight])
   //
 
   // Return components, with functions to call API and language
   return (
     <section className={styles.content}>
-      <div className={styles.fromLeftArea}>
-        <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
-          <FiArrowLeft
-            className={styles.fromLeftImage}
-            width={100}
-            height={100}
-          />
-        </button>
-      </div>
-
-      <div className={styles.slideNumberButtonsArea}>
-        <div className={styles.slideNumberButtons}>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 1 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 2 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 3 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 4 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-        </div>
-      </div>
-
       <div
         className={`
         ${styles.bannerArea}
@@ -159,6 +120,16 @@ export default function NewsBanner({ lang, data }) {
         })}
       </div>
 
+      <div className={styles.fromLeftArea}>
+        <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
+          <FiArrowLeft
+            className={styles.fromLeftImage}
+            width={100}
+            height={100}
+          />
+        </button>
+      </div>
+
       <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
         <button className={styles.fromRightButton}>
           <FiArrowRight
@@ -167,6 +138,35 @@ export default function NewsBanner({ lang, data }) {
             height={100}
           />
         </button>
+      </div>
+
+      <div className={styles.slideNumberButtonsArea}>
+        <div className={styles.slideNumberButtons}>
+          <span
+            className={`
+                ${styles.slideButton}
+                ${slide === 1 ? styles.slideButtonSelected : ''}
+              `}
+          ></span>
+          <span
+            className={`
+                ${styles.slideButton}
+                ${slide === 2 ? styles.slideButtonSelected : ''}
+              `}
+          ></span>
+          <span
+            className={`
+                ${styles.slideButton}
+                ${slide === 3 ? styles.slideButtonSelected : ''}
+              `}
+          ></span>
+          <span
+            className={`
+            ${styles.slideButton}
+            ${slide === 4 ? styles.slideButtonSelected : ''}
+            `}
+          ></span>
+        </div>
       </div>
     </section>
   )
