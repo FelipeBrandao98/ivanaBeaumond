@@ -21,8 +21,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 // Styles imports
 import styles from './styles.module.css'
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
 
 const createImageFormSchema = z.object({
   file: z.any(),

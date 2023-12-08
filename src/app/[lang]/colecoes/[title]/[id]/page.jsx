@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers'
 
 // Components imports
-import CollectionGrid from '@/components/COLLECTIONS/CollectionGrid'
+import CollectionGrid from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionGrid'
 
 // export async function generateMetadata({ params }) {
 //   const { lang } = params
@@ -30,7 +30,7 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
-      <CollectionGrid />
+      <CollectionGrid lang={lang} />
     </>
   )
   //

@@ -22,9 +22,9 @@ import { AuthContext } from '@/Context/AuthContext'
 // Styles imports
 import styles from './styles.module.css'
 import { useRouter } from 'next/navigation'
-import DashboardContainer from '@/atoms/Dashboard/DashboardContainer'
-import DashboardLoading from '@/atoms/Dashboard/DashboardLoading'
-import DashboardMainTitle from '@/atoms/Dashboard/DashboardMainTitle'
+import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
+import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
 
 export default function AddCatPage({ functions }) {
   const router = useRouter()
