@@ -1,6 +1,9 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Function to traduct component imports
+import getLangDict from '@/utils/getLangDict'
+
 // Components imports
 import CollectionsHeader from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionsHeader'
 import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/MainPageCollections/Collections'
@@ -8,20 +11,20 @@ import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/MainPageCo
 // API Service imports
 import getCollections from '@/api/CallsWithoutToken/getCollections'
 
-// export async function generateMetadata({ params }) {
-//   const { lang } = params
+export async function generateMetadata({ params }) {
+  const { lang } = params
 
-//   const traductedMeta = getLangDict(lang)
+  const traductedMeta = getLangDict(lang)
 
-//   return {
-//     title: traductedMeta.metadata.collections.title,
-//     description: traductedMeta.metadata.collections.description,
-//     openGraph: {
-//       title: traductedMeta.metadata.collections.title,
-//       description: traductedMeta.metadata.collections.description,
-//     },
-//   }
-// }
+  return {
+    title: traductedMeta.metadata.collections.title,
+    description: traductedMeta.metadata.collections.description,
+    openGraph: {
+      title: traductedMeta.metadata.collections.title,
+      description: traductedMeta.metadata.collections.description,
+    },
+  }
+}
 
 // Component Declaration
 export default async function Page() {

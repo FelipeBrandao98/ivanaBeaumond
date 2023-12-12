@@ -129,10 +129,15 @@ const dictionaryDe = {
       description: `Ivana Beaumond, das Brautmodengeschäft, das seit über einem Jahrzehnt verzaubert und Träume wahr werden lässt, präsentiert eine umfangreiche und exklusive Kollektion an Brautkleidern für Frauen, die sich am schönsten Tag ihres Lebens wie echte Prinzessinnen fühlen möchten. Mit einem Hauch von Eleganz und Raffinesse werden unsere Kleider sorgfältig ausgewählt und gefertigt, um einen atemberaubenden und unvergesslichen Look zu verleihen. Unser Ziel ist es, den Bräuten ein einzigartiges und persönliches Erlebnis zu bieten und sicherzustellen, dass jedes Detail perfekt auf ihre Erwartungen und ihren Stil abgestimmt ist.`,
       url: 'https://www.ivanabeaumond.com/de',
     },
+
     // Pages Metadatas
     news: {
       title: 'Nachricht',
       description: `Ivana Beaumond News ist Ihr definitives Ziel für die neuesten Nachrichten und Informationen zu Mode, Medien, Tricks und Tipps für Bräute. Wenn Sie auf der Suche nach einer zuverlässigen und professionellen Website sind, die eine umfassende und aktuelle Berichterstattung über die neuesten Trends und Neuigkeiten aus der Welt der Bräute und Frauen bietet, dann sind Sie bei uns genau richtig.`,
+    },
+    collections: {
+      title: 'Sammlungen',
+      description: `Willkommen bei Ivana Beaumond, dem charmantesten und elegantesten Brautkleidverleih der Stadt! Wir sind uns darüber im Klaren, dass jeder besondere Anlass eine passende Kleidung verdient, weshalb es uns am Herzen liegt, Ihnen die besten Optionen anzubieten. Unsere Kollektionen sind sorgfältig gefertigt, von den Hochzeitskleidern bis zur Kleidung des Bräutigams, alle nach einem hohen Qualitätsstandard. Und für unvergessliche Momente wie Debütantenpartys und anspruchsvolle Veranstaltungen haben wir auch Optionen, die Sie zum Strahlen bringen. Inspiriert von Frankreich helfen wir Ihnen gerne dabei, das Kleid Ihrer Träume zu finden. Machen Sie sich also bereit, sich in unsere Kollektionen zu verlieben und tauchen Sie ein in die bezaubernde Welt von Ivana Beaumond!`,
     },
   },
 }

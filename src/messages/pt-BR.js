@@ -131,11 +131,16 @@ const dictionaryPt = {
         'Ivana Beaumond, a loja de noivas que encanta e realiza sonhos há mais de uma década, apresenta uma vasta e exclusiva coleção de vestidos de noiva para mulheres que desejam se sentir verdadeiras princesas no dia mais especial de suas vidas. Com um toque de elegância e sofisticação, nossos vestidos são cuidadosamente selecionados e confeccionados para proporcionar um visual deslumbrante e inesquecível. Nosso compromisso é oferecer às noivas uma experiência única e personalizada, garantindo que cada detalhe seja perfeitamente alinhado com suas expectativas e estilo.',
       url: 'https://www.ivanabeaumond.com/pt-BR',
     },
+
     // Pages Metadatas
     news: {
       title: 'Notícias',
       description:
         'Ivana Beaumond Notícias é o seu destino definitivo para todas as novidades e informações sobre moda, mídia, truques e dicas para noivas. Se você está procurando por um site confiável e profissional que ofereça uma cobertura abrangente e atualizada sobre as últimas tendências e notícias relacionadas ao mundo das noivas e mulheres, então você veio ao lugar certo.',
+    },
+    collections: {
+      title: 'Coleções',
+      description: `Bem-vindo à Ivana Beaumond, a locadora de vestidos de noiva mais charmosa e elegante da cidade! Aqui entendemos que cada ocasião especial merece um traje à altura, por isso nos comprometemos a levar até você as melhores opções. Nossas coleções são cuidadosamente elaboradas, desde os vestidos de noiva até os trajes do noivo, tudo confeccionado com alto padrão de qualidade. E para aqueles momentos memoráveis, como festas de debutantes e eventos sofisticados, também temos opções que vão fazer você brilhar. Inspirados na França, estamos prontos para ajudá-lo a encontrar o vestido dos seus sonhos. Então prepare-se para se apaixonar pelas nossas coleções e mergulhar no mundo encantador de Ivana Beaumond!`,
     },
   },
 }

@@ -124,10 +124,15 @@ const dictionaryFr = {
       description: `Ivana Beaumond, la boutique de mariage qui enchante et réalise les rêves depuis plus d'une décennie, présente une vaste et exclusive collection de robes de mariée pour les femmes qui veulent se sentir comme de vraies princesses le jour le plus spécial de leur vie. Avec une touche d'élégance et de sophistication, nos robes sont soigneusement sélectionnées et confectionnées pour offrir un look époustouflant et inoubliable. Notre engagement est d'offrir aux mariées une expérience unique et personnalisée, en veillant à ce que chaque détail soit parfaitement en adéquation avec leurs attentes et leur style.`,
       url: 'https://www.ivanabeaumond.com/fr',
     },
+
     // Pages Metadatas
     news: {
       title: 'Nouvelles',
       description: `Ivana Beaumond News est votre destination définitive pour toutes les dernières nouvelles et informations sur la mode, les médias, les trucs et astuces pour les mariées. Si vous recherchez un site Web fiable et professionnel offrant une couverture complète et à jour des dernières tendances et actualités liées au monde des mariées et des femmes, alors vous êtes au bon endroit.`,
+    },
+    collections: {
+      title: 'Collections',
+      description: `Bienvenue chez Ivana Beaumond, le magasin de location de robes de mariée le plus charmant et élégant de la ville ! Ici, nous comprenons que chaque occasion spéciale mérite une tenue vestimentaire assortie, c'est pourquoi nous nous engageons à vous proposer les meilleures options. Nos collections sont soigneusement confectionnées, des robes de mariée aux tenues du marié, toutes confectionnées selon un haut niveau de qualité. Et pour ces moments mémorables, comme les soirées de débutantes et les événements sophistiqués, nous avons également des options qui vous feront briller. Inspirés par la France, nous sommes prêts à vous aider à trouver la robe de vos rêves. Alors préparez-vous à tomber amoureux de nos collections et plongez-vous dans le monde enchanteur d'Ivana Beaumond !`,
     },
   },
 }
