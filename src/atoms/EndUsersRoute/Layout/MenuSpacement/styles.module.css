@@ -1,9 +1,12 @@
 .container {
-  margin-top: calc(50px + 45px + 2rem + .5rem);
+  display: flex;
+  height: calc(50px + 45px + 2rem + .5rem);
+
+  background-color: var(--background-dark);
 }
 
 @media (max-width: 720px) {
   .container {
-    margin-top: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
+    height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
   }
 }

@@ -62,7 +62,7 @@ export default async function Page() {
 
   // Return components, with data and language
   return (
-    <>
+    <div className="home">
       <BannerHome lang={lang} />
 
       <CollectionsHome lang={lang} data={categories} />
@@ -72,7 +72,7 @@ export default async function Page() {
       <CommentsHome lang={lang} data={depositions} />
 
       <NewsBanner lang={lang} data={latestNews} />
-    </>
+    </div>
   )
   //
 }
