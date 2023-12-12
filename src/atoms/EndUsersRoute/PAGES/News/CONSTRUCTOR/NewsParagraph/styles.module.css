@@ -2,11 +2,9 @@
   font-size: 1.2rem;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  text-align: center;
   margin-bottom: 0.5rem;
-  padding: 2rem 4rem;
-}
-
-.paragraph::before {
-  content: '';
-  padding: 1rem;
+  padding: 2rem 15rem;
+  text-indent: 5rem;
 }

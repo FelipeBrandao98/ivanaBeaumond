@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--white-100);
+  color: var(--black-800);
   font-size: 2rem;
   font-family: var(--font-bebas-neue);
   transition: all .2s;

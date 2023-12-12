@@ -129,7 +129,6 @@ export default function CollectionsPage() {
                           handleChangeImage({})
                         }}
                         className={styles.editButton}
-                        legacyBehavior
                       >
                         <FiEdit width={40} height={40} />
                       </Link>

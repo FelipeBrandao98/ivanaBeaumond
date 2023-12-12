@@ -127,7 +127,6 @@ export default function NewsPage() {
                         handleChangeImage({})
                       }}
                       className={styles.editButton}
-                      legacyBehavior
                     >
                       <FiEdit width={40} height={40} />
                     </Link>
