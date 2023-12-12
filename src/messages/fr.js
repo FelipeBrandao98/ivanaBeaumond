@@ -59,6 +59,10 @@ const dictionaryFr = {
         route: '/eventos',
       },
       menuItemFive: {
+        name: 'Commentaires',
+        route: '/comentarios',
+      },
+      menuItemSix: {
         name: 'Contact',
         route: '/contato',
       },

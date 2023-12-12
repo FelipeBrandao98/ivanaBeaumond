@@ -1,10 +1,11 @@
 .container {
   display: flex;
-  flex: 1;
 
-  flex-direction: column;
+  width: 100%;
+
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  transition: all .5s;
 }
 
 .container ul {
@@ -12,18 +13,19 @@
   flex-direction: row;
   justify-content: center;
 
-  height: 40px;
-  width: calc(100vw - 1rem);
+  height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
 }
 
 .container ul li,
 .container ul li a {
-  height: 40px;
+  height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-weight: bold;
+
+  font-size: .9rem;
 
   text-transform: uppercase;
 
@@ -34,14 +36,13 @@
 
 .container ul li:hover {
   filter: brightness(1.2);
-  background-color: var(--background-blur-dark);
-  color: var(--white-100);
   cursor: pointer;
 }
 
 @media (max-width: 720px) {
   .container {
     width: 100%;
+    margin-left: 0;
   }
 
   .container ul {

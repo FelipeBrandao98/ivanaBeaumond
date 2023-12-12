@@ -18,12 +18,6 @@ const dictionaryPt = {
     seeMore: 'SAIBA TUDO SOBRE A COLEÇÃO',
     moreInfo: 'Clique aqui para mais informações',
   },
-  collections: {
-    title: 'Coleções',
-    subTitle: `Bem-vindo à Ivana Beaumond, a locadora de vestidos de noiva mais charmosa e elegante da cidade! Aqui entendemos que cada ocasião especial merece um traje à altura, por isso nos comprometemos a levar até você as melhores opções. Nossas coleções são cuidadosamente elaboradas, desde os vestidos de noiva até os trajes do noivo, tudo confeccionado com alto padrão de qualidade. E para aqueles momentos memoráveis, como festas de debutantes e eventos sofisticados, também temos opções que vão fazer você brilhar. Inspirados na França, estamos prontos para ajudá-lo a encontrar o vestido dos seus sonhos. Então prepare-se para se apaixonar pelas nossas coleções e mergulhar no mundo encantador de Ivana Beaumond!`,
-    seeMore: 'SAIBA TUDO SOBRE A COLEÇÃO',
-    moreInfo: 'Clique aqui para mais informações',
-  },
 
   news: {
     title: 'Notícias',
@@ -65,6 +59,10 @@ const dictionaryPt = {
         route: '/eventos',
       },
       menuItemFive: {
+        name: 'Comentários',
+        route: '/comentarios',
+      },
+      menuItemSix: {
         name: 'Contato',
         route: '/contato',
       },

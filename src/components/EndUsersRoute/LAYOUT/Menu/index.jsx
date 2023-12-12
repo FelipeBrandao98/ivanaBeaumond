@@ -176,6 +176,19 @@ export default function Menu({ lang }) {
                   {languageTraducted.layout.menu.menuItemFive.name}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={{
+                    pathname: `${languageTraducted.layout.menu.menuItemSix.route}`,
+                    lang: lang,
+                  }}
+                  lang={lang}
+                  prefetch
+                  replace={true}
+                >
+                  {languageTraducted.layout.menu.menuItemSix.name}
+                </Link>
+              </li>
             </ul>
           </MenuPagesArea>
 

@@ -59,7 +59,11 @@ const dictionaryDe = {
         route: '/eventos',
       },
       menuItemFive: {
-        name: 'Kontakt',
+        name: 'Kommentare',
+        route: '/comentarios',
+      },
+      menuItemSix: {
+        name: 'Kontact',
         route: '/contato',
       },
       appointmentBanner: {
