@@ -16,26 +16,33 @@
   height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
 }
 
-.container ul li,
+.container ul li {
+  display: flex;
+}
+
+
 .container ul li a {
   height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-weight: bold;
+  color: var(--white);
 
   font-size: .9rem;
+  
+  letter-spacing: .1rem;
 
   text-transform: uppercase;
 
-  padding: .8rem;
+  padding: 1rem;
 
   transition: all .2s;
 }
 
 .container ul li:hover {
   filter: brightness(1.2);
+  background-color: var(--background-blur-dark);
   cursor: pointer;
 }
 
