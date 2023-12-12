@@ -6,6 +6,7 @@ import NewsParagraph from '@/atoms/EndUsersRoute/PAGES/News/CONSTRUCTOR/NewsPara
 import NewsTitle from '@/atoms/EndUsersRoute/PAGES/News/CONSTRUCTOR/NewsTitle'
 import NewsHead from './NewsHead'
 import NewsSubtitle from './NewsSubtitle'
+import NewsImage from './NewsImage'
 
 export default function CONSTRUCTOR({ lang, data }) {
   const subtitle = {
@@ -94,13 +95,15 @@ export default function CONSTRUCTOR({ lang, data }) {
 
           if (typeElement?.startsWith('img')) {
             return (
-              <Image
-                key={index}
-                src={getImage(element)}
-                alt="Ivana"
-                width={980}
-                height={980}
-              />
+              <NewsImage key={index}>
+                <Image
+                  key={index}
+                  src={getImage(element)}
+                  alt="Ivana"
+                  width={980}
+                  height={980}
+                />
+              </NewsImage>
             )
           }
 
