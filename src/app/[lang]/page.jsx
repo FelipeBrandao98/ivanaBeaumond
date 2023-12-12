@@ -12,6 +12,8 @@ import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
 import getCategoryCollections from '@/api/CallsWithoutToken/getCategoryCollections'
 import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
 import getComments from '@/api/CallsWithoutToken/getComments'
+import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
+import OtherEvents from '@/components/EndUsersRoute/PAGES/EVENTS/OtherEvents'
 
 const events = {
   title: 'Eventos',
@@ -72,6 +74,10 @@ export default async function Page() {
       <CommentsHome lang={lang} data={depositions} />
 
       <NewsBanner lang={lang} data={latestNews} />
+
+      <OtherNews lang={lang} data={latestNews} title="Notícias" />
+
+      <OtherEvents lang={lang} data={latestNews} title="Eventos" />
     </div>
   )
   //

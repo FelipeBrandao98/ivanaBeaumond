@@ -31,6 +31,7 @@ export default async function Page() {
   // Return components, with data and language
   return (
     <>
+      {/* {console.log(posts)} */}
       <ContactHeader lang={lang} />
 
       <AppointmentForm lang={lang} />

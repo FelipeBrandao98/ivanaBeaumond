@@ -1,6 +1,7 @@
 // Next.js Components imports
 import Image from 'next/image'
-import headerImg from '@/../public/ivana-beaumond-event-homepage.jpg'
+import headerImg from '@/../public/photo_header/_ELC8440.jpg'
+import logoImg from '@/../public/photo_header/logo_.png'
 
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
@@ -26,7 +27,15 @@ export default function NewsHeader({ lang }) {
         />
         <h1>{languageTraducted.news.title}</h1>
         <div>
-          <h2>{languageTraducted.news.subTitle}</h2>
+          <h2>
+            {languageTraducted.news.subTitle}
+            <Image
+              src={logoImg}
+              alt="Ivana Beaumond"
+              width={1920}
+              height={1080}
+            />
+          </h2>
         </div>
       </PageHeader>
     </>
