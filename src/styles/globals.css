@@ -79,7 +79,6 @@ button {
 
 button {
   cursor: pointer;
-  pointer-events: none;
 }
 
 a {
