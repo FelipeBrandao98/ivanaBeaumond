@@ -42,18 +42,18 @@ export default function Collection({
   }
   //
 
-  // functions to handle with datas from api
-  const getClothesRepo = useCallback(async () => {
-    const res = await getClothes(lang, collectionId)
-    setImages(res)
-  }, [lang, collectionId])
-  //
+  // // functions to handle with datas from api
+  // const getClothesRepo = useCallback(async () => {
+  //   const res = await getClothes(lang, collectionId)
+  //   setImages(res)
+  // }, [lang, collectionId])
+  // //
 
-  // Use Effects
-  useEffect(() => {
-    getClothesRepo()
-  }, [getClothesRepo])
-  //
+  // // Use Effects
+  // useEffect(() => {
+  //   getClothesRepo()
+  // }, [getClothesRepo])
+  // //
 
   // Return components, with functions to call API and language
   return (
