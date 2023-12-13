@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 // Next.js Components imports
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 // Icons imports
 import { TbHandClick } from 'react-icons/tb'
