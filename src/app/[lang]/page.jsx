@@ -14,6 +14,8 @@ import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
 import getComments from '@/api/CallsWithoutToken/getComments'
 import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
 import OtherEvents from '@/components/EndUsersRoute/PAGES/EVENTS/OtherEvents'
+import NewsSeeAllButton from '@/components/EndUsersRoute/PAGES/NEWS/NewsSeeAllButton'
+import EventsSeeAllButton from '@/components/EndUsersRoute/PAGES/EVENTS/EventsSeeAllButton'
 
 const events = {
   title: 'Eventos',
@@ -77,7 +79,11 @@ export default async function Page() {
 
       <OtherNews lang={lang} data={latestNews} title="Notícias" />
 
+      <NewsSeeAllButton lang={lang} />
+
       <OtherEvents lang={lang} data={latestNews} title="Eventos" />
+
+      <EventsSeeAllButton lang={lang} />
     </div>
   )
   //

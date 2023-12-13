@@ -10,6 +10,9 @@ const dictionaryPt = {
       title: 'VEJA AQUI O QUE NOSSOS CLIENTES ESTÃO FALANDO DE NOSSA LOJA!',
       more: 'Mais comentários',
     },
+    news: {
+      more: 'Ver todas as notícias',
+    },
   },
 
   collections: {

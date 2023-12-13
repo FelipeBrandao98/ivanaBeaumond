@@ -1,14 +1,6 @@
-'use client'
-
-// React imports
-import { useState } from 'react'
-
 // Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
-
-// Icons imports
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 
 // Manipulate strings imports
 import { format } from 'date-fns'
@@ -20,10 +12,6 @@ import styles from './styles.module.css'
 
 // Component Declaration
 export default function OtherNews({ title, data }) {
-  // States declaratios
-  const [post, setPost] = useState(1)
-  const [postClass, setPostClass] = useState(styles.firstPost)
-
   const setData = new Set()
 
   const filteredData = data.filter((uniqueData) => {
@@ -32,66 +20,15 @@ export default function OtherNews({ title, data }) {
     return !duplicatedData
   })
 
-  // Functions to manipulate window object
-  function changePostFromRight() {
-    if (post === 1) {
-      setPost(2)
-      setPostClass(styles.secondPost)
-    }
-    if (post === 2) {
-      setPost(3)
-      setPostClass(styles.thirdPost)
-    }
-    if (post === 3) {
-      setPost(4)
-      setPostClass(styles.fourthPost)
-    }
-    if (post === 4) {
-      setPost(1)
-      setPostClass(styles.firstPost)
-    }
-  }
-
-  function changePostFromLeft() {
-    if (slide === 1) {
-      setSlide(4)
-      setSlideClass(styles.fourthBanner)
-    }
-    if (slide === 2) {
-      setSlide(1)
-      setSlideClass(styles.firstBanner)
-    }
-    if (slide === 3) {
-      setSlide(2)
-      setSlideClass(styles.secondBanner)
-    }
-    if (slide === 4) {
-      setSlide(3)
-      setSlideClass(styles.thirdBanner)
-    }
-  }
-  //
-
   // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
       <h4 className={styles.title}>{title || 'Título'}</h4>
 
       <div className={styles.contentArea}>
-        <div className={styles.fromLeftArea}>
-          <button className={styles.fromLeftButton}>
-            <FiArrowLeft
-              className={styles.fromLeftImage}
-              width={100}
-              height={100}
-            />
-          </button>
-        </div>
-
         <div
           className={`
           ${styles.postsArea}
-          ${postClass}
           `}
         >
           {filteredData.map((data) => {
@@ -127,16 +64,6 @@ export default function OtherNews({ title, data }) {
               </aside>
             )
           })}
-        </div>
-
-        <div className={styles.fromRightArea}>
-          <button className={styles.fromRightButton}>
-            <FiArrowRight
-              className={styles.fromRightImage}
-              width={100}
-              height={100}
-            />
-          </button>
         </div>
       </div>
     </section>

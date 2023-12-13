@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  background-color: var(--white);
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  width: 100%;
+}
+
+.container a {
+  display: flex;
+  padding: 1rem 4rem;
+  background-color: var(--black-800);
+  color: var(--white-100);
+  border: none;
+  border-radius: .1rem;
+  transition: all .2s linear;
+  text-transform: uppercase;
+}
+
+.container a:hover {
+  filter: brightness(1.2);
+  padding: 1rem 5rem;
+}
+
+.dark {
+  background-color: var(--black-800);
+}
+
+.dark a {
+  background-color: var(--white-100);
+  color: var(--black-800);
+}

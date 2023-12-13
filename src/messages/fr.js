@@ -10,6 +10,9 @@ const dictionaryFr = {
       title: 'VOYEZ CE QUE NOS CLIENTS DISENT DE NOTRE MAGASIN ICI !',
       more: 'Plus de commentaires',
     },
+    news: {
+      more: 'voir toutes les actualités',
+    },
   },
 
   collections: {

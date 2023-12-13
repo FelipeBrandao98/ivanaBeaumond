@@ -10,6 +10,9 @@ const dictionaryEn = {
       title: 'SEE WHAT OUR CUSTOMERS ARE SAYING ABOUT OUR STORE HERE!',
       more: 'More comments',
     },
+    news: {
+      more: 'See all news',
+    },
   },
 
   collections: {
