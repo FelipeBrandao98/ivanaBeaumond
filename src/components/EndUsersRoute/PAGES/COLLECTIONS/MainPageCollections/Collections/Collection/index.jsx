@@ -91,7 +91,7 @@ export default function Collection({
             <p className={styles.description}>{description}</p>
           </div>
 
-          <PhotoSlidesCollections images={images} />
+          {/* <PhotoSlidesCollections images={images} /> */}
         </div>
         <div className={styles.buttonArea}>
           <button className={styles.button}>
