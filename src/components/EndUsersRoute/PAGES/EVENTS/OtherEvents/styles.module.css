@@ -302,7 +302,6 @@
 
   .imageDescription {
     font-size: .8rem;
-    color: var(--black-300);
     font-family: var(--font-roboto);
   }
 
@@ -313,14 +312,12 @@
     letter-spacing: .1rem;
 
     font-family: var(--font-merriweather);
-    color: var(--black-800);
   }
 
   .subTitle {
     font-size: .95rem;
     line-height: 1.1rem;
     letter-spacing: .02rem;
-    color: var(--black-800);
     font-family: var(--font-poppins);
   }
 
@@ -355,7 +352,6 @@
   .date {
     font-size: .8rem;
     font-family: var(--font-cinzel);
-    color: var(--black-300);
   }
 
   .fromLeftArea {

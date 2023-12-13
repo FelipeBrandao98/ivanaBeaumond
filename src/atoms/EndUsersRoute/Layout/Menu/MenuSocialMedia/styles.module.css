@@ -52,15 +52,12 @@
 @media (max-width: 720px) {
   .container {
     width: 100%;
+    position: relative;
   }
 
   .container ul {
     position: inherit;
     align-items: flex-end;
     gap: .2rem;
-  }
-
-  .container ul li a {
-    font-size: 1rem;
   }
 }

@@ -13,7 +13,7 @@ import { cookies } from 'next/headers'
 import getLangDict from '@/utils/getLangDict'
 
 // Providers imports
-import { Providers } from './providers'
+import { Providers } from '../providers'
 
 // Components imports
 import Menu from '@/components/EndUsersRoute/LAYOUT/Menu'

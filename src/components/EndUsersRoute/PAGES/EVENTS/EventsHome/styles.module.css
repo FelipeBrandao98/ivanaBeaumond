@@ -203,7 +203,7 @@
 
 @media (max-width: 720px) {
   .section {
-    width: 100%;
+    width: calc(100vw - 2rem);
     height: 50rem;
     flex-direction: column-reverse;
   }

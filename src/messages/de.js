@@ -107,6 +107,9 @@ const dictionaryDe = {
     latestPosts: {
       title: 'Neueste Nachrichten',
     },
+    news: {
+      seeMore: 'Lies die Nachrichten',
+    },
   },
 
   metadata: {

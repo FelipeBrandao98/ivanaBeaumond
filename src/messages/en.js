@@ -107,6 +107,9 @@ const dictionaryEn = {
     latestPosts: {
       title: 'Latest news',
     },
+    news: {
+      seeMore: 'Read the News',
+    },
   },
 
   metadata: {

@@ -102,7 +102,7 @@ export default function NewsBanner({ lang, data }) {
                   prefetch
                   replace
                 >
-                  {languageTraducted.layout.events.seeMore}
+                  {languageTraducted.layout.news.seeMore}
                 </Link>
               </div>
 

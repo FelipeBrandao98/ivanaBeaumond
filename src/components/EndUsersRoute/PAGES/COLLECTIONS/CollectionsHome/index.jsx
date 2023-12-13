@@ -127,7 +127,12 @@ export default function CollectionsHome({ lang, data }) {
                     <div className={styles.comments}>
                       <p>{categorie.subdescription}</p>
                       <button>
-                        <Link href={'/'}>
+                        <Link
+                          href={{
+                            pathname: '/colecoes',
+                            lang: lang,
+                          }}
+                        >
                           Descubra Agora <FaArrowRight />
                         </Link>
                       </button>

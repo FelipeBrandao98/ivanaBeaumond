@@ -36,7 +36,10 @@ export default function AppointmentBanner({ lang }) {
     <>
       {appointment && (
         <MenuAppointmentContainer>
-          <MenuAppointmentExpandButton href={`${lang}/contato`} />
+          <MenuAppointmentExpandButton
+            href={`${lang}/contato`}
+            onClick={handleAppointment}
+          />
 
           <MenuAppointmentCloseButton onClick={handleAppointment} />
 
