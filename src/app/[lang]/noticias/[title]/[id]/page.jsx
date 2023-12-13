@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 
 // Components imports
 import CONSTRUCTOR from '@/components/EndUsersRoute/PAGES/NEWS/CONSTRUCTOR'
-import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
+import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
 
 // Calls api imports
 import getUniqueNews from '@/api/CallsWithoutToken/getUniqueNews'
@@ -51,10 +51,7 @@ export default async function Page({ params }) {
       {
         //
       }
-      <OtherNews title="Espaço Debutantes" data={otherNews} />
-      <OtherNews title="Na Mídia" data={otherNews} />
-      <OtherNews title="Nossas Noivas" data={otherNews} />
-      <OtherNews title="Dicas e Truques" data={otherNews} />
+      <NewsOrganizer latestPosts={otherNews} />
     </>
   )
   //

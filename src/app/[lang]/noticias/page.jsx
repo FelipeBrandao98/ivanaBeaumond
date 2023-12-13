@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 // Components imports
 import NewsHeader from '@/components/EndUsersRoute/PAGES/NEWS/NewsHeader'
 import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
-import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
+import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
 
 // API Service imports
 import getLangDict from '@/utils/getLangDict'
@@ -45,10 +45,7 @@ export default async function Page() {
       {
         //
       }
-      <OtherNews title="Espaço Debutantes" data={latestPosts} />
-      <OtherNews title="Na Mídia" data={latestPosts} />
-      <OtherNews title="Nossas Noivas" data={latestPosts} />
-      <OtherNews title="Dicas e Truques" data={latestPosts} />
+      <NewsOrganizer latestPosts={latestPosts} />
     </>
   )
   //

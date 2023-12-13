@@ -24,6 +24,14 @@ export default function OtherNews({ title, data }) {
   const [post, setPost] = useState(1)
   const [postClass, setPostClass] = useState(styles.firstPost)
 
+  const setData = new Set()
+
+  const filteredData = data.filter((uniqueData) => {
+    const duplicatedData = setData.has(uniqueData.id)
+    setData.add(uniqueData.id)
+    return !duplicatedData
+  })
+
   // Functions to manipulate window object
   function changePostFromRight() {
     if (post === 1) {
@@ -86,7 +94,7 @@ export default function OtherNews({ title, data }) {
           ${postClass}
           `}
         >
-          {data.map((data) => {
+          {filteredData.map((data) => {
             return (
               <aside className={styles.post} key={data.id}>
                 <h5 className={styles.postTitle}>{data.title.toUpperCase()}</h5>
