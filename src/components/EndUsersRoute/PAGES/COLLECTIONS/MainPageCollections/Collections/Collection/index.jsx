@@ -103,8 +103,7 @@ export default function Collection({
         className={styles.image}
         src={imageUrl || ''}
         alt="Ivana Beaumond"
-        width={1920}
-        height={1080}
+        layout="fill"
       />
     </aside>
   )
