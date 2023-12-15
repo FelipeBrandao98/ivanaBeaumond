@@ -85,18 +85,20 @@ export default function PhotoSlidesCollections({ images }) {
         ${slideClass}
         `}
       >
-        {images.map((image) => {
-          return (
-            <Image
-              key={image.id}
-              className={styles.image}
-              src={image.cover.url}
-              alt={image.collection.title}
-              width={1620}
-              height={1280}
-            />
-          )
-        })}
+        {image
+          ? images.map((image) => {
+              return (
+                <Image
+                  key={image.id}
+                  className={styles.image}
+                  src={image.cover.url}
+                  alt={image.collection.title}
+                  width={1620}
+                  height={1280}
+                />
+              )
+            })
+          : ''}
       </div>
 
       <div className={styles.fromRightArea} onClick={changeSlideFromRight}>
