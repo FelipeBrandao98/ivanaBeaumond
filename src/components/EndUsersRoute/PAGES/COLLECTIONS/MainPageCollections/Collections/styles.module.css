@@ -1,8 +1,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: 10rem;
+  gap: 5rem;
   width: 100%;
-  z-index: 2;
   background-color: var(--white-100);
 }

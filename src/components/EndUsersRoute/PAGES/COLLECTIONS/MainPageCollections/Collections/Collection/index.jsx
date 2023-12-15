@@ -20,6 +20,7 @@ import styles from './styles.module.css'
 
 // Api imports
 import getClothes from '@/api/CallsWithoutToken/getClothes'
+import SeeCollectionButton from '../SeeCollectionButton'
 
 // Component Declaration
 export default function Collection({
@@ -55,57 +56,44 @@ export default function Collection({
   // }, [getClothesRepo])
   // //
 
+  const imagesSlide = [
+    {
+      id: 1,
+      url: imageUrl,
+    },
+    {
+      id: 2,
+      url: imageUrl,
+    },
+    {
+      id: 3,
+      url: imageUrl,
+    },
+    {
+      id: 4,
+      url: imageUrl,
+    },
+  ]
+
   // Return components, with functions to call API and language
   return (
-    <aside className={styles.collection}>
-      {!displayed ? (
-        <div className={styles.openDetails}>
-          <span
-            className={styles.buttonOpenContent}
-            onClick={handleDisplayDetails}
-          >
-            <TbHandClick
-              className={styles.buttonOpenContentImage}
-              width={480}
-              height={480}
-              color="white"
-            />
-            <p>{languageTraducted.collections.moreInfo}</p>
-          </span>
-        </div>
-      ) : (
-        ''
-      )}
-
-      <div
-        className={`
-                  ${styles.contentArea}
-                  ${displayed ? styles.displayed : ''}
-                `}
-      >
-        <div className={styles.titleArea}>
-          <h1 className={styles.title}>{title}</h1>
-        </div>
-        <div className={styles.row}>
-          <div className={styles.descriptionArea}>
-            <p className={styles.description}>{description}</p>
-          </div>
-
-          {/* <PhotoSlidesCollections images={images} /> */}
-        </div>
-        <div className={styles.buttonArea}>
-          <button className={styles.button}>
-            {languageTraducted.collections.seeMore}
-          </button>
-        </div>
-      </div>
-      <Image
-        className={styles.image}
-        src={imageUrl || ''}
-        alt="Ivana Beaumond"
-        layout="fill"
-      />
-    </aside>
+    <>
+      <aside className={styles.container}>
+        <section className={styles.content}>
+          <h1>{title}</h1>
+          <Image
+            className={styles.image}
+            src={imageUrl ? imageUrl : null}
+            alt="Ivana Beaumond"
+            width={1080}
+            height={1080}
+          />
+          <p>{description}</p>
+        </section>
+        <PhotoSlidesCollections images={imagesSlide} />
+        <SeeCollectionButton lang={lang} collectionId={collectionId} />
+      </aside>
+    </>
   )
   //
 }

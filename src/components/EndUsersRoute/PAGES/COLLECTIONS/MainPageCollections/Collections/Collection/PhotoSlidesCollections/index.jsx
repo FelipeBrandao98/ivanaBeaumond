@@ -19,52 +19,52 @@ export default function PhotoSlidesCollections({ images }) {
   const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
   // Functions to manipulate window object
-  const changeSlideFromRight = useCallback(() => {
+  function changeSlideFromRight() {
     if (slide === 1) {
       setSlide(2)
-      setSlideClass(styles.secondBanner)
+      setSlideClass(styles.secondSlide)
     }
     if (slide === 2) {
       setSlide(3)
-      setSlideClass(styles.thirdBanner)
+      setSlideClass(styles.thirdSlide)
     }
     if (slide === 3) {
       setSlide(4)
-      setSlideClass(styles.fourthBanner)
+      setSlideClass(styles.fourthSlide)
     }
     if (slide === 4) {
       setSlide(1)
-      setSlideClass(styles.firstBanner)
+      setSlideClass(styles.firstSlide)
     }
-  }, [slide])
+  }
 
-  const changeSlideFromLeft = useCallback(() => {
+  function changeSlideFromLeft() {
     if (slide === 1) {
       setSlide(4)
-      setSlideClass(styles.secondBanner)
+      setSlideClass(styles.secondSlide)
     }
     if (slide === 2) {
       setSlide(1)
-      setSlideClass(styles.thirdBanner)
+      setSlideClass(styles.thirdSlide)
     }
     if (slide === 3) {
       setSlide(2)
-      setSlideClass(styles.fourthBanner)
+      setSlideClass(styles.fourthSlide)
     }
     if (slide === 4) {
       setSlide(3)
-      setSlideClass(styles.firstBanner)
+      setSlideClass(styles.firstSlide)
     }
-  }, [slide])
+  }
   //
 
-  // Use Effects
-  useEffect(() => {
-    setTimeout(() => {
-      changeSlideFromRight()
-    }, 100000)
-  }, [changeSlideFromRight])
-  //
+  // // Use Effects
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     changeSlideFromRight()
+  //   }, 100000)
+  // }, [changeSlideFromRight])
+  // //
 
   // Return components, with functions to call API and language
   return (
@@ -77,35 +77,6 @@ export default function PhotoSlidesCollections({ images }) {
             height={100}
           />
         </button>
-      </div>
-
-      <div className={styles.slideNumberButtonsArea}>
-        <div className={styles.slideNumberButtons}>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 1 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 2 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 3 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-          <span
-            className={`
-                ${styles.slideButton}
-                ${slide === 4 ? styles.slideButtonSelected : ''}
-              `}
-          ></span>
-        </div>
       </div>
 
       <div

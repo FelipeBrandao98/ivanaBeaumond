@@ -72,49 +72,14 @@
   width: calc(50vw - 15rem);
   height: calc(80vh - 16rem);
   object-fit: cover;
-  border-radius: .3rem;
+  border-radius: .1rem;
   box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .8);
   transition: all 1s;
 }
 
-.slideNumberButtonsArea {
-  bottom: 5rem;
-  right: calc(25vw - 4.8rem);
-  display: flex;
-  flex-direction: row;
-  height: 2.2rem;
-  padding: 1rem;
-  z-index: 400;
-}
-
-.slideNumberButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.slideButton {
-  display: flex;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, .5);
-  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
-}
-
-.slideButton:hover {
-  filter: brightness(.8);
-  cursor: pointer;
-}
-
-.slideButtonSelected {
-  background-color: var(--white);
-}
 
 .fromLeftArea {
-  right: calc(50vw - 4rem);
+  left: 20vw;
 
   display: flex;
   align-items: center;
@@ -153,7 +118,7 @@
 }
 
 .fromRightArea {
-  right: 1rem;
+  right: 20vw;
 
   display: flex;
   align-items: center;
@@ -198,17 +163,11 @@
 
   .SlideArea {
     gap: 20vw;
-    padding-left: 10vw;
+    padding-left: calc(10vw - 1rem);
   }
 
   .image {
     width: 80vw;
-  }
-
-  .slideNumberButtonsArea {
-    margin-bottom: 1rem;
-    align-self: center;
-    position: inherit;
   }
 
   .slideButton,
