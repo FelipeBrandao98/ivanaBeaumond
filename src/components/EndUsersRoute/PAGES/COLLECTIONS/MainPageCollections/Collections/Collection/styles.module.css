@@ -40,6 +40,7 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  z-index: 1000;
 }
 
 .content p {
@@ -65,6 +66,7 @@
   object-fit: cover;
   border-radius: .1rem;
   pointer-events: none;
+  filter: brightness(.8) grayscale(.7);
 }
 
 @media (max-width: 720px) {
