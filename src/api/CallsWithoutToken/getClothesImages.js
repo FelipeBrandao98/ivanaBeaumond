@@ -2,7 +2,12 @@
 
 import api from '@/services/api'
 
-export default async function getClothes(lang, collectionId) {
+export default async function getClothesImages(lang, collectionId) {
+  if (!collectionId) {
+    collectionId = lang
+    lang = undefined
+  }
+
   if (lang) {
     try {
       const res = await api.get(`/collections/clothes/${lang}/${collectionId}`)

@@ -21,6 +21,7 @@ import styles from './styles.module.css'
 // Api imports
 import getClothes from '@/api/CallsWithoutToken/getClothes'
 import SeeCollectionButton from '../SeeCollectionButton'
+import getClothesImages from '@/api/CallsWithoutToken/getClothesImages'
 
 // Component Declaration
 export default function Collection({
@@ -43,18 +44,18 @@ export default function Collection({
   }
   //
 
-  // // functions to handle with datas from api
-  // const getClothesRepo = useCallback(async () => {
-  //   const res = await getClothes(lang, collectionId)
-  //   setImages(res)
-  // }, [lang, collectionId])
-  // //
+  // functions to handle with datas from api
+  const getClothesRepo = useCallback(async () => {
+    const res = await getClothesImages(lang, collectionId)
+    setImages(res)
+  }, [lang, collectionId])
+  //
 
-  // // Use Effects
-  // useEffect(() => {
-  //   getClothesRepo()
-  // }, [getClothesRepo])
-  // //
+  // Use Effects
+  useEffect(() => {
+    getClothesRepo()
+  }, [getClothesRepo])
+  //
 
   const imagesSlide = [
     {
@@ -90,7 +91,8 @@ export default function Collection({
           />
           <p>{description}</p>
         </section>
-        <PhotoSlidesCollections images={imagesSlide} />
+        {console.log(images)}
+        <PhotoSlidesCollections images={images} />
         <SeeCollectionButton lang={lang} collectionId={collectionId} />
       </aside>
     </>

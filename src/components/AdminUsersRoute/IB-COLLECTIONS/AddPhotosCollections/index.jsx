@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 // Icons imports
 import { IoIosExpand } from 'react-icons/io'
-import { FiX } from 'react-icons/fi'
+import { FiTrash2, FiX } from 'react-icons/fi'
 
 // Context imports
 import { CollectionsContext } from '@/Context/CollectionsContext'
@@ -23,25 +23,28 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import styles from './styles.module.css'
 import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
 import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
+import getClothesImages from '@/api/CallsWithoutToken/getClothesImages'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
+import deleteClothesImages from '@/api/CallsWithToken/deleteClothesImages'
+import createClothesImages from '@/api/CallsWithToken/createClothesImages'
+import createImage from '@/api/CallsWithToken/createImage'
 
 const createImageFormSchema = z.object({
   file: z.any(),
 })
 
 // Component Declaration
-export default function AddPhotosCollections({ functions }) {
+export default function AddPhotosCollections() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { collections } = useContext(CollectionsContext)
 
   // States declaratios
   const [loading, setLoading] = useState(false)
+  const [cancel, setCancel] = useState(false)
   const [resized, setResized] = useState(false)
   const [resizedImage, setResizedImage] = useState('')
   const [imagesRepositories, setImagesRepositories] = useState([])
-
-  // Desestructured functions to call api
-  const { createImagesCollections, getImagesCollections } = functions
 
   // Instance of Hook Form
   const {
@@ -59,16 +62,24 @@ export default function AddPhotosCollections({ functions }) {
     setLoading(true)
     const file = new FormData()
     file.set('file', formData.file[0])
-    const res = await createImagesCollections(token, file, collections.id)
+    const res = await createImage(token, file)
+    await createClothesImages(token, collections.id, res.id)
     getImagesCollectionsData(collections.id)
     setLoading(false)
   }
 
   const getImagesCollectionsData = useCallback(async () => {
-    const res = await getImagesCollections(collections.id)
+    const res = await getClothesImages(collections.id)
     setImagesRepositories(res)
-  }, [collections.id, getImagesCollections])
+  }, [collections.id])
   //
+
+  async function handleDeleteClothesImage(token, imageId) {
+    setLoading(true)
+    await deleteClothesImages(token, imageId)
+    getImagesCollectionsData()
+    setLoading(false)
+  }
 
   // Use Effects
   useEffect(() => {
@@ -119,36 +130,56 @@ export default function AddPhotosCollections({ functions }) {
                 </tr>
               </thead>
               <tbody className={styles.body}>
-                {imagesRepositories.map((repo) => {
-                  return (
-                    <tr key={repo.id}>
-                      <td></td>
-                      <td>
-                        <div
-                          className={styles.imageArea}
-                          onClick={(e) => {
-                            setResized(true)
-                            setResizedImage(repo.url)
-                          }}
-                        >
-                          <Image
-                            width={300}
-                            height={300}
-                            src={repo.url}
-                            alt="Ivana"
-                            className={styles.image}
-                          />
-                          <IoIosExpand
-                            width={50}
-                            height={50}
-                            className={styles.expand}
-                          />
-                        </div>
-                      </td>
-                      <td></td>
-                    </tr>
-                  )
-                })}
+                {imagesRepositories
+                  ? imagesRepositories.map((repo) => {
+                      return (
+                        <tr key={repo.id}>
+                          <td></td>
+                          <td>
+                            {console.log(repo)}
+                            <div
+                              className={styles.imageArea}
+                              onClick={(e) => {
+                                setResized(true)
+                                setResizedImage(repo.cover.url)
+                              }}
+                            >
+                              <Image
+                                width={300}
+                                height={300}
+                                src={repo.cover.url}
+                                alt="Ivana"
+                                className={styles.image}
+                              />
+                              <IoIosExpand
+                                width={50}
+                                height={50}
+                                className={styles.expand}
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setCancel(!cancel)
+                              }}
+                            >
+                              <DashboardCancel
+                                cancel={cancel}
+                                setCancel={setCancel}
+                                message="Tem certeza que deseja excluir essa Fotografia? uma vez excluída, não é possível recuperar!"
+                                href={handleDeleteClothesImage}
+                                token={token}
+                                id={repo.id}
+                              />
+                              <FiTrash2 width={40} height={40} />
+                            </button>
+                          </td>
+                        </tr>
+                      )
+                    })
+                  : ''}
               </tbody>
             </table>
           </div>
@@ -173,7 +204,7 @@ export default function AddPhotosCollections({ functions }) {
           </section>
         )}
       </DashboardContainer>
-      {loading && <DashboardLoading />}
+      {loading && <DashboardLoading loading={loading} />}
     </>
   )
   //

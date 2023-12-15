@@ -90,8 +90,8 @@ export default function PhotoSlidesCollections({ images }) {
             <Image
               key={image.id}
               className={styles.image}
-              src={image.url}
-              alt="Ivana Beaumond"
+              src={image.cover.url}
+              alt={image.collection.title}
               width={1620}
               height={1280}
             />

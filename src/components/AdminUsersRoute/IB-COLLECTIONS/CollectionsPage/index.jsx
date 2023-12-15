@@ -152,7 +152,6 @@ export default function CollectionsPage() {
                       onClick={(e) => {
                         handleCollections(repo)
                       }}
-                      legacyBehavior
                     >
                       <BiPhotoAlbum width={100} height={100} />
                     </Link>
@@ -163,7 +162,6 @@ export default function CollectionsPage() {
                       onClick={(e) => {
                         handleCatalog(repo)
                       }}
-                      legacyBehavior
                     >
                       <BiPhotoAlbum width={100} height={100} />
                     </Link>
