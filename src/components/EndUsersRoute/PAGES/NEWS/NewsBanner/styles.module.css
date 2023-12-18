@@ -257,9 +257,9 @@
   }
   
   .button {
-    color: var(--black);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--black);
+    color: var(--white-100);
+    backdrop-filter: blur(20px) brightness(.7) grayscale(1);
+    border: 1px solid var(--white-100);
     font-size: 1rem;
   }
 
