@@ -257,8 +257,9 @@
   }
   
   .button {
-    color: var(--black-800);
+    color: var(--black);
     backdrop-filter: blur(20px);
+    border: 1px solid var(--black);
     font-size: 1rem;
   }
 

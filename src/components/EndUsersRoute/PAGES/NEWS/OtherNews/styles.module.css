@@ -1,14 +1,48 @@
+@keyframes shakeScrollBar {
+  0% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 1rem;
   padding: 1rem .5rem;
+  padding-top: 4rem;
 
   width: 100%;
 
+  overflow-x: scroll;
+
   background-color: var(--white);
+}
+
+.section::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.section::-webkit-scrollbar-track {
+  background-color: var(--white);
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: var(--black-300);
+  border-radius: .5rem;
+  transition: all .2s;
+  box-shadow: .1rem .1rem 4rem var(--black-800);
+}
+
+.section::-webkit-scrollbar-thumb:hover {
+  background-color: var(--black-800);
 }
 
 .title {
@@ -16,21 +50,28 @@
   letter-spacing: .1rem;
   font-family: var(--font-bebas-neue);
   color: var(--black-800);
+
+  position: absolute;
+  padding: 1rem;
+  transform: translateY(-4rem);
+  text-align: center;
+  align-self: center;
 }
 
 .contentArea {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .postsArea {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0 calc(25vw - (250px + 2rem));
+  gap: 2rem;
 }
 
 .post {
@@ -223,7 +264,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 0;
-    overflow: scroll;
+    overflow-x: scroll;
   }
 
   .title {

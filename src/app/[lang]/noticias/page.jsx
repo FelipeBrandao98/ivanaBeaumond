@@ -9,6 +9,7 @@ import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
 // API Service imports
 import getLangDict from '@/utils/getLangDict'
 import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
+import getNews from '@/api/CallsWithoutToken/getNews'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -35,6 +36,7 @@ export default async function Page() {
 
   // Instantiate response objects from api, by language by the way
   const latestPosts = await getLatestNews(lang)
+  const news = await getNews(lang)
 
   // Return components, with data and language
   return (
@@ -45,7 +47,7 @@ export default async function Page() {
       {
         //
       }
-      <NewsOrganizer latestPosts={latestPosts} />
+      <NewsOrganizer latestPosts={news} />
     </>
   )
   //
