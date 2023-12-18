@@ -22,10 +22,10 @@ import formatToSubTitle from '@/utils/formatToSubTitle'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function NewsBanner({ lang, data }) {
+export default function NewsSlide({ lang, data }) {
   // States declaratios
   const [slide, setSlide] = useState(2)
-  const [slideClass, setSlideClass] = useState(styles.secondBanner)
+  const [slideClass, setSlideClass] = useState(styles.secondSlide)
 
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
@@ -34,38 +34,38 @@ export default function NewsBanner({ lang, data }) {
   const changeSlideFromRight = useCallback(() => {
     if (slide === 1) {
       setSlide(2)
-      setSlideClass(styles.secondBanner)
+      setSlideClass(styles.secondSlide)
     }
     if (slide === 2) {
       setSlide(3)
-      setSlideClass(styles.thirdBanner)
+      setSlideClass(styles.thirdSlide)
     }
     if (slide === 3) {
       setSlide(4)
-      setSlideClass(styles.fourthBanner)
+      setSlideClass(styles.fourthSlide)
     }
     if (slide === 4) {
       setSlide(1)
-      setSlideClass(styles.firstBanner)
+      setSlideClass(styles.firstSlide)
     }
   }, [slide])
 
   const changeSlideFromLeft = useCallback(() => {
     if (slide === 1) {
       setSlide(4)
-      setSlideClass(styles.secondBanner)
+      setSlideClass(styles.secondSlide)
     }
     if (slide === 2) {
       setSlide(1)
-      setSlideClass(styles.thirdBanner)
+      setSlideClass(styles.thirdSlide)
     }
     if (slide === 3) {
       setSlide(2)
-      setSlideClass(styles.fourthBanner)
+      setSlideClass(styles.fourthSlide)
     }
     if (slide === 4) {
       setSlide(3)
-      setSlideClass(styles.firstBanner)
+      setSlideClass(styles.firstSlide)
     }
   }, [slide])
   //
@@ -81,9 +81,19 @@ export default function NewsBanner({ lang, data }) {
   // Return components, with functions to call API and language
   return (
     <section className={styles.content}>
+      <div className={styles.fromLeftArea}>
+        <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
+          <FiArrowLeft
+            className={styles.fromLeftImage}
+            width={100}
+            height={100}
+          />
+        </button>
+      </div>
+
       <div
         className={`
-        ${styles.bannerArea}
+        ${styles.slideArea}
         ${slideClass}
         `}
       >
@@ -93,6 +103,14 @@ export default function NewsBanner({ lang, data }) {
               <div className={styles.titleArea}>
                 <h1 className={styles.title}>{item.title}</h1>
               </div>
+
+              <Image
+                className={styles.imageBanner}
+                src={item.cover.url}
+                alt={item.cover.author}
+                width={1280}
+                height={720}
+              />
 
               <div className={styles.descriptionArea}>
                 <h2 className={styles.description}>{item.subtitle}</h2>
@@ -105,29 +123,9 @@ export default function NewsBanner({ lang, data }) {
                   {languageTraducted.layout.news.seeMore}
                 </Link>
               </div>
-
-              <div className={styles.imageArea}>
-                <Image
-                  className={styles.image}
-                  src={item.cover.url}
-                  alt={item.cover.author}
-                  width={1620}
-                  height={1280}
-                />
-              </div>
             </aside>
           )
         })}
-      </div>
-
-      <div className={styles.fromLeftArea}>
-        <button className={styles.fromLeftButton} onClick={changeSlideFromLeft}>
-          <FiArrowLeft
-            className={styles.fromLeftImage}
-            width={100}
-            height={100}
-          />
-        </button>
       </div>
 
       <div className={styles.fromRightArea} onClick={changeSlideFromRight}>

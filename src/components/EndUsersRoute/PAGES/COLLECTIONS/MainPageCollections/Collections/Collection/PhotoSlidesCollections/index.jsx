@@ -85,7 +85,7 @@ export default function PhotoSlidesCollections({ images }) {
         ${slideClass}
         `}
       >
-        {image
+        {images
           ? images.map((image) => {
               return (
                 <Image

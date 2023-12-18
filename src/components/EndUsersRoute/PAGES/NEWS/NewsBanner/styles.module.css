@@ -1,193 +1,149 @@
-.titleArea,
-.descriptionArea,
-.fromLeftArea,
-.fromRightArea {
-  transition: all .2s;
-}
-
 .content {
   display: flex;
-  flex-direction: column;
-  padding: 4rem;
-  width: 100vw;
-  height: 80vh;
-  
-  min-height: 30rem;
-
-  overflow: hidden;
-}
-
-.bannerArea {
-  position: absolute;
-  width: 400%;
-  height: 80vh;
-
-  margin-top: -4rem;
-
-  margin-left: -4rem;
-
-  display: flex;
-  align-items: flex-start;
-
-  overflow: hidden;
-
-  transition: all .5s;
-}
-
-.firstBanner {
-  margin-left: -4rem;
-}
-
-.secondBanner {
-  margin-left: calc(-4rem - 100%);
-}
-
-.thirdBanner {
-  margin-left: calc(-4rem - 200%);
-}
-
-.fourthBanner {
-  margin-left: calc(-4rem - 300%);
-}
-
-.postArea {
-  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
   height: 80vh;
+  overflow: hidden;
+}
+
+.fromLeftArea,
+.fromRightArea,
+.slideNumberButtonsArea {
+  transition: all .2s;
+  position: absolute;
+}
+
+.slideArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  height: 80vh;
+  width: 400vw;
+  transition: all .5s;
 }
 
 .post {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+}
+
+.imageBanner {
+  display: flex;
+  height: 85vh;
   width: 100%;
-  height: 80vh;
+  object-fit: cover;
+  transform: translateY(1rem);
+}
+
+.titleArea {
+  color: var(--white-100);
+  text-shadow: .1rem .1rem 1rem var(--black-800);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  
+  font-size: 2rem;
+  padding: 2rem 0;
+
+  z-index: 1000;
+  transform: translateY(7.9rem);
+
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+
+  opacity: 0;
+  transition: all .2s;
 }
 
 .content:hover .titleArea {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
-
-  background: linear-gradient(rgba(0, 0, 0, .8), transparent);
-  width: 100%;
-
-  z-index: 2;
+  opacity: 1;
 }
 
 .title {
-  color: var(--white);
-  max-width: 30rem;
-  font-size: 2rem;
-  font-family: var(--font-playfair-display);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 2rem;
+}
+
+.descriptionArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 6rem;
+  transform: translateY(-11rem);
+
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+
+  opacity: 0;
+  transition: all .2s;
 }
 
 .content:hover .descriptionArea {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
-
-  background: linear-gradient(transparent, rgba(0, 0, 0, .8));
-  width: 100%;
-
-  z-index: 2;
+  opacity: 1;
 }
 
 .description {
-  color: var(--white);
-  max-width: 50rem;
-  font-size: 1rem;
-  font-family: var(--font-playfair-display);
+  text-indent: 2rem;
+  color: var(--white-100);
 }
 
 .button {
-  display: flex;
   padding: .5rem 2rem;
-  background-color: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--white);
-  font-family: var(--font-merriweather);
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-  border-radius: .1rem;
+  color: var(--white-100);
+  border: 1px solid var(--black-300);
+  border-radius: .2rem;
+  box-shadow: .1rem .1rem 1rem var(--black-800);
   transition: all .2s;
-  z-index: 3;
 }
 
 .button:hover {
-  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
-  cursor: pointer;
+  backdrop-filter: blur(20px);
+  box-shadow: .1rem .1rem 5rem var(--black-800);
+  padding: .5rem 3rem;
 }
 
-.imageArea {
-  position: absolute;
-  display: flex;
-  width: 25%;
+.firstSlide {
+  margin-left: 0vw;
 }
 
-.image {
-  display: flex;
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
+.secondSlide {
+  margin-left: calc(-100vw);
 }
 
-.slideNumberButtonsArea {
-  display: flex;
-  position: relative;
-  top: calc(60vh - 1rem);
-
-  justify-content: center;
-  align-items: center;
-  z-index: 400;
+.thirdSlide {
+  margin-left: calc(-200vw);
 }
 
-.slideNumberButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+.fourthSlide {
+  margin-left: calc(-300vw);
 }
 
-.slideButton {
-  display: flex;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, .5);
-  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .5);
-}
-
-.slideButton:hover {
-  filter: brightness(.8);
-  cursor: pointer;
-}
-
-.slideButtonSelected {
-  background-color: var(--white);
-}
 
 .fromLeftArea {
+  position: absolute;
+  left: 20vw;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 
   z-index: 2;
-
-  position: relative;
-  top: calc(30vh - 3.5rem);
-  right: 1rem;
-
-  width: 3rem;
 }
 
 .fromLeftButton {
@@ -220,17 +176,13 @@
 }
 
 .fromRightArea {
+  right: 20vw;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 2;
-  cursor: pointer;
-
-  position: relative;
-  top: calc(30vh - 6.5rem);
-  right: calc(-100% + 2.5rem);
-
-  width: 3rem;
 }
 
 .fromRightButton {
@@ -263,92 +215,80 @@
 }
 
 @media (max-width: 720px) {
-
-  .content,
-  .bannerArea,
-  .postArea,
-  .image {
-    height: calc(100vh - (30px + 2rem + .2rem));
-  }
-
   .content {
-    padding: .5rem;
+    height: 39rem;
   }
 
-  .bannerArea {
-    margin-left: -.5rem;
+  .post {
+    height: 100vh;
   }
 
-  .firstBanner {
-    margin-left: -.5rem;
-  }
-
-  .secondBanner {
-    margin-left: calc(-.5rem - 100%);
-  }
-
-  .thirdBanner {
-    margin-left: calc(-.5rem - 200%);
-  }
-
-  .fourthBanner {
-    margin-left: calc(-.5rem - 300%);
-  }
-
-  .titleArea,
-  .content:hover .titleArea {
+  .imageBanner {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-
-    background: linear-gradient(rgba(0, 0, 0, .8), transparent);
-    width: 100%;
-
-    z-index: 2;
+    height: 39rem;
+    width: 100vw;
+    object-fit: cover;
+    transform: translateY(-5rem);
+    filter: brightness(.8);
+  }
+  
+  .titleArea {
+    height: 0;
+    font-size: 1.2rem;
+    padding: 2rem 1rem;
+  
+    transform: translateY(-1rem);
+    opacity: 1;
+  }
+  
+  .descriptionArea {
+    height: 0;
+    padding: 2rem;
+    font-size: .8rem;
+    transform: translateY(-16rem);
+    background: none;
+  
+    opacity: 1;
+    transition: all .2s;
   }
 
-  .descriptionArea,
-  .content:hover .descriptionArea {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    padding-bottom: 3.2rem;
-
-    background: linear-gradient(transparent, rgba(0, 0, 0, .8));
-    width: 100%;
-
-    z-index: 2;
+  .description {
+    text-shadow: .1rem .1rem 1rem var(--black-800);
   }
-
+  
   .button {
-    box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, .3);
-    cursor: pointer;
+    color: var(--black-800);
+    backdrop-filter: blur(20px);
+    font-size: 1rem;
   }
 
-  .fromLeftArea,
-  .content:hover .fromLeftArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-
-    z-index: 2;
+  .fromLeftArea {
+    width: 3rem;
+    left: .5rem;
   }
 
-  .slideNumberButtonsArea {
-    margin-bottom: 0;
+  .fromLeftButton,
+  .fromLeftButton:hover {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
   }
 
-  .fromRightArea,
-  .content:hover .fromRightArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    z-index: 2;
+  .fromLeftImage {
+    color: var(--black);
+  }
+
+  .fromRightArea {
+    width: 3rem;
+    right: .5rem;
+  }
+
+  .fromRightButton,
+  .fromRightButton:hover {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .fromRightImage {
+    color: var(--black);
   }
 }
