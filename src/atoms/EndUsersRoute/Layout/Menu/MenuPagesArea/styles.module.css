@@ -1,3 +1,18 @@
+@keyframes showSubMenu {
+  0% {
+    top: calc(-3 * (50px + 45px + 2rem + .5rem));
+    opacity: 0;
+  }
+  50% {
+    top: 0rem;
+    opacity: 0;
+  }
+  100% {
+    top: 0rem;
+    opacity: 1;
+  }
+}
+
 .container {
   display: flex;
 
@@ -14,10 +29,14 @@
   justify-content: center;
 
   height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
+  transition: all .5s;
 }
 
 .container ul li {
   display: flex;
+  flex-direction: column;
+  transition: all .5s;
+  z-index: 2000;
 }
 
 
@@ -37,10 +56,47 @@
 
   padding: 1rem;
 
-  transition: all .2s;
+  transition: all .5s;
 }
 
 .container ul li:hover {
+  filter: brightness(1.2);
+  background-color: var(--background-blur-dark);
+  cursor: pointer;
+}
+
+.container ul li div {
+  display: flex;
+  position: relative;
+  top: calc(-3 * (50px + 45px + 2rem + .5rem));
+  opacity: 0;
+  width: 0;
+
+  border-bottom: 1px solid var(--black);
+  background-color: var(--background-blur-dark);
+  color: var(--text-dark);
+}
+
+.container ul li div ul {
+  display: flex;
+  flex-direction: column;
+  height: calc(3rem *4);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  -moz-backdrop-filter: var(--blur);
+}
+
+.container ul li:hover div {
+  top: 0rem;
+  width: 100%;
+  opacity: 1;
+  animation: .5s linear showSubMenu;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  -moz-backdrop-filter: var(--blur);
+}
+
+.container ul li:hover div li a:hover {
   filter: brightness(1.2);
   background-color: var(--background-blur-dark);
   cursor: pointer;
@@ -63,7 +119,14 @@
 
   .container ul li {
     border-radius: .1rem;
+    height: 3rem;
     background-color: rgba(255, 255, 255, .1);
     filter: brightness(1.1);
+  }
+
+  .container ul li:hover div,
+  .container ul li:hover div ul,
+  .container ul li:hover div ul li {
+    display: none;
   }
 }

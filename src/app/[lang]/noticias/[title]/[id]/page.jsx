@@ -51,7 +51,7 @@ export default async function Page({ params }) {
       {
         //
       }
-      <NewsOrganizer latestPosts={otherNews} />
+      <NewsOrganizer lang={lang} latestPosts={otherNews} />
     </>
   )
   //

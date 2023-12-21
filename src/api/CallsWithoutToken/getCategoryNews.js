@@ -2,9 +2,13 @@
 
 import api from '@/services/api'
 
-export default async function getCategoryNews() {
+export default async function getCategoryNews(lang) {
+  if (!lang) {
+    lang = 'pt-BR'
+  }
+
   try {
-    const res = await api.get('/news/category/pt-BR')
+    const res = await api.get(`/news/category/${lang}`)
 
     return res.data
   } catch (err) {

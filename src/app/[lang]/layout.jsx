@@ -51,6 +51,7 @@ import '@/styles/globals.css'
 
 // Atoms imports
 import MenuSpacement from '@/atoms/EndUsersRoute/Layout/MenuSpacement'
+import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -211,6 +212,8 @@ export default async function RootLayout({ children }) {
   const lang = langCookie?.value || 'pt-BR'
   //
 
+  const categoryNews = await getCategoryNews(lang)
+
   // Return components, with functions to call API and language
   return (
     <html lang={lang}>
@@ -234,7 +237,7 @@ export default async function RootLayout({ children }) {
       >
         <Providers>
           {/* Layouts Components */}
-          <Menu lang={lang} />
+          <Menu lang={lang} categoryNews={categoryNews} />
 
           {/* Main component, Where all pages are rendered */}
           <main>

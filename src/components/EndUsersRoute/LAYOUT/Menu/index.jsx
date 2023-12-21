@@ -50,7 +50,7 @@ import MenuSocialMedia from '@/atoms/EndUsersRoute/Layout/Menu/MenuSocialMedia'
 //
 
 // Component Declaration
-export default function Menu({ lang }) {
+export default function Menu({ lang, categoryNews }) {
   // Instanciate and initialize Contexts functions
   const { appointment } = useContext(AppointmentContext)
 
@@ -149,6 +149,27 @@ export default function Menu({ lang }) {
                 >
                   {languageTraducted.layout.menu.menuItemThree.name}
                 </Link>
+                <div>
+                  <ul>
+                    {categoryNews.map((catNews) => {
+                      return (
+                        <li key={catNews.id}>
+                          <Link
+                            href={{
+                              pathname: `/noticias/categoria/${catNews.id}/1`,
+                              lang: lang,
+                            }}
+                            lang={lang}
+                            prefetch
+                            replace={true}
+                          >
+                            {catNews.description}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               </li>
               <li>
                 <Link
