@@ -1,0 +1,79 @@
+.container {
+  background-color: var(--white);
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .5rem;
+  transition: all .2s;
+}
+
+.container a:hover {
+  background-color: var(--white-300);
+}
+
+.container a svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--white-300);
+}
+
+.container span:hover {
+  cursor: not-allowed;
+}
+
+.container span svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.container ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem .7rem;
+  background-color: var(--white);
+  color: var(--black-800);
+  border: 2px solid var(--black-800);
+  border-radius: .1rem;
+}
+
+.container ul li span a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem .7rem;
+  border: 2px solid var(--black-800);
+  border-radius: .1rem;
+
+  background-color: var(--black-800);
+  color: var(--white);
+}

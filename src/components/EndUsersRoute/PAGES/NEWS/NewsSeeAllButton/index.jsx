@@ -2,7 +2,7 @@ import EndUserSeeAllButton from '@/atoms/EndUsersRoute/PAGES/EndUserSeeAllButton
 import getLangDict from '@/utils/getLangDict'
 import Link from 'next/link'
 
-export default function NewsSeeAllButton({ lang }) {
+export default function NewsSeeAllButton({ lang, href }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
@@ -11,7 +11,7 @@ export default function NewsSeeAllButton({ lang }) {
       <EndUserSeeAllButton>
         <Link
           href={{
-            pathname: '/noticias',
+            pathname: href,
             lang: lang,
           }}
         >

@@ -23,7 +23,7 @@ export default function OtherNews({ title, data }) {
   // Return components, with functions to call API and language
   return (
     <section className={styles.section}>
-      <h4 className={styles.title}>{title || 'Título'}</h4>
+      {title && <h4 className={styles.title}>{title || 'Título'}</h4>}
 
       <div className={styles.contentArea}>
         <div

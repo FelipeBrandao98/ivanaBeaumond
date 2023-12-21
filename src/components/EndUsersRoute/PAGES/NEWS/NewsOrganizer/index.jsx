@@ -1,118 +1,137 @@
-'use client'
-
-// React imports
-import { useEffect } from 'react'
-import { useState } from 'react'
-
 // Compontents imports
+import NewsSeeAllButton from '../NewsSeeAllButton'
 import OtherNews from '../OtherNews'
 
-export default function NewsOrganizer({ latestPosts }) {
-  const [debutantSpace, setDebutantSpace] = useState([])
-  const [inTheMedia, setInTheMedia] = useState([])
-  const [ourBrides, setOurBrides] = useState([])
-  const [tipsAndTricks, setTipsAndTricks] = useState([])
+export default function NewsOrganizer({ lang, latestPosts }) {
+  const debutantSpace = []
+  const inTheMedia = []
+  const ourBrides = []
+  const tipsAndTricks = []
 
   function organize(latestPosts) {
     latestPosts.map((post) => {
       if (post.category.description === 'Espaço Debutantes') {
-        setDebutantSpace((oldDebutant) => [...oldDebutant, post])
+        debutantSpace.push(post)
       }
 
       if (post.category.description === 'Debütantenraum') {
-        setDebutantSpace((oldDebutant) => [...oldDebutant, post])
+        debutantSpace.push(post)
       }
 
       if (post.category.description === 'Espace Débutantes') {
-        setDebutantSpace((oldDebutant) => [...oldDebutant, post])
+        debutantSpace.push(post)
       }
 
       if (post.category.description === 'Debutant Space') {
-        setDebutantSpace((oldDebutant) => [...oldDebutant, post])
+        debutantSpace.push(post)
       }
 
       if (post.category.description === 'Na Mídia') {
-        setInTheMedia((oldMedia) => [...oldMedia, post])
+        inTheMedia.push(post)
       }
 
       if (post.category.description === 'In den Medien') {
-        setInTheMedia((oldMedia) => [...oldMedia, post])
+        inTheMedia.push(post)
       }
 
       if (post.category.description === 'Dans les médias') {
-        setInTheMedia((oldMedia) => [...oldMedia, post])
+        inTheMedia.push(post)
       }
 
       if (post.category.description === 'In the Media') {
-        setInTheMedia((oldMedia) => [...oldMedia, post])
+        inTheMedia.push(post)
       }
 
       if (post.category.description === 'Nossas Noivas') {
-        setOurBrides((oldBrides) => [...oldBrides, post])
+        ourBrides.push(post)
       }
 
       if (post.category.description === 'Unsere Bräute') {
-        setOurBrides((oldBrides) => [...oldBrides, post])
+        ourBrides.push(post)
       }
 
       if (post.category.description === 'Nos mariées') {
-        setOurBrides((oldBrides) => [...oldBrides, post])
+        ourBrides.push(post)
       }
 
       if (post.category.description === 'Our Brides') {
-        setOurBrides((oldBrides) => [...oldBrides, post])
+        ourBrides.push(post)
       }
 
       if (post.category.description === 'Dicas e Truques') {
-        setTipsAndTricks((oldTipsAndTricks) => [...oldTipsAndTricks, post])
+        tipsAndTricks.push(post)
       }
 
       if (post.category.description === 'Tipps und Tricks') {
-        setTipsAndTricks((oldTipsAndTricks) => [...oldTipsAndTricks, post])
+        tipsAndTricks.push(post)
       }
 
       if (post.category.description === 'Trucs et astuces') {
-        setTipsAndTricks((oldTipsAndTricks) => [...oldTipsAndTricks, post])
+        tipsAndTricks.push(post)
       }
 
       if (post.category.description === 'Tips and tricks') {
-        setTipsAndTricks((oldTipsAndTricks) => [...oldTipsAndTricks, post])
+        tipsAndTricks.push(post)
       }
     })
   }
 
-  useEffect(() => {
-    organize(latestPosts)
-  }, [])
-
   return (
     <>
+      {organize(latestPosts)}
       {debutantSpace[0] ? (
-        <OtherNews
-          title={debutantSpace[0].category.description}
-          data={filterDebutant}
-        />
+        <>
+          <OtherNews
+            title={debutantSpace[0].category.description}
+            data={filterDebutant}
+          />
+          <NewsSeeAllButton
+            lang={lang}
+            href={`/noticias/categoria/${debutantSpace[0].category.id}/1`}
+          />
+        </>
       ) : (
         ''
       )}
       {inTheMedia[0] ? (
-        <OtherNews
-          title={inTheMedia[0].category.description}
-          data={inTheMedia}
-        />
+        <>
+          <OtherNews
+            title={inTheMedia[0].category.description}
+            data={inTheMedia}
+          />
+          <NewsSeeAllButton
+            lang={lang}
+            href={`/noticias/categoria/${inTheMedia[0].category.id}/1`}
+          />
+        </>
       ) : (
         ''
       )}
       {ourBrides[0] ? (
-        <OtherNews title={ourBrides[0].category.description} data={ourBrides} />
+        <>
+          <OtherNews
+            title={ourBrides[0].category.description}
+            data={ourBrides}
+          />
+          <NewsSeeAllButton
+            lang={lang}
+            href={`/noticias/categoria/${ourBrides[0].category.id}/1`}
+          />
+        </>
       ) : (
         ''
       )}
       {tipsAndTricks[0] ? (
-        <OtherNews
-          title={tipsAndTricks[0].category.description}
-          data={tipsAndTricks}
-        />
+        <>
+          <OtherNews
+            title={tipsAndTricks[0].category.description}
+            data={tipsAndTricks}
+          />
+          <NewsSeeAllButton
+            lang={lang}
+            href={`/noticias/categoria/${tipsAndTricks[0].category.id}/1`}
+          />
+        </>
       ) : (
         ''
       )}

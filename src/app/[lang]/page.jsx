@@ -79,11 +79,11 @@ export default async function Page() {
 
       <OtherNews lang={lang} data={latestNews} title="Notícias" />
 
-      <NewsSeeAllButton lang={lang} />
+      <NewsSeeAllButton lang={lang} href={'/noticias'} />
 
       <OtherEvents lang={lang} data={latestNews} title="Eventos" />
 
-      <EventsSeeAllButton lang={lang} />
+      <EventsSeeAllButton lang={lang} href={'/eventos'} />
     </div>
   )
   //

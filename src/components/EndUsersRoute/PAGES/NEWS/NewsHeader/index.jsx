@@ -10,7 +10,7 @@ import getLangDict from '@/utils/getLangDict'
 import PageHeader from '@/atoms/EndUsersRoute/PageHeader'
 
 // Component Declaration
-export default function NewsHeader({ lang }) {
+export default function NewsHeader({ lang, category }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
@@ -25,7 +25,9 @@ export default function NewsHeader({ lang }) {
           width={1920}
           height={1080}
         />
-        <h1>{languageTraducted.news.title}</h1>
+        <h1>
+          {category ? category.description : languageTraducted.news.title}
+        </h1>
         <div>
           <h2>
             {languageTraducted.news.subTitle}
