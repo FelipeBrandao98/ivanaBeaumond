@@ -58,7 +58,7 @@ export default function CategoriesPage() {
   const getRepo = useCallback(async () => {
     setLoading(true)
     const categoriesCollections = await getCategoryCollections(token)
-    const categoriesNews = await getCategoryNews(token)
+    const categoriesNews = await getCategoryNews()
     setCategoriesCollectionsRepositories(categoriesCollections)
     setCategoriesNewsRepositories(categoriesNews)
     setLoading(false)
