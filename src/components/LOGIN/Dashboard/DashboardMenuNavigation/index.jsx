@@ -1,5 +1,11 @@
 // Icons imports
-import { ImNewspaper, ImMail3, ImTicket, ImListNumbered } from 'react-icons/im'
+import {
+  ImNewspaper,
+  ImMail3,
+  ImTicket,
+  ImListNumbered,
+  ImCheckboxChecked,
+} from 'react-icons/im'
 
 // Atoms imports
 import DashboardButtonItem from '@/atoms/AdminUsersRoute/Dashboard/DashboardButtonItem'
@@ -11,6 +17,11 @@ export default function DashboardMenuNavigation() {
   return (
     <>
       <ul>
+        <DashboardButtonItem href={'/ib-login/dashboard/agendamentos'}>
+          Agendamentos
+          <ImCheckboxChecked width={40} height={40} svg />
+        </DashboardButtonItem>
+
         <DashboardButtonItem href={'/ib-login/dashboard/mailer'}>
           E-mail
           <ImMail3 width={40} height={40} svg />
