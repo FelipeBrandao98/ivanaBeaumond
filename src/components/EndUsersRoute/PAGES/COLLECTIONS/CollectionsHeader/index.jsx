@@ -10,7 +10,7 @@ import getLangDict from '@/utils/getLangDict'
 import PageHeader from '@/atoms/EndUsersRoute/PageHeader'
 
 // Component Declaration
-export default function CollectionsHeader({ lang }) {
+export default function CollectionsHeader({ lang, title, subTitle, image }) {
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
@@ -18,17 +18,21 @@ export default function CollectionsHeader({ lang }) {
   return (
     <>
       <PageHeader>
-        <Image
-          src={headerImg}
-          alt="Ivana Beaumond"
-          placeholder="blur"
-          width={1920}
-          height={1080}
-        />
-        <h1>{languageTraducted.collections.title}</h1>
+        {image ? (
+          <Image src={image} alt={title} width={1920} height={1080} />
+        ) : (
+          <Image
+            src={headerImg}
+            alt="Ivana Beaumond"
+            placeholder="blur"
+            width={1920}
+            height={1080}
+          />
+        )}
+        <h1>{title ? title : languageTraducted.collections.title}</h1>
         <div>
           <h2>
-            {languageTraducted.collections.subTitle}
+            {subTitle ? subTitle : languageTraducted.collections.subTitle}
             <Image
               src={logoImg}
               alt="Ivana Beaumond"

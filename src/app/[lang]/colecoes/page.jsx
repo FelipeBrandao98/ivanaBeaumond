@@ -6,7 +6,7 @@ import getLangDict from '@/utils/getLangDict'
 
 // Components imports
 import CollectionsHeader from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionsHeader'
-import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/MainPageCollections/Collections'
+import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Collections'
 
 // API Service imports
 import getCollections from '@/api/CallsWithoutToken/getCollections'

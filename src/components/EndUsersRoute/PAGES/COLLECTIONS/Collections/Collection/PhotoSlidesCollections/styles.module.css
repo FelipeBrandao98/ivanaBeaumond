@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  align-self: center;
   width: 50vw;
   height: calc(80vh - 11rem);
   overflow: hidden;

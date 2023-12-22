@@ -57,25 +57,6 @@ export default function Collection({
   }, [getClothesRepo])
   //
 
-  const imagesSlide = [
-    {
-      id: 1,
-      url: imageUrl,
-    },
-    {
-      id: 2,
-      url: imageUrl,
-    },
-    {
-      id: 3,
-      url: imageUrl,
-    },
-    {
-      id: 4,
-      url: imageUrl,
-    },
-  ]
-
   // Return components, with functions to call API and language
   return (
     <>
@@ -91,9 +72,12 @@ export default function Collection({
           />
           <p>{description}</p>
         </section>
-        {console.log(images)}
         <PhotoSlidesCollections images={images} />
-        <SeeCollectionButton lang={lang} collectionId={collectionId} />
+        <SeeCollectionButton
+          lang={lang}
+          collectionId={collectionId}
+          collectionTitle={title}
+        />
       </aside>
     </>
   )
