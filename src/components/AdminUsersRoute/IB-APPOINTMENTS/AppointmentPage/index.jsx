@@ -39,10 +39,6 @@ import { format } from 'date-fns'
 export default function AppointmentPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
-  const { handleCategory: handleCatNews } = useContext(NewsCategoryContext)
-  const { handleCategory: HandleCatCollections } = useContext(
-    CollectionsCategoryContext,
-  )
 
   // States declaratios
   const [cancel, setCancel] = useState(false)
@@ -77,7 +73,8 @@ export default function AppointmentPage() {
               <th>Agendamento</th>
               <th>E-Mail</th>
               <th>Telefone</th>
-              <th>Excluir coleção</th>
+              <th>Pretensão do cliente</th>
+              <th>Excluir Agendamento</th>
             </tr>
           </thead>
           <tbody>
