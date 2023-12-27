@@ -1,9 +1,6 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
-// Meta img
-import metaImg from '@/../public/photo_header/_ELC8701 2.jpg'
-
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
@@ -25,7 +22,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: traductedMeta.metadata.collections.title,
       description: traductedMeta.metadata.collections.description,
-      image: metaImg,
+      image: 'public/photo_header/_ELC8701 2.jpg',
     },
   }
 }

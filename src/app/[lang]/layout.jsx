@@ -9,9 +9,6 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
-// Meta img
-import metaImg from '@/../public/photo_header/_ELC8701 2.jpg'
-
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
@@ -177,7 +174,7 @@ export async function generateMetadata({ params }) {
       url: traductedMeta?.metadata.openGraph.url,
       images: [
         {
-          url: metaImg,
+          url: 'public/photo_header/_ELC8701 2.jpg',
           width: 800,
           heigh: 600,
           alt: 'Ivana Beaumond Homepage',
