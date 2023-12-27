@@ -1,20 +1,24 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
-// Components imports
-import CollectionGrid from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionGrid'
+// Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
+
+// Components imports
 import CollectionsHeader from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionsHeader'
-import getUniqueCollection from '@/api/CallsWithoutToken/getUniqueCollection'
 import PhotoSlidesCollections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Collections/Collection/PhotoSlidesCollections'
-import getClothesImages from '@/api/CallsWithoutToken/getClothesImages'
+import CollectionGrid from '@/components/EndUsersRoute/PAGES/COLLECTIONS/CollectionGrid'
+
+// API Calls imports
+import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
+import getUniqueCol from '@/api/CallsWithoutToken/Collections/GET/getUniqueCol'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
 
   const traductedMeta = getLangDict(lang)
 
-  const collection = await getUniqueCollection(lang, params.id)
+  const collection = await getUniqueCol(lang, params.id)
 
   return {
     title: collection.title
@@ -30,7 +34,7 @@ export async function generateMetadata({ params }) {
       description: collection.description
         ? collection.description
         : traductedMeta.metadata.collections.description,
-      image: collection.image && collection.image,
+      image: collection.cover && collection.cover.url,
     },
   }
 }
@@ -43,8 +47,8 @@ export default async function Page({ params }) {
   const lang = langCookie?.value || 'pt-BR'
   //
 
-  const collection = await getUniqueCollection(lang, params.id)
-  const mainImages = await getClothesImages(lang, params.id)
+  const collection = await getUniqueCol(lang, params.id)
+  const mainImages = await getClotCol(lang, params.id)
 
   // Return components, with data and language
   return (

@@ -129,7 +129,7 @@ export default function CollectionsHome({ lang, data }) {
                       <button>
                         <Link
                           href={{
-                            pathname: '/colecoes',
+                            pathname: `/colecoes/categoria/${categorie.id}`,
                             lang: lang,
                           }}
                         >

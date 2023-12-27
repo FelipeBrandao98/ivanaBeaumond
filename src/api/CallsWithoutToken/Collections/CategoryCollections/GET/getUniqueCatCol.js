@@ -2,7 +2,7 @@
 
 import api from '@/services/api'
 
-export default async function getUniqueCategoryCollections(lang, categoryId) {
+export default async function getUniqueCatCol(lang, categoryId) {
   try {
     const res = await api.get(`/collections/category/${lang}/${categoryId}`)
 

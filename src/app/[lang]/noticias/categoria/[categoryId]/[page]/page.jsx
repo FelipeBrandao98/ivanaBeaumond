@@ -1,20 +1,17 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Function to traduct component imports
+import getLangDict from '@/utils/getLangDict'
+
 // Components imports
 import NewsHeader from '@/components/EndUsersRoute/PAGES/NEWS/NewsHeader'
-import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
-import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
+import NewsOrganizerPagination from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizerPagination'
 
 // API Service imports
-import getLangDict from '@/utils/getLangDict'
-import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
-import getNews from '@/api/CallsWithoutToken/getNews'
-import getNewsPagesByCat from '@/api/CallsWithoutToken/getNewsPagesByCat'
-import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
-import getCategoryNewsById from '@/api/CallsWithoutToken/getCategoryNewsById'
-import getNewsByCat from '@/api/CallsWithoutToken/getNewsByCat'
-import NewsOrganizerPagination from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizerPagination'
+import getNewsLenghtByCat from '@/api/CallsWithoutToken/News/GET/getNewsLenghtByCat'
+import getCategoryNewsById from '@/api/CallsWithoutToken/News/CategoryNews/GET/getCategoryNewsById'
+import getNewsByCat from '@/api/CallsWithoutToken/News/GET/getNewsByCat'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -41,7 +38,7 @@ export default async function Page({ params }) {
 
   // Instantiate response objects from api, by language by the way
   const news = await getNewsByCat(lang, params.page, params.categoryId)
-  const pages = await getNewsPagesByCat(params.categoryId)
+  const pages = await getNewsLenghtByCat(params.categoryId)
   const category = await getCategoryNewsById(lang, params.categoryId)
 
   // Return components, with data and language

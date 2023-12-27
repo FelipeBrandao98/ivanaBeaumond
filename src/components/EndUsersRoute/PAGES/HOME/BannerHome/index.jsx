@@ -10,7 +10,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import BannerHomePageContainer from '@/atoms/EndUsersRoute/PAGES/Home/BannerHomePage/BannerHomePageContainer'
 
 // Component Declaration
-export default function BannerHome() {
+export default function BannerHome({ lang }) {
   // Return components, with functions to call API and language
   return (
     <>
@@ -26,7 +26,12 @@ export default function BannerHome() {
           IVANA BEAUMOND
         </h1>
         <h3>
-          <Link href="pt-BR/collections">
+          <Link
+            href={{
+              pathname: 'colecoes',
+              lang: lang,
+            }}
+          >
             DÉCOUVREZ MAINTENANT
             <FaArrowRight width={50} height={50} />
           </Link>

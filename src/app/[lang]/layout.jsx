@@ -9,6 +9,9 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Meta img
+import metaImg from '@/../public/photo_header/_ELC8701 2.jpg'
+
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
@@ -51,8 +54,11 @@ import '@/styles/globals.css'
 
 // Atoms imports
 import MenuSpacement from '@/atoms/EndUsersRoute/Layout/MenuSpacement'
-import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
-import getCategoryCollections from '@/api/CallsWithoutToken/getCategoryCollections'
+
+// Api Calls imports
+import getCategoryNews from '@/api/CallsWithoutToken/News/CategoryNews/GET/getCategoryNews'
+import getCatCol from '@/api/CallsWithoutToken/Collections/CategoryCollections/GET/getCatCol'
+//
 
 // Font instances to pass as variables
 const inter = Inter({
@@ -171,7 +177,7 @@ export async function generateMetadata({ params }) {
       url: traductedMeta?.metadata.openGraph.url,
       images: [
         {
-          url: 'https://ivana-backend-0a6d1ff75854.herokuapp.com/images/homeimage-d3c53481-7236-44da-ad04-2da9beae9ea6',
+          url: metaImg,
           width: 800,
           heigh: 600,
           alt: 'Ivana Beaumond Homepage',
@@ -214,7 +220,7 @@ export default async function RootLayout({ children }) {
   //
 
   const categoryNews = await getCategoryNews(lang)
-  const categoryCollections = await getCategoryCollections(lang)
+  const categoryCollections = await getCatCol(lang)
 
   // Return components, with functions to call API and language
   return (

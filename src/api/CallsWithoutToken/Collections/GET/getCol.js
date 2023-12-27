@@ -2,7 +2,7 @@
 
 import api from '@/services/api'
 
-export default async function getCollections(lang) {
+export default async function getCol(lang) {
   try {
     const res = await api.get(`/collections/${lang}`)
 

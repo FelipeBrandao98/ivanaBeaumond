@@ -1,6 +1,9 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Meta img
+import metaImg from '@/../public/photo_header/_ELC8701 2.jpg'
+
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
@@ -9,7 +12,7 @@ import CollectionsHeader from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Coll
 import Collections from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Collections'
 
 // API Service imports
-import getCollections from '@/api/CallsWithoutToken/getCollections'
+import getCol from '@/api/CallsWithoutToken/Collections/GET/getCol'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -22,6 +25,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: traductedMeta.metadata.collections.title,
       description: traductedMeta.metadata.collections.description,
+      image: metaImg,
     },
   }
 }
@@ -35,7 +39,7 @@ export default async function Page() {
   //
 
   // Instantiate response objects from api, by language by the way
-  const collections = await getCollections(lang)
+  const collections = await getCol(lang)
 
   // Return components, with functions to call API and language
   return (

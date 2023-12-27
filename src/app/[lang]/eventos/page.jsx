@@ -7,7 +7,7 @@ import OtherEvents from '@/components/EndUsersRoute/PAGES/EVENTS/OtherEvents'
 
 // API Service imports
 import getLangDict from '@/utils/getLangDict'
-import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
+import getLatestNews from '@/api/CallsWithoutToken/News/GET/getLatestNews'
 
 // export async function generateMetadata({ params }) {
 //   const { lang } = params

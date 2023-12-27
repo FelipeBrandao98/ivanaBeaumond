@@ -1,15 +1,17 @@
 // Cookies imports
 import { cookies } from 'next/headers'
 
+// Function to traduct component imports
+import getLangDict from '@/utils/getLangDict'
+
 // Components imports
 import NewsHeader from '@/components/EndUsersRoute/PAGES/NEWS/NewsHeader'
 import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
 import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
 
 // API Service imports
-import getLangDict from '@/utils/getLangDict'
-import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
-import getNews from '@/api/CallsWithoutToken/getNews'
+import getLatestNews from '@/api/CallsWithoutToken/News/GET/getLatestNews'
+import getNews from '@/api/CallsWithoutToken/News/GET/getNews'
 
 export async function generateMetadata({ params }) {
   const { lang } = params

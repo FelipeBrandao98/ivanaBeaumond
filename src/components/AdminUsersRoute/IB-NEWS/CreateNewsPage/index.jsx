@@ -11,7 +11,7 @@ import CreateImageNews from './CreateImageNews'
 import CreateNews from './CreateNews'
 
 // Api Functions imports
-import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
+import getCategoryNews from '@/api/CallsWithoutToken/News/CategoryNews/GET/getCategoryNews'
 //
 
 // Component Declaration

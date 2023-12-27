@@ -7,15 +7,15 @@ import CollectionsHome from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Collec
 import EventsHome from '@/components/EndUsersRoute/PAGES/EVENTS/EventsHome'
 import CommentsHome from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsHome'
 import NewsBanner from '@/components/EndUsersRoute/PAGES/NEWS/NewsBanner'
-
-// API Service imports
-import getCategoryCollections from '@/api/CallsWithoutToken/getCategoryCollections'
-import getLatestNews from '@/api/CallsWithoutToken/getLatestNews'
-import getComments from '@/api/CallsWithoutToken/getComments'
 import OtherNews from '@/components/EndUsersRoute/PAGES/NEWS/OtherNews'
-import OtherEvents from '@/components/EndUsersRoute/PAGES/EVENTS/OtherEvents'
 import NewsSeeAllButton from '@/components/EndUsersRoute/PAGES/NEWS/NewsSeeAllButton'
+import OtherEvents from '@/components/EndUsersRoute/PAGES/EVENTS/OtherEvents'
 import EventsSeeAllButton from '@/components/EndUsersRoute/PAGES/EVENTS/EventsSeeAllButton'
+
+// API Calls imports
+import getCatCol from '@/api/CallsWithoutToken/Collections/CategoryCollections/GET/getCatCol'
+import getLatestNews from '@/api/CallsWithoutToken/News/GET/getLatestNews'
+import getComments from '@/api/CallsWithoutToken/Comments/GET/getComments'
 
 const events = {
   title: 'Eventos',
@@ -59,7 +59,7 @@ export default async function Page() {
   //
 
   // Instantiate response objects from api, by language by the way
-  const categories = await getCategoryCollections(lang)
+  const categories = await getCatCol(lang)
   const latestNews = await getLatestNews(lang)
   const depositions = await getComments()
   //

@@ -29,8 +29,8 @@ import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 
 // Api imports
-import getCollections from '@/api/CallsWithToken/getCollections'
-import deleteCollection from '@/api/CallsWithToken/deleteCollection'
+import getCollections from '@/api/CallsWithToken/Collections/GET/getCollections'
+import deleteCollection from '@/api/CallsWithToken/Collections/DELETE/deleteCollection'
 //
 
 // Component Declaration

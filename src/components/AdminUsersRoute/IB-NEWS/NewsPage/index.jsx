@@ -30,7 +30,8 @@ import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
 import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 
 // Api imports
-import getNews from '@/api/CallsWithToken/getNews'
+import getNews from '@/api/CallsWithToken/News/GET/getNews'
+import deleteNews from '@/api/CallsWithToken/News/DELETE/deleteNews'
 
 // Component Declaration
 export default function NewsPage() {

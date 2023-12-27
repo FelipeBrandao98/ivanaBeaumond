@@ -2,18 +2,18 @@
 
 // React imports
 import { useCallback, useContext, useEffect, useState } from 'react'
+import { format } from 'date-fns'
 
 // Next.js Components imports
 import Link from 'next/link'
-import Image from 'next/image'
 
 // Icons imports
-import { FiEdit, FiFilter, FiMail, FiSearch, FiTrash2 } from 'react-icons/fi'
+import { FiMail, FiTrash2 } from 'react-icons/fi'
+import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
+import { FaWhatsapp } from 'react-icons/fa'
 
 // Context imports
 import { AuthContext } from '@/Context/AuthContext'
-import { CollectionsCategoryContext } from '@/Context/CollectionsCategoryContext'
-import { NewsCategoryContext } from '@/Context/NewsCategoryContext'
 
 // Atoms imports
 import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
@@ -21,18 +21,11 @@ import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainT
 import DashboardTable from '@/atoms/AdminUsersRoute/Dashboard/DashboardTable'
 import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
 import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
-import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardActionButtons'
 //
 
 // Api imports
-import getCategoryCollections from '@/api/CallsWithToken/getCategoryCollections'
-import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
-import deleteCategoryCollection from '@/api/CallsWithToken/deleteCategoryCollection'
-import deleteCategoryNews from '@/api/CallsWithToken/deleteCategoryNews'
-import getAppointments from '@/api/CallsWithToken/getAppointments'
-import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
-import { FaWhatsapp } from 'react-icons/fa'
-import { format } from 'date-fns'
+import getAppointments from '@/api/CallsWithToken/Appointments/GET/getAppointments'
+import deleteAppointments from '@/api/CallsWithToken/Appointments/DELETE/deleteAppointments'
 //
 
 // Component Declaration
@@ -53,6 +46,13 @@ export default function AppointmentPage() {
     setLoading(false)
   }, [token])
   //
+
+  async function handleDeleteAppointments(token, appointmentId) {
+    setLoading(true)
+    await deleteAppointments(token, appointmentId)
+    getRepo(token)
+    setLoading(false)
+  }
 
   // Use Effects
   useEffect(() => {
@@ -150,6 +150,24 @@ export default function AppointmentPage() {
                         Festa{' '}
                       </span>
                     </div>
+                  </td>
+                  <td>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setCancel(!cancel)
+                      }}
+                    >
+                      <DashboardCancel
+                        cancel={cancel}
+                        setCancel={setCancel}
+                        message="Tem certeza que deseja excluir esse agendamento? uma vez excuído, não é possível recuperar!"
+                        href={handleDeleteAppointments}
+                        token={token}
+                        id={repo.id}
+                      />
+                      <FiTrash2 width={40} height={40} />
+                    </button>
                   </td>
                 </tr>
               )

@@ -31,7 +31,7 @@ import DashboardButton from '@/atoms/AdminUsersRoute/Dashboard/DashboardButton'
 //
 
 // Api Functions imports
-import createImage from '@/api/CallsWithToken/createImage'
+import createImage from '@/api/CallsWithToken/Images/POST/createImage'
 //
 
 // Schema Zod Definition

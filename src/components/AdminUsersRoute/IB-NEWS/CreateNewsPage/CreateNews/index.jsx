@@ -44,8 +44,8 @@ import DashboardTabEn from '@/atoms/AdminUsersRoute/Dashboard/DashboardTabEN'
 //
 
 // Api Functions imports
-import editNews from '@/api/CallsWithToken/editNews'
-import createNews from '@/api/CallsWithToken/createNews'
+import editNews from '@/api/CallsWithToken/News/PATCH/editNews'
+import createNews from '@/api/CallsWithToken/News/POST/createNews'
 //
 
 // Schema Zod Definition

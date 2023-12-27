@@ -21,13 +21,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 // Styles imports
 import styles from './styles.module.css'
+
+// Atoms imports
 import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
 import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
-import getClothesImages from '@/api/CallsWithoutToken/getClothesImages'
 import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
-import deleteClothesImages from '@/api/CallsWithToken/deleteClothesImages'
-import createClothesImages from '@/api/CallsWithToken/createClothesImages'
-import createImage from '@/api/CallsWithToken/createImage'
+
+// API Calls imports
+import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
+import deleteClothesImages from '@/api/CallsWithToken/Images/DELETE/deleteClothesImages'
+import createClothesImages from '@/api/CallsWithToken/Images/POST/createClothesImages'
+import createImage from '@/api/CallsWithToken/Images/POST/createImage'
 
 const createImageFormSchema = z.object({
   file: z.any(),
@@ -69,7 +73,7 @@ export default function AddPhotosCollections() {
   }
 
   const getImagesCollectionsData = useCallback(async () => {
-    const res = await getClothesImages(collections.id)
+    const res = await getClotCol(collections.id)
     setImagesRepositories(res)
   }, [collections.id])
   //

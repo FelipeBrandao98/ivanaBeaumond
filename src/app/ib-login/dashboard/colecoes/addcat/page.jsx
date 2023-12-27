@@ -5,16 +5,6 @@ import AddCatPage from '@/components/AdminUsersRoute/IB-COLLECTIONS/AddCatPage'
 import api from '@/services/api'
 
 // functions to call API
-async function createCoverCatalog(token, file) {
-  'use server'
-  const res = await api.post(`/images/`, file, {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-  })
-  return res.data
-}
-
 async function createCatalog(token, createCatalog) {
   'use server'
   const res = await api.post(`/collections/clothes`, createCatalog, {

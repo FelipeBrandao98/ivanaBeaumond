@@ -2,7 +2,7 @@
 
 import api from '@/services/api'
 
-export default async function getCollectionByCat(lang, categoryId) {
+export default async function getColByCat(lang, categoryId) {
   try {
     const res = await api.get(`/collections/${lang}/category/${categoryId}`)
 

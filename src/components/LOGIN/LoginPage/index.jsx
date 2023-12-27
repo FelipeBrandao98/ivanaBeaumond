@@ -27,7 +27,7 @@ import DashboardForm from '@/atoms/AdminUsersRoute/Dashboard/DashboardForm'
 import DashboardLabel from '@/atoms/AdminUsersRoute/Dashboard/DashboardLabel'
 
 // Api imports
-import login from '@/api/CallsWithoutToken/login'
+import login from '@/api/CallsWithoutToken/Auth/POST/login'
 //
 
 const loginFormSchema = z.object({

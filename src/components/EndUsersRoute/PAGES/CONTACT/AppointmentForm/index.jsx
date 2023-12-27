@@ -8,9 +8,6 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-// Api calls imports
-import createAppointment from '@/api/CallsWithoutToken/createAppointment'
-
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
 
@@ -19,6 +16,9 @@ import EndUserForm from '@/atoms/EndUsersRoute/Forms/EndUserForm'
 import EndUserLabel from '@/atoms/EndUsersRoute/Forms/EndUserLabel'
 import EndUserCheckBoxLabel from '@/atoms/EndUsersRoute/Forms/EndUserCheckBoxLabel'
 import EndUserSendButton from '@/atoms/EndUsersRoute/Forms/EndUserSendButton'
+
+// Api calls imports
+import createAppointment from '@/api/CallsWithoutToken/Appointments/POST/createAppointment'
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,

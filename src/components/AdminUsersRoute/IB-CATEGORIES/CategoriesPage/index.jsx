@@ -28,10 +28,10 @@ import DashboardActionButtons from '@/atoms/AdminUsersRoute/Dashboard/DashboardA
 //
 
 // Api imports
-import getCategoryCollections from '@/api/CallsWithToken/getCategoryCollections'
-import getCategoryNews from '@/api/CallsWithoutToken/getCategoryNews'
-import deleteCategoryCollection from '@/api/CallsWithToken/deleteCategoryCollection'
-import deleteCategoryNews from '@/api/CallsWithToken/deleteCategoryNews'
+import getCategoryCollections from '@/api/CallsWithToken/Collections/CategoryCollections/GET/getCategoryCollections'
+import getCategoryNews from '@/api/CallsWithoutToken/News/CategoryNews/GET/getCategoryNews'
+import deleteCategoryCollection from '@/api/CallsWithToken/Collections/CategoryCollections/DELETE/deleteCategoryCollection'
+import deleteCategoryNews from '@/api/CallsWithToken/News/CategoryNews/DELETE/deleteCategoryNews'
 //
 
 // Component Declaration

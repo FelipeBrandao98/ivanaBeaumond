@@ -6,8 +6,8 @@ import CONSTRUCTOR from '@/components/EndUsersRoute/PAGES/NEWS/CONSTRUCTOR'
 import NewsOrganizer from '@/components/EndUsersRoute/PAGES/NEWS/NewsOrganizer'
 
 // Calls api imports
-import getUniqueNews from '@/api/CallsWithoutToken/getUniqueNews'
-import getNews from '@/api/CallsWithoutToken/getNews'
+import getUniqueNews from '@/api/CallsWithoutToken/News/GET/getUniqueNews'
+import getNews from '@/api/CallsWithoutToken/News/GET/getNews'
 
 // Metadata
 export async function generateMetadata({ params }) {

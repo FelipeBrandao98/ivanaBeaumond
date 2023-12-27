@@ -11,6 +11,7 @@ import { TbHandClick } from 'react-icons/tb'
 
 // Components imports
 import PhotoSlidesCollections from './PhotoSlidesCollections'
+import SeeCollectionButton from '../SeeCollectionButton'
 
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
@@ -19,9 +20,7 @@ import getLangDict from '@/utils/getLangDict'
 import styles from './styles.module.css'
 
 // Api imports
-import getClothes from '@/api/CallsWithoutToken/getClothes'
-import SeeCollectionButton from '../SeeCollectionButton'
-import getClothesImages from '@/api/CallsWithoutToken/getClothesImages'
+import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
 
 // Component Declaration
 export default function Collection({
@@ -46,7 +45,7 @@ export default function Collection({
 
   // functions to handle with datas from api
   const getClothesRepo = useCallback(async () => {
-    const res = await getClothesImages(lang, collectionId)
+    const res = await getClotCol(lang, collectionId)
     setImages(res)
   }, [lang, collectionId])
   //

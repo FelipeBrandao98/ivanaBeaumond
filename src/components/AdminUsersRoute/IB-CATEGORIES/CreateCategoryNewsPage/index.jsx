@@ -32,9 +32,9 @@ import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainT
 import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
 //
 
-// Api imports
-import editCategoryNews from '@/api/CallsWithToken/editCategoryNews'
-import createCategoryNews from '@/api/CallsWithToken/createCategoryNews'
+// API Calls imports
+import editCategoryNews from '@/api/CallsWithToken/News/CategoryNews/PATCH/editCategoryNews'
+import createCategoryNews from '@/api/CallsWithToken/News/CategoryNews/POST/createCategoryNews'
 //
 
 // Schema Zod Definition
