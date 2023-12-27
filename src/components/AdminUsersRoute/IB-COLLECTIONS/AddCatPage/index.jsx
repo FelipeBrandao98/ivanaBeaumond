@@ -81,7 +81,7 @@ export default function AddPhotosCollections() {
   }
 
   const getImagesCollectionsData = useCallback(async () => {
-    const res = await getClotColProducts(collections.id)
+    const res = await getClotColProducts('pt-BR', collections.id)
     setImagesRepositories(res)
   }, [collections.id])
   //
