@@ -135,7 +135,8 @@ const playfair_display = Playfair_Display({
 // Default Metadata
 export async function generateMetadata({ params }) {
   // getParams
-  const { lang } = params
+  let lang
+  !params.lang ? (lang = 'pt-BR') : (lang = params.lang)
 
   // Traduct
   const traductedMeta = getLangDict(lang)

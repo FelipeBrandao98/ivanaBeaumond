@@ -61,6 +61,7 @@ export default function TraductionButton({ lang, short }) {
   return (
     <>
       <MenuTraductionButtonContainer isOpen={isOpen} short={short}>
+        {console.log(pathname)}
         {lang === 'en' ? (
           <>
             <li onClick={handleIsOpen}>
@@ -72,7 +73,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/pt-BR${pathname}`} legacyBehavior>
+              <Link href={`/pt-BR${pathname}`}>
                 <div>
                   BR
                   <ReactCountryFlag countryCode="BR" svg />
@@ -81,7 +82,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/fr${pathname}`} legacyBehavior>
+              <Link href={`/fr${pathname}`}>
                 <div>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -90,7 +91,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/de${pathname}`} legacyBehavior>
+              <Link href={`/de${pathname}`}>
                 <div>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />
@@ -109,7 +110,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/pt-BR${pathname}`} legacyBehavior>
+              <Link href={`/pt-BR${pathname}`}>
                 <div>
                   BR
                   <ReactCountryFlag countryCode="BR" svg />
@@ -118,7 +119,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/fr${pathname}`} legacyBehavior>
+              <Link href={`/fr${pathname}`}>
                 <div>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -127,7 +128,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/en${pathname}`} legacyBehavior>
+              <Link href={`/en${pathname}`}>
                 <div>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -146,7 +147,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/pt-BR${pathname}`} legacyBehavior>
+              <Link href={`/pt-BR${pathname}`}>
                 <div>
                   BR
                   <ReactCountryFlag countryCode="BR" svg />
@@ -155,7 +156,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/en${pathname}`} legacyBehavior>
+              <Link href={`/en${pathname}`}>
                 <div>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -164,7 +165,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/de${pathname}`} legacyBehavior>
+              <Link href={`/de${pathname}`}>
                 <div>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />
@@ -183,7 +184,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/fr${pathname}`} legacyBehavior>
+              <Link href={`/fr${pathname}`}>
                 <div>
                   FR
                   <ReactCountryFlag countryCode="FR" svg />
@@ -192,7 +193,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/en${pathname}`} legacyBehavior>
+              <Link href={`/en${pathname}`}>
                 <div>
                   US
                   <ReactCountryFlag countryCode="US" svg />
@@ -201,7 +202,7 @@ export default function TraductionButton({ lang, short }) {
             </li>
 
             <li>
-              <Link href={`/de${pathname}`} legacyBehavior>
+              <Link href={`/de${pathname}`}>
                 <div>
                   DE
                   <ReactCountryFlag countryCode="DE" svg />

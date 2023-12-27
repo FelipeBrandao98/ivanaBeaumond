@@ -1,202 +1,236 @@
 'use client'
 
 // React imports
-import { useContext, useEffect, useState, useCallback } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 
-import {
-  FiEdit,
-  FiFilter,
-  FiSearch,
-  FiRefreshCcw,
-  FiPlus,
-  FiArchive,
-  FiTrash2,
-} from 'react-icons/fi'
-
-import Link from 'next/link'
+// Next.js Components imports
 import Image from 'next/image'
 
-import { CollectionsCatalogContext } from '@/Context/CollectionsCatalogContext'
+// Icons imports
+import { IoIosExpand } from 'react-icons/io'
+import { FiEdit, FiTrash2, FiX } from 'react-icons/fi'
+
+// Context imports
+import { CollectionsContext } from '@/Context/CollectionsContext'
 import { AuthContext } from '@/Context/AuthContext'
+
+// Hook form and Zod imports
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 // Styles imports
 import styles from './styles.module.css'
-import { useRouter } from 'next/navigation'
+
+// Atoms imports
 import DashboardContainer from '@/atoms/AdminUsersRoute/Dashboard/DashboardContainer'
 import DashboardLoading from '@/atoms/AdminUsersRoute/Dashboard/DashboardLoading'
-import DashboardMainTitle from '@/atoms/AdminUsersRoute/Dashboard/DashboardMainTitle'
+import DashboardCancel from '@/atoms/AdminUsersRoute/Dashboard/DashboardCancel'
 
-export default function AddCatPage({ functions }) {
-  const router = useRouter()
+// API Calls imports
+import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
+import deleteClothesImages from '@/api/CallsWithToken/Images/DELETE/deleteClothesImages'
+import createClothesImages from '@/api/CallsWithToken/Images/POST/createClothesImages'
+import createImage from '@/api/CallsWithToken/Images/POST/createImage'
+import { CollectionsCatalogContext } from '@/Context/CollectionsCatalogContext'
+import createClothesProducts from '@/api/CallsWithToken/Images/POST/createClothesProducts'
+import getClotColProducts from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotColProducts'
+import Link from 'next/link'
+import { CreateImageCatalogContext } from '@/Context/CreateImageCatalogContext copy'
 
-  const [catalog, setCatalog] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [isDeleteCollection, setIsDeleteCollection] = useState(false)
+const createImageFormSchema = z.object({
+  file: z.any(),
+})
 
-  const { createCatalog, deleteCatalog, getCatalog } = functions
-  const { collection, handleCollection } = useContext(CollectionsCatalogContext)
+// Component Declaration
+export default function AddPhotosCollections() {
+  // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
+  const { collections, handleCollections } = useContext(
+    CollectionsCatalogContext,
+  )
+  const { image, handleChangeImage } = useContext(CreateImageCatalogContext)
 
-  const getData = useCallback(async () => {
-    const catalog = await getCatalog(token, collection.id)
+  // States declaratios
+  const [loading, setLoading] = useState(false)
+  const [cancel, setCancel] = useState(false)
+  const [resized, setResized] = useState(false)
+  const [resizedImage, setResizedImage] = useState('')
+  const [imagesRepositories, setImagesRepositories] = useState([])
 
-    setCatalog(catalog)
-  }, [token, collection.id, getCatalog])
+  // Instance of Hook Form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: zodResolver(createImageFormSchema),
+  })
+  //
 
-  async function handleDeleteCatalog(catalogId) {
+  // functions to handle with datas from api
+  async function handleCreateImage(formData) {
     setLoading(true)
-    await deleteCatalog(token, catalogId)
-    router.refresh()
+    const file = new FormData()
+    file.set('file', formData.file[0])
+    const res = await createImage(token, file)
+    await createClothesProducts(token, collections.id, res.id)
+    getImagesCollectionsData(collections.id)
     setLoading(false)
   }
 
-  useEffect(() => {
-    setLoading(true)
-    getData()
-    setLoading(false)
-  }, [getData])
+  const getImagesCollectionsData = useCallback(async () => {
+    const res = await getClotColProducts(collections.id)
+    setImagesRepositories(res)
+  }, [collections.id])
+  //
 
+  async function handleDeleteClothesImage(token, imageId) {
+    setLoading(true)
+    await deleteClothesImages(token, imageId)
+    getImagesCollectionsData()
+    setLoading(false)
+  }
+
+  // Use Effects
+  useEffect(() => {
+    getImagesCollectionsData()
+  }, [getImagesCollectionsData, collections.id])
+  //
+
+  // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>
-        Catálogo da coleção: <br />
-        {collection.title}
-      </DashboardMainTitle>
+      <h1>{collections.title}</h1>
       <DashboardContainer>
-        <div className={styles.optionsArea}>
-          <div className={styles.optionsButtons}>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                router.refresh()
-              }}
-              className={styles.optionsButton}
+        <Image
+          src={collections.cover.url}
+          alt={'ivana'}
+          width={800}
+          height={800}
+          className={styles.coverImage}
+        />
+
+        <div className={styles.listContent}>
+          <div className={styles.sendFile}>
+            <form
+              className={styles.form}
+              action={handleSubmit(handleCreateImage)}
             >
-              <FiRefreshCcw width={40} height={40} />
-            </button>
-            <Link
-              href={'/ib-login/dashboard/colecoes/addcat'}
-              className={styles.optionsButton}
-              onClick={(e) => {}}
-              legacyBehavior
-            >
-              <FiPlus width={40} height={40} />
-            </Link>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiArchive width={40} height={40} />
-            </button>
+              <label htmlFor="file" className={styles.label}>
+                <input
+                  className={styles.input}
+                  type="file"
+                  id="file"
+                  {...register('file')}
+                />
+              </label>
+              <button type="submit" className={styles.sendButton}>
+                Enviar Imagem
+              </button>
+            </form>
           </div>
-          <div className={styles.optionsButtons}>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiFilter width={40} height={40} />
-            </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-              }}
-              className={styles.optionsButton}
-            >
-              <FiSearch width={40} height={40} />
-            </button>
+
+          <div className={styles.fileList}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Editar Foto</th>
+                  <th>Foto</th>
+                  <th>Excluir Foto</th>
+                </tr>
+              </thead>
+              <tbody className={styles.body}>
+                {imagesRepositories
+                  ? imagesRepositories.map((repo) => {
+                      return (
+                        <tr key={repo.id}>
+                          <td>
+                            <Link
+                              href={
+                                '/ib-login/dashboard/colecoes/addcat/editcat'
+                              }
+                              onClick={(e) => {
+                                handleCollections(repo)
+                                handleChangeImage(repo.cover)
+                              }}
+                              className={styles.editButton}
+                            >
+                              <FiEdit width={40} height={40} />
+                            </Link>
+                          </td>
+                          <td>
+                            {console.log(repo)}
+                            <div
+                              className={styles.imageArea}
+                              onClick={(e) => {
+                                setResized(true)
+                                setResizedImage(repo.cover.url)
+                              }}
+                            >
+                              <Image
+                                width={300}
+                                height={300}
+                                src={repo.cover.url}
+                                alt="Ivana"
+                                className={styles.image}
+                              />
+                              <IoIosExpand
+                                width={50}
+                                height={50}
+                                className={styles.expand}
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault()
+                                setCancel(!cancel)
+                              }}
+                            >
+                              <DashboardCancel
+                                cancel={cancel}
+                                setCancel={setCancel}
+                                message="Tem certeza que deseja excluir essa Fotografia? uma vez excluída, não é possível recuperar!"
+                                href={handleDeleteClothesImage}
+                                token={token}
+                                id={repo.id}
+                              />
+                              <FiTrash2 width={40} height={40} />
+                            </button>
+                          </td>
+                        </tr>
+                      )
+                    })
+                  : ''}
+              </tbody>
+            </table>
           </div>
         </div>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Editar Item</th>
-              <th>Foto do Item</th>
-              <th>Título do Item</th>
-              <th>Coleção</th>
-              <th>Likes</th>
-              <th>Excluir Item</th>
-            </tr>
-          </thead>
-          <tbody>
-            {catalog.map((repo) => {
-              return (
-                <tr key={repo.id}>
-                  <td>
-                    <td>
-                      <Link
-                        href={'/ib-login/dashboard/colecoes/novacolecao'}
-                        onClick={(e) => {}}
-                        className={styles.editButton}
-                        legacyBehavior
-                      >
-                        <FiEdit width={40} height={40} />
-                      </Link>
-                    </td>
-                  </td>
-                  <td>
-                    <Image
-                      className={styles.image}
-                      src={repo.cover?.url || ''}
-                      alt="Ivana"
-                      width={1000}
-                      height={1000}
-                    />
-                  </td>
-                  <td>{repo.name}</td>
-                  <td>{repo.collection.title}</td>
-                  <td>{repo.likes}</td>
-                  <td>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setIsDeleteCollection(true)
-                      }}
-                    >
-                      <FiTrash2 width={40} height={40} />
-                    </button>
-                    {isDeleteCollection && (
-                      <section className={styles.confirmCancelModalContainer}>
-                        <aside className={styles.confirmCancelModalContent}>
-                          <h1 className={styles.confirmCancelModalTitle}>
-                            Tem certeza que você deseja deletar essa notícia?
-                          </h1>
-                          <div className={styles.buttonsArea}>
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                setIsDeleteCollection(false)
-                              }}
-                              className={styles.cancelButtonModal}
-                            >
-                              Não
-                            </button>
-                            <button
-                              className={styles.confirmButton}
-                              onClick={(e) => {
-                                e.preventDefault()
-                                handleDeleteCatalog(repo.id)
-                                setIsDeleteCollection(false)
-                              }}
-                            >
-                              Sim
-                            </button>
-                          </div>
-                        </aside>
-                      </section>
-                    )}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        {resized && (
+          <section className={styles.resizedModalContainer}>
+            <aside className={styles.resizedModalContent}>
+              <FiX
+                width={50}
+                height={50}
+                className={styles.resizedCloseButton}
+                onClick={(e) => setResized(false)}
+              />
+              <Image
+                width={1440}
+                height={720}
+                alt="Ivana"
+                src={resizedImage}
+                className={styles.resizedImage}
+              />
+            </aside>
+          </section>
+        )}
       </DashboardContainer>
-
-      <DashboardLoading loading={loading} />
+      {loading && <DashboardLoading loading={loading} />}
     </>
   )
+  //
 }

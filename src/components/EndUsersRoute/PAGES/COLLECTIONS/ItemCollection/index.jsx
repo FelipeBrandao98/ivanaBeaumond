@@ -13,7 +13,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import styles from './styles.module.css'
 
 // Component Declaration
-export default function ItemCollection() {
+export default function ItemCollection({ product }) {
   // States declaratios
   const [hoverPoint, setHoverPoint] = useState(0)
   const [point, setPoint] = useState(0)
@@ -41,13 +41,13 @@ export default function ItemCollection() {
     <aside className={styles.container}>
       <Image
         className={styles.image}
-        src={'/photos_collections_items/vestido_de_dama_ivana_beaumond.jpg'}
-        alt="Ivana Beaumond"
+        src={product.cover.url}
+        alt={product.name}
         width={300}
         height={300}
       />
       <div className={styles.starArea}>
-        <h2 className={styles.title}>Debutantes 1</h2>
+        <h2 className={styles.title}>{product.name}</h2>
         <div className={styles.row}>
           <span className={styles.starSpan} onClick={handlePointOne}>
             {point >= 1 ? (

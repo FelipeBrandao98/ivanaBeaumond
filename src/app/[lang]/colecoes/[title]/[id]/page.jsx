@@ -12,6 +12,7 @@ import CollectionGrid from '@/components/EndUsersRoute/PAGES/COLLECTIONS/Collect
 // API Calls imports
 import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
 import getUniqueCol from '@/api/CallsWithoutToken/Collections/GET/getUniqueCol'
+import getClotColProducts from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotColProducts'
 
 export async function generateMetadata({ params }) {
   const { lang } = params
@@ -49,6 +50,7 @@ export default async function Page({ params }) {
 
   const collection = await getUniqueCol(lang, params.id)
   const mainImages = await getClotCol(lang, params.id)
+  const productsImages = await getClotColProducts(lang, params.id)
 
   // Return components, with data and language
   return (
@@ -60,7 +62,7 @@ export default async function Page({ params }) {
         image={collection.cover.url}
       />
       <PhotoSlidesCollections images={mainImages} />
-      <CollectionGrid lang={lang} />
+      <CollectionGrid lang={lang} products={productsImages} />
     </>
   )
   //

@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 
 import styles from './styles.module.css'
@@ -27,7 +29,6 @@ export default function DashboardCancel({
           <DashboardButtonsArea>
             <DashboardButton
               onClick={(e) => {
-                e.preventDefault()
                 setCancel(!cancel)
               }}
             >
@@ -41,7 +42,6 @@ export default function DashboardCancel({
               <DashboardButton
                 mode="cancel"
                 onClick={(e) => {
-                  e.preventDefault()
                   id ? href(token, id) : href()
                 }}
               >

@@ -38,7 +38,7 @@ export default function CollectionsPage() {
   // Instanciate and initialize Contexts functions
   const { token } = useContext(AuthContext)
   const { handleCollections } = useContext(CollectionsContext)
-  const { handleCollection: handleCatalog } = useContext(
+  const { handleCollections: handleCatalog } = useContext(
     CollectionsCatalogContext,
   )
   const { handleChangeImage } = useContext(CreateImageCollectionContext)

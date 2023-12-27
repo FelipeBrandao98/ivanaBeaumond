@@ -9,17 +9,17 @@ export const CollectionsCatalogContext = createContext()
 // Provider Declaration
 export function CollectionsCatalogProvider({ children }) {
   // States declaratios
-  const [collection, setCollection] = useState({})
+  const [collections, setCollections] = useState({})
 
   // Functions to manipulate states
-  function handleCollection(collections) {
-    setCollection(collections)
+  function handleCollections(collections) {
+    setCollections(collections)
   }
 
   // Return Provider with functions and states
   return (
     <CollectionsCatalogContext.Provider
-      value={{ collection, handleCollection }}
+      value={{ collections, handleCollections }}
     >
       {children}
     </CollectionsCatalogContext.Provider>
