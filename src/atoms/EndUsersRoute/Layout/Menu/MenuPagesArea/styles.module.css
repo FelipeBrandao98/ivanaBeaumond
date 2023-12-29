@@ -80,7 +80,7 @@
 .container ul li div ul {
   display: flex;
   flex-direction: column;
-  height: calc(3rem *4);
+  height: 100%;
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
   -moz-backdrop-filter: var(--blur);
