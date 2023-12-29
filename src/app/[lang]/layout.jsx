@@ -55,6 +55,7 @@ import MenuSpacement from '@/atoms/EndUsersRoute/Layout/MenuSpacement'
 // Api Calls imports
 import getCategoryNews from '@/api/CallsWithoutToken/News/CategoryNews/GET/getCategoryNews'
 import getCatCol from '@/api/CallsWithoutToken/Collections/CategoryCollections/GET/getCatCol'
+import SiteMap from '@/components/EndUsersRoute/LAYOUT/SiteMap'
 //
 
 // Font instances to pass as variables
@@ -258,6 +259,11 @@ export default async function RootLayout({ children }) {
           {/* Layout Components */}
           <AdressItem lang={lang} />
           <SubscribeItem lang={lang} />
+          <SiteMap
+            lang={lang}
+            categoryNews={categoryNews}
+            categoryCollections={categoryCollections}
+          />
           <Footer lang={lang} />
 
           {/* Utility Components */}
