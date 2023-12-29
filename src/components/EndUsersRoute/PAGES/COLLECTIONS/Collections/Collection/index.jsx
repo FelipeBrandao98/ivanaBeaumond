@@ -21,15 +21,11 @@ import styles from './styles.module.css'
 
 // Api imports
 import getClotCol from '@/api/CallsWithoutToken/Collections/ClothesCollections/GET/getClotCol'
+import Link from 'next/link'
+import formatToUrl from '@/utils/formatToUrl'
 
 // Component Declaration
-export default function Collection({
-  collectionId,
-  lang,
-  title,
-  description,
-  imageUrl,
-}) {
+export default function Collection({ lang, collectionId, title, imageUrl }) {
   // States declaratios
   const [displayed, setDisplayed] = useState(false)
   const [images, setImages] = useState([])
@@ -37,46 +33,27 @@ export default function Collection({
   // Instance of Traductor
   const languageTraducted = getLangDict(lang)
 
-  // Functions to manipulate window object
-  function handleDisplayDetails() {
-    displayed ? setDisplayed(false) : setDisplayed(true)
-  }
-  //
-
-  // functions to handle with datas from api
-  const getClothesRepo = useCallback(async () => {
-    const res = await getClotCol(lang, collectionId)
-    setImages(res)
-  }, [lang, collectionId])
-  //
-
-  // Use Effects
-  useEffect(() => {
-    getClothesRepo()
-  }, [getClothesRepo])
-  //
-
   // Return components, with functions to call API and language
   return (
     <>
       <aside className={styles.container}>
-        <section className={styles.content}>
+        <Link
+          href={{
+            pathname: `/colecoes/${formatToUrl(title)}/${collectionId}`,
+            lang: lang,
+          }}
+        >
+          <section className={styles.content}>
+            <Image
+              className={styles.image}
+              src={imageUrl ? imageUrl : null}
+              alt="Ivana Beaumond"
+              width={1080}
+              height={1080}
+            />
+          </section>
           <h1>{title}</h1>
-          <Image
-            className={styles.image}
-            src={imageUrl ? imageUrl : null}
-            alt="Ivana Beaumond"
-            width={1080}
-            height={1080}
-          />
-          <p>{description}</p>
-        </section>
-        <PhotoSlidesCollections images={images} />
-        <SeeCollectionButton
-          lang={lang}
-          collectionId={collectionId}
-          collectionTitle={title}
-        />
+        </Link>
       </aside>
     </>
   )
