@@ -123,6 +123,9 @@ export default function CollectionsHome({ lang, data }) {
                       alt={categorie.cover?.author || 'Ivana'}
                       width={1080}
                       height={1920}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="https://ivana-backend-0a6d1ff75854.herokuapp.com/images/loadingImage-5df11293-defa-44af-8042-7b39a0e2f2be"
                     />
                     <div className={styles.comments}>
                       <p>{categorie.subdescription}</p>
