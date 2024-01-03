@@ -11,6 +11,7 @@
   margin-left: .5rem;
 }
 
+.label textarea,
 .label input {
   border: 1px solid var(--black-800);
   padding: .1rem 1rem;

@@ -1,5 +1,9 @@
 // Cookies imports
+import getComments from '@/api/CallsWithoutToken/Comments/GET/getComments'
+import AddComment from '@/components/EndUsersRoute/PAGES/COMMENTS/AddComment'
 import CommentsHeader from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsHeader'
+import CommentsHome from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsHome'
+import CommentsPage from '@/components/EndUsersRoute/PAGES/COMMENTS/CommentsPage'
 import { cookies } from 'next/headers'
 
 // export async function generateMetadata({ params }) {
@@ -25,10 +29,15 @@ export default async function Page() {
   const lang = langCookie?.value || 'pt-BR'
   //
 
+  const comments = await getComments()
+
   // Return components, with data and language
   return (
     <>
+      {console.log(comments)}
       <CommentsHeader lang={lang} />
+      <AddComment lang={lang} />
+      <CommentsPage lang={lang} data={comments} />
     </>
   )
   //
