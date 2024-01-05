@@ -102,7 +102,8 @@
 
 @media (max-width: 720px) {
   .content h1 {
-    top: calc(30px + 2rem + .2rem + 25vh);
+    top: calc(30px + 2rem + .2rem + 35vh);
+    font-size: 3rem;
   }
 
   .content h2 {

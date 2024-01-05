@@ -47,6 +47,7 @@ import MenuContainer from '@/atoms/EndUsersRoute/Layout/Menu/MenuContainer'
 import MenuLogoInHeader from '@/atoms/EndUsersRoute/Layout/Menu/MenuLogoInHeader'
 import MenuPagesArea from '@/atoms/EndUsersRoute/Layout/Menu/MenuPagesArea'
 import MenuSocialMedia from '@/atoms/EndUsersRoute/Layout/Menu/MenuSocialMedia'
+import AudioPlayer from './AudioPlayer'
 //
 
 // Component Declaration
@@ -94,6 +95,8 @@ export default function Menu({ lang, categoryNews, categoryCollections }) {
         </MenuLogoInHeader>
 
         {/* <SearchButton lang={lang} short={short ? short : undefined} /> */}
+
+        <AudioPlayer short={short ? short : undefined} />
 
         <TraductionButton lang={lang} short={short ? short : undefined} />
 
