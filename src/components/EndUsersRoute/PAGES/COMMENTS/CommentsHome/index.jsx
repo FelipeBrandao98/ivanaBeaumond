@@ -2,7 +2,7 @@
 import Link from 'next/link'
 
 // Components imports
-import Deposition from './Deposition'
+import Comment from '../Comment'
 
 // Function to traduct component imports
 import getLangDict from '@/utils/getLangDict'
@@ -21,7 +21,7 @@ export default function CommentsHome({ lang, data }) {
       <h1 className={styles.h1}>{languageTraducted.home.depositions.title}</h1>
       <div className={styles.row}>
         {data.map((deposition) => {
-          return <Deposition key={deposition.id} data={deposition} />
+          return <Comment key={deposition.id} data={deposition} />
         })}
       </div>
       <Link className={styles.seeMoreButton} href={'/comentarios'}>

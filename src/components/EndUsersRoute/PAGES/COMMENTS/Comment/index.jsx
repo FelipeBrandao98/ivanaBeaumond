@@ -16,6 +16,7 @@ import {
 
 // Styles imports
 import styles from './styles.module.css'
+import likeComment from '@/api/CallsWithoutToken/Comments/PATCH/likeComment'
 
 // Component Declaration
 export default function Comment({ data }) {
@@ -28,13 +29,11 @@ export default function Comment({ data }) {
   const avaliation = data.avaliation
 
   // Functions to manipulate window object
-  function likeHeart() {
-    if (liked) {
-      setLikes(likes - 1)
-      setLiked(false)
-    } else {
-      setLikes(likes + 1)
+  async function likeHeart(commentId) {
+    if (!liked) {
       setLiked(true)
+      setLikes(likes + 1)
+      await likeComment(commentId)
     }
   }
   //
@@ -83,15 +82,21 @@ export default function Comment({ data }) {
 
       <div className={styles.likeArea}>
         {liked ? (
-          <div onClick={likeHeart} className={styles.heartArea}>
+          <div className={styles.heartArea}>
             <AiFillHeart className={styles.likedHeart} width={50} height={50} />
           </div>
         ) : (
-          <div onClick={likeHeart} className={styles.heartArea}>
+          <div
+            onClick={(e) => {
+              e.preventDefault()
+              likeHeart(data.id)
+            }}
+            className={styles.heartArea}
+          >
             <AiOutlineHeart className={styles.heart} width={50} height={50} />
           </div>
         )}
-        <p className={styles.numberOfLike}>{data.likes}</p>
+        <p className={styles.numberOfLike}>{likes}</p>
       </div>
     </aside>
   )

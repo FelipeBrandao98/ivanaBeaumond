@@ -41,9 +41,6 @@ export default function CommentsPage({ lang, data }) {
           {data.map((data) => {
             return <Comment key={data.id} lang={lang} data={data} />
           })}
-          {data.map((data) => {
-            return <Comment key={data.id} lang={lang} data={data} />
-          })}
         </section>
       </aside>
     </div>

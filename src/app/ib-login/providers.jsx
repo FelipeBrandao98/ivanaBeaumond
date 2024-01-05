@@ -8,6 +8,7 @@ import { CollectionsProvider } from '@/Context/CollectionsContext'
 import { CreateImageCatalogProvider } from '@/Context/CreateImageCatalogContext copy'
 import { CreateImageCategoryProvider } from '@/Context/CreateImageCategoryContext'
 import { CreateImageCollectionProvider } from '@/Context/CreateImageCollectionContext'
+import { CreateImageCommentProvider } from '@/Context/CreateImageCommentContext'
 import { CreateImageNewsProvider } from '@/Context/CreateImageNewsContext'
 import { NewsCategoryProvider } from '@/Context/NewsCategoryContext'
 import { NewsProvider } from '@/Context/NewsContext'
@@ -21,17 +22,19 @@ export function Providers({ children }) {
         <CreateImageCollectionProvider>
           <CreateImageCategoryProvider>
             <CreateImageCatalogProvider>
-              <NewsProvider>
-                <CollectionsProvider>
-                  <CollectionsCategoryProvider>
-                    <NewsCategoryProvider>
-                      <CollectionsCatalogProvider>
-                        {children}
-                      </CollectionsCatalogProvider>
-                    </NewsCategoryProvider>
-                  </CollectionsCategoryProvider>
-                </CollectionsProvider>
-              </NewsProvider>
+              <CreateImageCommentProvider>
+                <NewsProvider>
+                  <CollectionsProvider>
+                    <CollectionsCategoryProvider>
+                      <NewsCategoryProvider>
+                        <CollectionsCatalogProvider>
+                          {children}
+                        </CollectionsCatalogProvider>
+                      </NewsCategoryProvider>
+                    </CollectionsCategoryProvider>
+                  </CollectionsProvider>
+                </NewsProvider>
+              </CreateImageCommentProvider>
             </CreateImageCatalogProvider>
           </CreateImageCategoryProvider>
         </CreateImageCollectionProvider>

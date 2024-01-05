@@ -9,6 +9,7 @@ import {
 
 // Atoms imports
 import DashboardButtonItem from '@/atoms/AdminUsersRoute/Dashboard/DashboardButtonItem'
+import { BiSolidCommentAdd } from 'react-icons/bi'
 //
 
 // Component Declaration
@@ -25,6 +26,11 @@ export default function DashboardMenuNavigation() {
         <DashboardButtonItem href={'/ib-login/dashboard/mailer'}>
           E-mail
           <ImMail3 width={40} height={40} svg />
+        </DashboardButtonItem>
+
+        <DashboardButtonItem href={'/ib-login/dashboard/comentarios'}>
+          Comentários
+          <BiSolidCommentAdd width={40} height={40} svg />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/categorias'}>

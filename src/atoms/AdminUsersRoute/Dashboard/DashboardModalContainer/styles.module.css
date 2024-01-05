@@ -13,7 +13,6 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   -moz-backdrop-filter: blur(20px);
-  z-index: 5000;
 }
 
 .content {
@@ -27,7 +26,6 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  z-index: 6000;
 }
 
 .title {

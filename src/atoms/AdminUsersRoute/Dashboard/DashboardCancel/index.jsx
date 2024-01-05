@@ -29,7 +29,7 @@ export default function DashboardCancel({
           <DashboardButtonsArea>
             <DashboardButton
               onClick={(e) => {
-                setCancel(!cancel)
+                setCancel(false)
               }}
             >
               Não
