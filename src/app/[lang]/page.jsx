@@ -16,6 +16,7 @@ import EventsSeeAllButton from '@/components/EndUsersRoute/PAGES/EVENTS/EventsSe
 import getCatCol from '@/api/CallsWithoutToken/Collections/CategoryCollections/GET/getCatCol'
 import getLatestNews from '@/api/CallsWithoutToken/News/GET/getLatestNews'
 import getComments from '@/api/CallsWithoutToken/Comments/GET/getComments'
+import AddComment from '@/components/EndUsersRoute/PAGES/COMMENTS/AddComment'
 
 const events = {
   title: 'Eventos',
@@ -74,6 +75,8 @@ export default async function Page() {
       <EventsHome lang={lang} data={{ events }} />
 
       <CommentsHome lang={lang} data={depositions} />
+
+      <AddComment lang={lang} dark />
 
       <NewsBanner lang={lang} data={latestNews} />
 

@@ -8,24 +8,14 @@
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
   padding: 2rem;
-
-  width: 100%;
-  height: 80vh;
 }
 
 .h1 {
   color: var(--white);
-}
-
-.seeMoreButton {
-  color: var(--white-100);
 }
 
 @media (max-width: 720px) {
@@ -34,7 +24,7 @@
   }
 
   .row {
-    padding: 0;
-    height: calc(4 * (15rem + 12vh));
+    padding: 0rem;
+    grid-template-columns: 1fr;
   }
 }

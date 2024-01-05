@@ -121,6 +121,6 @@
 
 @media (max-width: 720px) {
   .container {
-    width: calc(100% + 4rem);
+    width: calc(100%);
   }
 }

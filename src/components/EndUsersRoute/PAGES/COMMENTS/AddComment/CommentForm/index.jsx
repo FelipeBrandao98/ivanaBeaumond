@@ -20,7 +20,7 @@ const createAppointmentFormSchema = z.object({
   commentCode: z.string(),
 })
 
-export default function CommentForm({ lang }) {
+export default function CommentForm({ lang, dark }) {
   // States declaratios
   const [createAppointmentLoader, setCreateAppointmentLoader] = useState('')
   const [avaliationPoints, setAvaliationPoints] = useState(0)
@@ -54,7 +54,11 @@ export default function CommentForm({ lang }) {
     setAvaliationPoints(point)
   }
   return (
-    <div className={styles.container}>
+    <div
+      className={
+        dark ? `${styles.container} ${styles.dark}` : `${styles.container}`
+      }
+    >
       <h1>Comment Form</h1>
       <EndUserForm action={handleSubmit(handleCreateAppointment)} inAppointment>
         <EndUserLabel

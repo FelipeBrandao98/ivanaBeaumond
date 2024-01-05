@@ -53,3 +53,28 @@
 .closeButton:hover {
   filter: brightness(1.2);
 }
+
+@media (max-width: 720px) {
+  .container {
+    backdrop-filter: blur(100px) grayscale(1);
+  }
+
+  .content {
+    background: none;
+    color: var(--white-100);
+  }
+
+  .image {
+    display: none;
+  }
+
+  .closeButton {
+    padding: 0rem;
+  }
+
+  .closeButton svg {
+    color: var(--white-100);
+    width: 3rem;
+    height: 3rem;
+  }
+}

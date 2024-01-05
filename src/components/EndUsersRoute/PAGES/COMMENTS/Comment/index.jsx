@@ -22,7 +22,7 @@ import likeComment from '@/api/CallsWithoutToken/Comments/PATCH/likeComment'
 export default function Comment({ data }) {
   // States declaratios
   const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(data.likes)
+  const [likes, setLikes] = useState(data.likes ? data.likes : 0)
 
   // Variables
   const maxAvaliation = [1, 2, 3, 4, 5]

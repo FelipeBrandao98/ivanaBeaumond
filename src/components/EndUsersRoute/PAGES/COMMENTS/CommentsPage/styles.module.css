@@ -38,3 +38,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
+@media (max-width: 720px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .comments section {
+    grid-template-columns: 1fr;
+  }
+}

@@ -27,3 +27,13 @@
   height: calc(20rem);
   resize: none;
 }
+
+.dark {
+  color: var(--black-800);
+}
+
+@media (max-width: 720px) {
+  .dark {
+    color: var(--white-100);
+  }
+}

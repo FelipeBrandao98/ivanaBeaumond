@@ -2,17 +2,21 @@ import Link from 'next/link'
 import styles from './styles.module.css'
 
 export default function EndUserSeeAllButton(props) {
-  const { dark, children } = props
+  const { dark, children, noBack } = props
 
   return (
     <>
-      <div
+      <button
         className={
-          dark ? `${styles.container} ${styles.dark}` : styles.container
+          dark && noBack
+            ? `${styles.container} ${styles.dark} ${styles.noBack}`
+            : dark
+              ? `${styles.container} ${styles.dark}`
+              : styles.container
         }
       >
         {children}
-      </div>
+      </button>
     </>
   )
 }
