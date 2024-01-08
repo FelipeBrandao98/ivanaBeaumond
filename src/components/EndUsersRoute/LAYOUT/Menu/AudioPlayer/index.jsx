@@ -2,24 +2,28 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useRef } from 'react'
-import { FaMusic, FaSlash } from 'react-icons/fa'
+import { FaSlash } from 'react-icons/fa'
 import { FcMusic } from 'react-icons/fc'
 
 import styles from './style.module.css'
+import getHomeSong from '@/api/CallsWithoutToken/TrackList/GET/getHomeSong'
+import { useCallback } from 'react'
 
 export default function AudioPlayer({ short }) {
   const audioRef = useRef(null)
 
+  const [song, setSong] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [initialPlay, setInitialPlay] = useState(false)
 
-  function setPlayingState(state) {
-    setIsPlaying(state)
-  }
-
-  function toggleIsPlaying() {
+  function handlePlay() {
     setIsPlaying(!isPlaying)
   }
+
+  const getRepo = useCallback(async () => {
+    const res = await getHomeSong()
+
+    setSong(res)
+  }, [])
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -31,11 +35,11 @@ export default function AudioPlayer({ short }) {
     } else {
       audioRef.current.pause()
     }
+  }, [isPlaying])
 
-    initialPlay && setIsPlaying(true)
-
-    setInitialPlay(true)
-  }, [initialPlay, isPlaying])
+  useEffect(() => {
+    getRepo()
+  }, [getRepo])
 
   return (
     <section
@@ -45,28 +49,21 @@ export default function AudioPlayer({ short }) {
     >
       <div>
         {isPlaying ? (
-          <button onClick={toggleIsPlaying} className={styles.button}>
+          <button onClick={handlePlay} className={styles.button}>
             <FcMusic width={50} height={50} className={styles.svg1} />
             <FaSlash width={50} height={50} className={styles.svg2} />
           </button>
         ) : (
-          <button onClick={toggleIsPlaying} className={styles.button}>
+          <button onClick={handlePlay} className={styles.button}>
             <FcMusic width={50} height={50} />
           </button>
         )}
       </div>
-      <audio
-        ref={audioRef}
-        loop
-        autoPlay
-        onPlay={() => setPlayingState(true)}
-        onPause={() => setPlayingState(false)}
-      >
-        <source
-          src="http://localhost:3001/images/Louis Adrien - Waltzing in Paris-84e57f27-4698-463c-8795-fc03a93cfe3c"
-          type="audio/mpeg"
-        />
-      </audio>
+      {song && (
+        <audio ref={audioRef} loop>
+          <source src={song.audio.url} type="audio/mpeg" />
+        </audio>
+      )}
     </section>
   )
 }

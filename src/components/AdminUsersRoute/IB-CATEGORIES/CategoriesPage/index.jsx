@@ -88,7 +88,7 @@ export default function CategoriesPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Categorias</DashboardMainTitle>
+      <DashboardMainTitle isBack>Categorias</DashboardMainTitle>
       <DashboardContainer>
         <DashboardActionButtons
           title="Categorias de Coleções"

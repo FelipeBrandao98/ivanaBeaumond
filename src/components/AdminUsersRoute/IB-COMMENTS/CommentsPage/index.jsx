@@ -59,7 +59,7 @@ export default function CommentsPage() {
 
   return (
     <>
-      <DashboardMainTitle>Comentários sobre a loja!</DashboardMainTitle>
+      <DashboardMainTitle isBack>Comentários sobre a loja!</DashboardMainTitle>
       <DashboardContainer>
         <DashboardActionButtons
           cleanContext={handleChangeImage}

@@ -5,7 +5,9 @@ export default function DashboardForm(props) {
 
   return (
     <>
-      <form {...props}>{children}</form>
+      <form className={styles.container} {...props}>
+        {children}
+      </form>
     </>
   )
 }

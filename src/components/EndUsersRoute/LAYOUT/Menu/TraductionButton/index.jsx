@@ -60,8 +60,10 @@ export default function TraductionButton({ lang, short }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <MenuTraductionButtonContainer isOpen={isOpen} short={short}>
-        {console.log(pathname)}
+      <MenuTraductionButtonContainer
+        isOpen={isOpen}
+        short={short ? short : undefined}
+      >
         {lang === 'en' ? (
           <>
             <li onClick={handleIsOpen}>

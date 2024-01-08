@@ -84,7 +84,7 @@ export default function CreateCategoryNewsPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Nova Categoria de Notícias</DashboardMainTitle>
+      <DashboardMainTitle isBack>Nova Categoria de Notícias</DashboardMainTitle>
       <DashboardContainer hasTab>
         <DashboardTabLang tab={tab} setTab={setTab} />
 

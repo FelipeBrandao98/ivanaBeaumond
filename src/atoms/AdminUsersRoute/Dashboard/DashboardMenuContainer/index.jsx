@@ -2,6 +2,7 @@
 import { AiOutlineMenu } from 'react-icons/ai'
 import styles from './styles.module.css'
 import { useState } from 'react'
+import { BsArrowRight } from 'react-icons/bs'
 
 export default function DashboardMenuContainer({ children }) {
   const [expand, setExpand] = useState(false)
@@ -23,7 +24,7 @@ export default function DashboardMenuContainer({ children }) {
               setExpand(!expand)
             }}
           >
-            <AiOutlineMenu width={40} height={40} />
+            <BsArrowRight width={40} height={40} />
           </button>
           {children}
         </section>

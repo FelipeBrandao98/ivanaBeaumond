@@ -1,11 +1,11 @@
-import DashboardPage from '@/components/AdminUsersRoute/IB-DASHBOARD/dashboardPage'
+import AudioPage from '@/components/AdminUsersRoute/IB-AUDIO/AudioPage'
 
 // Component Declaration
 export default function Page() {
   // Return components
   return (
     <>
-      <DashboardPage />
+      <AudioPage />
     </>
   )
   //

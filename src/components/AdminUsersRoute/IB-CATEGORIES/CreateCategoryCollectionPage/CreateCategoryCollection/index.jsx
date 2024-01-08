@@ -101,7 +101,7 @@ export default function CreateCategoryCollection() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Nova Categoria de Coleção</DashboardMainTitle>
+      <DashboardMainTitle isBack>Nova Categoria de Coleção</DashboardMainTitle>
       <DashboardContainer hasTab>
         <DashboardTabLang tab={tab} setTab={setTab} />
 

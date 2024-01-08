@@ -73,7 +73,7 @@ export default function CollectionsPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Coleções</DashboardMainTitle>
+      <DashboardMainTitle isBack>Coleções</DashboardMainTitle>
       <DashboardContainer>
         <DashboardActionButtons
           title=""

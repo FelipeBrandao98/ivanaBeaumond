@@ -10,6 +10,18 @@ import {
 // Atoms imports
 import DashboardButtonItem from '@/atoms/AdminUsersRoute/Dashboard/DashboardButtonItem'
 import { BiSolidCommentAdd } from 'react-icons/bi'
+import {
+  MdAddComment,
+  MdAirplaneTicket,
+  MdAttractions,
+  MdAudioFile,
+  MdBallot,
+  MdCheckBox,
+  MdCollections,
+  MdDashboard,
+  MdMail,
+  MdNewspaper,
+} from 'react-icons/md'
 //
 
 // Component Declaration
@@ -18,34 +30,42 @@ export default function DashboardMenuNavigation() {
   return (
     <>
       <ul>
+        <DashboardButtonItem href={'/ib-login/dashboard/'} alt="Dashboard">
+          Dashboard
+          <MdDashboard width={40} height={40} svg />
+        </DashboardButtonItem>
+        <DashboardButtonItem href={'/ib-login/dashboard/audio'}>
+          Audio
+          <MdAudioFile width={40} height={40} svg />
+        </DashboardButtonItem>
         <DashboardButtonItem href={'/ib-login/dashboard/agendamentos'}>
           Agendamentos
-          <ImCheckboxChecked width={40} height={40} svg />
+          <MdCheckBox width={40} height={40} svg />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/mailer'}>
           E-mail
-          <ImMail3 width={40} height={40} svg />
+          <MdMail width={40} height={40} svg />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/comentarios'}>
           Comentários
-          <BiSolidCommentAdd width={40} height={40} svg />
+          <MdAddComment width={40} height={40} svg />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/categorias'}>
           Categorias
-          <ImListNumbered width={40} height={40} />
+          <MdBallot width={40} height={40} />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/colecoes'}>
           Coleções
-          <ImTicket width={40} height={40} />
+          <MdCollections width={40} height={40} />
         </DashboardButtonItem>
 
         <DashboardButtonItem href={'/ib-login/dashboard/noticias'}>
           Notícias
-          <ImNewspaper width={40} height={40} />
+          <MdNewspaper width={40} height={40} />
         </DashboardButtonItem>
       </ul>
     </>

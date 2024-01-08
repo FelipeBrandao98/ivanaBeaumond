@@ -70,7 +70,7 @@ export default function NewsPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Notícias</DashboardMainTitle>
+      <DashboardMainTitle isBack>Notícias</DashboardMainTitle>
       <DashboardContainer>
         <DashboardActionButtons
           title=""

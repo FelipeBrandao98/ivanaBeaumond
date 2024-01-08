@@ -63,7 +63,7 @@ export default function AppointmentPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Agendamentos</DashboardMainTitle>
+      <DashboardMainTitle isBack>Agendamentos</DashboardMainTitle>
       <DashboardContainer>
         <DashboardTable>
           <thead>

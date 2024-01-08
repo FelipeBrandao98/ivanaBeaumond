@@ -29,6 +29,7 @@
   position: fixed;
   top: 2.2rem;
   left: .8rem;
+  z-index: 10000;
 }
 
 .close li,

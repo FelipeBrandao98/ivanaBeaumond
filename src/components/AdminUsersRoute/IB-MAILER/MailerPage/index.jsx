@@ -19,7 +19,7 @@ export default function MailerPage() {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle>Mailer</DashboardMainTitle>
+      <DashboardMainTitle isBack>Mailer</DashboardMainTitle>
       <DashboardContainer></DashboardContainer>
     </>
   )

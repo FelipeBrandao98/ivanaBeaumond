@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.container a {
+  width: 18rem;
+}
+
+.container aside {
+  align-self: center;
+  width: 18rem;
+  height: 10rem;
+  background: var(--blue-france);
+  background: linear-gradient(90deg, var(--blue-france) 30%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 48%, rgba(255,255,255,1) 70%, var(--red-france) 70%);
+  color: var(--black);
+  border-radius: .2rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  box-shadow: 0rem 0rem .5rem var(--black-800);
+}
+
+.container aside svg {
+  width: 4rem;
+  height: 4rem;
+}

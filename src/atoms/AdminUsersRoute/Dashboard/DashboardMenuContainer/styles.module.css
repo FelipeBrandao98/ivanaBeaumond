@@ -7,11 +7,11 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left: -5rem;
+  left: -6rem;
 
   width: 11rem;
 
-  background-color: var(--black-300);
+  background-color: var(--blue-france);
   color: var(--black-800);
 
   border-right: 1px solid var(--black);
@@ -35,8 +35,8 @@
 }
 
 .expandButton {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   background-color: transparent;
   border: none;
   color: var(--white-100);
@@ -46,6 +46,11 @@
   display: flex;
   width: 2rem;
   height: 2rem;
+  transition: all .2s;
+}
+
+.expanded .expandButton svg {
+  transform: rotate(-180deg);
 }
 
 .expanded {
@@ -53,5 +58,5 @@
 }
 
 .expanded .content {
-  align-items: center;
+  align-items: flex-end;
 }
