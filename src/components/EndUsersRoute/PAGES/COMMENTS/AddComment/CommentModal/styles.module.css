@@ -2,7 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(20px) grayscale(1);
+
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  -moz-backdrop-filter: var(--blur);
+
+  background-color: var(--black-transparent);
 
   position: fixed;
   top: 0;
@@ -10,44 +15,59 @@
 
   width: 100%;
   height: 100%;
-  z-index: 5000;
+  z-index: var(--zindex-5);
 }
 
 .content {
-  width: 90vw;
-  height: 90vh;
-  background-color: var(--white-300);
-  border-radius: .1rem;
+  display: flex;
+  flex-direction: row;
 
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  width: 80vw;
+  height: 80vh;
+  background-color: var(--white-300);
+  border-radius: var(--border-radius-1);
+  box-shadow: var(--box-shadow-1);
 }
 
 .image {
-  width: 100%;
+  width: 60vw;
   height: 100%;
   object-fit: cover;
 
-  border-radius: 0rem .1rem .1rem 0rem;
+  filter: var(--brightness-0);
+
+  border-radius: 0rem var(--border-radius-1) var(--border-radius-1) 0rem;
+  z-index: var(--zindex-5);
 }
 
 .closeButton {
   position: fixed;
-  top: calc(5vh + 1rem);
-  right: calc(5vw + 1rem);
+  top: calc(10vh + 1rem);
+  right: calc(10vw - 2rem);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .5rem;
+  
+  width: var(--icon-box-size-small);
+  height: var(--icon-box-size-small);
+
   background: none;
   border: none;
+
+  z-index: var(--zindex-6);
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  border-radius: var(--border-radius-1);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .closeButton svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: var(--black-800);
+  width: var(--icon-size-small);
+  height: var(--icon-size-small);
+  color: var(--black);
 }
 
 .closeButton:hover {
@@ -60,8 +80,10 @@
   }
 
   .content {
+    width: 100%;
     background: none;
     color: var(--white-100);
+    box-shadow: none;
   }
 
   .image {
@@ -70,11 +92,13 @@
 
   .closeButton {
     padding: 0rem;
+    top: var(--padding-2);
+    right: var(--padding-2);
   }
 
   .closeButton svg {
     color: var(--white-100);
-    width: 3rem;
-    height: 3rem;
+    width: var(--icon-size-medium);
+    height: var(--icon-size-medium);
   }
 }

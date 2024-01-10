@@ -1,15 +1,18 @@
 .container {
   display: flex;
-  position: absolute;
   top: .8rem;
   left: 1.5rem;
-  transition: all .5s;
+
+  position: absolute;
+  
+  transition: var(--transition-1);
 }
 
 .container ul {
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 100%;
   height: 100%;
 }
@@ -18,13 +21,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
+
+  gap: var(--gap-0);
+
   width: 100%;
   height: 100%;
 }
 
 .container ul li:hover {
-  filter: brightness(1.2);
+  filter: var(--brightness-1);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -40,6 +45,6 @@
     position: relative;
     top: calc(30px + 2rem + .5rem);
 
-    transition: all .5s;
+    transition: var(--transition-1);
   }
 }

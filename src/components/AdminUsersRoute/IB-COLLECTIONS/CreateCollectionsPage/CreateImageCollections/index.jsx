@@ -77,7 +77,7 @@ export default function CreateImageCollections({ functions }) {
   // Return components, with functions to call API and language
   return (
     <>
-      <DashboardMainTitle onClick={handleShowCreateImage} isBack>
+      <DashboardMainTitle href={handleShowCreateImage} isBack>
         voltar
       </DashboardMainTitle>
 

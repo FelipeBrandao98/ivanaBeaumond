@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import img from '@/../public/photo_header/_ELC8701 2.jpg'
 import styles from './styles.module.css'
-import { FiX } from 'react-icons/fi'
+import { HiX } from 'react-icons/hi'
 
 export default function CommentModal({ children, setClose }) {
   return (
@@ -17,7 +17,7 @@ export default function CommentModal({ children, setClose }) {
             height={1080}
           />
           <button className={styles.closeButton} onClick={setClose}>
-            <FiX width={50} height={50} />
+            <HiX width={50} height={50} />
           </button>
         </aside>
       </section>

@@ -1,6 +1,6 @@
 @keyframes showSubMenu {
   0% {
-    top: calc(-3 * (50px + 45px + 2rem + .5rem));
+    top: calc(-3 * var(--menu-height-total));
     opacity: 0;
   }
   50% {
@@ -15,12 +15,12 @@
 
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 100%;
 
-  align-items: center;
-  justify-content: center;
-  transition: all .5s;
+  transition: var(--transition-1);
 }
 
 .container ul {
@@ -28,59 +28,66 @@
   flex-direction: row;
   justify-content: center;
 
-  height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
-  transition: all .5s;
+  height: var(--menu-height-short);
+
+  transition: var(--transition-1);
 }
 
 .container ul li {
   display: flex;
   flex-direction: column;
-  transition: all .5s;
-  z-index: 2000;
+
+  transition: var(--transition-1);
+  
+  z-index: var(--zindex-5);
 }
 
 
 .container ul li a {
-  height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: var(--white);
-
-  font-size: .9rem;
   
-  letter-spacing: .1rem;
+  padding: var(--padding-1);
 
+  height: var(--menu-height-short);
+  
+  color: var(--white);
+  font-size: var(--font-size-0);
+  letter-spacing: var(--letter-spacing-0);
   text-transform: uppercase;
 
-  padding: 1rem;
-
-  transition: all .5s;
+  transition: var(--transition-1);
 }
 
 .container ul li:hover {
-  filter: brightness(1.2);
-  background-color: var(--background-blur-dark);
+  filter: var(--brightness-1);
+  background-color: var(--black-transparent);
   cursor: pointer;
 }
 
 .container ul li div {
   display: flex;
-  position: relative;
-  top: calc(-3 * (50px + 45px + 2rem + .5rem));
-  opacity: 0;
+
   width: 0;
 
-  border-bottom: 1px solid var(--black);
-  background-color: var(--background-blur-dark);
+  position: relative;
+  top: calc(-3 * var(--menu-height-total));
+
+  background-color: var(--black-transparent);
   color: var(--text-dark);
+
+  opacity: 0;
+
+  border-bottom: 1px solid var(--black);
 }
 
 .container ul li div ul {
   display: flex;
   flex-direction: column;
+
   height: 100%;
+
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
   -moz-backdrop-filter: var(--blur);
@@ -89,16 +96,19 @@
 .container ul li:hover div {
   top: 0rem;
   width: 100%;
+
   opacity: 1;
-  animation: .5s linear showSubMenu;
+  
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
   -moz-backdrop-filter: var(--blur);
+  
+  animation: .5s linear showSubMenu;
 }
 
 .container ul li:hover div li a:hover {
-  filter: brightness(1.2);
-  background-color: var(--background-blur-dark);
+  filter: var(--brightness-1);
+  background-color: var(--black-transparent);
   cursor: pointer;
 }
 
@@ -110,18 +120,19 @@
   }
 
   .container ul {
-    position: inherit;
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: .5rem;
+    position: inherit;
+
+    gap: var(--gap-0);
   }
 
   .container ul li {
-    border-radius: .1rem;
+    border-radius: var(--border-radius-0);
     height: 3rem;
-    background-color: rgba(255, 255, 255, .1);
-    filter: brightness(1.1);
+    background-color: var(--hover-background-light-0);
+    filter: var(--brightness-1);
   }
 
   .container ul li:hover div,

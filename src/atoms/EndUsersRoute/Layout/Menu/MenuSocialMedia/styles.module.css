@@ -5,31 +5,24 @@
 
   text-decoration: none;
   list-style: none;
-
-  gap: .2rem;
 }
 
 .container ul li a {
-  font-size: 1rem;
+  font-size: var(--font-size-1);
   font-weight: thin;
-  padding: .5rem;
+  padding: var(--padding-0);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .2rem;
-}
-
-.container ul li a svg {
-  width: 1.3rem;
-  height: 1.3rem;
+  gap: var(--gap-0);
 }
 
 .container ul li a:hover,
 .contactNav ul li a:hover {
   filter: brightness(1.2);
-  background-color: var(--background-blur-dark);
-  border-radius: .5rem;
+  background-color: var(--black-transparent);
+  border-radius: var(--border-radius-1);
   cursor: pointer;
 }
 
@@ -37,9 +30,9 @@
   .container {
     position: absolute;
     top: .5rem;
-    right: 1rem;
+    right: var(--padding-1);
 
-    transition: all .5s;
+    transition: var(--transition-1);
   }
 
   .short {
@@ -58,6 +51,5 @@
   .container ul {
     position: inherit;
     align-items: flex-end;
-    gap: .2rem;
   }
 }

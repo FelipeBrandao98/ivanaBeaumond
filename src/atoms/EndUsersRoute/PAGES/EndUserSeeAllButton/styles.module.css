@@ -4,24 +4,24 @@
   background-color: var(--white);
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding: var(--padding-2);
   width: 100%;
 }
 
 .container a {
   display: flex;
-  padding: 1rem 4rem;
+  padding: var(--padding-button-1);
   background-color: var(--black-800);
   color: var(--white-100);
   border: none;
-  border-radius: .1rem;
-  transition: all .2s linear;
+  border-radius: var(--border-radius-0);
+  transition: var(--transition-0);
   text-transform: uppercase;
 }
 
 .container a:hover {
-  filter: brightness(1.2);
-  padding: 1rem 5rem;
+  filter: var(--brightness-1);
+  padding: var(--padding-button-hover-1);
 }
 
 .dark {
@@ -34,5 +34,5 @@
 }
 
 .noBack {
-  background-color: var(--background-dark);
+  background-color: var(--background-black);
 }

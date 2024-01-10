@@ -1,12 +1,12 @@
 .container {
   display: flex;
-  height: calc(50px + 45px + 2rem + .5rem);
+  height: var(--menu-height-total);
 
-  background-color: var(--background-dark);
+  background-color: var(--background-black);
 }
 
 @media (max-width: 720px) {
   .container {
-    height: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
+    height: var(--menu-height-mobile);
   }
 }

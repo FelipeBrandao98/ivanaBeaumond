@@ -1,6 +1,8 @@
 // Next.js Components imports
 import Image from 'next/image'
 import Link from 'next/link'
+
+// Image import
 import homeImage from '@/../public/homeimage.jpg'
 
 // Icons imports
@@ -15,27 +17,27 @@ export default function BannerHome({ lang }) {
   return (
     <>
       <BannerHomePageContainer>
-        <Image
-          src={homeImage}
-          placeholder="blur"
-          alt="HomePage Ivana Beaumond | Ateliê Francês"
-        />
         <h1>
           DÉCOUVREZ LE MONDE MERVEILLEUX DE
           <br />
           IVANA BEAUMOND
         </h1>
-        <h3>
-          <Link
-            href={{
-              pathname: 'colecoes',
-              lang: lang,
-            }}
-          >
-            DÉCOUVREZ MAINTENANT
-            <FaArrowRight width={50} height={50} />
-          </Link>
-        </h3>
+
+        <Image
+          src={homeImage}
+          placeholder="blur"
+          alt="HomePage Ivana Beaumond | Ateliê Francês"
+        />
+
+        <Link
+          href={{
+            pathname: 'colecoes',
+            lang: lang,
+          }}
+        >
+          DÉCOUVREZ MAINTENANT
+          <FaArrowRight width={50} height={50} />
+        </Link>
       </BannerHomePageContainer>
     </>
   )

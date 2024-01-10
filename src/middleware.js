@@ -27,14 +27,18 @@ export function middleware(request) {
   )
   const cookieFromRequest = request.cookies.get('lang')
 
+  // check if admin route
   if (request.nextUrl.pathname.startsWith('/ib-login')) {
     return NextResponse.next()
   }
+  //
 
+  // check if have cookie from request and use this cookie
   if (cookieFromRequest) {
     locale = cookieFromRequest.value
   }
 
+  // check if have lang in pathname and use this
   if (request.nextUrl.pathname.split('/')[1]) {
     const newLocale = request.nextUrl.pathname.split('/')[1]
 
@@ -52,16 +56,20 @@ export function middleware(request) {
     }
   }
 
+  // create url
   const newUrl = new URL(
     `/${locale}${pathname ? pathname : ''}`,
     request.nextUrl,
   )
+  //
 
+  // return new url
   const response = NextResponse.rewrite(newUrl)
   response.cookies.delete('lang')
   response.cookies.set('lang', locale)
 
   return response
+  //
 }
 
 export const config = {

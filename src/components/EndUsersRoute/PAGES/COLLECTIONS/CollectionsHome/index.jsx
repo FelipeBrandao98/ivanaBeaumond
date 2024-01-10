@@ -106,44 +106,37 @@ export default function CollectionsHome({ lang, data }) {
             </button>
           </div>
 
-          <div className={styles.cards}>
-            <div
-              className={`
-      ${styles.CardArea}
-      ${cardClass}
-      `}
-            >
-              {data.map((categorie) => {
-                return (
-                  <aside key={categorie.id} className={styles.aside}>
-                    <h3>{categorie.description}</h3>
-                    <Image
-                      className={styles.image}
-                      src={categorie.cover?.url || ''}
-                      alt={categorie.cover?.author || 'Ivana'}
-                      width={1080}
-                      height={1920}
-                      loading="lazy"
-                      placeholder="blur"
-                      blurDataURL="https://ivana-backend-0a6d1ff75854.herokuapp.com/images/loadingImage-5df11293-defa-44af-8042-7b39a0e2f2be"
-                    />
-                    <div className={styles.comments}>
-                      <p>{categorie.subdescription}</p>
-                      <button>
-                        <Link
-                          href={{
-                            pathname: `/colecoes/categoria/${categorie.id}`,
-                            lang: lang,
-                          }}
-                        >
-                          Descubra Agora <FaArrowRight />
-                        </Link>
-                      </button>
-                    </div>
-                  </aside>
-                )
-              })}
-            </div>
+          <div className={`${styles.cardArea} ${cardClass}`}>
+            {data.map((categorie) => {
+              return (
+                <aside key={categorie.id} className={styles.aside}>
+                  <h1>{categorie.description}</h1>
+                  <Image
+                    className={styles.image}
+                    src={categorie.cover?.url || ''}
+                    alt={categorie.cover?.author || 'Ivana'}
+                    width={1080}
+                    height={1920}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="https://ivana-backend-0a6d1ff75854.herokuapp.com/images/loadingImage-5df11293-defa-44af-8042-7b39a0e2f2be"
+                  />
+                  <div className={styles.comments}>
+                    <p>{categorie.subdescription}</p>
+                    <button>
+                      <Link
+                        href={{
+                          pathname: `/colecoes/categoria/${categorie.id}`,
+                          lang: lang,
+                        }}
+                      >
+                        Descubra Agora <FaArrowRight />
+                      </Link>
+                    </button>
+                  </div>
+                </aside>
+              )
+            })}
           </div>
 
           <div className={styles.fromRightArea} onClick={changeCardFromRight}>

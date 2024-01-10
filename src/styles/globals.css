@@ -15,14 +15,89 @@
   --black-800: #3F3F3F;
   --black: #222;
 
-  --gray-300: #f1f1f1;
+  --black-transparent: #1f2020c0;
+  
+  --background-black: #1F2020;
 
-  --background-dark: #1F2020;
-  --background-dark-800: #3B3B3B;
-  --text-dark: #B1B1B1;
-  --text-hover-dark: rgba(255, 255, 255, 0.9);
-  --background-blur-dark: rgba(30, 30, 30, 0.90);
   --blur: blur(30px) saturate(120%);
+
+  --brightness-0: brightness(.8);
+  --brightness-1: brightness(1.2);
+
+  --font-size-0: .8rem;
+  --font-size-1: 1rem;
+  --font-size-2: 1.2rem;
+  --font-size-3: 1.5rem;
+  --font-size-4: 1.8rem;
+  --font-size-5: 2rem;
+  --font-size-6: 2.5rem;
+  --font-size-7: 3rem;
+
+  --text-shadow: .1rem .1rem .1rem #3F3F3FFA;
+  
+  --box-shadow-0: 0rem 0rem .1rem #3F3F3FFA;
+  --box-shadow-1: 0rem 0rem .5rem #3F3F3FFA;
+
+  --box-shadow-hover-0: 0rem 0rem .5rem #3F3F3FFA;
+  --box-shadow-hover-1: 0rem 0rem 1rem #3F3F3FFA;
+
+  --padding-0: .5rem;
+  --padding-1: 1rem;
+  --padding-2: 2rem;
+  --padding-3: 4rem;
+
+  --margin-0: .5rem;
+  --margin-1: 1rem;
+  --margin-2: 2rem;
+  --margin-3: 4rem;
+
+  --padding-button-0: .5rem 1rem;
+  --padding-button-1: 1rem 2rem;
+
+  --padding-button-hover-0: .5rem 2rem;
+  --padding-button-hover-1: 1rem 4rem;
+
+  --gap-0: .5rem;
+  --gap-1: 1rem;
+  --gap-2: 2rem;
+
+  --letter-spacing-0: .15rem;
+
+  --border-radius-0: .1rem;
+  --border-radius-1: .5rem;
+
+  --hover-background-light-0: #FFFFFF5F;
+  --hover-background-dark-0:  #0000005F;
+
+  --spacement-1: 1rem;
+  --spacement-2: 2rem;
+  --spacement-3: 3rem;
+
+  --transition-0: all .2s;
+  --transition-1: all .5s;
+  --transition-2: all 1s;
+  --transition-3: all 2s;
+
+  --menu-height-total: calc(50px + 45px + 2rem + .5rem);
+  --menu-height-short: calc((50px + 45px + 2rem + .5rem) - (50px + 2rem + .2rem));
+  --menu-height-mobile: calc(30px + 2rem + .2rem);
+
+  --icon-box-size-small: 3rem;
+  --icon-box-size-medium: 4rem;
+  --icon-box-size-bigger: 5rem;
+
+  --icon-size-ultra-small: 1.5rem;
+  --icon-size-small: 2rem;
+  --icon-size-medium: 3rem;
+  --icon-size-bigger: 4rem;
+
+  --zindex-0: 1;
+  --zindex-1: 2;
+  --zindex-2: 3;
+  --zindex-3: 4;
+  --zindex-4: 5;
+  --zindex-5: 6;
+  --zindex-6: 7;
 }
 
 @media (max-width: 1080px) {
@@ -74,7 +149,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .home {
-  background-color: var(--background-dark);
+  background-color: var(--background-black);
   color: var(--white-100);
 }
 

@@ -7,19 +7,20 @@
   bottom: 2rem;
   right: 2rem;
 
-  width: 3.5rem;
-  height: 3.5rem;
+  width: var(--icon-size-medium);
+  height: var(--icon-size-medium);
 
-  border: none;
-  box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--black-300);
+  box-shadow: var(--box-shadow-1);
   background-color: var(--white-100);
-  border-radius: .5rem;
+  border-radius: var(--border-radius-1);
 
-  z-index: 1000;
+  z-index: var(--zindex-5);
 
-  transition: all .2s;
+  transition: var(--transition-0);
 }
 
 .button:hover {
-  filter: brightness(.8);
+  filter: var(--brightness-1);
+  box-shadow: var(--box-shadow-hover-1);
 }
