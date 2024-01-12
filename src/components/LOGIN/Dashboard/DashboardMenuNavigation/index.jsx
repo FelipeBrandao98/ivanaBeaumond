@@ -19,6 +19,7 @@ import {
   MdCheckBox,
   MdCollections,
   MdDashboard,
+  MdEvent,
   MdMail,
   MdNewspaper,
 } from 'react-icons/md'
@@ -66,6 +67,11 @@ export default function DashboardMenuNavigation() {
         <DashboardButtonItem href={'/ib-login/dashboard/noticias'}>
           Notícias
           <MdNewspaper width={40} height={40} />
+        </DashboardButtonItem>
+
+        <DashboardButtonItem href={'/ib-login/dashboard/eventos'}>
+          Eventos
+          <MdEvent width={40} height={40} />
         </DashboardButtonItem>
       </ul>
     </>

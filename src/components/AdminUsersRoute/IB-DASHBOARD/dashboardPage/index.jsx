@@ -18,6 +18,7 @@ import {
   MdAudioFile,
   MdBallot,
   MdCheckBox,
+  MdEvent,
   MdMail,
   MdNewspaper,
 } from 'react-icons/md'
@@ -76,6 +77,13 @@ export default function DashboardPage() {
             <aside>
               <MdNewspaper width={40} height={40} />
               <h1>Notícias</h1>
+            </aside>
+          </Link>
+
+          <Link href={'/ib-login/dashboard/eventos'}>
+            <aside>
+              <MdEvent width={40} height={40} />
+              <h1>Eventos</h1>
             </aside>
           </Link>
         </div>

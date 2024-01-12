@@ -9,7 +9,9 @@ import { CreateImageCatalogProvider } from '@/Context/CreateImageCatalogContext 
 import { CreateImageCategoryProvider } from '@/Context/CreateImageCategoryContext'
 import { CreateImageCollectionProvider } from '@/Context/CreateImageCollectionContext'
 import { CreateImageCommentProvider } from '@/Context/CreateImageCommentContext'
+import { CreateImageEventsProvider } from '@/Context/CreateImageEventsContext'
 import { CreateImageNewsProvider } from '@/Context/CreateImageNewsContext'
+import { EventsProvider } from '@/Context/EventsContext'
 import { NewsCategoryProvider } from '@/Context/NewsCategoryContext'
 import { NewsProvider } from '@/Context/NewsContext'
 
@@ -23,17 +25,21 @@ export function Providers({ children }) {
           <CreateImageCategoryProvider>
             <CreateImageCatalogProvider>
               <CreateImageCommentProvider>
-                <NewsProvider>
-                  <CollectionsProvider>
-                    <CollectionsCategoryProvider>
-                      <NewsCategoryProvider>
-                        <CollectionsCatalogProvider>
-                          {children}
-                        </CollectionsCatalogProvider>
-                      </NewsCategoryProvider>
-                    </CollectionsCategoryProvider>
-                  </CollectionsProvider>
-                </NewsProvider>
+                <EventsProvider>
+                  <CreateImageEventsProvider>
+                    <NewsProvider>
+                      <CollectionsProvider>
+                        <CollectionsCategoryProvider>
+                          <NewsCategoryProvider>
+                            <CollectionsCatalogProvider>
+                              {children}
+                            </CollectionsCatalogProvider>
+                          </NewsCategoryProvider>
+                        </CollectionsCategoryProvider>
+                      </CollectionsProvider>
+                    </NewsProvider>
+                  </CreateImageEventsProvider>
+                </EventsProvider>
               </CreateImageCommentProvider>
             </CreateImageCatalogProvider>
           </CreateImageCategoryProvider>
