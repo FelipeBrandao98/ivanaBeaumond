@@ -17,6 +17,7 @@ import getCatCol from '@/api/CallsWithoutToken/Collections/CategoryCollections/G
 import getLatestNews from '@/api/CallsWithoutToken/News/GET/getLatestNews'
 import getComments from '@/api/CallsWithoutToken/Comments/GET/getComments'
 import AddComment from '@/components/EndUsersRoute/PAGES/COMMENTS/AddComment'
+import getEvents from '@/api/CallsWithoutToken/Events/GET/getEvents'
 
 const events = {
   title: 'Eventos',
@@ -62,6 +63,7 @@ export default async function Page() {
   // Instantiate response objects from api, by language by the way
   const categories = await getCatCol(lang)
   const latestNews = await getLatestNews(lang)
+  const events = await getEvents(lang)
   const depositions = await getComments()
   //
 
@@ -72,7 +74,7 @@ export default async function Page() {
 
       <CollectionsHome lang={lang} data={categories} />
 
-      <EventsHome lang={lang} data={{ events }} />
+      <EventsHome lang={lang} data={events} />
 
       <CommentsHome lang={lang} data={depositions} />
 
